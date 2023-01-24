@@ -3,17 +3,45 @@
       
     </style>
     
+    
+    
     <div id='testing'>
             
     </div>
-    <select name= 'joistSize' id='joistSize' onchange='jsFunction(this.value);'>
+    
+    <select name= 'joist-size-dd' id='joist-size-dd' onchange='jsFunction(this.value, this.id);'>
         <option value='6'>6</option>
         <option value='8'>8</option>
         <option value='10'>10</option>
         <option value='12'>12</option>
+        <option value='14'>14</option>
+        <option value='16'>16</option>
+        <option value='18'>18</option>
     </select>
+    
+    <select name= 'joist-spacing-dd' id='joist-spacing-dd'>
+        <option value='1'>1</option>
+        <option value='2'>2</option>
+        <option value='3'>3</option>
+        <option value='4'>4</option>
+        <option value='5'>5</option>
+    </select>
+    
+    <select name= 'input-hole-location-dd' id='input-hole-location-dd'>
+        <option value='3'>3</option>
+        <option value='4'>4</option>
+    </select>
+    
+    <input type='number'  id='sdl-input' name='sdl-input' min='0' max='10' step='1' onchange='jsFunction(value)'>
+    
+    <input type='number' id='live-load-input' name='live-load-input' min='0' max='10'>
+    
+    <select name='deflection-limit-dd' id='deflection-limit-dd'>
+        <option value='360'>360</option>
+        <option value='500'>500</option>
+    </select>
+    
     <script>
-
 
         const joistData = {
             6 :     { weight : 6.25 , area : 1.84, lx : 12.3, rx : 2.57, sx : 2.89, j : 9.23, cw : 7.82, lxd : 12.3, sxe : 2.89, mr : 10.8, vr : 14.4, vrh : 'NA'},
@@ -45,11 +73,11 @@
             },
         }
         var testEle = document.getElementById('testing');
-        
-        function jsFunction(value)
+
+        function jsFunction(val)
         {
-            var tes = slabData[3.5][value]['mrc'];
-            testEle.innerHTML = tes;
+            /*var tes = slabData[3.5][value]['mrc'];*/
+            testEle.innerHTML = Math.round(val);
         }
     </script>
 </html>
