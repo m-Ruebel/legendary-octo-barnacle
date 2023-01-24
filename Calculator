@@ -32,7 +32,7 @@
         <option value='4'>4</option>
     </select>
     
-    <input type='number'  id='sdl-input' name='sdl-input' min='0' max='10' step='1' onchange='jsFunction(value)'>
+    <input type='number'  id='sdl-input' name='sdl-input' min='0' max='10' step='1' onchange='RoundInputValue(value, this.id, 1)'>
     
     <input type='number' id='live-load-input' name='live-load-input' min='0' max='10'>
     
@@ -72,9 +72,19 @@
                 18 : { lxc : 327.7, mrc : 73.5, vr : 11.9, vrh : 7.0 },
             },
         }
-        var testEle = document.getElementById('testing');
+        
+        function RoundInputValue(val, ident, decimalPlace){
+            document.getElementById(ident).value = Round(val, decimalPlace);
+        }
+        
+        // The precision is how many decimal places you would like to round to. 0 being integers, 1 being 1 decimal place, etc.
+        function Round(value, precision) {
+            var multiplier = Math.pow(10, precision || 0);
+            return Math.round(value * multiplier) / multiplier;
+        }
 
-        function jsFunction(val)
+        var testElement = document.getElementById('testing');
+        function TestFunction(val)
         {
             /*var tes = slabData[3.5][value]['mrc'];*/
             testEle.innerHTML = Math.round(val);
