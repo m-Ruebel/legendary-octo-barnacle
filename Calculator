@@ -8,7 +8,7 @@
     <div id='testing'>
             
     </div>
-    
+    <label for="joist-size-dd">Joist Size</label>
     <select name= 'joist-size-dd' id='joist-size-dd' onchange='jsFunction(this.value, this.id);'>
         <option value='6'>6</option>
         <option value='8'>8</option>
@@ -18,7 +18,8 @@
         <option value='16'>16</option>
         <option value='18'>18</option>
     </select>
-    
+    <br>
+    <label for='joist-spacing-dd'>Joist Spacing</label>
     <select name= 'joist-spacing-dd' id='joist-spacing-dd'>
         <option value='1'>1</option>
         <option value='2'>2</option>
@@ -26,16 +27,20 @@
         <option value='4'>4</option>
         <option value='5'>5</option>
     </select>
-    
+    <br>
+    <label for='input-hole-location-dd'>Input Hole Location</label>
     <select name= 'input-hole-location-dd' id='input-hole-location-dd'>
         <option value='3'>3</option>
         <option value='4'>4</option>
     </select>
-    
-    <input type='number'  id='sdl-input' name='sdl-input' min='0' max='10' step='1' onchange='RoundInputValue(value, this.id, 1)'>
-    
+    <br>
+    <label for='sdl-input'>SDL</label>
+    <input type='number'  id='sdl-input' name='sdl-input' min='0' max='10' step='1' onchange='CorrectInputValue(this.min, this.max, value, this.id, 1)',>
+    <br>
+    <label for='live-load-input'>Live Load</label>
     <input type='number' id='live-load-input' name='live-load-input' min='0' max='10'>
-    
+    <br>
+    <label for='deflection-limit-dd'>Deflection Limit</label>
     <select name='deflection-limit-dd' id='deflection-limit-dd'>
         <option value='360'>360</option>
         <option value='500'>500</option>
@@ -73,21 +78,36 @@
             },
         }
         
-        function RoundInputValue(val, ident, decimalPlace){
-            document.getElementById(ident).value = Round(val, decimalPlace);
+        function CorrectInputValue(minimus, maximus, val, ident, decimals){
+            var returnValue;
+            if (val < minimus)
+                returnValue = minimus;
+            else if (val > maximus)
+                returnValue = maximus;
+            else
+                returnValue = Round(val, decimals);
+            document.getElementById(ident).value = returnValue;
         }
         
-        // The precision is how many decimal places you would like to round to. 0 being integers, 1 being 1 decimal place, etc.
-        function Round(value, precision) {
-            var multiplier = Math.pow(10, precision || 0);
-            return Math.round(value * multiplier) / multiplier;
+        // The decimals is how many decimal places you would like to round to. 0 being integers, 1 being 1 decimal place, etc.
+        function Round(val, decimals) {
+            var multiplier = Math.pow(10, decimals || 0);
+            return Math.round(val * multiplier) / multiplier;
         }
-
+        
+        function RoundDown(val, decimals) {
+            decimals = decimals || 0;
+            return ( Math.floor( val * Math.pow(10, decimals) ) / Math.pow(10, decimals) );
+        }
         var testElement = document.getElementById('testing');
         function TestFunction(val)
         {
             /*var tes = slabData[3.5][value]['mrc'];*/
             testEle.innerHTML = Math.round(val);
+        }
+        
+        function SubmitData(){
+                          
         }
     </script>
 </html>
