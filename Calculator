@@ -17,9 +17,28 @@
             16 :    { weight : 10.21 , area : 3.00, lx : 108.6, rx : 6.01, sx : 11.56, j : 16.22, cw : 50.65, lxd : 105.0, sxe : 10.62, mr : 39.8, vr : 13.6, vrh : 6.1},
             18 :    { weight : 11.02 , area : 3.23, lx : 143.4, rx : 6.66, sx : 13.79, j : 17.85, cw : 65.54, lxd : 137.7, sxe : 12.55, mr : 47.1, vr : 11.9, vrh : 7.0},
         }
-
+        const slabData = {
+            3.5 : {  
+                6 : { lxc : 28.8, mrc : 16.3, vr : 14.4, vrh : "NA" },
+                8 : { lxc : 57.4, mrc : 25.5, vr : 20.7, vrh : "NA" },
+                10 : { lxc : 92.0, mrc : 34.1, vr : 21.0, vrh : 7.3 },
+                12 : { lxc : 131.7, mrc : 42.3, vr : 18.7, vrh : 9.0 },
+                14 : { lxc : 179.5, mrc : 51.0, vr : 15.7, vrh : 4.9 },
+                16 : { lxc : 235.9, mrc : 60.3, vr : 13.6, vrh : 6.1 },
+                18 : { lxc : 301.3, mrc : 69.9, vr : 11.9, vrh : 7.0 },
+            },
+            4.0 : {
+                6 : { lxc : 29.3, mrc : 15.6, vr : 14.4, vrh : "NA" },
+                8 : { lxc : 57.9, mrc : 24.5, vr : 20.7, vrh : "NA" },
+                10 : { lxc : 99.2, mrc : 35.4, vr : 21.0, vrh : 7.3 },
+                12 : { lxc : 144.4, mrc : 44.7, vr : 18.7, vrh : 9.0 },
+                14 : { lxc : 196.0, mrc : 53.8, vr : 15.7, vrh : 4.9 },
+                16 : { lxc : 257.1, mrc : 63.4, vr : 13.6, vrh : 6.1 },
+                18 : { lxc : 327.7, mrc : 73.5, vr : 11.9, vrh : 7.0 },
+            },
+        }
         var testEle = document.getElementById('testing');
-        var tes = joistData[6]['lx'];
+        var tes = slabData[3.5][8]['mrc'];
         testEle.innerHTML = tes;
     </script>
 </html>
