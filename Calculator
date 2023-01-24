@@ -1,0 +1,24 @@
+<html>
+    <style>
+      
+    </style>
+        <div id='testing'>
+            
+        </div>
+    
+    <script>
+
+        const joistData = {
+            sixInch : { weight : 6.25 , area : 1.84, lx : 12.3, rx : 2.57, sx : 2.89, j : 9.23, cw : 7.82, lxd : 12.3, sxe : 2.89, mr : 10.8, vr : 14.4, vrh : 'NA'},
+            eightInch : { weight : 6.25 , area : 1.84, lx : 12.3, rx : 2.57, sx : 2.89, j : 9.23, cw : 7.82, lxd : 12.3, sxe : 2.89, mr : 10.8, vr : 14.4, vrh : 'NA'},
+            tenInch : { weight : 6.25 , area : 1.84, lx : 12.3, rx : 2.57, sx : 2.89, j : 9.23, cw : 7.82, lxd : 12.3, sxe : 2.89, mr : 10.8, vr : 14.4, vrh : 'NA'},
+            twelveInch : { weight : 6.25 , area : 1.84, lx : 12.3, rx : 2.57, sx : 2.89, j : 9.23, cw : 7.82, lxd : 12.3, sxe : 2.89, mr : 10.8, vr : 14.4, vrh : 'NA'},
+            fourteenInch : { weight : 6.25 , area : 1.84, lx : 12.3, rx : 2.57, sx : 2.89, j : 9.23, cw : 7.82, lxd : 12.3, sxe : 2.89, mr : 10.8, vr : 14.4, vrh : 'NA'},
+            sixteenInch : { weight : 6.25 , area : 1.84, lx : 12.3, rx : 2.57, sx : 2.89, j : 9.23, cw : 7.82, lxd : 12.3, sxe : 2.89, mr : 10.8, vr : 14.4, vrh : 'NA'},
+            eighteenInch : { weight : 6.25 , area : 1.84, lx : 12.3, rx : 2.57, sx : 2.89, j : 9.23, cw : 7.82, lxd : 12.3, sxe : 2.89, mr : 10.8, vr : 14.4, vrh : 'NA'},
+            }
+        var testEle = document.getElementById('testing');
+        var tes = joistData['sixInch']['lx'];
+        testEle.innerHTML = tes;
+    </script>
+</html>
