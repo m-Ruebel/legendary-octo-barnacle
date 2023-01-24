@@ -2,11 +2,18 @@
     <style>
       
     </style>
-        <div id='testing'>
-            
-        </div>
     
+    <div id='testing'>
+            
+    </div>
+    <select name= 'joistSize' id='joistSize' onchange='jsFunction(this.value);'>
+        <option value='6'>6</option>
+        <option value='8'>8</option>
+        <option value='10'>10</option>
+        <option value='12'>12</option>
+    </select>
     <script>
+
 
         const joistData = {
             6 :     { weight : 6.25 , area : 1.84, lx : 12.3, rx : 2.57, sx : 2.89, j : 9.23, cw : 7.82, lxd : 12.3, sxe : 2.89, mr : 10.8, vr : 14.4, vrh : 'NA'},
@@ -19,8 +26,8 @@
         }
         const slabData = {
             3.5 : {  
-                6 : { lxc : 28.8, mrc : 16.3, vr : 14.4, vrh : "NA" },
-                8 : { lxc : 57.4, mrc : 25.5, vr : 20.7, vrh : "NA" },
+                6 : { lxc : 28.8, mrc : 16.3, vr : 14.4, vrh : 'NA' },
+                8 : { lxc : 57.4, mrc : 25.5, vr : 20.7, vrh : 'NA' },
                 10 : { lxc : 92.0, mrc : 34.1, vr : 21.0, vrh : 7.3 },
                 12 : { lxc : 131.7, mrc : 42.3, vr : 18.7, vrh : 9.0 },
                 14 : { lxc : 179.5, mrc : 51.0, vr : 15.7, vrh : 4.9 },
@@ -38,7 +45,11 @@
             },
         }
         var testEle = document.getElementById('testing');
-        var tes = slabData[3.5][8]['mrc'];
-        testEle.innerHTML = tes;
+        
+        function jsFunction(value)
+        {
+            var tes = slabData[3.5][value]['mrc'];
+            testEle.innerHTML = tes;
+        }
     </script>
 </html>
