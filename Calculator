@@ -142,7 +142,7 @@
         <div id='be-2-non-composite'></div>
         <label for='i-51-non-composite' class='underline'>I51</label>
         <div id='i-51-non-composite'></div>
-        <label for='d-52-non-composite' class='underline'>d51</label>
+        <label for='d-52-non-composite' class='underline'>d52</label>
         <div id='d-52-non-composite'></div>
         <label for='i-52-non-composite' class='underline'>I52</label>
         <div id='i-52-non-composite'></div>
@@ -308,7 +308,33 @@
             
             calculatedNonCompositeFigures['nonCircularHole'] = calculatedNonCompositeFigures['joist'] < 350 ? 0 : 200;
             
-            calculatedNonCompositeFigures['i1'] = (60*3^3)/12+(60*3)*Math.pow(calculatedNonCompositeFigures['centroidY']-3/2, 2);
+            calculatedNonCompositeFigures['psi'] = -1 * (calculatedNonCompositeFigures['centroidY']-calculatedNonCompositeFigures['btm'])/(calculatedNonCompositeFigures['joist']-calculatedNonCompositeFigures['centroidY']);
+            
+            calculatedNonCompositeFigures['k'] = 4+2*Math.pow(1-calculatedNonCompositeFigures['psi'], 3)+2*(1-calculatedNonCompositeFigures['psi']);
+            
+            calculatedNonCompositeFigures['b'] = calculatedNonCompositeFigures['joist']-calculatedNonCompositeFigures['centroidY'];
+            
+            calculatedNonCompositeFigures['fcr'] = calculatedNonCompositeFigures['k']*Math.pow(Math.PI, 2)*calculatedNonCompositeFigures['e']/(12*(1-Math.pow(calculatedNonCompositeFigures['v'], 2)))*Math.pow(calculatedNonCompositeFigures['t']/calculatedNonCompositeFigures['b'], 2);
+            
+            calculatedNonCompositeFigures['fAsterisk'] = calculatedNonCompositeFigures['fy']*(calculatedNonCompositeFigures['joist']-calculatedNonCompositeFigures['centroidY'])/(calculatedNonCompositeFigures['joist']+38-calculatedNonCompositeFigures['centroidY']);
+            
+            calculatedNonCompositeFigures['lamda'] = Math.sqrt(calculatedNonCompositeFigures['fAsterisk']/calculatedNonCompositeFigures['fcr']);
+            
+            calculatedNonCompositeFigures['p'] = (1-0.22/calculatedNonCompositeFigures['lamda'])/calculatedNonCompositeFigures['lamda'] > 1 ? 1 : (1-0.22/calculatedNonCompositeFigures['lamda'])/calculatedNonCompositeFigures['lamda'];
+            
+            calculatedNonCompositeFigures['be'] = calculatedNonCompositeFigures['lamda'] > 0.673 ? calculatedNonCompositeFigures['p']*calculatedNonCompositeFigures['b'] : calculatedNonCompositeFigures['b'];
+            
+            calculatedNonCompositeFigures['be1'] = calculatedNonCompositeFigures['be']/(3-calculatedNonCompositeFigures['psi'])
+            
+            calculatedNonCompositeFigures['be2'] = (calculatedNonCompositeFigures['joist']+38)/23 > 4 ? (calculatedNonCompositeFigures['be']/(1-calculatedNonCompositeFigures['psi']))-calculatedNonCompositeFigures['be1'] : calculatedNonCompositeFigures['psi'] > -0.236 ? calculatedNonCompositeFigures['be']-calculatedNonCompositeFigures['be1'] : calculatedNonCompositeFigures['be']/2;
+            
+            calculatedNonCompositeFigures['i51'] = 3*Math.pow(calculatedNonCompositeFigures['be1'], 3)/12+3*calculatedNonCompositeFigures['be1']*Math.pow(calculatedNonCompositeFigures['centroidY']-(calculatedNonCompositeFigures['joist']-calculatedNonCompositeFigures['be1']/2), 2);
+            
+            calculatedNonCompositeFigures['d52'] = calculatedNonCompositeFigures['centroidY']-calculatedNonCompositeFigures['btm']+calculatedNonCompositeFigures['be2'];
+            
+            calculatedNonCompositeFigures['i52'] = 3*Math.pow(calculatedNonCompositeFigures['d52'], 3)/12+3*calculatedNonCompositeFigures['d52']*Math.pow(calculatedNonCompositeFigures['centroidY']-(calculatedNonCompositeFigures['btm']+calculatedNonCompositeFigures['d52']/2), 2);
+            
+            calculatedNonCompositeFigures['i1'] = (60*Math.pow(3, 3))/12+(60*3)*Math.pow(calculatedNonCompositeFigures['centroidY']-3/2, 2);
             
             calculatedNonCompositeFigures['i2'] = 2*(3*Math.pow(29, 3)/12+3*29*Math.pow(calculatedNonCompositeFigures['centroidY']-(29/2+3), 2));
             
@@ -316,7 +342,7 @@
             
             calculatedNonCompositeFigures['i4'] = 31.5*Math.pow(3, 3)/12+31.5*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(3/2+32), 2);
             
-            
+            calculatedNonCompositeFigures['i5'] = calculatedNonCompositeFigures['i51']+calculatedNonCompositeFigures['i52'];
             
             calculatedNonCompositeFigures['i6'] = 40*Math.pow(3, 3)/12+40*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(calculatedNonCompositeFigures['joist']+3/2), 2);
             
@@ -330,12 +356,12 @@
             
             
             
-            calculatedNonCompositeFigures['i5'] = 5;
+            
             
             calculatedNonCompositeFigures['i'] =    calculatedNonCompositeFigures['i1'] + calculatedNonCompositeFigures['i2'] + calculatedNonCompositeFigures['i3'] + 
                                                     calculatedNonCompositeFigures['i4'] + calculatedNonCompositeFigures['i5'] + calculatedNonCompositeFigures['i6'] + 
                                                     calculatedNonCompositeFigures['i7'] + calculatedNonCompositeFigures['i8'] + calculatedNonCompositeFigures['i9'] + 
-                                                    calculatedNonCompositeFigures['i10']; // must go down after 
+                                                    calculatedNonCompositeFigures['i10']; // must go down after all i#
         }
         
         function DisplayCalculatedData(){
@@ -347,7 +373,7 @@
             i2NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i2'] + ' mm4';
             i3NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i3'] + ' mm4';
             i4NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i4'] + ' mm4';
-            i5NonCompositeElement.innerHTML = "Needs calculated";
+            i5NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i5'] + ' mm4';
             i6NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i6'] + ' mm4';
             i7NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i7'] + ' mm4';
             i8NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i8'] + ' mm4';
@@ -357,6 +383,24 @@
             
             circularHoleNonCompositeElement.innerHTML = calculatedNonCompositeFigures['circularHole'] + ' dwh';
             nonCircularHoleNonCompositeElement.innerHTML = calculatedNonCompositeFigures['nonCircularHole'] + ' dwh';
+            fyNonCompositeElement.innerHTML = calculatedNonCompositeFigures['fy'] + ' MPa';
+            eNonCompositeElement.innerHTML = calculatedNonCompositeFigures['e'] + 'MPa';
+            vNonCompositeElement.innerHTML = calculatedNonCompositeFigures['v'];
+            kNonCompositeElement.innerHTML = calculatedNonCompositeFigures['k'];
+            tNonCompositeElement.innerHTML = calculatedNonCompositeFigures['t'] + ' mm';
+            bNonCompositeElement.innerHTML = calculatedNonCompositeFigures['b'] + ' mm';
+            fcrNonCompositeElement.innerHTML = calculatedNonCompositeFigures['fcr'] + ' MPa';
+            fAsteriskNonCompositeElement.innerHTML = calculatedNonCompositeFigures['fAsterisk'] + ' MPa';
+            lamdaNonCompositeElement.innerHTML = calculatedNonCompositeFigures['lamda'];
+            pNonCompositeElement.innerHTML = calculatedNonCompositeFigures['p'];
+            beNonCompositeElement.innerHTML = calculatedNonCompositeFigures['be'] + ' mm';
+            psiNonCompositeElement.innerHTML = calculatedNonCompositeFigures['psi'];
+            be1NonCompositeElement.innerHTML = calculatedNonCompositeFigures['be1'] + ' mm';
+            be2NonCompositeElement.innerHTML = calculatedNonCompositeFigures['be2'] + ' mm';
+            i51NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i51'] + ' mm4';
+            d52NonCompositeElement.innerHTML = calculatedNonCompositeFigures['d52'] + ' mm';
+            i52NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i52'] + ' mm4';
+            
             
         }
         
