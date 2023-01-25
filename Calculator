@@ -354,14 +354,17 @@
             
             calculatedNonCompositeFigures['i10'] = 23*Math.pow(3, 3)/12+23*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(calculatedNonCompositeFigures['joist']+35+3/2), 2);
             
-            
-            
-            
-            
             calculatedNonCompositeFigures['i'] =    calculatedNonCompositeFigures['i1'] + calculatedNonCompositeFigures['i2'] + calculatedNonCompositeFigures['i3'] + 
                                                     calculatedNonCompositeFigures['i4'] + calculatedNonCompositeFigures['i5'] + calculatedNonCompositeFigures['i6'] + 
                                                     calculatedNonCompositeFigures['i7'] + calculatedNonCompositeFigures['i8'] + calculatedNonCompositeFigures['i9'] + 
                                                     calculatedNonCompositeFigures['i10']; // must go down after all i#
+            
+            calculatedNonCompositeFigures['zt'] = calculatedNonCompositeFigures['joist'] < 300 ? calculatedNonCompositeFigures['i']/(calculatedNonCompositeFigures['joist']+38-calculatedNonCompositeFigures['centroidY']) : (calculatedNonCompositeFigures['i']/(calculatedNonCompositeFigures['joist']+38-calculatedNonCompositeFigures['centroidY']))*0.95;
+            
+            calculatedNonCompositeFigures['zb'] = calculatedNonCompositeFigures['joist'] < 300 ? calculatedNonCompositeFigures['i']/calculatedNonCompositeFigures['centroidY'] : 1.05*(calculatedNonCompositeFigures['i']/calculatedNonCompositeFigures['centroidY']);
+            
+            calculatedNonCompositeFigures['phim'] = calculatedNonCompositeFigures['phi']*calculatedNonCompositeFigures['fy']*Math.min(calculatedNonCompositeFigures['zt'], calculatedNonCompositeFigures['zb'])/Math.pow(10, 6);
+            
         }
         
         function DisplayCalculatedData(){
@@ -380,7 +383,11 @@
             i9NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i9'] + ' mm4';
             i10NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i10'] + ' mm4';
             iNonCompositeElement.innerHTML = calculatedNonCompositeFigures['i'] + ' mm4';
-            
+            ztNonCompositeElement.innerHTML = calculatedNonCompositeFigures['zt'] + ' mm3';
+            zbNonCompositeElement.innerHTML = calculatedNonCompositeFigures['zb'] + ' mm3';
+            phiNonCompositeElement.innerHTML = calculatedNonCompositeFigures['phi'];
+            phimNonCompositeElement.innerHTML = calculatedNonCompositeFigures['phim'] + 'kNm';
+    
             circularHoleNonCompositeElement.innerHTML = calculatedNonCompositeFigures['circularHole'] + ' dwh';
             nonCircularHoleNonCompositeElement.innerHTML = calculatedNonCompositeFigures['nonCircularHole'] + ' dwh';
             fyNonCompositeElement.innerHTML = calculatedNonCompositeFigures['fy'] + ' MPa';
