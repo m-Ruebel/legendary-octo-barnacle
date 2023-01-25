@@ -146,6 +146,98 @@
         <div id='d-52-non-composite'></div>
         <label for='i-52-non-composite' class='underline'>I52</label>
         <div id='i-52-non-composite'></div>
+        <label for='kv-non-composite' class='underline'>kv</label>
+        <div id='kv-non-composite'></div>
+        <label for='d-1-non-composite' class='underline'>d1</label>
+        <div id='d-1-non-composite'></div>
+        <label for='d-1-over-t-non-composite' class='underline'>d1/t</label>
+        <div id='d-1-over-t-non-composite'></div>
+        <label for='ekv-Over-fy-non-composite' class='underline'>sqrt(Ekv/fy)</label>
+        <div id='ekv-Over-fy-non-composite'></div>
+        <label for='q1-non-composite' class='underline'>Q1</label>
+        <div id='q1-non-composite'></div>
+        <label for='q2-non-composite' class='underline'>Q2</label>
+        <div id='q2-non-composite'></div>
+        <label for='q3-non-composite' class='underline'>Q3</label>
+        <div id='q3-non-composite'></div>
+        <label for='q4-non-composite' class='underline'>Q4</label>
+        <div id='q4-non-composite'></div>
+        <label for='q5-non-composite' class='underline'>Q5</label>
+        <div id='q5-non-composite'></div>
+        <label for='q-non-composite' class='underline'>Q</label>
+        <div id='q-non-composite'></div>
+        <label for='phi-non-composite-2' class='underline'>phi</label>
+        <div id='phi-non-composite-2'></div>
+        <label for='phi-hole-non-composite' class='underline'>phi-hole</label>
+        <div id='phi-hole-non-composite'></div>
+        <label for='phiv-non-composite' class='underline'>phiV</label>
+        <div id='phiv-non-composite'></div>
+        <label for='phiv-cir-hole-non-composite' class='underline'>phiV-cir hole</label>
+        <div id='phiv-cir-hole-non-composite'></div>
+        <label for='phiv-non-cir-hole-non-composite' class='underline'>phiV-noncir hole</label>
+        <div id='phiv-non-cir-hole-non-composite'></div>
+        <label for='t-over-d1-times-ekv-over-fy-non-composite' class='underline'>(t/d1)*sqrt(2Ekv/fy)</label>
+        <div id='t-over-d1-times-ekv-over-fy-non-composite'></div>
+        <label for='d1-over-t-times-fy-over-ekv-non-composite' class='underline'>(d1/t)*sqrt(fy/Ekv)</label>
+        <div id='d1-over-t-times-fy-over-ekv-non-composite'></div>
+        <label for='ekv-over-fy-multiplied-non-composite' class='underline'>1.415sqrt(Ekv/fy)</label>
+        <div id='ekv-over-fy-multiplied-non-composite'></div>
+        <label for='ekvfy1-non-composite' class='underline'>0.64tw^2*sqrt(Ekvfy)</label>
+        <div id='ekvfy1-non-composite'></div>
+        <label for='c-circular-non-composite' class='underline'>c-circular</label>
+        <div id='c-circular-non-composite'></div>
+        <label for='qs-circular-non-composite' class='underline'>qs-circular</label>
+        <div id='qs-circular-non-composite'></div>
+        <label for='vcr-non-composite' class='underline'>Vcr</label>
+        <div id='vcr-non-composite'></div>
+        <label for='vy-non-composite' class='underline'>Vy</label>
+        <div id='vy-non-composite'></div>
+        <label for='lamda-v-non-composite' class='underline'>lamda v</label>
+        <div id='lamda-v-non-composite'></div>
+        <label for='ekvfy2-non-composite' class='underline'>0.6tw^2*sqrt(Ekvfy)</label>
+        <div id='ekvfy2-non-composite'></div>
+        <label for='c-noncircular-non-composite' class='underline'>c-noncircular</label>
+        <div id='c-noncircular-non-composite'></div>
+        <label for='qs-noncircular-non-composite' class='underline'>qs-noncircular</label>
+        <div id='qs-noncircular-non-composite'></div>
+        <label for='ø-non-composite' class='underline'>ø - Capacity reduction factor</label>
+        <div id='ø-non-composite'></div>
+        <label for='a-non-composite' class='underline'>A - Full cross section area</label>
+        <div id='a-non-composite'></div>
+        <label for='cb-non-composite' class='underline'>Cb - Unbraced segment moment distribution coefficient</label>
+        <div id='cb-non-composite'></div>
+        <label for='fol-non-composite' class='underline'>fol - Elastic local buckling stress</label>
+        <div id='fol-non-composite'></div>
+        <label for='fod-non-composite' class='underline'>fod - Elastic distorsional buckling stress</label>
+        <div id='fod-non-composite'></div>
+        <label for='fy-non-composite' class='underline'>fy - Yield stress</label>
+        <div id='fy-non-composite'></div>
+        <label for='g-non-composite' class='underline'>G - Shear modulus</label>
+        <div id='g-non-composite'></div>
+        <label for='j-non-composite' class='underline'>J - Torsion constant</label>
+        <div id='j-non-composite'></div>
+        <label for='zc-non-composite' class='underline'>Zc - Effective section modulus in bending at yield Zxe</label>
+        <div id='zc-non-composite'></div>
+        <label for='iex-non-composite' class='underline'>Iex - Effective length, x axis</label>
+        <div id='iex-non-composite'></div>
+        <label for='iey-non-composite' class='underline'>Iey - Effective length, y axis</label>
+        <div id='iey-non-composite'></div>
+        <label for='iez-non-composite' class='underline'>Iez - Effective length, twisting</label>
+        <div id='iez-non-composite'></div>
+        <label for='iw-non-composite' class='underline'>Iw - Warping constant</label>
+        <div id='iw-non-composite'></div>
+        <label for='rx-non-composite' class='underline'>rx - Radius of gyration</label>
+        <div id='rx-non-composite'></div>
+        <label for='ry-non-composite' class='underline'>ry - Radius of gyration</label>
+        <div id='ry-non-composite'></div>
+        <label for='x0-non-composite' class='underline'>X0 - Dimension, shear centre to centroid</label>
+        <div id='x0-non-composite'></div>
+        <label for='zf-non-composite' class='underline'>Zf - Unreduced section modulus, Zf = Zx </label>
+        <div id='zf-non-composite'></div>
+        
+        
+        
+        
         
         
     </div>
@@ -197,7 +289,33 @@
         var i51NonCompositeElement = document.getElementById('i-51-non-composite');
         var d52NonCompositeElement = document.getElementById('d-52-non-composite');
         var i52NonCompositeElement = document.getElementById('i-52-non-composite');
-        
+        var kvNonCompositeElement = document.getElementById('kv-non-composite');
+        var d1NonCompositeElement = document.getElementById('d-1-non-composite');
+        var d1OverTNonCompositeElement = document.getElementById('d-1-over-t-non-composite');
+        var ekvOverFyNonCompositeElement = document.getElementById('ekv-Over-fy-non-composite');
+        var q1NonCompositeElement = document.getElementById('q1-non-composite');
+        var q2NonCompositeElement = document.getElementById('q2-non-composite');
+        var q3NonCompositeElement = document.getElementById('q3-non-composite');
+        var q4NonCompositeElement = document.getElementById('q4-non-composite');
+        var q5NonCompositeElement = document.getElementById('q5-non-composite');
+        var qNonCompositeElement = document.getElementById('q-non-composite');
+        var phi2NonCompositeElement = document.getElementById('phi-non-composite-2');
+        var phiHoleNonCompositeElement = document.getElementById('phi-hole-non-composite');
+        var phivNonCompositeElement = document.getElementById('phiv-non-composite');
+        var phivCirHoleNonCompositeElement = document.getElementById('phiv-cir-hole-non-composite');
+        var phivNonCirHoleNonCompositeElement = document.getElementById('phiv-non-cir-hole-non-composite');
+        var tOverD1TimesEkvOverFyNonCompositeElement = document.getElementById('t-over-d1-times-ekv-over-fy-non-composite');
+        var d1OverTTimesFyOverEkvNonCompositeElement = document.getElementById('d1-over-t-times-fy-over-ekv-non-composite');
+        var ekvOverFyMultipliedNonCompositeElement = document.getElementById('ekv-over-fy-multiplied-non-composite');
+        var ekvfy1NonCompositeElement = document.getElementById('ekvfy1-non-composite');
+        var cCircularNonCompositeElement = document.getElementById('c-circular-non-composite');
+        var qsCircularNonCompositeElement = document.getElementById('qs-circular-non-composite');
+        var vcrNonCompositeElement = document.getElementById('vcr-non-composite');
+        var vyNonCompositeElement = document.getElementById('vy-non-composite');
+        var lamdaVNonCompositeElement = document.getElementById('lamda-v-non-composite');
+        var ekvfy2NonCompositeElement = document.getElementById('ekvfy2-non-composite');
+        var cNonCircularNonCompositeElement = document.getElementById('c-noncircular-non-composite');
+        var qsNonCircularNonCompositeElement = document.getElementById('qs-noncircular-non-composite');
         
         var testElement = document.getElementById('testing');
         
@@ -365,6 +483,66 @@
             
             calculatedNonCompositeFigures['phim'] = calculatedNonCompositeFigures['phi']*calculatedNonCompositeFigures['fy']*Math.min(calculatedNonCompositeFigures['zt'], calculatedNonCompositeFigures['zb'])/Math.pow(10, 6);
             
+            calculatedNonCompositeFigures['d1'] = calculatedNonCompositeFigures['joist']-calculatedNonCompositeFigures['btm'];
+            
+            calculatedNonCompositeFigures['d1OverT'] = calculatedNonCompositeFigures['d1']/calculatedNonCompositeFigures['t'];
+            
+            calculatedNonCompositeFigures['ekvOverFy'] = Math.sqrt(calculatedNonCompositeFigures['e']*calculatedNonCompositeFigures['kv']/calculatedNonCompositeFigures['fy']);
+            
+            calculatedNonCompositeFigures['q1'] = (60*3)*(calculatedNonCompositeFigures['centroidY']-3/2);
+            
+            calculatedNonCompositeFigures['q2'] = 2*(3*29*(calculatedNonCompositeFigures['centroidY']-(29/2+3)));
+            
+            calculatedNonCompositeFigures['q3'] = 27.5*3*(calculatedNonCompositeFigures['centroidY']-(3/2+32));
+            
+            calculatedNonCompositeFigures['q4'] = 31.5*3*(calculatedNonCompositeFigures['centroidY']-(3/2+32));
+            
+            calculatedNonCompositeFigures['q5'] = 3*(calculatedNonCompositeFigures['centroidY']-calculatedNonCompositeFigures['btm'])*(calculatedNonCompositeFigures['centroidY']-((calculatedNonCompositeFigures['centroidY']-calculatedNonCompositeFigures['btm'])/2+calculatedNonCompositeFigures['btm']));
+            
+            calculatedNonCompositeFigures['q'] =    calculatedNonCompositeFigures['q1'] + calculatedNonCompositeFigures['q2'] + calculatedNonCompositeFigures['q3'] +
+                                                    calculatedNonCompositeFigures['q4'] + calculatedNonCompositeFigures['q5'];
+            
+            calculatedNonCompositeFigures['tOverD1TimesEkvOverFy'] = Math.sqrt(2*calculatedNonCompositeFigures['e']*calculatedNonCompositeFigures['kv']/calculatedNonCompositeFigures['fy'])*(calculatedNonCompositeFigures['t']/calculatedNonCompositeFigures['d1']);
+            
+            calculatedNonCompositeFigures['d1OverTTimesFyOverEkv'] = calculatedNonCompositeFigures['d1OverT']*Math.sqrt(calculatedNonCompositeFigures['fy']/(calculatedNonCompositeFigures['e']*calculatedNonCompositeFigures['kv']));
+            
+            calculatedNonCompositeFigures['ekvOverFyMultiplied'] = 1.415*calculatedNonCompositeFigures['ekvOverFy'];
+            
+            calculatedNonCompositeFigures['ekvfy1'] = 0.64*Math.pow(calculatedNonCompositeFigures['t'], 2)*Math.sqrt(calculatedNonCompositeFigures['e']*calculatedNonCompositeFigures['kv']*calculatedNonCompositeFigures['fy']);
+            
+            calculatedNonCompositeFigures['cCircular'] = calculatedNonCompositeFigures['d1']/2-calculatedNonCompositeFigures['circularHole']/2.83;
+            
+            calculatedNonCompositeFigures['qsCircular'] = calculatedNonCompositeFigures['cCircular']/calculatedNonCompositeFigures['t'] >= 54 ? 1 : calculatedNonCompositeFigures['cCircular']/(54*calculatedNonCompositeFigures['t']);
+            
+            calculatedNonCompositeFigures['vcr'] = 0.904*calculatedNonCompositeFigures['e']*calculatedNonCompositeFigures['kv']*Math.pow(calculatedNonCompositeFigures['t'], 3)/calculatedNonCompositeFigures['d1'];
+            
+            calculatedNonCompositeFigures['vy'] = 0.6*calculatedNonCompositeFigures['d1']*calculatedNonCompositeFigures['t']*calculatedNonCompositeFigures['fy'];
+            
+            calculatedNonCompositeFigures['lamdaV'] = Math.sqrt(calculatedNonCompositeFigures['vy']/calculatedNonCompositeFigures['vcr']);
+            
+            calculatedNonCompositeFigures['ekvfy2'] = 0.6*Math.pow(calculatedNonCompositeFigures['t'], 2)*Math.sqrt(calculatedNonCompositeFigures['e']*calculatedNonCompositeFigures['kv']*calculatedNonCompositeFigures['fy']);
+            
+            calculatedNonCompositeFigures['cNonCircular'] = calculatedNonCompositeFigures['d1']/2-calculatedNonCompositeFigures['nonCircularHole']/2;
+            
+            calculatedNonCompositeFigures['qsNonCircular'] = calculatedNonCompositeFigures['cNonCircular']/calculatedNonCompositeFigures['t'] >=54 ? 1 : calculatedNonCompositeFigures['cNonCircular']/(54*calculatedNonCompositeFigures['t']);
+            
+            var phivGrab;
+            if (0.815<calculatedNonCompositeFigures['lamdaV'] && calculatedNonCompositeFigures['lamdaV']<1.227) {
+                phivGrab = calculatedNonCompositeFigures['phi'] * AH13;
+            }
+            else if (calculatedNonCompositeFigures['lamdaV']>1.227){
+                phivGrab = calculatedNonCompositeFigures['phi']*(calculatedNonCompositeFigures['ekvfy2']*calculatedNonCompositeFigures['tOverD1TimesEkvOverFy'])/1000;
+            }
+            else {
+                phivGrab = calculatedNonCompositeFigures['phi']*(calculatedNonCompositeFigures['ekvfy2']*calculatedNonCompositeFigures['d1OverTTimesFyOverEkv'])/1000;
+            }
+                                                   
+            calculatedNonCompositeFigures['phiv'] = phivGrab;
+            
+            calculatedNonCompositeFigures['phivCirHole'] = (calculatedNonCompositeFigures['circularHole'] == 0 ? '' : calculatedNonCompositeFigures['phiv']*calculatedNonCompositeFigures['qsCircular']/calculatedNonCompositeFigures['phi']*calculatedNonCompositeFigures['phiHole']);
+            
+            calculatedNonCompositeFigures['phivNonCirHole'] = (calculatedNonCompositeFigures['nonCircularHole'] == 0 ? "" : calculatedNonCompositeFigures['phiv']*calculatedNonCompositeFigures['qsNonCircular']/calculatedNonCompositeFigures['phi']*calculatedNonCompositeFigures['phiHole']);
+            
         }
         
         function DisplayCalculatedData(){
@@ -408,7 +586,35 @@
             d52NonCompositeElement.innerHTML = calculatedNonCompositeFigures['d52'] + ' mm';
             i52NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i52'] + ' mm4';
             
+            kvNonCompositeElement.innerHTML = calculatedNonCompositeFigures['kv'];
+            d1NonCompositeElement.innerHTML = calculatedNonCompositeFigures['d1'] + ' mm';
+            d1OverTNonCompositeElement.innerHTML = calculatedNonCompositeFigures['d1OverT'];
+            ekvOverFyNonCompositeElement.innerHTML = calculatedNonCompositeFigures['ekvOverFy'];
+            q1NonCompositeElement.innerHTML = calculatedNonCompositeFigures['q1'] + ' mm3';
+            q2NonCompositeElement.innerHTML = calculatedNonCompositeFigures['q2'] + ' mm3';
+            q3NonCompositeElement.innerHTML = calculatedNonCompositeFigures['q3'] + ' mm3';
+            q4NonCompositeElement.innerHTML = calculatedNonCompositeFigures['q4'] + ' mm3';
+            q5NonCompositeElement.innerHTML = calculatedNonCompositeFigures['q5'] + ' mm3';
+            qNonCompositeElement.innerHTML = calculatedNonCompositeFigures['q'] + ' mm3';
             
+            phi2NonCompositeElement.innerHTML = calculatedNonCompositeFigures['phi'];
+            phiHoleNonCompositeElement.innerHTML = calculatedNonCompositeFigures['phiHole'];
+            phivNonCompositeElement.innerHTML = calculatedNonCompositeFigures['phiv'] + ' kN';
+            phivCirHoleNonCompositeElement.innerHTML = calculatedNonCompositeFigures['phivCirHole'] + ' kN';
+            phivNonCirHoleNonCompositeElement.innerHTML = calculatedNonCompositeFigures['phivNonCirHole'] + ' kN';
+            
+            tOverD1TimesEkvOverFyNonCompositeElement.innerHTML = calculatedNonCompositeFigures['tOverD1TimesEkvOverFy'];
+            d1OverTTimesFyOverEkvNonCompositeElement.innerHTML = calculatedNonCompositeFigures['d1OverTTimesFyOverEkv'];
+            ekvOverFyMultipliedNonCompositeElement.innerHTML = calculatedNonCompositeFigures['ekvOverFyMultiplied'];
+            ekvfy1NonCompositeElement.innerHTML = calculatedNonCompositeFigures['ekvfy1'];
+            cCircularNonCompositeElement.innerHTML = calculatedNonCompositeFigures['cCircular'];
+            qsCircularNonCompositeElement.innerHTML = calculatedNonCompositeFigures['qsCircular'];
+            vcrNonCompositeElement.innerHTML = calculatedNonCompositeFigures['vcr'] + ' N';
+            vyNonCompositeElement.innerHTML = calculatedNonCompositeFigures['vy'] + ' N';
+            lamdaVNonCompositeElement.innerHTML = calculatedNonCompositeFigures['lamdaV'];
+            ekvfy2NonCompositeElement.innerHTML = calculatedNonCompositeFigures['ekvfy2'];
+            cNonCircularNonCompositeElement.innerHTML = calculatedNonCompositeFigures['cNonCircular'];
+            qsNonCircularNonCompositeElement.innerHTML = calculatedNonCompositeFigures['qsNonCircular'];
         }
         
         // The decimals is how many decimal places you would like to round to. 0 being integers, 1 being 1 decimal place, etc.
