@@ -9,6 +9,10 @@
         header {
             font-size: 25;
         }
+        .underline {
+            text-decoration-line: underline;
+            text-decoration-color: black;
+        }
     </style>
     
     
@@ -64,8 +68,86 @@
     
     <div id='calculated-data'>
         <header>Non-Composite Data</header>
-        <label for='joist'>Joist</label>
+        <label for='joist-non-composite' class='underline'>Joist</label>
         <div id='joist-non-composite'></div>
+        <label for='btm-non-composite' class='underline'>BTM</label>
+        <div id='btm-non-composite'></div>
+        <label for='centroid-Y-non-composite' class='underline'>Centroid Y</label>
+        <div id='centroid-Y-non-composite'></div>
+        <label for='area-a-non-composite' class='underline'>Area A</label>
+        <div id='area-a-non-composite'></div>
+        <label for='i-1-non-composite' class='underline'>I1</label>
+        <div id='i-1-non-composite'></div>
+        <label for='i-2-non-composite' class='underline'>I2</label>
+        <div id='i-2-non-composite'></div>
+        <label for='i-3-non-composite' class='underline'>I3</label>
+        <div id='i-3-non-composite'></div>
+        <label for='i-4-non-composite' class='underline'>I4</label>
+        <div id='i-4-non-composite'></div>
+        <label for='i-5-non-composite' class='underline'>I5</label>
+        <div id='i-5-non-composite'></div>
+        <label for='i-6-non-composite' class='underline'>I6</label>
+        <div id='i-6-non-composite'></div>
+        <label for='i-7-non-composite' class='underline'>I7</label>
+        <div id='i-7-non-composite'></div>
+        <label for='i-8-non-composite' class='underline'>I8</label>
+        <div id='i-8-non-composite'></div>
+        <label for='i-9-non-composite' class='underline'>I9</label>
+        <div id='i-9-non-composite'></div>
+        <label for='i-10-non-composite' class='underline'>I10</label>
+        <div id='i-10-non-composite'></div>
+        <label for='i-non-composite' class='underline'>I</label>
+        <div id='i-non-composite'></div>
+        <label for='zt-non-composite' class='underline'>Zt</label>
+        <div id='zt-non-composite'></div>
+        <label for='zb-non-composite' class='underline'>Zb</label>
+        <div id='zb-non-composite'></div>
+        <label for='phi-non-composite' class='underline'>phi</label>
+        <div id='phi-non-composite'></div>
+        <label for='phim-non-composite' class='underline'>phiM</label>
+        <div id='phim-non-composite'></div>
+        <label for='circular-hole-non-composite' class='underline'>Circular Hole dwh</label>
+        <div id='circular-hole-non-composite'></div>
+        <label for='non-circular-hole-non-composite' class='underline'>Non Circular Hole dwh</label>
+        <div id='non-circular-hole-non-composite'></div>
+        <label for='circular-hole-non-composite' class='underline'>Circular Hole dwh</label>
+        <div id='circular-hole-non-composite'></div>
+        <label for='fy-non-composite' class='underline'>fy</label>
+        <div id='fy-non-composite'></div>
+        <label for='e-non-composite' class='underline'>E</label>
+        <div id='e-non-composite'></div>
+        <label for='v-non-composite' class='underline'>V</label>
+        <div id='v-non-composite'></div>
+        <label for='k-non-composite' class='underline'>k</label>
+        <div id='k-non-composite'></div>
+        <label for='t-non-composite' class='underline'>t</label>
+        <div id='t-non-composite'></div>
+        <label for='b-non-composite' class='underline'>b</label>
+        <div id='b-non-composite'></div>
+        <label for='fcr-non-composite' class='underline'>fcr</label>
+        <div id='fcr-non-composite'></div>
+        <label for='f-asterisk-non-composite' class='underline'>f*</label>
+        <div id='f-asterisk-non-composite'></div>
+        <label for='lamda-non-composite' class='underline'>lamda</label>
+        <div id='lamda-non-composite'></div>
+        <label for='p-non-composite' class='underline'>p</label>
+        <div id='p-non-composite'></div>
+        <label for='be-non-composite' class='underline'>be</label>
+        <div id='be-non-composite'></div>
+        <label for='psi-non-composite' class='underline'>psi</label>
+        <div id='psi-non-composite'></div>
+        <label for='be-1-non-composite' class='underline'>be1</label>
+        <div id='be-1-non-composite'></div>
+        <label for='be-2-non-composite' class='underline'>be2</label>
+        <div id='be-2-non-composite'></div>
+        <label for='i-51-non-composite' class='underline'>I51</label>
+        <div id='i-51-non-composite'></div>
+        <label for='d-52-non-composite' class='underline'>d51</label>
+        <div id='d-52-non-composite'></div>
+        <label for='i-52-non-composite' class='underline'>I52</label>
+        <div id='i-52-non-composite'></div>
+        
+        
     </div>
     
     
@@ -133,7 +215,9 @@
             cicularHole : 0, nonCircularHole : 0, fy : 345, e : 0, v : 0.3, k : 0, t : 3, b : 0, fcr : 0, fAsterisk : 0, lamda : 0, p : 0, be : 0, psi : 0, be1 : 0, be2 : 0,
             i51 : 0, d52 : 0, i52 : 0, kv : 5.34, d1 : 0, d1OverT : 0, ekvOverFy : 0, q1 : 0, q2 : 0, q3 : 0, q4 : 0, q5 : 0, q : 0, phiHole : 0.8, phiv : 0, phivCirHole : 0,
             phivNonCirHole : 0, tOverD1TimesEkvOverFy : 0, d1OverTTimesFyOverEkv : 0, ekvOverFyMultiplied : 0, ekvfy1 : 0, cCircular : 0, qsCircular : 0, vcr : 0, vy : 0,
-            lamdaV : 0, ekvfy2 : 0, cNonCircular : 0, qsNonCircular : 0, ø : 0
+            lamdaV : 0, ekvfy2 : 0, cNonCircular : 0, qsNonCircular : 0, ø : 0.9, a : 0, cb : 0, fol : 0, fod : 0, g : 80000, j : 0, zc : 0, iex : 0, iey : 0, iez : 0, iw : 0,
+            x0 : 0, zf : 0, y0 : 0, rol : 0, foy : 0, foz : 0, mo : 0, my : 0, λb : 0, mc : 0, fc : 0, mbe : 0, mol : 0, λl : 0, mbl : 0, mod : 0 , λd : 0,  mbd : 0, ms : 0,
+            ømb : 0
         }
         
         function CorrectInputValue(minimus, maximus, val, ident, decimals){
@@ -155,9 +239,9 @@
             
             SaveSummitedData();
             
-            CalculateNonCompositeFigures()
+            CalculateNonCompositeFigures();
             
-            
+            DisplayCalculatedData();
         }
         function CheckForInputValues(){
             if (sdlInput.value.length !== 0 && liveLoadInput.value.length !== 0)
@@ -177,10 +261,13 @@
         
         function CalculateNonCompositeFigures(){
             var joist = RoundDown(summitedData['joistSize'] / 0.0393700787)
-            
+            calculatedNonCompositeFigures['joist'] = joist;
             
         }
         
+        function DisplayCalculatedData(){
+            joistNonCompositeElement.innerHTML = calculatedNonCompositeFigures['joist'];
+        }
         
         // The decimals is how many decimal places you would like to round to. 0 being integers, 1 being 1 decimal place, etc.
         function Round(val, decimals) {
