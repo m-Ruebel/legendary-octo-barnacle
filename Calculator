@@ -159,7 +159,45 @@
         var liveLoadInput = document.getElementById('live-load-input');
         var deflectionLimitDropDown = document.getElementById('deflection-limit-dd');
         
-        var joistNonCompositeElement = document.getElementById('joist-non-composite')
+        var joistNonCompositeElement = document.getElementById('joist-non-composite');
+        var btmNonCompositeElement = document.getElementById('btm-non-composite');
+        var centroidYNonCompositeElement = document.getElementById('centroid-Y-non-composite');
+        var areaANonCompositeElement = document.getElementById('area-a-non-composite');
+        var i1NonCompositeElement = document.getElementById('i-1-non-composite');
+        var i2NonCompositeElement = document.getElementById('i-2-non-composite');
+        var i3NonCompositeElement = document.getElementById('i-3-non-composite');
+        var i4NonCompositeElement = document.getElementById('i-4-non-composite');
+        var i5NonCompositeElement = document.getElementById('i-5-non-composite');
+        var i6NonCompositeElement = document.getElementById('i-6-non-composite');
+        var i7NonCompositeElement = document.getElementById('i-7-non-composite');
+        var i8NonCompositeElement = document.getElementById('i-8-non-composite');
+        var i9NonCompositeElement = document.getElementById('i-9-non-composite');
+        var i10NonCompositeElement = document.getElementById('i-10-non-composite');
+        var iNonCompositeElement = document.getElementById('i-non-composite');
+        var ztNonCompositeElement = document.getElementById('zt-non-composite');
+        var zbNonCompositeElement = document.getElementById('zb-non-composite');
+        var phiNonCompositeElement = document.getElementById('phi-non-composite');
+        var phimNonCompositeElement = document.getElementById('phim-non-composite');
+        var circularHoleNonCompositeElement = document.getElementById('circular-hole-non-composite');
+        var nonCircularHoleNonCompositeElement = document.getElementById('non-circular-hole-non-composite');
+        var fyNonCompositeElement = document.getElementById('fy-non-composite');
+        var eNonCompositeElement = document.getElementById('e-non-composite');
+        var vNonCompositeElement = document.getElementById('v-non-composite');
+        var kNonCompositeElement = document.getElementById('k-non-composite');
+        var tNonCompositeElement = document.getElementById('t-non-composite')
+        var bNonCompositeElement = document.getElementById('b-non-composite');
+        var fcrNonCompositeElement = document.getElementById('fcr-non-composite');
+        var fAsteriskNonCompositeElement = document.getElementById('f-asterisk-non-composite');
+        var lamdaNonCompositeElement = document.getElementById('lamda-non-composite');
+        var pNonCompositeElement = document.getElementById('p-non-composite');
+        var beNonCompositeElement = document.getElementById('be-non-composite');
+        var psiNonCompositeElement = document.getElementById('psi-non-composite');
+        var be1NonCompositeElement = document.getElementById('be-1-non-composite');
+        var be2NonCompositeElement = document.getElementById('be-2-non-composite');
+        var i51NonCompositeElement = document.getElementById('i-51-non-composite');
+        var d52NonCompositeElement = document.getElementById('d-52-non-composite');
+        var i52NonCompositeElement = document.getElementById('i-52-non-composite');
+        
         
         var testElement = document.getElementById('testing');
         
@@ -211,8 +249,8 @@
         }
         
         var calculatedNonCompositeFigures = {
-            joist : 0, btm : 35, centroidY : 0, AreaA : 0, i1 : 0, i2 : 0, i3 : 0, i4 : 0, i5 : 0, i6 : 0, i7 : 0, i8 : 0, i9 : 0, i10 : 0, i : 0, zt : 0, zb : 0, phi : 0.9, phim : 0,
-            cicularHole : 0, nonCircularHole : 0, fy : 345, e : 0, v : 0.3, k : 0, t : 3, b : 0, fcr : 0, fAsterisk : 0, lamda : 0, p : 0, be : 0, psi : 0, be1 : 0, be2 : 0,
+            joist : 0, btm : 35, centroidY : 0, areaA : 0, i1 : 0, i2 : 0, i3 : 0, i4 : 0, i5 : 0, i6 : 0, i7 : 0, i8 : 0, i9 : 0, i10 : 0, i : 0, zt : 0, zb : 0, phi : 0.9, phim : 0,
+            circularHole : 0, nonCircularHole : 0, fy : 345, e : 200000, v : 0.3, k : 0, t : 3, b : 0, fcr : 0, fAsterisk : 0, lamda : 0, p : 0, be : 0, psi : 0, be1 : 0, be2 : 0,
             i51 : 0, d52 : 0, i52 : 0, kv : 5.34, d1 : 0, d1OverT : 0, ekvOverFy : 0, q1 : 0, q2 : 0, q3 : 0, q4 : 0, q5 : 0, q : 0, phiHole : 0.8, phiv : 0, phivCirHole : 0,
             phivNonCirHole : 0, tOverD1TimesEkvOverFy : 0, d1OverTTimesFyOverEkv : 0, ekvOverFyMultiplied : 0, ekvfy1 : 0, cCircular : 0, qsCircular : 0, vcr : 0, vy : 0,
             lamdaV : 0, ekvfy2 : 0, cNonCircular : 0, qsNonCircular : 0, ø : 0.9, a : 0, cb : 0, fol : 0, fod : 0, g : 80000, j : 0, zc : 0, iex : 0, iey : 0, iez : 0, iw : 0,
@@ -260,13 +298,66 @@
         }
         
         function CalculateNonCompositeFigures(){
-            var joist = RoundDown(summitedData['joistSize'] / 0.0393700787)
-            calculatedNonCompositeFigures['joist'] = joist;
+            calculatedNonCompositeFigures['joist'] = RoundDown(summitedData['joistSize'] / 0.0393700787);
             
+            calculatedNonCompositeFigures['centroidY'] = ((1.5)*(60*3)+2*(29/2+3)*(29*3)+(3/2+32)*(27.5*3)+(3/2+32)*(31.5*3)+((calculatedNonCompositeFigures['joist']-35)/2+35)*((calculatedNonCompositeFigures['joist']-35)*3)+(3/2+calculatedNonCompositeFigures['joist'])*(40*3)+(15/2+3+calculatedNonCompositeFigures['joist'])*(15*3)+(3/2+18+calculatedNonCompositeFigures['joist'])*(25*3)+(14/2+21+calculatedNonCompositeFigures['joist'])*(14*3)+(3/2+35+calculatedNonCompositeFigures['joist'])*(23*3))/((60*3)+2*(29*3)+(27.5*3)+(31.5*3)+((calculatedNonCompositeFigures['joist']-35)*3)+(40*3)+(15*3)+(25*3)+(14*3)+(23*3));
+            
+            calculatedNonCompositeFigures['areaA'] = (60*3)+2*(29*3)+(27.5*3)+(31.5*3)+((calculatedNonCompositeFigures['joist']-35)*3)+(40*3)+(15*3)+(25*3)+(14*3)+(23*3);
+            
+            calculatedNonCompositeFigures['circularHole'] = calculatedNonCompositeFigures['joist'] < 250 ? 0 : calculatedNonCompositeFigures['joist'] < 400 ? 125 : 250;
+            
+            calculatedNonCompositeFigures['nonCircularHole'] = calculatedNonCompositeFigures['joist'] < 350 ? 0 : 200;
+            
+            calculatedNonCompositeFigures['i1'] = (60*3^3)/12+(60*3)*Math.pow(calculatedNonCompositeFigures['centroidY']-3/2, 2);
+            
+            calculatedNonCompositeFigures['i2'] = 2*(3*Math.pow(29, 3)/12+3*29*Math.pow(calculatedNonCompositeFigures['centroidY']-(29/2+3), 2));
+            
+            calculatedNonCompositeFigures['i3'] = 27.5*Math.pow(3, 3)/12+27.5*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(3/2+32), 2);
+            
+            calculatedNonCompositeFigures['i4'] = 31.5*Math.pow(3, 3)/12+31.5*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(3/2+32), 2);
+            
+            
+            
+            calculatedNonCompositeFigures['i6'] = 40*Math.pow(3, 3)/12+40*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(calculatedNonCompositeFigures['joist']+3/2), 2);
+            
+            calculatedNonCompositeFigures['i7'] = 3*Math.pow(15, 3)/12+3*15*Math.pow(calculatedNonCompositeFigures['centroidY']-(calculatedNonCompositeFigures['joist']+3+15/2), 2);
+            
+            calculatedNonCompositeFigures['i8'] = 25*Math.pow(3, 3)/12+25*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(calculatedNonCompositeFigures['joist']+18+3/2), 2);
+            
+            calculatedNonCompositeFigures['i9'] = 3*Math.pow(14, 3)/12+3*14*Math.pow(calculatedNonCompositeFigures['centroidY']-(calculatedNonCompositeFigures['joist']+21+14/2), 2);
+            
+            calculatedNonCompositeFigures['i10'] = 23*Math.pow(3, 3)/12+23*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(calculatedNonCompositeFigures['joist']+35+3/2), 2);
+            
+            
+            
+            calculatedNonCompositeFigures['i5'] = 5;
+            
+            calculatedNonCompositeFigures['i'] =    calculatedNonCompositeFigures['i1'] + calculatedNonCompositeFigures['i2'] + calculatedNonCompositeFigures['i3'] + 
+                                                    calculatedNonCompositeFigures['i4'] + calculatedNonCompositeFigures['i5'] + calculatedNonCompositeFigures['i6'] + 
+                                                    calculatedNonCompositeFigures['i7'] + calculatedNonCompositeFigures['i8'] + calculatedNonCompositeFigures['i9'] + 
+                                                    calculatedNonCompositeFigures['i10']; // must go down after 
         }
         
         function DisplayCalculatedData(){
             joistNonCompositeElement.innerHTML = calculatedNonCompositeFigures['joist'];
+            btmNonCompositeElement.innerHTML = calculatedNonCompositeFigures['btm'];
+            centroidYNonCompositeElement.innerHTML = calculatedNonCompositeFigures['centroidY'] + ' mm';
+            areaANonCompositeElement.innerHTML = calculatedNonCompositeFigures['areaA'] + ' mm2';
+            i1NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i1'] + ' mm4';
+            i2NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i2'] + ' mm4';
+            i3NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i3'] + ' mm4';
+            i4NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i4'] + ' mm4';
+            i5NonCompositeElement.innerHTML = "Needs calculated";
+            i6NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i6'] + ' mm4';
+            i7NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i7'] + ' mm4';
+            i8NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i8'] + ' mm4';
+            i9NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i9'] + ' mm4';
+            i10NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i10'] + ' mm4';
+            iNonCompositeElement.innerHTML = calculatedNonCompositeFigures['i'] + ' mm4';
+            
+            circularHoleNonCompositeElement.innerHTML = calculatedNonCompositeFigures['circularHole'] + ' dwh';
+            nonCircularHoleNonCompositeElement.innerHTML = calculatedNonCompositeFigures['nonCircularHole'] + ' dwh';
+            
         }
         
         // The decimals is how many decimal places you would like to round to. 0 being integers, 1 being 1 decimal place, etc.
