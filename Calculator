@@ -6,8 +6,8 @@
             border: 5px solid gray;
             margin: 0;
         }
-        #header {
-            font-size: 40;
+        header {
+            font-size: 25;
         }
     </style>
     
@@ -62,7 +62,12 @@
     <br>
     <button type='button' onclick='SubmitData()'>Submit</button>
     
-    <header>Non-Composite Data</header>
+    <div id='calculated-data'>
+        <header>Non-Composite Data</header>
+        <label for='joist'>Joist</label>
+        <div id='joist-non-composite'></div>
+    </div>
+    
     
     <script>
         var joistSizeDropDown = document.getElementById('joist-size-dd');
@@ -71,6 +76,8 @@
         var sdlInput = document.getElementById('sdl-input');
         var liveLoadInput = document.getElementById('live-load-input');
         var deflectionLimitDropDown = document.getElementById('deflection-limit-dd');
+        
+        var joistNonCompositeElement = document.getElementById('joist-non-composite')
         
         var testElement = document.getElementById('testing');
         
@@ -94,18 +101,39 @@
                 17.716535415 :  { lxc : 301.2735, mrc : 69.9208776, vr : 11.91487402516088, vrh : 7.036519943161048 },
             },
             4.0 : {
-                5.905511805 :   { lxc : 29.3, mrc : 15.6, vr : 14.4, vrh : "NA" },
-                7.87401574 :    { lxc : 57.9, mrc : 24.5, vr : 20.7, vrh : "NA" },
-                9.842519675 :   { lxc : 99.2, mrc : 35.4, vr : 21.0, vrh : 7.3 },
-                11.81102361 :   { lxc : 144.4, mrc : 44.7, vr : 18.7, vrh : 9.0 },
-                13.779527545 :  { lxc : 196.0, mrc : 53.8, vr : 15.7, vrh : 4.9 },
-                15.74803148 :   { lxc : 257.1, mrc : 63.4, vr : 13.6, vrh : 6.1 },
-                17.716535415 :  { lxc : 327.7, mrc : 73.5, vr : 11.9, vrh : 7.0 },
+                5.905511805 :   { lxc : 29.3105, mrc : 15.6363144, vr : 14.43273419651563, vrh : 'NA' },
+                7.87401574 :    { lxc : 57.90025, mrc : 24.4870584, vr : 20.72738462490251, vrh : 'NA' },
+                9.842519675 :   { lxc : 99.22325, mrc : 35.402976, vr : 20.95219356877347, vrh : 7.283809781419104 },
+                11.81102361 :   { lxc : 144.39025, mrc : 44.6962572, vr : 18.68162323567678, vrh : 9.037319543612592 },
+                13.779527545 :  { lxc : 196.044, mrc : 53.7682698, vr : 15.7141451765801, vrh : 4.94579676516112 },
+                15.74803148 :   { lxc : 257.0675, mrc : 63.3565758, vr : 13.55597931541889, vrh : 6.137284167677208 },
+                17.716535415 :  { lxc : 327.701, mrc : 73.4611752, vr : 11.91487402516088, vrh : 7.036519943161048 },
             },
+        }
+        
+        const nonCompositeTableA = {
+            150 : 9.288, 200 : 10.5, 250 : 11.62, 300 : 12.84, 350 : 14.07, 400 : 15.19, 450 : 16.41
+        }
+        const nonCompositeTableB = {
+            150 : { area : 1186, rx : 65.2, ry : 18.5, x0 : 31.7, sx : 47.3, sxe : 47.3, j : 3.84, cw : 2.1, y0 : 60.5 },
+            200 : { area : 1337, rx : 83.7, ry : 17.6, x0 : 27.1, sx : 70.1, sxe : 70.1, j : 4.47, cw : 3.3, y0 : 66.5 },
+            250 : { area : 1487, rx : 101.6, ry : 16.7, x0 : 23.7, sx : 95.8, sxe : 95.6, j : 5.19, cw : 5.1, y0 : 70.7 },
+            300 : { area : 1637, rx : 119.0, ry : 16.0, x0 : 21.1, sx : 124.3, sxe : 116.4, j : 5.53, cw : 7.4, y0 : 73.8 },
+            350 : { area : 1787, rx : 136.0, ry : 15.4, x0 : 19.1, sx : 155.6, sxe : 144.2, j : 6.13, cw : 10.2, y0 : 76.3 },
+            400 : { area : 1937, rx : 152.7, ry : 14.8, x0 : 17.4, sx : 189.5, sxe : 174.0, j : 6.75, cw : 13.6, y0 : 78.2 },
+            550 : { area : 2087, rx : 169.1, ry : 14.3, x0 : 16.0, sx : 226.0, sxe : 205.6, j : 7.43, cw : 17.6, y0 : 79.9 }
         }
         
         var summitedData = {
             joistSize : 0, joistSpacing : 0, firstHoleLocation : 0, sdl : 0, liveLoad : 0, deflectionLimit : 0
+        }
+        
+        var calculatedNonCompositeFigures = {
+            joist : 0, btm : 35, centroidY : 0, AreaA : 0, i1 : 0, i2 : 0, i3 : 0, i4 : 0, i5 : 0, i6 : 0, i7 : 0, i8 : 0, i9 : 0, i10 : 0, i : 0, zt : 0, zb : 0, phi : 0.9, phim : 0,
+            cicularHole : 0, nonCircularHole : 0, fy : 345, e : 0, v : 0.3, k : 0, t : 3, b : 0, fcr : 0, fAsterisk : 0, lamda : 0, p : 0, be : 0, psi : 0, be1 : 0, be2 : 0,
+            i51 : 0, d52 : 0, i52 : 0, kv : 5.34, d1 : 0, d1OverT : 0, ekvOverFy : 0, q1 : 0, q2 : 0, q3 : 0, q4 : 0, q5 : 0, q : 0, phiHole : 0.8, phiv : 0, phivCirHole : 0,
+            phivNonCirHole : 0, tOverD1TimesEkvOverFy : 0, d1OverTTimesFyOverEkv : 0, ekvOverFyMultiplied : 0, ekvfy1 : 0, cCircular : 0, qsCircular : 0, vcr : 0, vy : 0,
+            lamdaV : 0, ekvfy2 : 0, cNonCircular : 0, qsNonCircular : 0, ø : 0
         }
         
         function CorrectInputValue(minimus, maximus, val, ident, decimals){
@@ -149,7 +177,8 @@
         
         function CalculateNonCompositeFigures(){
             var joist = RoundDown(summitedData['joistSize'] / 0.0393700787)
-            TestFunction(joist);
+            
+            
         }
         
         
