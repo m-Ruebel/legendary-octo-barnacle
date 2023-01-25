@@ -1,6 +1,14 @@
 <html>
     <style>
-      
+        .block {
+            width: 320px;
+            padding: 10px;
+            border: 5px solid gray;
+            margin: 0;
+        }
+        #header {
+            font-size: 40;
+        }
     </style>
     
     
@@ -8,34 +16,40 @@
     <div id='testing'>
             
     </div>
-    <label for="joist-size-dd">Joist Size</label>
+    <label for='joist-size-dd'>Joist Size</label>
     <select name= 'joist-size-dd' id='joist-size-dd' onchange='jsFunction(this.value, this.id);'>
-        <option value='6'>6</option>
-        <option value='8'>8</option>
-        <option value='10'>10</option>
-        <option value='12'>12</option>
-        <option value='14'>14</option>
-        <option value='16'>16</option>
-        <option value='18'>18</option>
+        <option value='5.905511805'>6</option>
+        <option value='7.87401574'>8</option>
+        <option value='9.842519675'>10</option>
+        <option value='11.81102361'>12</option>
+        <option value='13.779527545'>14</option>
+        <option value='15.74803148'>16</option>
+        <option value='17.716535415'>18</option>
     </select>
     <br>
     <label for='joist-spacing-dd'>Joist Spacing</label>
     <select name= 'joist-spacing-dd' id='joist-spacing-dd'>
-        <option value='1'>1</option>
-        <option value='2'>2</option>
-        <option value='3'>3</option>
-        <option value='4'>4</option>
-        <option value='5'>5</option>
+        <option value='1.00000000152'>1</option>
+        <option value='2.00000000304'>2</option>
+        <option value='3.00000000456'>3</option>
+        <option value='4.00000000608'>4</option>
+        <option value='5.0000000076'>5</option>
     </select>
     <br>
-    <label for='input-hole-location-dd'>Input Hole Location</label>
-    <select name= 'input-hole-location-dd' id='input-hole-location-dd'>
-        <option value='3'>3</option>
-        <option value='4'>4</option>
+    <label for='slab-topping-dd'>Joist Spacing</label>
+    <select name= 'slab-topping-dd' id='slab-topping-dd'>
+        <option value='3.49999999643'>3.5</option>
+        <option value='3.99999999592'>4</option>
+    </select>
+    <br>
+    <label for='first-hole-location-dd'>Input Hole Location</label>
+    <select name= 'first-hole-location-dd' id='first-hole-location-dd'>
+        <option value='3.00000000456'>3.5</option>
+        <option value='4.00000000608'>4</option>
     </select>
     <br>
     <label for='sdl-input'>SDL</label>
-    <input type='number'  id='sdl-input' name='sdl-input' min='0' max='10' step='1' onchange='CorrectInputValue(this.min, this.max, value, this.id, 1)',>
+    <input type='number'  id='sdl-input' name='sdl-input' min='0' max='10' step='1' onchange='CorrectInputValue(this.min, this.max, value, this.id, 1)'>
     <br>
     <label for='live-load-input'>Live Load</label>
     <input type='number' id='live-load-input' name='live-load-input' min='0' max='10'>
@@ -45,37 +59,53 @@
         <option value='360'>360</option>
         <option value='500'>500</option>
     </select>
+    <br>
+    <button type='button' onclick='SubmitData()'>Submit</button>
+    
+    <header>Non-Composite Data</header>
     
     <script>
-
+        var joistSizeDropDown = document.getElementById('joist-size-dd');
+        var joistSpacingDropDown = document.getElementById('joist-spacing-dd');
+        var firstHoleLocationDropDown = document.getElementById('first-hole-location-dd');
+        var sdlInput = document.getElementById('sdl-input');
+        var liveLoadInput = document.getElementById('live-load-input');
+        var deflectionLimitDropDown = document.getElementById('deflection-limit-dd');
+        
+        var testElement = document.getElementById('testing');
+        
         const joistData = {
-            6 :     { weight : 6.25 , area : 1.84, lx : 12.3, rx : 2.57, sx : 2.89, j : 9.23, cw : 7.82, lxd : 12.3, sxe : 2.89, mr : 10.8, vr : 14.4, vrh : 'NA'},
-            8 :     { weight : 7.06 , area : 2.07, lx : 22.6, rx : 3.30, sx : 4.28, j : 10.74, cw : 12.29, lxd : 22.6, sxe : 4.28, mr : 16.0, vr : 20.7, vrh : 'NA'},
-            10 :    { weight : 7.86 , area : 2.30, lx : 37.0, rx : 4.00, sx : 5.85, j : 12.47, cw : 18.99, lxd : 36.8, sxe : 5.83, mr : 21.8, vr : 21.0, vrh : 7.3},
-            12 :    { weight : 8.67 , area : 2.54, lx : 55.7, rx : 4.69, sx : 7.59, j : 13.29, cw : 27.56, lxd : 55.0, sxe : 7.10, mr : 26.6, vr : 18.7, vrh : 9.0},
-            14 :    { weight : 9.47 , area : 2.77, lx : 79.5, rx : 5.35, sx : 9.50, j : 14.73, cw : 37.98, lxd : 77.6, sxe : 8.80, mr : 33.0, vr : 15.7, vrh : 4.9},
-            16 :    { weight : 10.21 , area : 3.00, lx : 108.6, rx : 6.01, sx : 11.56, j : 16.22, cw : 50.65, lxd : 105.0, sxe : 10.62, mr : 39.8, vr : 13.6, vrh : 6.1},
-            18 :    { weight : 11.02 , area : 3.23, lx : 143.4, rx : 6.66, sx : 13.79, j : 17.85, cw : 65.54, lxd : 137.7, sxe : 12.55, mr : 47.1, vr : 11.9, vrh : 7.0},
+            5.905511805 :   { weight : 6.2493114675, area : 1.8383036766, lx : 12.25275, rx : 2.56692913124, sx : 2.88642308348064, j : 9.2256, cw : 7.820184414, lxd : 12.25275, sxe : 2.88642308348064, mr : 10.7684052, vr : 14.43273419651563, vrh : 'NA'},
+            7.87401574 :    { weight : 7.0556742375, area : 2.0723541447, lx : 22.5835, rx : 3.29527558719, sx : 4.27776444295968, j : 10.739175, cw : 12.288861222, lxd : 22.5835, sxe : 4.27776444295968, mr : 16.0050954, vr : 20.72738462490251, vrh : 'NA'},
+            9.842519675 :   { weight : 7.8620370075, area : 2.3048546097, lx : 36.9985, rx : 3.99999999592, sx : 5.84607465956544, j : 12.468975, cw : 18.991876434, lxd : 36.75825, sxe : 5.83386991079808, mr : 21.8318352, vr : 20.95219356877347, vrh : 7.283809781419104},
+            11.81102361 :   { weight : 8.6683997775, area : 2.5373550747, lx : 55.738, rx : 4.6850393653, sx : 7.58525135891424, j : 13.285825, cw : 27.556840316, lxd : 55.01725, sxe : 7.10316378260352, mr : 26.6259882, vr : 18.68162323567678, vrh : 9.037319543612592},
+            13.779527545 :  { weight : 9.4747625475, area : 2.7698555397, lx : 79.52275, rx : 5.3543307032, sx : 9.49529454100608, j : 14.727325, cw : 37.983752868, lxd : 77.60075, sxe : 8.79962386126656, mr : 32.9690214, vr : 15.7141451765801, vrh : 4.94579676516112},
+            15.74803148 :   { weight : 10.21392842, area : 3.0023560047, lx : 108.593, rx : 6.01181101749, sx : 11.5639994570736, j : 16.216875, cw : 50.645003824, lxd : 104.98925, sxe : 10.6181314276032, mr : 39.828348, vr : 13.55597931541889, vrh : 6.137284167677208},
+            17.716535415 :  { weight : 11.02029119, area : 3.2348564697, lx : 143.42925, rx : 6.65748030817, sx : 13.7913661071168, j : 17.850575, cw : 65.540593184, lxd : 137.66325, sxe : 12.54648173284608, mr : 47.0564556, vr : 11.91487402516088, vrh : 7.036519943161048},
         }
         const slabData = {
             3.5 : {  
-                6 : { lxc : 28.8, mrc : 16.3, vr : 14.4, vrh : 'NA' },
-                8 : { lxc : 57.4, mrc : 25.5, vr : 20.7, vrh : 'NA' },
-                10 : { lxc : 92.0, mrc : 34.1, vr : 21.0, vrh : 7.3 },
-                12 : { lxc : 131.7, mrc : 42.3, vr : 18.7, vrh : 9.0 },
-                14 : { lxc : 179.5, mrc : 51.0, vr : 15.7, vrh : 4.9 },
-                16 : { lxc : 235.9, mrc : 60.3, vr : 13.6, vrh : 6.1 },
-                18 : { lxc : 301.3, mrc : 69.9, vr : 11.9, vrh : 7.0 },
+                5.905511805 :   { lxc : 28.83, mrc : 16.3001202, vr : 14.43273419651563, vrh : 'NA' },
+                7.87401574 :    { lxc : 57.41975, mrc : 25.5196452, vr : 20.72738462490251, vrh : 'NA' },
+                9.842519675 :   { lxc : 92.01575, mrc : 34.1491206, vr : 20.95219356877347, vrh : 7.283809781419104 },
+                11.81102361 :   { lxc : 131.657, mrc : 42.3360588, vr : 18.68162323567678, vrh : 9.037319543612592 },
+                13.779527545 :  { lxc : 179.46675, mrc : 51.0392904, vr : 15.7141451765801, vrh : 4.94579676516112 },
+                15.74803148 :   { lxc : 235.9255, mrc : 60.2588154, vr : 13.55597931541889, vrh : 6.137284167677208 },
+                17.716535415 :  { lxc : 301.2735, mrc : 69.9208776, vr : 11.91487402516088, vrh : 7.036519943161048 },
             },
             4.0 : {
-                6 : { lxc : 29.3, mrc : 15.6, vr : 14.4, vrh : "NA" },
-                8 : { lxc : 57.9, mrc : 24.5, vr : 20.7, vrh : "NA" },
-                10 : { lxc : 99.2, mrc : 35.4, vr : 21.0, vrh : 7.3 },
-                12 : { lxc : 144.4, mrc : 44.7, vr : 18.7, vrh : 9.0 },
-                14 : { lxc : 196.0, mrc : 53.8, vr : 15.7, vrh : 4.9 },
-                16 : { lxc : 257.1, mrc : 63.4, vr : 13.6, vrh : 6.1 },
-                18 : { lxc : 327.7, mrc : 73.5, vr : 11.9, vrh : 7.0 },
+                5.905511805 :   { lxc : 29.3, mrc : 15.6, vr : 14.4, vrh : "NA" },
+                7.87401574 :    { lxc : 57.9, mrc : 24.5, vr : 20.7, vrh : "NA" },
+                9.842519675 :   { lxc : 99.2, mrc : 35.4, vr : 21.0, vrh : 7.3 },
+                11.81102361 :   { lxc : 144.4, mrc : 44.7, vr : 18.7, vrh : 9.0 },
+                13.779527545 :  { lxc : 196.0, mrc : 53.8, vr : 15.7, vrh : 4.9 },
+                15.74803148 :   { lxc : 257.1, mrc : 63.4, vr : 13.6, vrh : 6.1 },
+                17.716535415 :  { lxc : 327.7, mrc : 73.5, vr : 11.9, vrh : 7.0 },
             },
+        }
+        
+        var summitedData = {
+            joistSize : 0, joistSpacing : 0, firstHoleLocation : 0, sdl : 0, liveLoad : 0, deflectionLimit : 0
         }
         
         function CorrectInputValue(minimus, maximus, val, ident, decimals){
@@ -89,25 +119,57 @@
             document.getElementById(ident).value = returnValue;
         }
         
+        function SubmitData(){
+            if (CheckForInputValues() === false){
+                TestFunction("NEED TO COMPLETE");
+                return
+            }
+            
+            SaveSummitedData();
+            
+            CalculateNonCompositeFigures()
+            
+            
+        }
+        function CheckForInputValues(){
+            if (sdlInput.value.length !== 0 && liveLoadInput.value.length !== 0)
+                return true;
+            return false;
+        }
+        
+        
+        function SaveSummitedData(){
+            summitedData['joistSize'] = joistSizeDropDown.value;
+            summitedData['joistSpacing'] = joistSpacingDropDown.value;
+            summitedData['firstHoleLocation'] = firstHoleLocationDropDown.value;
+            summitedData['sdl'] = sdlInput.value;
+            summitedData['liveLoad'] = liveLoadInput.value;
+            summitedData['deflectionLimit'] = deflectionLimitDropDown.value;
+        }
+        
+        function CalculateNonCompositeFigures(){
+            var joist = RoundDown(summitedData['joistSize'] / 0.0393700787)
+            TestFunction(joist);
+        }
+        
+        
         // The decimals is how many decimal places you would like to round to. 0 being integers, 1 being 1 decimal place, etc.
         function Round(val, decimals) {
             var multiplier = Math.pow(10, decimals || 0);
             return Math.round(val * multiplier) / multiplier;
         }
         
-        function RoundDown(val, decimals) {
+        function RoundDown(number, decimals) {
             decimals = decimals || 0;
-            return ( Math.floor( val * Math.pow(10, decimals) ) / Math.pow(10, decimals) );
+            return ( Math.floor( number * Math.pow(10, decimals) ) / Math.pow(10, decimals) );
         }
-        var testElement = document.getElementById('testing');
+        
+        
+        
         function TestFunction(val)
         {
             /*var tes = slabData[3.5][value]['mrc'];*/
-            testEle.innerHTML = Math.round(val);
-        }
-        
-        function SubmitData(){
-                          
+            testElement.innerHTML = val;
         }
     </script>
 </html>
