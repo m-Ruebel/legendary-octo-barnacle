@@ -618,7 +618,7 @@
             
             calculatedNonCompositeFigures['zc'] = 1000 * nonCompositeTableB[calculatedNonCompositeFigures['joist']]['sxe'];
             
-            calculatedNonCompositeFigures['iw'] = 1000000 * nonCompositeTableB[calculatedNonCompositeFigures['joist']]['cw'];
+            calculatedNonCompositeFigures['iw'] = 1000000000 * nonCompositeTableB[calculatedNonCompositeFigures['joist']]['cw'];
             
             calculatedNonCompositeFigures['rx'] = nonCompositeTableB[calculatedNonCompositeFigures['joist']]['rx'];
             
@@ -634,8 +634,34 @@
             
             calculatedNonCompositeFigures['foy'] = (Math.pow(Math.PI, 2) * 200000) / Math.pow(calculatedNonCompositeFigures['iey']/calculatedNonCompositeFigures['ry'], 2);
             
-            //calculatedNonCompositeFigures['foz'] = ( (calculatedNonCompositeFigures['g'] * calculatedNonCompositeFigures['j']) / (calculatedNonCompositeFigures['a'] * Math.pow(calculatedNonCompositeFigures['rol'], 2)) ) * (1 + ( (Math.pow(Math.PI, 2) * 200000 * calculatedNonCompositeFigures['iw']) / (calculatedNonCompositeFigures['g'] * calculatedNonCompositeFigures['j'] * Math.pow(calculatedNonCompositeFigures['iez'], 2)));
-        }
+            calculatedNonCompositeFigures['foz'] = ((calculatedNonCompositeFigures['g']*calculatedNonCompositeFigures['j'])/(calculatedNonCompositeFigures['a']*Math.pow(calculatedNonCompositeFigures['rol'], 2)))*(1+(Math.pow(Math.PI, 2)*200000*calculatedNonCompositeFigures['iw'])/(calculatedNonCompositeFigures['g']*calculatedNonCompositeFigures['j']*Math.pow(calculatedNonCompositeFigures['iez'], 2)));
+        
+            calculatedNonCompositeFigures['mo'] = calculatedNonCompositeFigures['cb']*calculatedNonCompositeFigures['a']*calculatedNonCompositeFigures['rol']*Math.sqrt(calculatedNonCompositeFigures['foy']*calculatedNonCompositeFigures['foz']);
+        
+            calculatedNonCompositeFigures['my'] = calculatedNonCompositeFigures['zf']*calculatedNonCompositeFigures['fy'];
+            
+            calculatedNonCompositeFigures['λb'] = Math.sqrt(calculatedNonCompositeFigures['my']/calculatedNonCompositeFigures['mo']);
+            
+            calculatedNonCompositeFigures['mc'] = calculatedNonCompositeFigures['λb'] <= 0.6 ? calculatedNonCompositeFigures['my'] : calculatedNonCompositeFigures['λb'] >= 1.336 ? calculatedNonCompositeFigures['my'] * (1/Math.pow(calculatedNonCompositeFigures['λb'], 2)) : 1.11*calculatedNonCompositeFigures['my']*(1-(10*Math.pow(calculatedNonCompositeFigures['λb'], 2)/36));
+        
+            calculatedNonCompositeFigures['mbe'] = calculatedNonCompositeFigures['mo'] < 0.56 * calculatedNonCompositeFigures['my'] ? calculatedNonCompositeFigures['mo'] : calculatedNonCompositeFigures['mo'] > 2.78 * calculatedNonCompositeFigures['my'] ? calculatedNonCompositeFigures['my'] : 10/9 * calculatedNonCompositeFigures['my'] * (1-(10 * calculatedNonCompositeFigures['my'])/(36 * calculatedNonCompositeFigures['mo']));
+        
+            calculatedNonCompositeFigures['mol'] = calculatedNonCompositeFigures['zf'] * calculatedNonCompositeFigures['fol'];
+            
+            calculatedNonCompositeFigures['λl'] = Math.sqrt(calculatedNonCompositeFigures['mbe']/calculatedNonCompositeFigures['mol']);
+            
+            calculatedNonCompositeFigures['mbl'] = calculatedNonCompositeFigures['λl'] <= 0.776 ? calculatedNonCompositeFigures['mbe'] : (1 - 0.15 * Math.pow(calculatedNonCompositeFigures['mol'] / calculatedNonCompositeFigures['mbe'], 0.4)) * Math.pow(calculatedNonCompositeFigures['mol'] / calculatedNonCompositeFigures['mbe'], 0.4) * calculatedNonCompositeFigures['mbe'];
+        
+            calculatedNonCompositeFigures['mod'] = calculatedNonCompositeFigures['zf'] * calculatedNonCompositeFigures['fod'];
+            
+            calculatedNonCompositeFigures['λd'] = Math.sqrt(calculatedNonCompositeFigures['my']/calculatedNonCompositeFigures['mod']);
+            
+            calculatedNonCompositeFigures['mbd'] = calculatedNonCompositeFigures['λd'] <= 0.673 ? calculatedNonCompositeFigures['my'] : (1 - 0.22 * Math.pow(calculatedNonCompositeFigures['mod'] / calculatedNonCompositeFigures['my'], 0.5)) * Math.pow(calculatedNonCompositeFigures['mod']/calculatedNonCompositeFigures['my'], 0.5) * calculatedNonCompositeFigures['my'];
+        
+            calculatedNonCompositeFigures['ms'] = calculatedNonCompositeFigures['zc']*calculatedNonCompositeFigures['fy'];
+            
+            calculatedNonCompositeFigures['ømb'] = 0.9 * Math.min(calculatedNonCompositeFigures['mbe'], calculatedNonCompositeFigures['mbl'], calculatedNonCompositeFigures['mbd'], calculatedNonCompositeFigures['ms']) / 1000000;
+        }                                        
         
         function DisplayCalculatedData(){
             joistNonCompositeElement.innerHTML = calculatedNonCompositeFigures['joist'];
@@ -709,26 +735,41 @@
             qsNonCircularNonCompositeElement.innerHTML = calculatedNonCompositeFigures['qsNonCircular'];
             
             øNonCompositeElement.innerHTML = calculatedNonCompositeFigures['ø'];
-            aNonCompositeElement.innerHTML = calculatedNonCompositeFigures['a'];
+            aNonCompositeElement.innerHTML = calculatedNonCompositeFigures['a'] + ' mm2';
             cbNonCompositeElement.innerHTML = calculatedNonCompositeFigures['cb'];
-            folNonCompositeElement.innerHTML = calculatedNonCompositeFigures['fol'];
-            fodNonCompositeElement.innerHTML = calculatedNonCompositeFigures['fod'];
-            fy2NonCompositeElement.innerHTML = calculatedNonCompositeFigures['fy'];
-            gNonCompositeElement.innerHTML = calculatedNonCompositeFigures['g'];
-            jNonCompositeElement.innerHTML = calculatedNonCompositeFigures['j'];
-            zcNonCompositeElement.innerHTML = calculatedNonCompositeFigures['zc'];
-            iexNonCompositeElement.innerHTML = calculatedNonCompositeFigures['iex'];
-            ieyNonCompositeElement.innerHTML = calculatedNonCompositeFigures['iey'];
-            iezNonCompositeElement.innerHTML = calculatedNonCompositeFigures['iez'];
-            iwNonCompositeElement.innerHTML = calculatedNonCompositeFigures['iw'];
-            rxNonCompositeElement.innerHTML = calculatedNonCompositeFigures['rx'];
-            ryNonCompositeElement.innerHTML = calculatedNonCompositeFigures['ry'];
-            x0NonCompositeElement.innerHTML = calculatedNonCompositeFigures['x0'];
-            zfNonCompositeElement.innerHTML = calculatedNonCompositeFigures['zf'];
-            y0NonCompositeElement.innerHTML = calculatedNonCompositeFigures['y0'];
-            rolNonCompositeElement.innerHTML = calculatedNonCompositeFigures['rol'];
-            foyNonCompositeElement.innerHTML = calculatedNonCompositeFigures['foy'];
-            fozNonCompositeElement.innerHTML = calculatedNonCompositeFigures['foz'];
+            folNonCompositeElement.innerHTML = calculatedNonCompositeFigures['fol'] + ' MPa';
+            fodNonCompositeElement.innerHTML = calculatedNonCompositeFigures['fod'] + ' MPa';
+            fy2NonCompositeElement.innerHTML = calculatedNonCompositeFigures['fy'] + ' MPa';
+            gNonCompositeElement.innerHTML = calculatedNonCompositeFigures['g'] + ' MPa';
+            jNonCompositeElement.innerHTML = calculatedNonCompositeFigures['j'] + ' mm4';
+            zcNonCompositeElement.innerHTML = calculatedNonCompositeFigures['zc'] + ' mm3';
+            iexNonCompositeElement.innerHTML = calculatedNonCompositeFigures['iex'] + ' mm';
+            ieyNonCompositeElement.innerHTML = calculatedNonCompositeFigures['iey'] + ' mm';
+            iezNonCompositeElement.innerHTML = calculatedNonCompositeFigures['iez'] + ' mm';
+            iwNonCompositeElement.innerHTML = calculatedNonCompositeFigures['iw'] + ' mm6';
+            rxNonCompositeElement.innerHTML = calculatedNonCompositeFigures['rx'] + ' mm';
+            ryNonCompositeElement.innerHTML = calculatedNonCompositeFigures['ry'] + ' mm';
+            x0NonCompositeElement.innerHTML = calculatedNonCompositeFigures['x0'] + ' mm';
+            zfNonCompositeElement.innerHTML = calculatedNonCompositeFigures['zf'] + ' mm3';
+            y0NonCompositeElement.innerHTML = calculatedNonCompositeFigures['y0'] + ' mm';
+            rolNonCompositeElement.innerHTML = calculatedNonCompositeFigures['rol'] + ' mm';
+            foyNonCompositeElement.innerHTML = calculatedNonCompositeFigures['foy'] + ' MPa';
+            fozNonCompositeElement.innerHTML = calculatedNonCompositeFigures['foz'] + ' MPa';
+            moNonCompositeElement.innerHTML = calculatedNonCompositeFigures['mo'] + ' Nmm';
+            myNonCompositeElement.innerHTML = calculatedNonCompositeFigures['my'] + ' Nmm';
+            λbNonCompositeElement.innerHTML = calculatedNonCompositeFigures['λb'];
+            mcNonCompositeElement.innerHTML = calculatedNonCompositeFigures['mc'] + ' Nmm';
+            
+            mbeNonCompositeElement.innerHTML = calculatedNonCompositeFigures['mbe'] + ' Nmm';
+            molNonCompositeElement.innerHTML = calculatedNonCompositeFigures['mol'] + ' Nmm';
+            λlNonCompositeElement.innerHTML = calculatedNonCompositeFigures['λl'];
+            mblNonCompositeElement.innerHTML = calculatedNonCompositeFigures['mbl'] + ' Nmm';
+            modNonCompositeElement.innerHTML = calculatedNonCompositeFigures['mod'] + ' Nmm';
+            λdNonCompositeElement.innerHTML = calculatedNonCompositeFigures['λd'];
+            mbdNonCompositeElement.innerHTML = calculatedNonCompositeFigures['mbd'] + ' Nmm';
+            msNonCompositeElement.innerHTML = calculatedNonCompositeFigures['ms'] + ' Nmm';
+            ømbNonCompositeElement.innerHTML = calculatedNonCompositeFigures['ømb'] + ' kNm';
+            
         }
         
         // The decimals is how many decimal places you would like to round to. 0 being integers, 1 being 1 decimal place, etc.
