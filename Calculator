@@ -431,18 +431,26 @@
             550 : { area : 2087, rx : 169.1, ry : 14.3, x0 : 16.0, sx : 226.0, sxe : 205.6, j : 7.43, cw : 17.6, y0 : 79.9 }
         }
         
+        const constantData = {
+            btm : 35, phi : 0.9, fy : 345, e : 200000, v : 0.3, t : 3, kv : 5.34, phiHole : 0.8, cb : 1.1589, fol : 1385, fod : 729, g : 80000, 
+            iex : 13300, iey : 609.6, iez : 609.6
+        }
+
         var summitedData = {
             joistSize : 0, joistSpacing : 0, firstHoleLocation : 0, sdl : 0, liveLoad : 0, deflectionLimit : 0
         }
         
+        var sharedFigures = {
+            joist : 0, circularHole : 0, nonCircularHole : 0, d1 : 0, d1OverT : 0, ekvOverFy : 0, phiv : 0, phivCirHole : 0, phivNonCirHole : 0, 
+            tOverD1TimesEkvOverFy : 0, d1OverTTimesFyOverEkv : 0, ekvOverFyMultiplied : 0, ekvfy1 : 0, cCircular : 0, qsCircular : 0, vcr : 0, vy : 0,
+            lamdaV : 0, ekvfy2 : 0, cNonCircular : 0, qsNonCircular : 0
+        }
+        
         var calculatedNonCompositeFigures = {
-            joist : 0, btm : 35, centroidY : 0, areaA : 0, i1 : 0, i2 : 0, i3 : 0, i4 : 0, i5 : 0, i6 : 0, i7 : 0, i8 : 0, i9 : 0, i10 : 0, i : 0, zt : 0, zb : 0, phi : 0.9, phim : 0,
-            circularHole : 0, nonCircularHole : 0, fy : 345, e : 200000, v : 0.3, k : 0, t : 3, b : 0, fcr : 0, fAsterisk : 0, lamda : 0, p : 0, be : 0, psi : 0, be1 : 0, be2 : 0,
-            i51 : 0, d52 : 0, i52 : 0, kv : 5.34, d1 : 0, d1OverT : 0, ekvOverFy : 0, q1 : 0, q2 : 0, q3 : 0, q4 : 0, q5 : 0, q : 0, phiHole : 0.8, phiv : 0, phivCirHole : 0,
-            phivNonCirHole : 0, tOverD1TimesEkvOverFy : 0, d1OverTTimesFyOverEkv : 0, ekvOverFyMultiplied : 0, ekvfy1 : 0, cCircular : 0, qsCircular : 0, vcr : 0, vy : 0,
-            lamdaV : 0, ekvfy2 : 0, cNonCircular : 0, qsNonCircular : 0, ø : 0.9, a : 0, cb : 1.1589, fol : 1385, fod : 729, g : 80000, j : 0, zc : 0, iex : 13300, iey : 609.6, iez : 609.6, iw : 0,
-            x0 : 0, zf : 0, y0 : 0, rol : 0, foy : 0, foz : 0, mo : 0, my : 0, λb : 0, mc : 0, fc : 0, mbe : 0, mol : 0, λl : 0, mbl : 0, mod : 0 , λd : 0,  mbd : 0, ms : 0,
-            ømb : 0
+            centroidY : 0, areaA : 0, i1 : 0, i2 : 0, i3 : 0, i4 : 0, i5 : 0, i6 : 0, i7 : 0, i8 : 0, i9 : 0, i10 : 0, i : 0, zt : 0, zb : 0, phim : 0,
+            k : 0, b : 0, fcr : 0, fAsterisk : 0, lamda : 0, p : 0, be : 0, psi : 0, be1 : 0, be2 : 0, i51 : 0, d52 : 0, i52 : 0, q1 : 0, q2 : 0, q3 : 0, 
+            q4 : 0, q5 : 0, q : 0, a : 0, j : 0, zc : 0, iw : 0, x0 : 0, zf : 0, y0 : 0, rol : 0, foy : 0, foz : 0, mo : 0, my : 0, λb : 0, mc : 0, fc : 0, 
+            mbe : 0, mol : 0, λl : 0, mbl : 0, mod : 0 , λd : 0,  mbd : 0, ms : 0, ømb : 0
         }
         
         function CorrectInputValue(minimus, maximus, val, ident, decimals){
@@ -485,25 +493,25 @@
         }
         
         function CalculateNonCompositeFigures(){
-            calculatedNonCompositeFigures['joist'] = RoundDown(summitedData['joistSize'] / 0.0393700787);
+            sharedFigures['joist'] = RoundDown(summitedData['joistSize'] / 0.0393700787);
             
-            calculatedNonCompositeFigures['centroidY'] = ((1.5)*(60*3)+2*(29/2+3)*(29*3)+(3/2+32)*(27.5*3)+(3/2+32)*(31.5*3)+((calculatedNonCompositeFigures['joist']-35)/2+35)*((calculatedNonCompositeFigures['joist']-35)*3)+(3/2+calculatedNonCompositeFigures['joist'])*(40*3)+(15/2+3+calculatedNonCompositeFigures['joist'])*(15*3)+(3/2+18+calculatedNonCompositeFigures['joist'])*(25*3)+(14/2+21+calculatedNonCompositeFigures['joist'])*(14*3)+(3/2+35+calculatedNonCompositeFigures['joist'])*(23*3))/((60*3)+2*(29*3)+(27.5*3)+(31.5*3)+((calculatedNonCompositeFigures['joist']-35)*3)+(40*3)+(15*3)+(25*3)+(14*3)+(23*3));
+            calculatedNonCompositeFigures['centroidY'] = ((1.5)*(60*3)+2*(29/2+3)*(29*3)+(3/2+32)*(27.5*3)+(3/2+32)*(31.5*3)+((sharedFigures['joist']-35)/2+35)*((sharedFigures['joist']-35)*3)+(3/2+sharedFigures['joist'])*(40*3)+(15/2+3+sharedFigures['joist'])*(15*3)+(3/2+18+sharedFigures['joist'])*(25*3)+(14/2+21+sharedFigures['joist'])*(14*3)+(3/2+35+sharedFigures['joist'])*(23*3))/((60*3)+2*(29*3)+(27.5*3)+(31.5*3)+((sharedFigures['joist']-35)*3)+(40*3)+(15*3)+(25*3)+(14*3)+(23*3));
             
-            calculatedNonCompositeFigures['areaA'] = (60*3)+2*(29*3)+(27.5*3)+(31.5*3)+((calculatedNonCompositeFigures['joist']-35)*3)+(40*3)+(15*3)+(25*3)+(14*3)+(23*3);
+            calculatedNonCompositeFigures['areaA'] = (60*3)+2*(29*3)+(27.5*3)+(31.5*3)+((sharedFigures['joist']-35)*3)+(40*3)+(15*3)+(25*3)+(14*3)+(23*3);
             
-            calculatedNonCompositeFigures['circularHole'] = calculatedNonCompositeFigures['joist'] < 250 ? 0 : calculatedNonCompositeFigures['joist'] < 400 ? 125 : 250;
+            sharedFigures['circularHole'] = sharedFigures['joist'] < 250 ? 0 : sharedFigures['joist'] < 400 ? 125 : 250;
             
-            calculatedNonCompositeFigures['nonCircularHole'] = calculatedNonCompositeFigures['joist'] < 350 ? 0 : 200;
+            sharedFigures['nonCircularHole'] = sharedFigures['joist'] < 350 ? 0 : 200;
             
-            calculatedNonCompositeFigures['psi'] = -1 * (calculatedNonCompositeFigures['centroidY']-calculatedNonCompositeFigures['btm'])/(calculatedNonCompositeFigures['joist']-calculatedNonCompositeFigures['centroidY']);
+            calculatedNonCompositeFigures['psi'] = -1 * (calculatedNonCompositeFigures['centroidY']-constantData['btm'])/(sharedFigures['joist']-calculatedNonCompositeFigures['centroidY']);
             
             calculatedNonCompositeFigures['k'] = 4+2*Math.pow(1-calculatedNonCompositeFigures['psi'], 3)+2*(1-calculatedNonCompositeFigures['psi']);
             
-            calculatedNonCompositeFigures['b'] = calculatedNonCompositeFigures['joist']-calculatedNonCompositeFigures['centroidY'];
+            calculatedNonCompositeFigures['b'] = sharedFigures['joist']-calculatedNonCompositeFigures['centroidY'];
             
-            calculatedNonCompositeFigures['fcr'] = calculatedNonCompositeFigures['k']*Math.pow(Math.PI, 2)*calculatedNonCompositeFigures['e']/(12*(1-Math.pow(calculatedNonCompositeFigures['v'], 2)))*Math.pow(calculatedNonCompositeFigures['t']/calculatedNonCompositeFigures['b'], 2);
+            calculatedNonCompositeFigures['fcr'] = calculatedNonCompositeFigures['k']*Math.pow(Math.PI, 2)*constantData['e']/(12*(1-Math.pow(constantData['v'], 2)))*Math.pow(constantData['t']/calculatedNonCompositeFigures['b'], 2);
             
-            calculatedNonCompositeFigures['fAsterisk'] = calculatedNonCompositeFigures['fy']*(calculatedNonCompositeFigures['joist']-calculatedNonCompositeFigures['centroidY'])/(calculatedNonCompositeFigures['joist']+38-calculatedNonCompositeFigures['centroidY']);
+            calculatedNonCompositeFigures['fAsterisk'] = constantData['fy']*(sharedFigures['joist']-calculatedNonCompositeFigures['centroidY'])/(sharedFigures['joist']+38-calculatedNonCompositeFigures['centroidY']);
             
             calculatedNonCompositeFigures['lamda'] = Math.sqrt(calculatedNonCompositeFigures['fAsterisk']/calculatedNonCompositeFigures['fcr']);
             
@@ -513,13 +521,13 @@
             
             calculatedNonCompositeFigures['be1'] = calculatedNonCompositeFigures['be']/(3-calculatedNonCompositeFigures['psi'])
             
-            calculatedNonCompositeFigures['be2'] = (calculatedNonCompositeFigures['joist']+38)/23 > 4 ? (calculatedNonCompositeFigures['be']/(1-calculatedNonCompositeFigures['psi']))-calculatedNonCompositeFigures['be1'] : calculatedNonCompositeFigures['psi'] > -0.236 ? calculatedNonCompositeFigures['be']-calculatedNonCompositeFigures['be1'] : calculatedNonCompositeFigures['be']/2;
+            calculatedNonCompositeFigures['be2'] = (sharedFigures['joist']+38)/23 > 4 ? (calculatedNonCompositeFigures['be']/(1-calculatedNonCompositeFigures['psi']))-calculatedNonCompositeFigures['be1'] : calculatedNonCompositeFigures['psi'] > -0.236 ? calculatedNonCompositeFigures['be']-calculatedNonCompositeFigures['be1'] : calculatedNonCompositeFigures['be']/2;
             
-            calculatedNonCompositeFigures['i51'] = 3*Math.pow(calculatedNonCompositeFigures['be1'], 3)/12+3*calculatedNonCompositeFigures['be1']*Math.pow(calculatedNonCompositeFigures['centroidY']-(calculatedNonCompositeFigures['joist']-calculatedNonCompositeFigures['be1']/2), 2);
+            calculatedNonCompositeFigures['i51'] = 3*Math.pow(calculatedNonCompositeFigures['be1'], 3)/12+3*calculatedNonCompositeFigures['be1']*Math.pow(calculatedNonCompositeFigures['centroidY']-(sharedFigures['joist']-calculatedNonCompositeFigures['be1']/2), 2);
             
-            calculatedNonCompositeFigures['d52'] = calculatedNonCompositeFigures['centroidY']-calculatedNonCompositeFigures['btm']+calculatedNonCompositeFigures['be2'];
+            calculatedNonCompositeFigures['d52'] = calculatedNonCompositeFigures['centroidY']-constantData['btm']+calculatedNonCompositeFigures['be2'];
             
-            calculatedNonCompositeFigures['i52'] = 3*Math.pow(calculatedNonCompositeFigures['d52'], 3)/12+3*calculatedNonCompositeFigures['d52']*Math.pow(calculatedNonCompositeFigures['centroidY']-(calculatedNonCompositeFigures['btm']+calculatedNonCompositeFigures['d52']/2), 2);
+            calculatedNonCompositeFigures['i52'] = 3*Math.pow(calculatedNonCompositeFigures['d52'], 3)/12+3*calculatedNonCompositeFigures['d52']*Math.pow(calculatedNonCompositeFigures['centroidY']-(constantData['btm']+calculatedNonCompositeFigures['d52']/2), 2);
             
             calculatedNonCompositeFigures['i1'] = (60*Math.pow(3, 3))/12+(60*3)*Math.pow(calculatedNonCompositeFigures['centroidY']-3/2, 2);
             
@@ -531,32 +539,32 @@
             
             calculatedNonCompositeFigures['i5'] = calculatedNonCompositeFigures['i51']+calculatedNonCompositeFigures['i52'];
             
-            calculatedNonCompositeFigures['i6'] = 40*Math.pow(3, 3)/12+40*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(calculatedNonCompositeFigures['joist']+3/2), 2);
+            calculatedNonCompositeFigures['i6'] = 40*Math.pow(3, 3)/12+40*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(sharedFigures['joist']+3/2), 2);
             
-            calculatedNonCompositeFigures['i7'] = 3*Math.pow(15, 3)/12+3*15*Math.pow(calculatedNonCompositeFigures['centroidY']-(calculatedNonCompositeFigures['joist']+3+15/2), 2);
+            calculatedNonCompositeFigures['i7'] = 3*Math.pow(15, 3)/12+3*15*Math.pow(calculatedNonCompositeFigures['centroidY']-(sharedFigures['joist']+3+15/2), 2);
             
-            calculatedNonCompositeFigures['i8'] = 25*Math.pow(3, 3)/12+25*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(calculatedNonCompositeFigures['joist']+18+3/2), 2);
+            calculatedNonCompositeFigures['i8'] = 25*Math.pow(3, 3)/12+25*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(sharedFigures['joist']+18+3/2), 2);
             
-            calculatedNonCompositeFigures['i9'] = 3*Math.pow(14, 3)/12+3*14*Math.pow(calculatedNonCompositeFigures['centroidY']-(calculatedNonCompositeFigures['joist']+21+14/2), 2);
+            calculatedNonCompositeFigures['i9'] = 3*Math.pow(14, 3)/12+3*14*Math.pow(calculatedNonCompositeFigures['centroidY']-(sharedFigures['joist']+21+14/2), 2);
             
-            calculatedNonCompositeFigures['i10'] = 23*Math.pow(3, 3)/12+23*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(calculatedNonCompositeFigures['joist']+35+3/2), 2);
+            calculatedNonCompositeFigures['i10'] = 23*Math.pow(3, 3)/12+23*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(sharedFigures['joist']+35+3/2), 2);
             
             calculatedNonCompositeFigures['i'] =    calculatedNonCompositeFigures['i1'] + calculatedNonCompositeFigures['i2'] + calculatedNonCompositeFigures['i3'] + 
                                                     calculatedNonCompositeFigures['i4'] + calculatedNonCompositeFigures['i5'] + calculatedNonCompositeFigures['i6'] + 
                                                     calculatedNonCompositeFigures['i7'] + calculatedNonCompositeFigures['i8'] + calculatedNonCompositeFigures['i9'] + 
                                                     calculatedNonCompositeFigures['i10']; // must go down after all i#
             
-            calculatedNonCompositeFigures['zt'] = calculatedNonCompositeFigures['joist'] < 300 ? calculatedNonCompositeFigures['i']/(calculatedNonCompositeFigures['joist']+38-calculatedNonCompositeFigures['centroidY']) : (calculatedNonCompositeFigures['i']/(calculatedNonCompositeFigures['joist']+38-calculatedNonCompositeFigures['centroidY']))*0.95;
+            calculatedNonCompositeFigures['zt'] = sharedFigures['joist'] < 300 ? calculatedNonCompositeFigures['i']/(sharedFigures['joist']+38-calculatedNonCompositeFigures['centroidY']) : (calculatedNonCompositeFigures['i']/(sharedFigures['joist']+38-calculatedNonCompositeFigures['centroidY']))*0.95;
             
-            calculatedNonCompositeFigures['zb'] = calculatedNonCompositeFigures['joist'] < 300 ? calculatedNonCompositeFigures['i']/calculatedNonCompositeFigures['centroidY'] : 1.05*(calculatedNonCompositeFigures['i']/calculatedNonCompositeFigures['centroidY']);
+            calculatedNonCompositeFigures['zb'] = sharedFigures['joist'] < 300 ? calculatedNonCompositeFigures['i']/calculatedNonCompositeFigures['centroidY'] : 1.05*(calculatedNonCompositeFigures['i']/calculatedNonCompositeFigures['centroidY']);
             
-            calculatedNonCompositeFigures['phim'] = calculatedNonCompositeFigures['phi']*calculatedNonCompositeFigures['fy']*Math.min(calculatedNonCompositeFigures['zt'], calculatedNonCompositeFigures['zb'])/Math.pow(10, 6);
+            calculatedNonCompositeFigures['phim'] = constantData['phi']*constantData['fy']*Math.min(calculatedNonCompositeFigures['zt'], calculatedNonCompositeFigures['zb'])/Math.pow(10, 6);
             
-            calculatedNonCompositeFigures['d1'] = calculatedNonCompositeFigures['joist']-calculatedNonCompositeFigures['btm'];
+            sharedFigures['d1'] = sharedFigures['joist']-constantData['btm'];
             
-            calculatedNonCompositeFigures['d1OverT'] = calculatedNonCompositeFigures['d1']/calculatedNonCompositeFigures['t'];
+            sharedFigures['d1OverT'] = sharedFigures['d1']/constantData['t'];
             
-            calculatedNonCompositeFigures['ekvOverFy'] = Math.sqrt(calculatedNonCompositeFigures['e']*calculatedNonCompositeFigures['kv']/calculatedNonCompositeFigures['fy']);
+            sharedFigures['ekvOverFy'] = Math.sqrt(constantData['e']*constantData['kv']/constantData['fy']);
             
             calculatedNonCompositeFigures['q1'] = (60*3)*(calculatedNonCompositeFigures['centroidY']-3/2);
             
@@ -566,79 +574,79 @@
             
             calculatedNonCompositeFigures['q4'] = 31.5*3*(calculatedNonCompositeFigures['centroidY']-(3/2+32));
             
-            calculatedNonCompositeFigures['q5'] = 3*(calculatedNonCompositeFigures['centroidY']-calculatedNonCompositeFigures['btm'])*(calculatedNonCompositeFigures['centroidY']-((calculatedNonCompositeFigures['centroidY']-calculatedNonCompositeFigures['btm'])/2+calculatedNonCompositeFigures['btm']));
+            calculatedNonCompositeFigures['q5'] = 3*(calculatedNonCompositeFigures['centroidY']-constantData['btm'])*(calculatedNonCompositeFigures['centroidY']-((calculatedNonCompositeFigures['centroidY']-constantData['btm'])/2+constantData['btm']));
             
             calculatedNonCompositeFigures['q'] =    calculatedNonCompositeFigures['q1'] + calculatedNonCompositeFigures['q2'] + calculatedNonCompositeFigures['q3'] +
                                                     calculatedNonCompositeFigures['q4'] + calculatedNonCompositeFigures['q5'];
             
-            calculatedNonCompositeFigures['tOverD1TimesEkvOverFy'] = Math.sqrt(2*calculatedNonCompositeFigures['e']*calculatedNonCompositeFigures['kv']/calculatedNonCompositeFigures['fy'])*(calculatedNonCompositeFigures['t']/calculatedNonCompositeFigures['d1']);
+            sharedFigures['tOverD1TimesEkvOverFy'] = Math.sqrt(2*constantData['e']*constantData['kv']/constantData['fy'])*(constantData['t']/sharedFigures['d1']);
             
-            calculatedNonCompositeFigures['d1OverTTimesFyOverEkv'] = calculatedNonCompositeFigures['d1OverT']*Math.sqrt(calculatedNonCompositeFigures['fy']/(calculatedNonCompositeFigures['e']*calculatedNonCompositeFigures['kv']));
+            sharedFigures['d1OverTTimesFyOverEkv'] = sharedFigures['d1OverT']*Math.sqrt(constantData['fy']/(constantData['e']*constantData['kv']));
             
-            calculatedNonCompositeFigures['ekvOverFyMultiplied'] = 1.415*calculatedNonCompositeFigures['ekvOverFy'];
+            sharedFigures['ekvOverFyMultiplied'] = 1.415*sharedFigures['ekvOverFy'];
             
-            calculatedNonCompositeFigures['ekvfy1'] = 0.64*Math.pow(calculatedNonCompositeFigures['t'], 2)*Math.sqrt(calculatedNonCompositeFigures['e']*calculatedNonCompositeFigures['kv']*calculatedNonCompositeFigures['fy']);
+            sharedFigures['ekvfy1'] = 0.64*Math.pow(constantData['t'], 2)*Math.sqrt(constantData['e']*constantData['kv']*constantData['fy']);
             
-            calculatedNonCompositeFigures['cCircular'] = calculatedNonCompositeFigures['d1']/2-calculatedNonCompositeFigures['circularHole']/2.83;
+            sharedFigures['cCircular'] = sharedFigures['d1']/2-sharedFigures['circularHole']/2.83;
             
-            calculatedNonCompositeFigures['qsCircular'] = calculatedNonCompositeFigures['cCircular']/calculatedNonCompositeFigures['t'] >= 54 ? 1 : calculatedNonCompositeFigures['cCircular']/(54*calculatedNonCompositeFigures['t']);
+            sharedFigures['qsCircular'] = sharedFigures['cCircular']/constantData['t'] >= 54 ? 1 : sharedFigures['cCircular']/(54*constantData['t']);
             
-            calculatedNonCompositeFigures['vcr'] = 0.904*calculatedNonCompositeFigures['e']*calculatedNonCompositeFigures['kv']*Math.pow(calculatedNonCompositeFigures['t'], 3)/calculatedNonCompositeFigures['d1'];
+            sharedFigures['vcr'] = 0.904*constantData['e']*constantData['kv']*Math.pow(constantData['t'], 3)/sharedFigures['d1'];
             
-            calculatedNonCompositeFigures['vy'] = 0.6*calculatedNonCompositeFigures['d1']*calculatedNonCompositeFigures['t']*calculatedNonCompositeFigures['fy'];
+            sharedFigures['vy'] = 0.6*sharedFigures['d1']*constantData['t']*constantData['fy'];
             
-            calculatedNonCompositeFigures['lamdaV'] = Math.sqrt(calculatedNonCompositeFigures['vy']/calculatedNonCompositeFigures['vcr']);
+            sharedFigures['lamdaV'] = Math.sqrt(sharedFigures['vy']/sharedFigures['vcr']);
             
-            calculatedNonCompositeFigures['ekvfy2'] = 0.6*Math.pow(calculatedNonCompositeFigures['t'], 2)*Math.sqrt(calculatedNonCompositeFigures['e']*calculatedNonCompositeFigures['kv']*calculatedNonCompositeFigures['fy']);
+            sharedFigures['ekvfy2'] = 0.6*Math.pow(constantData['t'], 2)*Math.sqrt(constantData['e']*constantData['kv']*constantData['fy']);
             
-            calculatedNonCompositeFigures['cNonCircular'] = calculatedNonCompositeFigures['d1']/2-calculatedNonCompositeFigures['nonCircularHole']/2;
+            sharedFigures['cNonCircular'] = sharedFigures['d1']/2-sharedFigures['nonCircularHole']/2;
             
-            calculatedNonCompositeFigures['qsNonCircular'] = calculatedNonCompositeFigures['cNonCircular']/calculatedNonCompositeFigures['t'] >=54 ? 1 : calculatedNonCompositeFigures['cNonCircular']/(54*calculatedNonCompositeFigures['t']);
+            sharedFigures['qsNonCircular'] = sharedFigures['cNonCircular']/constantData['t'] >=54 ? 1 : sharedFigures['cNonCircular']/(54*constantData['t']);
             
             var phivGrab;
-            if (0.815<calculatedNonCompositeFigures['lamdaV'] && calculatedNonCompositeFigures['lamdaV']<1.227) {
-                phivGrab = calculatedNonCompositeFigures['phi'] * AH13;
+            if (0.815<sharedFigures['lamdaV'] && sharedFigures['lamdaV']<1.227) {
+                phivGrab = constantData['phi'] * AH13;
             }
-            else if (calculatedNonCompositeFigures['lamdaV']>1.227){
-                phivGrab = calculatedNonCompositeFigures['phi']*(calculatedNonCompositeFigures['ekvfy2']*calculatedNonCompositeFigures['tOverD1TimesEkvOverFy'])/1000;
+            else if (sharedFigures['lamdaV']>1.227){
+                phivGrab = constantData['phi']*(sharedFigures['ekvfy2']*sharedFigures['tOverD1TimesEkvOverFy'])/1000;
             }
             else {
-                phivGrab = calculatedNonCompositeFigures['phi']*(calculatedNonCompositeFigures['ekvfy2']*calculatedNonCompositeFigures['d1OverTTimesFyOverEkv'])/1000;
+                phivGrab = constantData['phi']*(sharedFigures['ekvfy2']*sharedFigures['d1OverTTimesFyOverEkv'])/1000;
             }
                                                    
-            calculatedNonCompositeFigures['phiv'] = phivGrab;
+            sharedFigures['phiv'] = phivGrab;
             
-            calculatedNonCompositeFigures['phivCirHole'] = (calculatedNonCompositeFigures['circularHole'] == 0 ? '' : calculatedNonCompositeFigures['phiv']*calculatedNonCompositeFigures['qsCircular']/calculatedNonCompositeFigures['phi']*calculatedNonCompositeFigures['phiHole']);
+            sharedFigures['phivCirHole'] = (sharedFigures['circularHole'] == 0 ? '' : sharedFigures['phiv']*sharedFigures['qsCircular']/constantData['phi']*constantData['phiHole']);
             
-            calculatedNonCompositeFigures['phivNonCirHole'] = (calculatedNonCompositeFigures['nonCircularHole'] == 0 ? "" : calculatedNonCompositeFigures['phiv']*calculatedNonCompositeFigures['qsNonCircular']/calculatedNonCompositeFigures['phi']*calculatedNonCompositeFigures['phiHole']);
+            sharedFigures['phivNonCirHole'] = (sharedFigures['nonCircularHole'] == 0 ? "" : sharedFigures['phiv']*sharedFigures['qsNonCircular']/constantData['phi']*constantData['phiHole']);
             
-            calculatedNonCompositeFigures['a'] = nonCompositeTableB[calculatedNonCompositeFigures['joist']]['area'];
+            calculatedNonCompositeFigures['a'] = nonCompositeTableB[sharedFigures['joist']]['area'];
             
-            calculatedNonCompositeFigures['j'] = 1000 * nonCompositeTableB[calculatedNonCompositeFigures['joist']]['j'];
+            calculatedNonCompositeFigures['j'] = 1000 * nonCompositeTableB[sharedFigures['joist']]['j'];
             
-            calculatedNonCompositeFigures['zc'] = 1000 * nonCompositeTableB[calculatedNonCompositeFigures['joist']]['sxe'];
+            calculatedNonCompositeFigures['zc'] = 1000 * nonCompositeTableB[sharedFigures['joist']]['sxe'];
             
-            calculatedNonCompositeFigures['iw'] = 1000000000 * nonCompositeTableB[calculatedNonCompositeFigures['joist']]['cw'];
+            calculatedNonCompositeFigures['iw'] = 1000000000 * nonCompositeTableB[sharedFigures['joist']]['cw'];
             
-            calculatedNonCompositeFigures['rx'] = nonCompositeTableB[calculatedNonCompositeFigures['joist']]['rx'];
+            calculatedNonCompositeFigures['rx'] = nonCompositeTableB[sharedFigures['joist']]['rx'];
             
-            calculatedNonCompositeFigures['ry'] = nonCompositeTableB[calculatedNonCompositeFigures['joist']]['ry'];
+            calculatedNonCompositeFigures['ry'] = nonCompositeTableB[sharedFigures['joist']]['ry'];
             
-            calculatedNonCompositeFigures['x0'] = nonCompositeTableB[calculatedNonCompositeFigures['joist']]['x0'];
+            calculatedNonCompositeFigures['x0'] = nonCompositeTableB[sharedFigures['joist']]['x0'];
             
-            calculatedNonCompositeFigures['zf'] = 1000 * nonCompositeTableB[calculatedNonCompositeFigures['joist']]['sx'];
+            calculatedNonCompositeFigures['zf'] = 1000 * nonCompositeTableB[sharedFigures['joist']]['sx'];
             
-            calculatedNonCompositeFigures['y0'] = nonCompositeTableB[calculatedNonCompositeFigures['joist']]['y0'];
+            calculatedNonCompositeFigures['y0'] = nonCompositeTableB[sharedFigures['joist']]['y0'];
             
             calculatedNonCompositeFigures['rol'] = Math.sqrt(Math.pow(calculatedNonCompositeFigures['rx'], 2) + Math.pow(calculatedNonCompositeFigures['ry'], 2) + Math.pow(calculatedNonCompositeFigures['x0'], 2) + Math.pow(calculatedNonCompositeFigures['y0'], 2));
             
-            calculatedNonCompositeFigures['foy'] = (Math.pow(Math.PI, 2) * 200000) / Math.pow(calculatedNonCompositeFigures['iey']/calculatedNonCompositeFigures['ry'], 2);
+            calculatedNonCompositeFigures['foy'] = (Math.pow(Math.PI, 2) * 200000) / Math.pow(constantData['iey']/calculatedNonCompositeFigures['ry'], 2);
             
-            calculatedNonCompositeFigures['foz'] = ((calculatedNonCompositeFigures['g']*calculatedNonCompositeFigures['j'])/(calculatedNonCompositeFigures['a']*Math.pow(calculatedNonCompositeFigures['rol'], 2)))*(1+(Math.pow(Math.PI, 2)*200000*calculatedNonCompositeFigures['iw'])/(calculatedNonCompositeFigures['g']*calculatedNonCompositeFigures['j']*Math.pow(calculatedNonCompositeFigures['iez'], 2)));
+            calculatedNonCompositeFigures['foz'] = ((constantData['g']*calculatedNonCompositeFigures['j'])/(calculatedNonCompositeFigures['a']*Math.pow(calculatedNonCompositeFigures['rol'], 2)))*(1+(Math.pow(Math.PI, 2)*200000*calculatedNonCompositeFigures['iw'])/(constantData['g']*calculatedNonCompositeFigures['j']*Math.pow(constantData['iez'], 2)));
         
-            calculatedNonCompositeFigures['mo'] = calculatedNonCompositeFigures['cb']*calculatedNonCompositeFigures['a']*calculatedNonCompositeFigures['rol']*Math.sqrt(calculatedNonCompositeFigures['foy']*calculatedNonCompositeFigures['foz']);
+            calculatedNonCompositeFigures['mo'] = constantData['cb']*calculatedNonCompositeFigures['a']*calculatedNonCompositeFigures['rol']*Math.sqrt(calculatedNonCompositeFigures['foy']*calculatedNonCompositeFigures['foz']);
         
-            calculatedNonCompositeFigures['my'] = calculatedNonCompositeFigures['zf']*calculatedNonCompositeFigures['fy'];
+            calculatedNonCompositeFigures['my'] = calculatedNonCompositeFigures['zf']*constantData['fy'];
             
             calculatedNonCompositeFigures['λb'] = Math.sqrt(calculatedNonCompositeFigures['my']/calculatedNonCompositeFigures['mo']);
             
@@ -646,26 +654,26 @@
         
             calculatedNonCompositeFigures['mbe'] = calculatedNonCompositeFigures['mo'] < 0.56 * calculatedNonCompositeFigures['my'] ? calculatedNonCompositeFigures['mo'] : calculatedNonCompositeFigures['mo'] > 2.78 * calculatedNonCompositeFigures['my'] ? calculatedNonCompositeFigures['my'] : 10/9 * calculatedNonCompositeFigures['my'] * (1-(10 * calculatedNonCompositeFigures['my'])/(36 * calculatedNonCompositeFigures['mo']));
         
-            calculatedNonCompositeFigures['mol'] = calculatedNonCompositeFigures['zf'] * calculatedNonCompositeFigures['fol'];
+            calculatedNonCompositeFigures['mol'] = calculatedNonCompositeFigures['zf'] * constantData['fol'];
             
             calculatedNonCompositeFigures['λl'] = Math.sqrt(calculatedNonCompositeFigures['mbe']/calculatedNonCompositeFigures['mol']);
             
             calculatedNonCompositeFigures['mbl'] = calculatedNonCompositeFigures['λl'] <= 0.776 ? calculatedNonCompositeFigures['mbe'] : (1 - 0.15 * Math.pow(calculatedNonCompositeFigures['mol'] / calculatedNonCompositeFigures['mbe'], 0.4)) * Math.pow(calculatedNonCompositeFigures['mol'] / calculatedNonCompositeFigures['mbe'], 0.4) * calculatedNonCompositeFigures['mbe'];
         
-            calculatedNonCompositeFigures['mod'] = calculatedNonCompositeFigures['zf'] * calculatedNonCompositeFigures['fod'];
+            calculatedNonCompositeFigures['mod'] = calculatedNonCompositeFigures['zf'] * constantData['fod'];
             
             calculatedNonCompositeFigures['λd'] = Math.sqrt(calculatedNonCompositeFigures['my']/calculatedNonCompositeFigures['mod']);
             
             calculatedNonCompositeFigures['mbd'] = calculatedNonCompositeFigures['λd'] <= 0.673 ? calculatedNonCompositeFigures['my'] : (1 - 0.22 * Math.pow(calculatedNonCompositeFigures['mod'] / calculatedNonCompositeFigures['my'], 0.5)) * Math.pow(calculatedNonCompositeFigures['mod']/calculatedNonCompositeFigures['my'], 0.5) * calculatedNonCompositeFigures['my'];
         
-            calculatedNonCompositeFigures['ms'] = calculatedNonCompositeFigures['zc']*calculatedNonCompositeFigures['fy'];
+            calculatedNonCompositeFigures['ms'] = calculatedNonCompositeFigures['zc']*constantData['fy'];
             
             calculatedNonCompositeFigures['ømb'] = 0.9 * Math.min(calculatedNonCompositeFigures['mbe'], calculatedNonCompositeFigures['mbl'], calculatedNonCompositeFigures['mbd'], calculatedNonCompositeFigures['ms']) / 1000000;
         }                                        
         
         function DisplayCalculatedData(){
-            joistNonCompositeElement.innerHTML = calculatedNonCompositeFigures['joist'];
-            btmNonCompositeElement.innerHTML = calculatedNonCompositeFigures['btm'];
+            joistNonCompositeElement.innerHTML = sharedFigures['joist'];
+            btmNonCompositeElement.innerHTML = constantData['btm'];
             centroidYNonCompositeElement.innerHTML = calculatedNonCompositeFigures['centroidY'] + ' mm';
             areaANonCompositeElement.innerHTML = calculatedNonCompositeFigures['areaA'] + ' mm2';
             i1NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i1'] + ' mm4';
@@ -681,16 +689,16 @@
             iNonCompositeElement.innerHTML = calculatedNonCompositeFigures['i'] + ' mm4';
             ztNonCompositeElement.innerHTML = calculatedNonCompositeFigures['zt'] + ' mm3';
             zbNonCompositeElement.innerHTML = calculatedNonCompositeFigures['zb'] + ' mm3';
-            phiNonCompositeElement.innerHTML = calculatedNonCompositeFigures['phi'];
+            phiNonCompositeElement.innerHTML = constantData['phi'];
             phimNonCompositeElement.innerHTML = calculatedNonCompositeFigures['phim'] + 'kNm';
     
-            circularHoleNonCompositeElement.innerHTML = calculatedNonCompositeFigures['circularHole'] + ' dwh';
-            nonCircularHoleNonCompositeElement.innerHTML = calculatedNonCompositeFigures['nonCircularHole'] + ' dwh';
-            fyNonCompositeElement.innerHTML = calculatedNonCompositeFigures['fy'] + ' MPa';
-            eNonCompositeElement.innerHTML = calculatedNonCompositeFigures['e'] + 'MPa';
-            vNonCompositeElement.innerHTML = calculatedNonCompositeFigures['v'];
+            circularHoleNonCompositeElement.innerHTML = sharedFigures['circularHole'] + ' dwh';
+            nonCircularHoleNonCompositeElement.innerHTML = sharedFigures['nonCircularHole'] + ' dwh';
+            fyNonCompositeElement.innerHTML = constantData['fy'] + ' MPa';
+            eNonCompositeElement.innerHTML = constantData['e'] + 'MPa';
+            vNonCompositeElement.innerHTML = constantData['v'];
             kNonCompositeElement.innerHTML = calculatedNonCompositeFigures['k'];
-            tNonCompositeElement.innerHTML = calculatedNonCompositeFigures['t'] + ' mm';
+            tNonCompositeElement.innerHTML = constantData['t'] + ' mm';
             bNonCompositeElement.innerHTML = calculatedNonCompositeFigures['b'] + ' mm';
             fcrNonCompositeElement.innerHTML = calculatedNonCompositeFigures['fcr'] + ' MPa';
             fAsteriskNonCompositeElement.innerHTML = calculatedNonCompositeFigures['fAsterisk'] + ' MPa';
@@ -704,10 +712,10 @@
             d52NonCompositeElement.innerHTML = calculatedNonCompositeFigures['d52'] + ' mm';
             i52NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i52'] + ' mm4';
             
-            kvNonCompositeElement.innerHTML = calculatedNonCompositeFigures['kv'];
-            d1NonCompositeElement.innerHTML = calculatedNonCompositeFigures['d1'] + ' mm';
-            d1OverTNonCompositeElement.innerHTML = calculatedNonCompositeFigures['d1OverT'];
-            ekvOverFyNonCompositeElement.innerHTML = calculatedNonCompositeFigures['ekvOverFy'];
+            kvNonCompositeElement.innerHTML = constantData['kv'];
+            d1NonCompositeElement.innerHTML = sharedFigures['d1'] + ' mm';
+            d1OverTNonCompositeElement.innerHTML = sharedFigures['d1OverT'];
+            ekvOverFyNonCompositeElement.innerHTML = sharedFigures['ekvOverFy'];
             q1NonCompositeElement.innerHTML = calculatedNonCompositeFigures['q1'] + ' mm3';
             q2NonCompositeElement.innerHTML = calculatedNonCompositeFigures['q2'] + ' mm3';
             q3NonCompositeElement.innerHTML = calculatedNonCompositeFigures['q3'] + ' mm3';
@@ -715,37 +723,37 @@
             q5NonCompositeElement.innerHTML = calculatedNonCompositeFigures['q5'] + ' mm3';
             qNonCompositeElement.innerHTML = calculatedNonCompositeFigures['q'] + ' mm3';
             
-            phi2NonCompositeElement.innerHTML = calculatedNonCompositeFigures['phi'];
-            phiHoleNonCompositeElement.innerHTML = calculatedNonCompositeFigures['phiHole'];
-            phivNonCompositeElement.innerHTML = calculatedNonCompositeFigures['phiv'] + ' kN';
-            phivCirHoleNonCompositeElement.innerHTML = calculatedNonCompositeFigures['phivCirHole'] + ' kN';
-            phivNonCirHoleNonCompositeElement.innerHTML = calculatedNonCompositeFigures['phivNonCirHole'] + ' kN';
+            phi2NonCompositeElement.innerHTML = constantData['phi'];
+            phiHoleNonCompositeElement.innerHTML = constantData['phiHole'];
+            phivNonCompositeElement.innerHTML = sharedFigures['phiv'] + ' kN';
+            phivCirHoleNonCompositeElement.innerHTML = sharedFigures['phivCirHole'] + ' kN';
+            phivNonCirHoleNonCompositeElement.innerHTML = sharedFigures['phivNonCirHole'] + ' kN';
             
-            tOverD1TimesEkvOverFyNonCompositeElement.innerHTML = calculatedNonCompositeFigures['tOverD1TimesEkvOverFy'];
-            d1OverTTimesFyOverEkvNonCompositeElement.innerHTML = calculatedNonCompositeFigures['d1OverTTimesFyOverEkv'];
-            ekvOverFyMultipliedNonCompositeElement.innerHTML = calculatedNonCompositeFigures['ekvOverFyMultiplied'];
-            ekvfy1NonCompositeElement.innerHTML = calculatedNonCompositeFigures['ekvfy1'];
-            cCircularNonCompositeElement.innerHTML = calculatedNonCompositeFigures['cCircular'];
-            qsCircularNonCompositeElement.innerHTML = calculatedNonCompositeFigures['qsCircular'];
-            vcrNonCompositeElement.innerHTML = calculatedNonCompositeFigures['vcr'] + ' N';
-            vyNonCompositeElement.innerHTML = calculatedNonCompositeFigures['vy'] + ' N';
-            lamdaVNonCompositeElement.innerHTML = calculatedNonCompositeFigures['lamdaV'];
-            ekvfy2NonCompositeElement.innerHTML = calculatedNonCompositeFigures['ekvfy2'];
-            cNonCircularNonCompositeElement.innerHTML = calculatedNonCompositeFigures['cNonCircular'];
-            qsNonCircularNonCompositeElement.innerHTML = calculatedNonCompositeFigures['qsNonCircular'];
+            tOverD1TimesEkvOverFyNonCompositeElement.innerHTML = sharedFigures['tOverD1TimesEkvOverFy'];
+            d1OverTTimesFyOverEkvNonCompositeElement.innerHTML = sharedFigures['d1OverTTimesFyOverEkv'];
+            ekvOverFyMultipliedNonCompositeElement.innerHTML = sharedFigures['ekvOverFyMultiplied'];
+            ekvfy1NonCompositeElement.innerHTML = sharedFigures['ekvfy1'];
+            cCircularNonCompositeElement.innerHTML = sharedFigures['cCircular'];
+            qsCircularNonCompositeElement.innerHTML = sharedFigures['qsCircular'];
+            vcrNonCompositeElement.innerHTML = sharedFigures['vcr'] + ' N';
+            vyNonCompositeElement.innerHTML = sharedFigures['vy'] + ' N';
+            lamdaVNonCompositeElement.innerHTML = sharedFigures['lamdaV'];
+            ekvfy2NonCompositeElement.innerHTML = sharedFigures['ekvfy2'];
+            cNonCircularNonCompositeElement.innerHTML = sharedFigures['cNonCircular'];
+            qsNonCircularNonCompositeElement.innerHTML = sharedFigures['qsNonCircular'];
             
-            øNonCompositeElement.innerHTML = calculatedNonCompositeFigures['ø'];
+            øNonCompositeElement.innerHTML = constantData['phi'];
             aNonCompositeElement.innerHTML = calculatedNonCompositeFigures['a'] + ' mm2';
-            cbNonCompositeElement.innerHTML = calculatedNonCompositeFigures['cb'];
-            folNonCompositeElement.innerHTML = calculatedNonCompositeFigures['fol'] + ' MPa';
-            fodNonCompositeElement.innerHTML = calculatedNonCompositeFigures['fod'] + ' MPa';
-            fy2NonCompositeElement.innerHTML = calculatedNonCompositeFigures['fy'] + ' MPa';
-            gNonCompositeElement.innerHTML = calculatedNonCompositeFigures['g'] + ' MPa';
+            cbNonCompositeElement.innerHTML = constantData['cb'];
+            folNonCompositeElement.innerHTML = constantData['fol'] + ' MPa';
+            fodNonCompositeElement.innerHTML = constantData['fod'] + ' MPa';
+            fy2NonCompositeElement.innerHTML = constantData['fy'] + ' MPa';
+            gNonCompositeElement.innerHTML = constantData['g'] + ' MPa';
             jNonCompositeElement.innerHTML = calculatedNonCompositeFigures['j'] + ' mm4';
             zcNonCompositeElement.innerHTML = calculatedNonCompositeFigures['zc'] + ' mm3';
-            iexNonCompositeElement.innerHTML = calculatedNonCompositeFigures['iex'] + ' mm';
-            ieyNonCompositeElement.innerHTML = calculatedNonCompositeFigures['iey'] + ' mm';
-            iezNonCompositeElement.innerHTML = calculatedNonCompositeFigures['iez'] + ' mm';
+            iexNonCompositeElement.innerHTML = constantData['iex'] + ' mm';
+            ieyNonCompositeElement.innerHTML = constantData['iey'] + ' mm';
+            iezNonCompositeElement.innerHTML = constantData['iez'] + ' mm';
             iwNonCompositeElement.innerHTML = calculatedNonCompositeFigures['iw'] + ' mm6';
             rxNonCompositeElement.innerHTML = calculatedNonCompositeFigures['rx'] + ' mm';
             ryNonCompositeElement.innerHTML = calculatedNonCompositeFigures['ry'] + ' mm';
