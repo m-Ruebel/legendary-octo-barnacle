@@ -276,6 +276,8 @@
         <div id='concrete-strength'></div>
         <label for='elastic-modulus' class='underline'>Elastic Modulus</label>
         <div id='elastic-modulus'></div>
+        <label for='n-composite' class='underline'>n</label>
+        <div id='n-composite'></div>
         <label for='bef' class='underline'>bef</label>
         <div id='bef'></div>
         <label for='centroid-Y-composite' class='underline'>Centroid Y</label>
@@ -306,6 +308,18 @@
         <div id='phi-different-composite'></div>
         <label for='phim-composite' class='underline'>phiM</label>
         <div id='phim-composite'></div>
+        <label for='q-1-composite' class='underline'>Q1</label>
+        <div id='q-1-composite'></div>
+        <label for='q-2-composite' class='underline'>Q2</label>
+        <div id='q-2-composite'></div>
+        <label for='q-3-composite' class='underline'>Q3</label>
+        <div id='q-3-composite'></div>
+        <label for='q-4-composite' class='underline'>Q4</label>
+        <div id='q-4-composite'></div>
+        <label for='q-5-composite' class='underline'>Q5</label>
+        <div id='q-5-composite'></div>
+        <label for='q-composite' class='underline'>Q</label>
+        <div id='q-composite'></div>
         
         
         
@@ -428,9 +442,10 @@
         var concreteThickinessElement = document.getElementById('concrete-thickness');
         var concreteStrengthElement = document.getElementById('concrete-strength');
         var elasticModulusElement = document.getElementById('elastic-modulus');
+        var nCompositeElement = document.getElementById('n-composite');
         var befCompositeElement = document.getElementById('bef');
         
-        var centroidYCompositeElement = document.getElementById('centroidYCompositeElement');
+        var centroidYCompositeElement = document.getElementById('centroid-Y-composite');
         var areaACompositeElement = document.getElementById('area-a-composite');
         var i1CompositeElement = document.getElementById('i-1-composite');
         var i2CompositeElement = document.getElementById('i-2-composite');
@@ -445,6 +460,12 @@
         var phiDifferentCompositeElement = document.getElementById('phi-different-composite');
         var phimCompositeElement = document.getElementById('phim-composite');
         
+        var q1CompositeElement = document.getElementById('q-1-composite');
+        var q2CompositeElement = document.getElementById('q-2-composite');
+        var q3CompositeElement = document.getElementById('q-3-composite');
+        var q4CompositeElement = document.getElementById('q-4-composite');
+        var q5CompositeElement = document.getElementById('q-5-composite');
+        var qCompositeElement = document.getElementById('q-composite');
         
         var testElement = document.getElementById('testing');
         
@@ -493,7 +514,7 @@
         
         const constantData = {
             btm : 35, phi : 0.9, fy : 345, e : 200000, v : 0.3, t : 3, kv : 5.34, phiHole : 0.8, cb : 1.1589, fol : 1385, fod : 729, g : 80000, 
-            iex : 13300, iey : 609.6, iez : 609.6, concreteStrength : 31
+            iex : 13300, iey : 609.6, iez : 609.6, concreteStrength : 31, phiDifferent : 0.85
         }
 
         var summitedData = {
@@ -514,8 +535,8 @@
         }
         
         var calculatedCompositeFigures = {
-            concreteThickness : 0, centroidY : 0, areaA : 0, i1 : 0, i2 : 0, i3 : 0, i4 : 0, i5 : 0, i6 : 0, i7 : 0, i : 0, zt : 0, zb : 0, 
-            phiDifferent : 0, phim : 0
+            concreteThickness : 0, elasticModulus : 0, n : 0, bef : 0, centroidY : 0, areaA : 0, i1 : 0, i2 : 0, i3 : 0, i4 : 0, i5 : 0, i6 : 0, i7 : 0, i : 0, zt : 0, zb : 0, 
+            phim : 0, q1 : 0, q2 : 0, q3 : 0, q4 : 0, q5 : 0, q : 0
         }
         function CorrectInputValue(minimus, maximus, val, ident, decimals){
             var returnValue;
@@ -540,7 +561,7 @@
             
             CalculateNonCompositeFigures();
             
-            //CalculateCompositeFigures();
+            CalculateCompositeFigures();
             
             DisplayCalculatedData();
         }
@@ -726,7 +747,34 @@
         }                                        
         
         function CalculateCompositeFigures(){
-            //calculatedCompositeFigures['concrete-thickness'] = / 0.0393700787;
+            calculatedCompositeFigures['concreteThickness'] = summitedData['slabTopping'] / 0.0393700787;
+            calculatedCompositeFigures['elasticModulus'] = 4700 * Math.sqrt(constantData['concreteStrength']);
+            calculatedCompositeFigures['n'] = constantData['e'] / calculatedCompositeFigures['elasticModulus']; 
+            calculatedCompositeFigures['bef'] = Math.min(304.8, calculatedCompositeFigures['concreteThickness'] + sharedFigures['joist'], 10000 / 15);
+            calculatedCompositeFigures['centroidY'] = (calculatedCompositeFigures['n']*((3/2)*(60*3)+2*(29/2+3)*(29*3)+(3/2+32)*(27.5*3)+(3/2+32)*(31.5*3)+((sharedFigures['joist']-35)/2+35)*((sharedFigures['joist']-35)*3))+calculatedCompositeFigures['bef']*calculatedCompositeFigures['concreteThickness']*(sharedFigures['joist']+calculatedCompositeFigures['concreteThickness']/2))/(calculatedCompositeFigures['n']*((60*3)+2*(29*3)+(27.5*3)+(31.5*3)+((sharedFigures['joist']-35)*3))+calculatedCompositeFigures['bef']*calculatedCompositeFigures['concreteThickness']);
+            calculatedCompositeFigures['areaA'] = calculatedCompositeFigures['centroidY'] < sharedFigures['joist'] ? calculatedCompositeFigures['centroidY'] : sharedFigures['joist'] ;
+            calculatedCompositeFigures['i1'] = calculatedCompositeFigures['n'] * (1620 / 12 + 180 * Math.pow(calculatedCompositeFigures['areaA'] - 3 / 2, 2));
+            calculatedCompositeFigures['i2'] = 2 * calculatedCompositeFigures['n'] * (6097.25 + 87 * Math.pow(calculatedCompositeFigures['areaA'] - 17.5, 2));
+            calculatedCompositeFigures['i3'] = calculatedCompositeFigures['n'] * (61.875 + 82.5 * Math.pow(calculatedCompositeFigures['areaA'] - 33.5, 2));
+            calculatedCompositeFigures['i4'] = calculatedCompositeFigures['n'] * (70.875 + 94.5 * Math.pow(calculatedCompositeFigures['areaA'] - 33.5,2));
+            calculatedCompositeFigures['i5'] = calculatedCompositeFigures['n'] * (3 * Math.pow(calculatedCompositeFigures['areaA'] - constantData['btm'], 3) / 12 + 3 * (calculatedCompositeFigures['areaA'] - constantData['btm']) * Math.pow(calculatedCompositeFigures['areaA'] - ((calculatedCompositeFigures['areaA'] - constantData['btm']) / 2 + constantData['btm']), 2));
+            calculatedCompositeFigures['i6'] =  0.2 * (calculatedCompositeFigures['centroidY'] < sharedFigures['joist'] ? 
+                                                calculatedCompositeFigures['bef'] * Math.pow(calculatedCompositeFigures['concreteThickness'], 3) / 12 + calculatedCompositeFigures['bef'] * calculatedCompositeFigures['concreteThickness'] * Math.pow(calculatedCompositeFigures['areaA'] - (sharedFigures['joist'] + calculatedCompositeFigures['concreteThickness'] / 2), 2) : 
+                                                calculatedCompositeFigures['bef'] * Math.pow(calculatedCompositeFigures['concreteThickness'] - (calculatedCompositeFigures['centroidY'] - sharedFigures['joist']), 3) / 12 + calculatedCompositeFigures['bef'] * (calculatedCompositeFigures['concreteThickness'] - (calculatedCompositeFigures['centroidY'] - sharedFigures['joist'])) * Math.pow(0.5 * (calculatedCompositeFigures['concreteThickness'] - (calculatedCompositeFigures['centroidY'] - sharedFigures['joist'])), 2)) ;
+            calculatedCompositeFigures['i7'] =  0.2 * (calculatedCompositeFigures['centroidY'] > calculatedCompositeFigures['areaA'] ?
+                                                calculatedCompositeFigures['bef'] * Math.pow(calculatedCompositeFigures['centroidY'] - calculatedCompositeFigures['areaA'], 3) / 12 + calculatedCompositeFigures['bef'] * (calculatedCompositeFigures['centroidY'] - calculatedCompositeFigures['areaA']) * Math.pow((calculatedCompositeFigures['centroidY'] - calculatedCompositeFigures['areaA']) / 2, 2) :
+                                                0);
+            calculatedCompositeFigures['i'] = (calculatedCompositeFigures['i1'] + calculatedCompositeFigures['i2'] + calculatedCompositeFigures['i3'] + calculatedCompositeFigures['i4'] + calculatedCompositeFigures['i5'] + calculatedCompositeFigures['i6'] + calculatedCompositeFigures['i7']) / calculatedCompositeFigures['n'];
+            calculatedCompositeFigures['zt'] = calculatedCompositeFigures['i'] / (sharedFigures['joist'] + calculatedCompositeFigures['concreteThickness'] - calculatedCompositeFigures['centroidY']);
+            calculatedCompositeFigures['zb'] = calculatedCompositeFigures['i'] / calculatedCompositeFigures['centroidY'];
+            calculatedCompositeFigures['phim'] = constantData['phiDifferent'] * constantData['fy'] * Math.min(calculatedCompositeFigures['zt'], calculatedCompositeFigures['zb']) / 1000000;
+            calculatedCompositeFigures['q1'] = 180 * (calculatedCompositeFigures['areaA'] - 3 / 2);
+            calculatedCompositeFigures['q2'] = 2 * (87 * (calculatedCompositeFigures['areaA'] - 17.5));
+            calculatedCompositeFigures['q3'] = 82.5 * (calculatedCompositeFigures['areaA'] - 33.5);
+            calculatedCompositeFigures['q4'] = 94.5 * (calculatedCompositeFigures['areaA'] - 33.5);
+            calculatedCompositeFigures['q5'] = 3 * (calculatedCompositeFigures['areaA'] - constantData['btm']) * (calculatedCompositeFigures['areaA'] - ((calculatedCompositeFigures['areaA'] - constantData['btm']) / 2 + constantData['btm']));
+            calculatedCompositeFigures['q'] = calculatedCompositeFigures['q1'] + calculatedCompositeFigures['q2'] + calculatedCompositeFigures['q3'] + calculatedCompositeFigures['q4'] + calculatedCompositeFigures['q5'];
+            
             
         }
         
@@ -836,6 +884,34 @@
             mbdNonCompositeElement.innerHTML = calculatedNonCompositeFigures['mbd'] + ' Nmm';
             msNonCompositeElement.innerHTML = calculatedNonCompositeFigures['ms'] + ' Nmm';
             ømbNonCompositeElement.innerHTML = calculatedNonCompositeFigures['ømb'] + ' kNm';
+            
+            concreteThickinessElement.innerHTML = calculatedCompositeFigures['concreteThickness'] + ' mm';
+            concreteStrengthElement.innerHTML = constantData['concreteStrength'] + ' mpa';
+            elasticModulusElement.innerHTML = calculatedCompositeFigures['elasticModulus'] + ' mpa';
+            nCompositeElement.innerHTML = calculatedCompositeFigures['n'];
+            befCompositeElement.innerHTML = calculatedCompositeFigures['bef'] + ' mm';
+            
+            centroidYCompositeElement.innerHTML = calculatedCompositeFigures['centroidY'] + ' mm';
+            areaACompositeElement.innerHTML = calculatedCompositeFigures['areaA'] + ' mm';
+            i1CompositeElement.innerHTML = calculatedCompositeFigures['i1'] + ' mm4';
+            i2CompositeElement.innerHTML = calculatedCompositeFigures['i2'] + ' mm4';
+            i3CompositeElement.innerHTML = calculatedCompositeFigures['i3'] + ' mm4';
+            i4CompositeElement.innerHTML = calculatedCompositeFigures['i4'] + ' mm4';
+            i5CompositeElement.innerHTML = calculatedCompositeFigures['i5'] + ' mm4';
+            i6CompositeElement.innerHTML = calculatedCompositeFigures['i6'] + ' mm4';
+            i7CompositeElement.innerHTML = calculatedCompositeFigures['i7'] + ' mm4';
+            iCompositeElement.innerHTML = calculatedCompositeFigures['i'] + ' mm4';
+            ztCompositeElement.innerHTML = calculatedCompositeFigures['zt'] + ' mm3';
+            zbCompositeElement.innerHTML = calculatedCompositeFigures['zb'] + ' mm3';
+            phiDifferentCompositeElement.innerHTML = constantData['phiDifferent'] + ' mm3';
+            phimCompositeElement.innerHTML = calculatedCompositeFigures['phim'];
+            
+            q1CompositeElement.innerHTML = calculatedCompositeFigures['q1'];
+            q2CompositeElement.innerHTML = calculatedCompositeFigures['q2'];
+            q3CompositeElement.innerHTML = calculatedCompositeFigures['q3'];
+            q4CompositeElement.innerHTML = calculatedCompositeFigures['q4'];
+            q5CompositeElement.innerHTML = calculatedCompositeFigures['q5'];
+            qCompositeElement.innerHTML = calculatedCompositeFigures['q'];
             
         }
         
