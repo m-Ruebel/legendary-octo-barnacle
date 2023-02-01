@@ -340,10 +340,56 @@
         <label for='span-500' class='underline'>Span/500</label>
         <div id='span-500'></div>
         
+        <label for='dead-load-deflection' class='underline'>Dead Load Deflection</label>
+        <div id='dead-load-deflection'></div>
+        <label for='construction-ll-deflection' class='underline'>Construction LL Deflection</label>
+        <div id='construction-ll-deflection'></div>
+        <label for='total-deflection-1' class='underline'>Total Deflection 1</label>
+        <div id='total-deflection-1'></div>
+        <label for='span-360-deflection-1-status' class='underline'>Span/360 Status:</label>
+        <div id='span-360-deflection-1-status'></div>
+        <label for='span-500-deflection-1-status' class='underline'>Span/500 Status:</label>
+        <div id='span-500-deflection-1-status'></div>
         
+        <label for='sdl-per' class='underline'>SDL</label>
+        <div id='sdl-per'></div>
+        <label for='live-load-per' class='underline'>Live Load</label>
+        <div id='live-load-per'></div>
+        <label for='sdl-short-term-ll-deflection' class='underline'>SDL + short term LL deflection</label>
+        <div id='sdl-short-term-ll-deflection'></div>
+        <label for='self-weight-deflection-1' class='underline'>Self weight deflection</label>
+        <div id='self-weight-deflection-1'></div>
+        <label for='drying-shrinkage-deflection' class='underline'>Drying shrinkage deflection</label>
+        <div id='drying-shrinkage-deflection'></div>
+        <label for='creep-deflection' class='underline'>Creep deflection</label>
+        <div id='creep-deflection'></div>
+        <label for='ksh' class='underline'>Ksh</label>
+        <div id='ksh'></div>
+        <label for='total-deflection-2' class='underline'>Total Deflection 2</label>
+        <div id='total-deflection-2'></div>
+        <label for='span-360-deflection-2-status' class='underline'>Span/360 Status:</label>
+        <div id='span-360-deflection-2-status'></div>
+        <label for='span-500-deflection-2-status' class='underline'>Span/500 Status:</label>
+        <div id='span-500-deflection-2-status'></div>
         
-        
-        
+        <label for='self-weight-deflection-2' class='underline'>Self weight deflection 2</label>
+        <div id='self-weight-deflection-2'></div>
+        <label for='sustained-deflection' class='underline'>Sustained Deflection</label>
+        <div id='sustained-deflection'></div>
+        <label for='total-deflection-3' class='underline'>Total Deflection 3</label>
+        <div id='total-deflection-3'></div>
+        <label for='span-360-deflection-3-status' class='underline'>Span/360 Status:</label>
+        <div id='span-360-deflection-3-status'></div>
+        <label for='span-500-deflection-3-status' class='underline'>Span/500 Status:</label>
+        <div id='span-500-deflection-3-status'></div>
+        <label for='max-short-term' class='underline'>MAX SHORT_TERM</label>
+        <div id='max-short-term'></div>
+        <label for='max-short-term-status' class='underline'>MAX SHORT_TERM STATUS:</label>
+        <div id='max-short-term-status'></div>
+        <label for='max-long-term' class='underline'>MAX LONG_TERM</label>
+        <div id='max-long-term'></div>
+        <label for='max-long-term-status' class='underline'>MAX LONG_TERM STATUS:</label>
+        <div id='max-long-term-status'></div>
     </div>
     
     
@@ -495,6 +541,32 @@
         var span360Element = document.getElementById('span-360');
         var span500Element = document.getElementById('span-500');
         
+        var deadLoadDeflectionElement = document.getElementById('dead-load-deflection');
+        var constructionLLDeflectionElement = document.getElementById('construction-ll-deflection');
+        var totalDeflection1Element = document.getElementById('total-deflection-1');
+        var span360Deflection1StatusElement = document.getElementById('span-360-deflection-1-status');
+        var span500Deflection1StatusElement = document.getElementById('span-500-deflection-1-status');
+        var sdlPerElement = document.getElementById('sdl-per');
+        var liveLoadPerElement = document.getElementById('live-load-per');
+        var sdlShortTermLLDeflectionElement = document.getElementById('sdl-short-term-ll-deflection');
+        var selfWeightDeflection1Element = document.getElementById('self-weight-deflection-1');
+        var dryingShrinkageDeflectionElement = document.getElementById('drying-shrinkage-deflection');
+        var creepDeflectionElement = document.getElementById('creep-deflection');
+        var kshElement = document.getElementById('ksh');
+        var totalDeflection2Element = document.getElementById('total-deflection-2');
+        var span360Deflection2StatusElement = document.getElementById('span-360-deflection-2-status');
+        var span500Deflection2StatusElement = document.getElementById('span-500-deflection-2-status');
+        var selfWeightDeflection2Element = document.getElementById('self-weight-deflection-2');
+        var sustainedDeflectionElement = document.getElementById('sustained-deflection');
+        var totalDeflection3Element = document.getElementById('total-deflection-3');
+        var span360Deflection3StatusElement = document.getElementById('span-360-deflection-3-status');
+        var span500Deflection3StatusElement = document.getElementById('span-500-deflection-3-status');
+        
+        var maxShortTermElement = document.getElementById('max-short-term');
+        var maxShortTermStatusElement = document.getElementById('max-short-term-status');
+        var maxLongTermElement = document.getElementById('max-long-term');
+        var maxLongTermStatusElement = document.getElementById('max-long-term-status');
+        
         var testElement = document.getElementById('testing');
         
         const joistData = {
@@ -542,7 +614,7 @@
         
         const constantData = {
             btm : 35, phi : 0.9, fy : 345, e : 200000, v : 0.3, t : 3, kv : 5.34, phiHole : 0.8, cb : 1.1589, fol : 1385, fod : 729, g : 80000, 
-            iex : 13300, iey : 609.6, iez : 609.6, concreteStrength : 31, phiDifferent : 0.85, constructionLiveLoad : 0.9576
+            iex : 13300, iey : 609.6, iez : 609.6, concreteStrength : 31, phiDifferent : 0.85, constructionLiveLoad : 0.9576, creepDeflection : 1
         }
 
         var summitedData = {
@@ -565,7 +637,11 @@
         var calculatedCompositeFigures = {
             concreteThickness : 0, elasticModulus : 0, n : 0, bef : 0, centroidY : 0, areaA : 0, i1 : 0, i2 : 0, i3 : 0, i4 : 0, i5 : 0, i6 : 0, i7 : 0, i : 0, zt : 0, zb : 0, 
             phim : 0, q1 : 0, q2 : 0, q3 : 0, q4 : 0, q5 : 0, q : 0, weightOfConcrete : 0, joistSpacing : 0, span : 0, weightOfJoist : 0, precamberInJoist : 0, span360 : 0,
-            span500 : 0
+            span500 : 0, deadLoadDeflection : 0, constructionLLDeflection : 0, totalDeflection1 : 0, totalDeflection1Status360 : 'Fail', totalDeflection1Status500 : 'Fail',
+            sdlPer : 0, liveLoadPer : 0, sdlShortTermLLDeflection : 0, selfWeightDeflection1 : 0, dryingShrinkageDeflection : 0, ksh : 0, totalDeflection2 : 0,
+            totalDeflection2Status360 : 'Fail', totalDeflection2Status500 : 'Fail', selfWeightDeflection2 : 0, sustainedDeflection : 0,
+            totalDeflection3 : 0, totalDeflection3Status360 : 'Fail' , totalDeflection3Status500 : 'Fail', maxShortTerm : 0, maxShortTermStatus : 'Fail',
+            maxLongTerm : 0, maxLongTermStatus : 'Fail'
         }
         function CorrectInputValue(minimus, maximus, val, ident, decimals){
             var returnValue;
@@ -593,6 +669,7 @@
             CalculateCompositeFigures();
             
             DisplayCalculatedData();
+            
         }
         
         function CheckForInputValues(){
@@ -749,29 +826,17 @@
             calculatedNonCompositeFigures['foz'] = ((constantData['g']*calculatedNonCompositeFigures['j'])/(calculatedNonCompositeFigures['a']*Math.pow(calculatedNonCompositeFigures['rol'], 2)))*(1+(Math.pow(Math.PI, 2)*200000*calculatedNonCompositeFigures['iw'])/(constantData['g']*calculatedNonCompositeFigures['j']*Math.pow(constantData['iez'], 2)));
         
             calculatedNonCompositeFigures['mo'] = constantData['cb']*calculatedNonCompositeFigures['a']*calculatedNonCompositeFigures['rol']*Math.sqrt(calculatedNonCompositeFigures['foy']*calculatedNonCompositeFigures['foz']);
-        
             calculatedNonCompositeFigures['my'] = calculatedNonCompositeFigures['zf']*constantData['fy'];
-            
             calculatedNonCompositeFigures['λb'] = Math.sqrt(calculatedNonCompositeFigures['my']/calculatedNonCompositeFigures['mo']);
-            
             calculatedNonCompositeFigures['mc'] = calculatedNonCompositeFigures['λb'] <= 0.6 ? calculatedNonCompositeFigures['my'] : calculatedNonCompositeFigures['λb'] >= 1.336 ? calculatedNonCompositeFigures['my'] * (1/Math.pow(calculatedNonCompositeFigures['λb'], 2)) : 1.11*calculatedNonCompositeFigures['my']*(1-(10*Math.pow(calculatedNonCompositeFigures['λb'], 2)/36));
-        
             calculatedNonCompositeFigures['mbe'] = calculatedNonCompositeFigures['mo'] < 0.56 * calculatedNonCompositeFigures['my'] ? calculatedNonCompositeFigures['mo'] : calculatedNonCompositeFigures['mo'] > 2.78 * calculatedNonCompositeFigures['my'] ? calculatedNonCompositeFigures['my'] : 10/9 * calculatedNonCompositeFigures['my'] * (1-(10 * calculatedNonCompositeFigures['my'])/(36 * calculatedNonCompositeFigures['mo']));
-        
             calculatedNonCompositeFigures['mol'] = calculatedNonCompositeFigures['zf'] * constantData['fol'];
-            
             calculatedNonCompositeFigures['λl'] = Math.sqrt(calculatedNonCompositeFigures['mbe']/calculatedNonCompositeFigures['mol']);
-            
             calculatedNonCompositeFigures['mbl'] = calculatedNonCompositeFigures['λl'] <= 0.776 ? calculatedNonCompositeFigures['mbe'] : (1 - 0.15 * Math.pow(calculatedNonCompositeFigures['mol'] / calculatedNonCompositeFigures['mbe'], 0.4)) * Math.pow(calculatedNonCompositeFigures['mol'] / calculatedNonCompositeFigures['mbe'], 0.4) * calculatedNonCompositeFigures['mbe'];
-        
             calculatedNonCompositeFigures['mod'] = calculatedNonCompositeFigures['zf'] * constantData['fod'];
-            
             calculatedNonCompositeFigures['λd'] = Math.sqrt(calculatedNonCompositeFigures['my']/calculatedNonCompositeFigures['mod']);
-            
             calculatedNonCompositeFigures['mbd'] = calculatedNonCompositeFigures['λd'] <= 0.673 ? calculatedNonCompositeFigures['my'] : (1 - 0.22 * Math.pow(calculatedNonCompositeFigures['mod'] / calculatedNonCompositeFigures['my'], 0.5)) * Math.pow(calculatedNonCompositeFigures['mod']/calculatedNonCompositeFigures['my'], 0.5) * calculatedNonCompositeFigures['my'];
-        
             calculatedNonCompositeFigures['ms'] = calculatedNonCompositeFigures['zc']*constantData['fy'];
-            
             calculatedNonCompositeFigures['ømb'] = 0.9 * Math.min(calculatedNonCompositeFigures['mbe'], calculatedNonCompositeFigures['mbl'], calculatedNonCompositeFigures['mbd'], calculatedNonCompositeFigures['ms']) / 1000000;
         }                                        
         
@@ -806,10 +871,33 @@
             calculatedCompositeFigures['weightOfConcrete'] = 25 * calculatedCompositeFigures['concreteThickness'] / 1000;
             calculatedCompositeFigures['joistSpacing'] = summitedData['joistSpacing'] / 0.0032808399;
             calculatedCompositeFigures['span'] = summitedData['joistSpacing'] * 0.3048;
-            calculatedCompositeFigures['precamberInJoist'] = nonCompositeTableA[sharedFigures['joist']];
+            calculatedCompositeFigures['weightOfJoist'] = nonCompositeTableA[sharedFigures['joist']];
+            calculatedCompositeFigures['precamberInJoist'] = -1.5 * calculatedCompositeFigures['span'];
             calculatedCompositeFigures['span360'] = calculatedCompositeFigures['span'] * 1000 / 360;
             calculatedCompositeFigures['span500'] = calculatedCompositeFigures['span'] * 1000 / 500;
-            
+            calculatedCompositeFigures['deadLoadDeflection'] = (5 / 384) * ((calculatedCompositeFigures['weightOfConcrete'] * calculatedCompositeFigures['joistSpacing'] / 1000) + calculatedCompositeFigures['weightOfJoist'] * 9.81 / 1000) * Math.pow(calculatedCompositeFigures['span'] * 1000, 4) / (constantData['e'] * calculatedNonCompositeFigures['i']);
+            calculatedCompositeFigures['constructionLLDeflection'] = (5 / 384) * ((constantData['constructionLiveLoad'] * calculatedCompositeFigures['joistSpacing'] / 1000)) * Math.pow(calculatedCompositeFigures['span'] * 1000, 4) / (constantData['e'] * calculatedNonCompositeFigures['i']);
+            calculatedCompositeFigures['totalDeflection1'] = calculatedCompositeFigures['deadLoadDeflection'] + calculatedCompositeFigures['precamberInJoist'] + calculatedCompositeFigures['constructionLLDeflection'];
+            calculatedCompositeFigures['totalDeflection1Status360'] = calculatedCompositeFigures['totalDeflection1'] > calculatedCompositeFigures['span360'] ? "FAIL" : "PASS" ;
+            calculatedCompositeFigures['totalDeflection1Status500'] = calculatedCompositeFigures['totalDeflection1'] > calculatedCompositeFigures['span500'] ? "FAIL" : "PASS" ;
+            calculatedCompositeFigures['sdlPer'] = summitedData['sdl'] * 0.047880258888889;
+            calculatedCompositeFigures['liveLoadPer'] = summitedData['liveLoad'] * 0.047880258888889;
+            calculatedCompositeFigures['sdlShortTermLLDeflection'] = (5 / 384) * (((calculatedCompositeFigures['sdlPer'] + 0.75 * calculatedCompositeFigures['liveLoadPer']) * calculatedCompositeFigures['joistSpacing'] / 1000)) * Math.pow(calculatedCompositeFigures['span'] * 1000, 4) / (constantData['e'] * calculatedCompositeFigures['i']);
+            calculatedCompositeFigures['selfWeightDeflection1'] = calculatedCompositeFigures['deadLoadDeflection']; //same thing apparently
+            calculatedCompositeFigures['ksh'] = 336.375 * Math.pow(10, -6) / (sharedFigures['joist'] + calculatedCompositeFigures['concreteThickness']);
+            calculatedCompositeFigures['dryingShrinkageDeflection'] = 0.125 * calculatedCompositeFigures['ksh'] * Math.pow(calculatedCompositeFigures['span'] * 1000, 2);
+            calculatedCompositeFigures['totalDeflection2'] = calculatedCompositeFigures['selfWeightDeflection1'] + calculatedCompositeFigures['dryingShrinkageDeflection'] + constantData['creepDeflection'] + calculatedCompositeFigures['precamberInJoist'] + calculatedCompositeFigures['sdlShortTermLLDeflection'];
+            calculatedCompositeFigures['totalDeflection2Status360'] = calculatedCompositeFigures['totalDeflection2'] > calculatedCompositeFigures['span360'] ? "FAIL" : "PASS" ;
+            calculatedCompositeFigures['totalDeflection2Status500'] = calculatedCompositeFigures['totalDeflection2'] > calculatedCompositeFigures['span500'] ? "FAIL" : "PASS" ;
+            calculatedCompositeFigures['selfWeightDeflection2'] = (5 / 384) * ((calculatedCompositeFigures['weightOfConcrete'] * calculatedCompositeFigures['joistSpacing'] / 1000) + calculatedCompositeFigures['weightOfJoist'] * 9.81 / 1000) * Math.pow(calculatedCompositeFigures['span'] * 1000, 4) / (constantData['e'] * calculatedCompositeFigures['i']);
+            calculatedCompositeFigures['sustainedDeflection'] = ((5 / 384) * ((calculatedCompositeFigures['sdlPer'] * calculatedCompositeFigures['joistSpacing'] / 1000)) * Math.pow(calculatedCompositeFigures['span'] * 1000, 4) / (constantData['e'] * calculatedCompositeFigures['i']) + calculatedCompositeFigures['selfWeightDeflection2']) *1.9;
+            calculatedCompositeFigures['totalDeflection3'] = calculatedCompositeFigures['selfWeightDeflection2'] + calculatedCompositeFigures['precamberInJoist'] + calculatedCompositeFigures['sdlShortTermLLDeflection'] + calculatedCompositeFigures['sustainedDeflection'];
+            calculatedCompositeFigures['totalDeflection3Status360'] = calculatedCompositeFigures['totalDeflection3'] > calculatedCompositeFigures['span360'] ? "FAIL" : "PASS" ;
+            calculatedCompositeFigures['totalDeflection3Status500'] = calculatedCompositeFigures['totalDeflection3'] > calculatedCompositeFigures['span500'] ? "FAIL" : "PASS" ;
+            calculatedCompositeFigures['maxShortTerm'] = Math.max(calculatedCompositeFigures['totalDeflection1'], calculatedCompositeFigures['totalDeflection2'], calculatedCompositeFigures['totalDeflection3']);
+            calculatedCompositeFigures['maxShortTermStatus'] = calculatedCompositeFigures['maxShortTerm'] > calculatedCompositeFigures['span360'] ? "FAIL" : "PASS" ;
+            calculatedCompositeFigures['maxLongTerm'] = calculatedCompositeFigures['maxShortTerm']; //same thing apparently
+            calculatedCompositeFigures['maxLongTermStatus'] = calculatedCompositeFigures['maxLongTerm'] > calculatedCompositeFigures['span500'] ? "FAIL" : "PASS" ;
         }
         
         function DisplayCalculatedData(){
@@ -831,12 +919,12 @@
             ztNonCompositeElement.innerHTML = calculatedNonCompositeFigures['zt'] + ' mm3';
             zbNonCompositeElement.innerHTML = calculatedNonCompositeFigures['zb'] + ' mm3';
             phiNonCompositeElement.innerHTML = constantData['phi'];
-            phimNonCompositeElement.innerHTML = calculatedNonCompositeFigures['phim'] + 'kNm';
+            phimNonCompositeElement.innerHTML = calculatedNonCompositeFigures['phim'] + ' kNm';
     
             circularHoleNonCompositeElement.innerHTML = sharedFigures['circularHole'] + ' dwh';
             nonCircularHoleNonCompositeElement.innerHTML = sharedFigures['nonCircularHole'] + ' dwh';
             fyNonCompositeElement.innerHTML = constantData['fy'] + ' MPa';
-            eNonCompositeElement.innerHTML = constantData['e'] + 'MPa';
+            eNonCompositeElement.innerHTML = constantData['e'] + ' MPa';
             vNonCompositeElement.innerHTML = constantData['v'];
             kNonCompositeElement.innerHTML = calculatedNonCompositeFigures['k'];
             tNonCompositeElement.innerHTML = constantData['t'] + ' mm';
@@ -951,11 +1039,40 @@
             weightOfConcreteElement.innerHTML = calculatedCompositeFigures['weightOfConcrete'] + ' kPa';
             joistSpacingElement.innerHTML = calculatedCompositeFigures['joistSpacing'] + ' mm';
             spanCompositeElement.innerHTML = calculatedCompositeFigures['span'] + ' m';
-            weightOfConcreteElement.innerHTML = calculatedCompositeFigures['weightOfConcrete'] + ' kg/m';
+            weightJoistElement.innerHTML = calculatedCompositeFigures['weightOfJoist'] + ' kg/m';
             precamberJoistElement.innerHTML = calculatedCompositeFigures['precamberInJoist'] + ' mm';
             
             span360Element.innerHTML = calculatedCompositeFigures['span360'] + ' mm';
             span500Element.innerHTML = calculatedCompositeFigures['span500'] + ' mm';
+            
+            deadLoadDeflectionElement.innerHTML = calculatedCompositeFigures['deadLoadDeflection'] + ' mm';
+            constructionLLDeflectionElement.innerHTML = calculatedCompositeFigures['constructionLLDeflection'] + ' mm';
+            totalDeflection1Element.innerHTML = calculatedCompositeFigures['totalDeflection1'] + ' mm';
+            span360Deflection1StatusElement.innerHTML = calculatedCompositeFigures['totalDeflection1Status360'];
+            span500Deflection1StatusElement.innerHTML = calculatedCompositeFigures['totalDeflection1Status500'];
+            
+            sdlPerElement.innerHTML = calculatedCompositeFigures['sdlPer'] + ' kPa';
+            liveLoadPerElement.innerHTML = calculatedCompositeFigures['liveLoadPer'] + ' kPa';
+            sdlShortTermLLDeflectionElement.innerHTML = calculatedCompositeFigures['sdlShortTermLLDeflection'] + ' mm';
+            
+            selfWeightDeflection1Element.innerHTML = calculatedCompositeFigures['selfWeightDeflection1'] + ' mm';
+            dryingShrinkageDeflectionElement.innerHTML = calculatedCompositeFigures['dryingShrinkageDeflection'] + ' mm';
+            creepDeflectionElement.innerHTML = constantData['creepDeflection'] + ' mm';
+            kshElement.innerHTML = calculatedCompositeFigures['ksh']
+            totalDeflection2Element.innerHTML = calculatedCompositeFigures['totalDeflection2'] + ' mm';
+            span360Deflection2StatusElement.innerHTML = calculatedCompositeFigures['totalDeflection2Status360'];
+            span500Deflection2StatusElement.innerHTML = calculatedCompositeFigures['totalDeflection2Status500'];
+            
+            selfWeightDeflection2Element.innerHTML = calculatedCompositeFigures['selfWeightDeflection2'] + ' mm';
+            sustainedDeflectionElement.innerHTML = calculatedCompositeFigures['sustainedDeflection'] + ' mm';
+            totalDeflection3Element.innerHTML = calculatedCompositeFigures['totalDeflection3'] + ' mm';
+            span360Deflection3StatusElement.innerHTML = calculatedCompositeFigures['totalDeflection3Status360'];
+            span500Deflection3StatusElement.innerHTML = calculatedCompositeFigures['totalDeflection3Status500'];
+            
+            maxShortTermElement.innerHTML = calculatedCompositeFigures['maxShortTerm'] + ' mm';
+            maxShortTermStatusElement.innerHTML = calculatedCompositeFigures['maxShortTermStatus'];
+            maxLongTermElement.innerHTML = calculatedCompositeFigures['maxLongTerm'] + ' mm';
+            maxLongTermStatusElement.innerHTML = calculatedCompositeFigures['maxLongTermStatus'];
         }
         
         // The decimals is how many decimal places you would like to round to. 0 being integers, 1 being 1 decimal place, etc.
