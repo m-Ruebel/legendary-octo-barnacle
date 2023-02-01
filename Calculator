@@ -64,6 +64,9 @@
         <option value='500'>500</option>
     </select>
     <br>
+    <label for='joist-span-input'>Live Load</label>
+    <input type='number' id='joist-span-input' name='joist-span-input' min='0' max='10'>
+    <br>
     <button type='button' onclick='SubmitData()'>Submit</button>
     
     <div id='calculated-data'>
@@ -320,7 +323,22 @@
         <div id='q-5-composite'></div>
         <label for='q-composite' class='underline'>Q</label>
         <div id='q-composite'></div>
-        
+        <label for='construction-live-load-composite' class='underline'>Construction Live Load</label>
+        <div id='construction-live-load-composite'></div>
+        <label for='weight-of-concrete' class='underline'>Weight of Concrete</label>
+        <div id='weight-of-concrete'></div>
+        <label for='joist-spacing-composite' class='underline'>Joist Spacing</label>
+        <div id='joist-spacing-composite'></div>
+        <label for='span-composite' class='underline'>Span</label>
+        <div id='span-composite'></div>
+        <label for='weight-joist' class='underline'>Weight of Joist</label>
+        <div id='weight-joist'></div>
+        <label for='precamber-joist' class='underline'>Precamber in Joist</label>
+        <div id='precamber-joist'></div>
+        <label for='span-360' class='underline'>Span/360</label>
+        <div id='span-360'></div>
+        <label for='span-500' class='underline'>Span/500</label>
+        <div id='span-500'></div>
         
         
         
@@ -337,6 +355,7 @@
         var sdlInput = document.getElementById('sdl-input');
         var liveLoadInput = document.getElementById('live-load-input');
         var deflectionLimitDropDown = document.getElementById('deflection-limit-dd');
+        var joistSpanInput = document.getElementById('joist-span-input');
         
         var joistNonCompositeElement = document.getElementById('joist-non-composite');
         var btmNonCompositeElement = document.getElementById('btm-non-composite');
@@ -467,6 +486,15 @@
         var q5CompositeElement = document.getElementById('q-5-composite');
         var qCompositeElement = document.getElementById('q-composite');
         
+        var constructionLiveLoadElement = document.getElementById('construction-live-load-composite');
+        var weightOfConcreteElement = document.getElementById('weight-of-concrete');
+        var joistSpacingElement = document.getElementById('joist-spacing-composite');
+        var spanCompositeElement = document.getElementById('span-composite');
+        var weightJoistElement = document.getElementById('weight-joist');
+        var precamberJoistElement = document.getElementById('precamber-joist');
+        var span360Element = document.getElementById('span-360');
+        var span500Element = document.getElementById('span-500');
+        
         var testElement = document.getElementById('testing');
         
         const joistData = {
@@ -514,11 +542,11 @@
         
         const constantData = {
             btm : 35, phi : 0.9, fy : 345, e : 200000, v : 0.3, t : 3, kv : 5.34, phiHole : 0.8, cb : 1.1589, fol : 1385, fod : 729, g : 80000, 
-            iex : 13300, iey : 609.6, iez : 609.6, concreteStrength : 31, phiDifferent : 0.85
+            iex : 13300, iey : 609.6, iez : 609.6, concreteStrength : 31, phiDifferent : 0.85, constructionLiveLoad : 0.9576
         }
 
         var summitedData = {
-            joistSize : 0, joistSpacing : 0, slabTopping : 0, firstHoleLocation : 0, sdl : 0, liveLoad : 0, deflectionLimit : 0
+            joistSize : 0, joistSpacing : 0, slabTopping : 0, firstHoleLocation : 0, sdl : 0, liveLoad : 0, deflectionLimit : 0, joistSpan : 0
         }
         
         var sharedFigures = {
@@ -536,7 +564,8 @@
         
         var calculatedCompositeFigures = {
             concreteThickness : 0, elasticModulus : 0, n : 0, bef : 0, centroidY : 0, areaA : 0, i1 : 0, i2 : 0, i3 : 0, i4 : 0, i5 : 0, i6 : 0, i7 : 0, i : 0, zt : 0, zb : 0, 
-            phim : 0, q1 : 0, q2 : 0, q3 : 0, q4 : 0, q5 : 0, q : 0
+            phim : 0, q1 : 0, q2 : 0, q3 : 0, q4 : 0, q5 : 0, q : 0, weightOfConcrete : 0, joistSpacing : 0, span : 0, weightOfJoist : 0, precamberInJoist : 0, span360 : 0,
+            span500 : 0
         }
         function CorrectInputValue(minimus, maximus, val, ident, decimals){
             var returnValue;
@@ -567,7 +596,7 @@
         }
         
         function CheckForInputValues(){
-            if (sdlInput.value.length !== 0 && liveLoadInput.value.length !== 0)
+            if (sdlInput.value.length !== 0 && liveLoadInput.value.length !== 0 && joistSpanInput.value.length !== 0)
                 return true;
             return false;
         }
@@ -774,7 +803,12 @@
             calculatedCompositeFigures['q4'] = 94.5 * (calculatedCompositeFigures['areaA'] - 33.5);
             calculatedCompositeFigures['q5'] = 3 * (calculatedCompositeFigures['areaA'] - constantData['btm']) * (calculatedCompositeFigures['areaA'] - ((calculatedCompositeFigures['areaA'] - constantData['btm']) / 2 + constantData['btm']));
             calculatedCompositeFigures['q'] = calculatedCompositeFigures['q1'] + calculatedCompositeFigures['q2'] + calculatedCompositeFigures['q3'] + calculatedCompositeFigures['q4'] + calculatedCompositeFigures['q5'];
-            
+            calculatedCompositeFigures['weightOfConcrete'] = 25 * calculatedCompositeFigures['concreteThickness'] / 1000;
+            calculatedCompositeFigures['joistSpacing'] = summitedData['joistSpacing'] / 0.0032808399;
+            calculatedCompositeFigures['span'] = summitedData['joistSpacing'] * 0.3048;
+            calculatedCompositeFigures['precamberInJoist'] = nonCompositeTableA[sharedFigures['joist']];
+            calculatedCompositeFigures['span360'] = calculatedCompositeFigures['span'] * 1000 / 360;
+            calculatedCompositeFigures['span500'] = calculatedCompositeFigures['span'] * 1000 / 500;
             
         }
         
@@ -906,13 +940,22 @@
             phiDifferentCompositeElement.innerHTML = constantData['phiDifferent'] + ' mm3';
             phimCompositeElement.innerHTML = calculatedCompositeFigures['phim'];
             
-            q1CompositeElement.innerHTML = calculatedCompositeFigures['q1'];
-            q2CompositeElement.innerHTML = calculatedCompositeFigures['q2'];
-            q3CompositeElement.innerHTML = calculatedCompositeFigures['q3'];
-            q4CompositeElement.innerHTML = calculatedCompositeFigures['q4'];
-            q5CompositeElement.innerHTML = calculatedCompositeFigures['q5'];
-            qCompositeElement.innerHTML = calculatedCompositeFigures['q'];
+            q1CompositeElement.innerHTML = calculatedCompositeFigures['q1'] + ' mm3';
+            q2CompositeElement.innerHTML = calculatedCompositeFigures['q2'] + ' mm3';
+            q3CompositeElement.innerHTML = calculatedCompositeFigures['q3'] + ' mm3';
+            q4CompositeElement.innerHTML = calculatedCompositeFigures['q4'] + ' mm3';
+            q5CompositeElement.innerHTML = calculatedCompositeFigures['q5'] + ' mm3';
+            qCompositeElement.innerHTML = calculatedCompositeFigures['q'] + ' mm3';
             
+            constructionLiveLoadElement.innerHTML = constantData['constructionLiveLoad'] + ' kPa';
+            weightOfConcreteElement.innerHTML = calculatedCompositeFigures['weightOfConcrete'] + ' kPa';
+            joistSpacingElement.innerHTML = calculatedCompositeFigures['joistSpacing'] + ' mm';
+            spanCompositeElement.innerHTML = calculatedCompositeFigures['span'] + ' m';
+            weightOfConcreteElement.innerHTML = calculatedCompositeFigures['weightOfConcrete'] + ' kg/m';
+            precamberJoistElement.innerHTML = calculatedCompositeFigures['precamberInJoist'] + ' mm';
+            
+            span360Element.innerHTML = calculatedCompositeFigures['span360'] + ' mm';
+            span500Element.innerHTML = calculatedCompositeFigures['span500'] + ' mm';
         }
         
         // The decimals is how many decimal places you would like to round to. 0 being integers, 1 being 1 decimal place, etc.
