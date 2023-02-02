@@ -64,7 +64,7 @@
         <option value='500'>500</option>
     </select>
     <br>
-    <label for='joist-span-input'>Live Load</label>
+    <label for='joist-span-input'>Joist Span</label>
     <input type='number' id='joist-span-input' name='joist-span-input' min='0' max='10'>
     <br>
     <button type='button' onclick='SubmitData()'>Submit</button>
@@ -404,6 +404,8 @@
         <label for='composite-design-case' class='underline'>Design Case Composite</label>
         <div id='composite-design-case'></div>
         
+        <label for='design-variable-0' class='underline'>Design Variable 0</label>
+        <div id='design-variable-0'></div>
         <label for='design-variable-1' class='underline'>Design Variable 1</label>
         <div id='design-variable-1'></div>
         <label for='design-variable-2' class='underline'>Design Variable 2</label>
@@ -420,6 +422,15 @@
         <div id='design-variable-7'></div>
         <label for='design-variable-8' class='underline'>Design Variable 8</label>
         <div id='design-variable-8'></div>
+        
+        <label for='moment-capacity' class='underline'>Moment Capacity</label>
+        <div id='moment-capacity'></div>
+        <label for='shear-capacity-at-support' class='underline'>Shear Capacity at Support</label>
+        <div id='shear-capacity-at-support'></div>
+        <label for='shear-capacity-at-first-hole' class='underline'>Shear Capacity at First Hole</label>
+        <div id='shear-capacity-at-first-hole'></div>
+        <label for='deflection-final-test' class='underline'>Deflection</label>
+        <div id='deflection-final-test'></div>
     </div>
     
     
@@ -604,6 +615,7 @@
         var constrDesignCaseElement = document.getElementById('constr-design-case');
         var compositeDesignCaseElement = document.getElementById('composite-design-case');
         
+        var designVar0Element = document.getElementById('design-variable-0');
         var designVar1Element = document.getElementById('design-variable-1');
         var designVar2Element = document.getElementById('design-variable-2');
         var designVar3Element = document.getElementById('design-variable-3');
@@ -612,6 +624,11 @@
         var designVar6Element = document.getElementById('design-variable-6');
         var designVar7Element = document.getElementById('design-variable-7');
         var designVar8Element = document.getElementById('design-variable-8');
+        
+        var momentCapacityElement = document.getElementById('moment-capacity');
+        var shearCapacityAtSupportElement = document.getElementById('shear-capacity-at-support');
+        var shearCapacityAtFirstHoleElement = document.getElementById('shear-capacity-at-first-hole');
+        var deflectionFinalTestElement = document.getElementById('deflection-final-test');
         
         var testElement = document.getElementById('testing');
         
@@ -661,9 +678,9 @@
         const constantData = {
             btm : 35, phi : 0.9, fy : 345, e : 200000, v : 0.3, t : 3, kv : 5.34, phiHole : 0.8, cb : 1.1589, fol : 1385, fod : 729, g : 80000, 
             iex : 13300, iey : 609.6, iez : 609.6, concreteStrength : 31, phiDifferent : 0.85, constructionLiveLoad : 0.9576, creepDeflection : 1,
-            capacityEndBoltedSupport : 65
+            capacityEndBoltedSupport : 63
         }
-
+        
         var summitedData = {
             joistSize : 0, joistSpacing : 0, slabTopping : 0, firstHoleLocation : 0, sdl : 0, liveLoad : 0, deflectionLimit : 0, joistSpan : 0
         }
@@ -693,7 +710,11 @@
         }
         
         var calculatedDesignFigures = {
-            designVar1 : 0, designVar2 : 0, designVar3 : 0, designVar4 : 0, designVar5 : 0, designVar6 : 0, designVar7 : 0, designVar8 : 0
+            designVar0 : 0, designVar1 : 0, designVar2 : 0, designVar3 : 0, designVar4 : 0, designVar5 : 0, designVar6 : 0, designVar7 : 0, designVar8 : 0
+        }
+        
+        var finalDesignStatus = {
+            momentCapacity : 'Fail', shearCapacityAtSupport : 'Fail', shearCapacityAtFirstHole : 'Fail', deflection : 'Fail' 
         }
         
         function CorrectInputValue(minimus, maximus, val, ident, decimals){
@@ -723,6 +744,8 @@
             
             CalculateDesignFigures();
             
+            FinalDesignCheck();
+            
             DisplayCalculatedData();
             
             
@@ -743,6 +766,7 @@
             summitedData['sdl'] = sdlInput.value;
             summitedData['liveLoad'] = liveLoadInput.value;
             summitedData['deflectionLimit'] = deflectionLimitDropDown.value;
+            summitedData['joistSpan'] = joistSpanInput.value;
         }
         
         function CalculateSharedFigure(){
@@ -964,14 +988,37 @@
         }
         
         function CalculateDesignFigures(){
-            calculatedDesignFigures['designVar1'] = summitedData['joistSpan']; //calculatedCompositeFigures['constrDesignCase'] * Math.pow(summitedData['joistSpan'] * 0.3048, 2) / 8;
-            //calculatedDesignFigures['designVar2'] = calculatedCompositeFigures['compositeDesignCase'] * Math.pow(SubmitData['joistSpan'] * 0.3048, 2) / 8;
-            //calculatedDesignFigures['designVar3'] = Math.min(constantData['capacityEndBoltedSupport'], slabData[summitedData['slabTopping']]['vr'] / 0.22480894387096);
-            //CalculateDesignFigures['designVar4'] =
-            //CalculateDesignFigures['designVar5']
-            //CalculateDesignFigures['designVar6']
-            //CalculateDesignFigures['designVar7']
-            //CalculateDesignFigures['designVar8']
+            calculatedDesignFigures['designVar0'] = Math.min(joistData[summitedData['joistSize']]['mr'] / 0.737562, calculatedNonCompositeFigures['ømb']);
+            calculatedDesignFigures['designVar1'] = calculatedCompositeFigures['constrDesignCase'] * Math.pow(summitedData['joistSpan'] * 0.3048, 2) / 8;
+            calculatedDesignFigures['designVar2'] = calculatedCompositeFigures['compositeDesignCase'] * Math.pow(summitedData['joistSpan'] * 0.3048, 2) / 8;
+            calculatedDesignFigures['designVar3'] = Math.min(constantData['capacityEndBoltedSupport'], slabData[summitedData['slabTopping']][summitedData['joistSize']]['vr'] / 0.22480894387096);
+            calculatedDesignFigures['designVar4'] = summitedData['joistSpan'] * summitedData['joistSpan'] * 0.3048 / 2;
+            try {
+               calculatedDesignFigures['designVar5'] = math.min(constantData['capacityEndBoltedSupport'], slabData[summitedData['slabTopping']][summitedData['joistSize']]['vr'] / 0.22480894387096, slabData[summitedData['slabTopping']][summitedData['joistSize']]['vrh'] / 0.22480894387096);
+            }
+            catch(err) {
+                calculatedDesignFigures['designVar5'] = 'N/A';
+            }
+            try {
+                calculatedDesignFigures['designVar6'] = calculatedCompositeFigures['compositeDesignCase'] * (summitedData['joistSpan'] * 0.3048 * 0.5 - (summitedData['firstHoleLocation'] / 0.0032808399) / 1000);
+            }
+            catch {
+                calculatedDesignFigures['designVar6'] = 'N/A';
+            }
+            calculatedDesignFigures['designVar7'] = summitedData['joistSpan'] * 304.8 / summitedData['deflectionLimit'];
+            calculatedDesignFigures['designVar8'] = summitedData['deflectionLimit'] === 360 ? calculatedCompositeFigures['maxShortTerm'] : calculatedCompositeFigures['maxLongTerm'] ; 
+        }
+        
+        function FinalDesignCheck(){
+            finalDesignStatus['momentCapacity'] = calculatedDesignFigures['designVar1'] <= calculatedDesignFigures['designVar0'] && calculatedDesignFigures['designVar2'] <= (slabData[summitedData['slabTopping']][summitedData['joistSize']]['mrc'] / 0.737562) ? "PASS" : "FAIL" ; 
+            finalDesignStatus['shearCapacityAtSupport'] = calculatedDesignFigures['designVar4'] > calculatedDesignFigures['designVar3'] ? "FAIL" : "PASS";
+            try {
+                finalDesignStatus['shearCapacityAtFirstHole'] = summitedData['joistSize'] < 9 ? "N/A" : calculatedDesignFigures['designVar6'] > calculatedDesignFigures['designVar5'] ? "FAIL" : "PASS" ;
+            }
+            catch{
+                finalDesignStatus['shearCapacityAtFirstHole'] = 'FAIL OR N/A';
+            }
+            finalDesignStatus['deflection'] = calculatedDesignFigures['designVar8'] > calculatedDesignFigures['designVar7'] ? "FAIL" : "PASS" ;
         }
         
         function DisplayCalculatedData(){
@@ -1155,6 +1202,7 @@
             constrDesignCaseElement.innerHTML = calculatedCompositeFigures['constrDesignCase'];
             compositeDesignCaseElement.innerHTML = calculatedCompositeFigures['compositeDesignCase'];
             
+            designVar0Element.innerHTML = calculatedDesignFigures['designVar0'];
             designVar1Element.innerHTML = calculatedDesignFigures['designVar1'];
             designVar2Element.innerHTML = calculatedDesignFigures['designVar2'];
             designVar3Element.innerHTML = calculatedDesignFigures['designVar3'];
@@ -1163,6 +1211,11 @@
             designVar6Element.innerHTML = calculatedDesignFigures['designVar6'];
             designVar7Element.innerHTML = calculatedDesignFigures['designVar7'];
             designVar8Element.innerHTML = calculatedDesignFigures['designVar8'];
+            
+            momentCapacityElement.innerHTML = finalDesignStatus['momentCapacity'];
+            shearCapacityAtSupportElement.innerHTML = finalDesignStatus['shearCapacityAtSupport'];
+            shearCapacityAtFirstHoleElement.innerHTML = finalDesignStatus['shearCapacityAtFirstHole'];
+            deflectionFinalTestElement.innerHTML = finalDesignStatus['deflection'];
         }
         
         // The decimals is how many decimal places you would like to round to. 0 being integers, 1 being 1 decimal place, etc.
