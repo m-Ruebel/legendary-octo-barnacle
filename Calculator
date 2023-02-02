@@ -390,6 +390,20 @@
         <div id='max-long-term'></div>
         <label for='max-long-term-status' class='underline'>MAX LONG_TERM STATUS:</label>
         <div id='max-long-term-status'></div>
+        
+        <label for='constr-14-d' class='underline'>1.4D Constr</label>
+        <div id='constr-14-d'></div>
+        <label for='composite-14-d' class='underline'>1.4D Composite</label>
+        <div id='composite-14-d'></div>
+        <label for='constr-12-g-16-g' class='underline'>1.2G + 1.6G Constr</label>
+        <div id='constr-12-g-16-g'></div>
+        <label for='composite-12-g-16-g' class='underline'>1.2G + 1.6G Composite</label>
+        <div id='composite-12-g-16-g'></div>
+        <label for='constr-design-case' class='underline'>Design Case Constr</label>
+        <div id='constr-design-case'></div>
+        <label for='composite-design-case' class='underline'>Design Case Composite</label>
+        <div id='composite-design-case'></div>
+        
     </div>
     
     
@@ -567,6 +581,13 @@
         var maxLongTermElement = document.getElementById('max-long-term');
         var maxLongTermStatusElement = document.getElementById('max-long-term-status');
         
+        var constr14DElement = document.getElementById('constr-14-d');
+        var composite14DElement = document.getElementById('composite-14-d');
+        var constr12G16GElement = document.getElementById('constr-12-g-16-g');
+        var composite12G16GElement = document.getElementById('composite-12-g-16-g');
+        var constrDesignCaseElement = document.getElementById('constr-design-case');
+        var compositeDesignCaseElement = document.getElementById('composite-design-case');
+        
         var testElement = document.getElementById('testing');
         
         const joistData = {
@@ -641,7 +662,8 @@
             sdlPer : 0, liveLoadPer : 0, sdlShortTermLLDeflection : 0, selfWeightDeflection1 : 0, dryingShrinkageDeflection : 0, ksh : 0, totalDeflection2 : 0,
             totalDeflection2Status360 : 'Fail', totalDeflection2Status500 : 'Fail', selfWeightDeflection2 : 0, sustainedDeflection : 0,
             totalDeflection3 : 0, totalDeflection3Status360 : 'Fail' , totalDeflection3Status500 : 'Fail', maxShortTerm : 0, maxShortTermStatus : 'Fail',
-            maxLongTerm : 0, maxLongTermStatus : 'Fail'
+            maxLongTerm : 0, maxLongTermStatus : 'Fail', constr14D : 0, composite14D : 0, constr12G16G : 0, composite12G16G : 0, constrDesignCase : 0,
+            compositeDesignCase : 0 
         }
         function CorrectInputValue(minimus, maximus, val, ident, decimals){
             var returnValue;
@@ -898,6 +920,12 @@
             calculatedCompositeFigures['maxShortTermStatus'] = calculatedCompositeFigures['maxShortTerm'] > calculatedCompositeFigures['span360'] ? "FAIL" : "PASS" ;
             calculatedCompositeFigures['maxLongTerm'] = calculatedCompositeFigures['maxShortTerm']; //same thing apparently
             calculatedCompositeFigures['maxLongTermStatus'] = calculatedCompositeFigures['maxLongTerm'] > calculatedCompositeFigures['span500'] ? "FAIL" : "PASS" ;
+            calculatedCompositeFigures['constr14D'] = 1.4 * ((calculatedCompositeFigures['weightOfConcrete'] * calculatedCompositeFigures['joistSpacing'] / 1000) + calculatedCompositeFigures['weightOfJoist'] * 9.81 / 1000);
+            calculatedCompositeFigures['composite14D'] = 1.4 * (((calculatedCompositeFigures['weightOfConcrete'] + calculatedCompositeFigures['sdlPer']) * calculatedCompositeFigures['joistSpacing'] / 1000) + calculatedCompositeFigures['weightOfJoist'] * 9.81 / 1000);
+            calculatedCompositeFigures['constr12G16G'] = 1.2 * ((calculatedCompositeFigures['weightOfConcrete'] * calculatedCompositeFigures['joistSpacing'] / 1000) + calculatedCompositeFigures['weightOfJoist'] * 9.81 / 1000) + 1.6 * constantData['constructionLiveLoad'] * calculatedCompositeFigures['joistSpacing'] / 1000;
+            calculatedCompositeFigures['composite12G16G'] = 1.2 * (((calculatedCompositeFigures['weightOfConcrete'] + calculatedCompositeFigures['sdlPer']) * calculatedCompositeFigures['joistSpacing'] / 1000) + calculatedCompositeFigures['weightOfJoist'] * 9.81 / 1000) + 1.6 * calculatedCompositeFigures['liveLoadPer'] * calculatedCompositeFigures['joistSpacing'] / 1000;
+            calculatedCompositeFigures['constrDesignCase'] = Math.max(calculatedCompositeFigures['constr14D'], calculatedCompositeFigures['constr12G16G']);
+            calculatedCompositeFigures['compositeDesignCase'] = Math.max(calculatedCompositeFigures['composite14D'], calculatedCompositeFigures['composite12G16G']);
         }
         
         function DisplayCalculatedData(){
@@ -1073,6 +1101,13 @@
             maxShortTermStatusElement.innerHTML = calculatedCompositeFigures['maxShortTermStatus'];
             maxLongTermElement.innerHTML = calculatedCompositeFigures['maxLongTerm'] + ' mm';
             maxLongTermStatusElement.innerHTML = calculatedCompositeFigures['maxLongTermStatus'];
+            
+            constr14DElement.innerHTML = calculatedCompositeFigures['constr14D'];
+            composite14DElement.innerHTML = calculatedCompositeFigures['composite14D'];
+            constr12G16GElement.innerHTML = calculatedCompositeFigures['constr12G16G'];
+            composite12G16GElement.innerHTML = calculatedCompositeFigures['composite12G16G'];
+            constrDesignCaseElement.innerHTML = calculatedCompositeFigures['constrDesignCase'];
+            compositeDesignCaseElement.innerHTML = calculatedCompositeFigures['compositeDesignCase'];
         }
         
         // The decimals is how many decimal places you would like to round to. 0 being integers, 1 being 1 decimal place, etc.
