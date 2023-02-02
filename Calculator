@@ -404,6 +404,22 @@
         <label for='composite-design-case' class='underline'>Design Case Composite</label>
         <div id='composite-design-case'></div>
         
+        <label for='design-variable-1' class='underline'>Design Variable 1</label>
+        <div id='design-variable-1'></div>
+        <label for='design-variable-2' class='underline'>Design Variable 2</label>
+        <div id='design-variable-2'></div>
+        <label for='design-variable-3' class='underline'>Design Variable 3</label>
+        <div id='design-variable-3'></div>
+        <label for='design-variable-4' class='underline'>Design Variable 4</label>
+        <div id='design-variable-4'></div>
+        <label for='design-variable-5' class='underline'>Design Variable 5</label>
+        <div id='design-variable-5'></div>
+        <label for='design-variable-6' class='underline'>Design Variable 6</label>
+        <div id='design-variable-6'></div>
+        <label for='design-variable-7' class='underline'>Design Variable 7</label>
+        <div id='design-variable-7'></div>
+        <label for='design-variable-8' class='underline'>Design Variable 8</label>
+        <div id='design-variable-8'></div>
     </div>
     
     
@@ -588,6 +604,15 @@
         var constrDesignCaseElement = document.getElementById('constr-design-case');
         var compositeDesignCaseElement = document.getElementById('composite-design-case');
         
+        var designVar1Element = document.getElementById('design-variable-1');
+        var designVar2Element = document.getElementById('design-variable-2');
+        var designVar3Element = document.getElementById('design-variable-3');
+        var designVar4Element = document.getElementById('design-variable-4');
+        var designVar5Element = document.getElementById('design-variable-5');
+        var designVar6Element = document.getElementById('design-variable-6');
+        var designVar7Element = document.getElementById('design-variable-7');
+        var designVar8Element = document.getElementById('design-variable-8');
+        
         var testElement = document.getElementById('testing');
         
         const joistData = {
@@ -600,7 +625,7 @@
             17.716535415 :  { weight : 11.02029119, area : 3.2348564697, lx : 143.42925, rx : 6.65748030817, sx : 13.7913661071168, j : 17.850575, cw : 65.540593184, lxd : 137.66325, sxe : 12.54648173284608, mr : 47.0564556, vr : 11.91487402516088, vrh : 7.036519943161048},
         }
         const slabData = {
-            3.5 : {  
+            3.49999999643 : {  
                 5.905511805 :   { lxc : 28.83, mrc : 16.3001202, vr : 14.43273419651563, vrh : 'NA' },
                 7.87401574 :    { lxc : 57.41975, mrc : 25.5196452, vr : 20.72738462490251, vrh : 'NA' },
                 9.842519675 :   { lxc : 92.01575, mrc : 34.1491206, vr : 20.95219356877347, vrh : 7.283809781419104 },
@@ -609,7 +634,7 @@
                 15.74803148 :   { lxc : 235.9255, mrc : 60.2588154, vr : 13.55597931541889, vrh : 6.137284167677208 },
                 17.716535415 :  { lxc : 301.2735, mrc : 69.9208776, vr : 11.91487402516088, vrh : 7.036519943161048 },
             },
-            4.0 : {
+            3.99999999592 : {
                 5.905511805 :   { lxc : 29.3105, mrc : 15.6363144, vr : 14.43273419651563, vrh : 'NA' },
                 7.87401574 :    { lxc : 57.90025, mrc : 24.4870584, vr : 20.72738462490251, vrh : 'NA' },
                 9.842519675 :   { lxc : 99.22325, mrc : 35.402976, vr : 20.95219356877347, vrh : 7.283809781419104 },
@@ -635,7 +660,8 @@
         
         const constantData = {
             btm : 35, phi : 0.9, fy : 345, e : 200000, v : 0.3, t : 3, kv : 5.34, phiHole : 0.8, cb : 1.1589, fol : 1385, fod : 729, g : 80000, 
-            iex : 13300, iey : 609.6, iez : 609.6, concreteStrength : 31, phiDifferent : 0.85, constructionLiveLoad : 0.9576, creepDeflection : 1
+            iex : 13300, iey : 609.6, iez : 609.6, concreteStrength : 31, phiDifferent : 0.85, constructionLiveLoad : 0.9576, creepDeflection : 1,
+            capacityEndBoltedSupport : 65
         }
 
         var summitedData = {
@@ -665,6 +691,11 @@
             maxLongTerm : 0, maxLongTermStatus : 'Fail', constr14D : 0, composite14D : 0, constr12G16G : 0, composite12G16G : 0, constrDesignCase : 0,
             compositeDesignCase : 0 
         }
+        
+        var calculatedDesignFigures = {
+            designVar1 : 0, designVar2 : 0, designVar3 : 0, designVar4 : 0, designVar5 : 0, designVar6 : 0, designVar7 : 0, designVar8 : 0
+        }
+        
         function CorrectInputValue(minimus, maximus, val, ident, decimals){
             var returnValue;
             if (val < minimus)
@@ -690,7 +721,10 @@
             
             CalculateCompositeFigures();
             
+            CalculateDesignFigures();
+            
             DisplayCalculatedData();
+            
             
         }
         
@@ -926,6 +960,18 @@
             calculatedCompositeFigures['composite12G16G'] = 1.2 * (((calculatedCompositeFigures['weightOfConcrete'] + calculatedCompositeFigures['sdlPer']) * calculatedCompositeFigures['joistSpacing'] / 1000) + calculatedCompositeFigures['weightOfJoist'] * 9.81 / 1000) + 1.6 * calculatedCompositeFigures['liveLoadPer'] * calculatedCompositeFigures['joistSpacing'] / 1000;
             calculatedCompositeFigures['constrDesignCase'] = Math.max(calculatedCompositeFigures['constr14D'], calculatedCompositeFigures['constr12G16G']);
             calculatedCompositeFigures['compositeDesignCase'] = Math.max(calculatedCompositeFigures['composite14D'], calculatedCompositeFigures['composite12G16G']);
+            
+        }
+        
+        function CalculateDesignFigures(){
+            calculatedDesignFigures['designVar1'] = summitedData['joistSpan']; //calculatedCompositeFigures['constrDesignCase'] * Math.pow(summitedData['joistSpan'] * 0.3048, 2) / 8;
+            //calculatedDesignFigures['designVar2'] = calculatedCompositeFigures['compositeDesignCase'] * Math.pow(SubmitData['joistSpan'] * 0.3048, 2) / 8;
+            //calculatedDesignFigures['designVar3'] = Math.min(constantData['capacityEndBoltedSupport'], slabData[summitedData['slabTopping']]['vr'] / 0.22480894387096);
+            //CalculateDesignFigures['designVar4'] =
+            //CalculateDesignFigures['designVar5']
+            //CalculateDesignFigures['designVar6']
+            //CalculateDesignFigures['designVar7']
+            //CalculateDesignFigures['designVar8']
         }
         
         function DisplayCalculatedData(){
@@ -1108,6 +1154,15 @@
             composite12G16GElement.innerHTML = calculatedCompositeFigures['composite12G16G'];
             constrDesignCaseElement.innerHTML = calculatedCompositeFigures['constrDesignCase'];
             compositeDesignCaseElement.innerHTML = calculatedCompositeFigures['compositeDesignCase'];
+            
+            designVar1Element.innerHTML = calculatedDesignFigures['designVar1'];
+            designVar2Element.innerHTML = calculatedDesignFigures['designVar2'];
+            designVar3Element.innerHTML = calculatedDesignFigures['designVar3'];
+            designVar4Element.innerHTML = calculatedDesignFigures['designVar4'];
+            designVar5Element.innerHTML = calculatedDesignFigures['designVar5'];
+            designVar6Element.innerHTML = calculatedDesignFigures['designVar6'];
+            designVar7Element.innerHTML = calculatedDesignFigures['designVar7'];
+            designVar8Element.innerHTML = calculatedDesignFigures['designVar8'];
         }
         
         // The decimals is how many decimal places you would like to round to. 0 being integers, 1 being 1 decimal place, etc.
@@ -1123,10 +1178,10 @@
         
         
         
-        function TestFunction(val)
+        function TestFunction()
         {
-            /*var tes = slabData[3.5][value]['mrc'];*/
-            testElement.innerHTML = val;
+            var tes = slabData[3.49999999643]['mrc'];
+            testElement.innerHTML = tes;
         }
     </script>
 </html>
