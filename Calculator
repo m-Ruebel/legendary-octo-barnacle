@@ -14,1227 +14,2481 @@
             text-decoration-color: black;
         }
     </style>
-    
-    
-    
     <div id='testing'>
-            
-    </div>
-    <label for='joist-size-dd'>Joist Size</label>
-    <select name= 'joist-size-dd' id='joist-size-dd' onchange='jsFunction(this.value, this.id);'>
-        <option value='5.905511805'>6</option>
-        <option value='7.87401574'>8</option>
-        <option value='9.842519675'>10</option>
-        <option value='11.81102361'>12</option>
-        <option value='13.779527545'>14</option>
-        <option value='15.74803148'>16</option>
-        <option value='17.716535415'>18</option>
-    </select>
-    <br>
-    <label for='joist-spacing-dd'>Joist Spacing</label>
-    <select name= 'joist-spacing-dd' id='joist-spacing-dd'>
-        <option value='1.00000000152'>1</option>
-        <option value='2.00000000304'>2</option>
-        <option value='3.00000000456'>3</option>
-        <option value='4.00000000608'>4</option>
-        <option value='5.0000000076'>5</option>
-    </select>
-    <br>
-    <label for='slab-topping-dd'>Slab Topping</label>
-    <select name= 'slab-topping-dd' id='slab-topping-dd'>
-        <option value='3.49999999643'>3.5</option>
-        <option value='3.99999999592'>4</option>
-    </select>
-    <br>
-    <label for='first-hole-location-dd'>Input Hole Location</label>
-    <select name= 'first-hole-location-dd' id='first-hole-location-dd'>
-        <option value='3.00000000456'>3.5</option>
-        <option value='4.00000000608'>4</option>
-    </select>
-    <br>
-    <label for='sdl-input'>SDL</label>
-    <input type='number'  id='sdl-input' name='sdl-input' min='0' max='10' step='1' onchange='CorrectInputValue(this.min, this.max, value, this.id, 1)'>
-    <br>
-    <label for='live-load-input'>Live Load</label>
-    <input type='number' id='live-load-input' name='live-load-input' min='0' max='10'>
-    <br>
-    <label for='deflection-limit-dd'>Deflection Limit</label>
-    <select name='deflection-limit-dd' id='deflection-limit-dd'>
-        <option value='360'>360</option>
-        <option value='500'>500</option>
-    </select>
-    <br>
-    <label for='joist-span-input'>Joist Span</label>
-    <input type='number' id='joist-span-input' name='joist-span-input' min='0' max='10'>
-    <br>
-    <button type='button' onclick='SubmitData()'>Submit</button>
-    
-    <div id='calculated-data'>
-        <header>Non-Composite Data</header>
-        <label for='joist-non-composite' class='underline'>Joist</label>
-        <div id='joist-non-composite'></div>
-        <label for='btm-non-composite' class='underline'>BTM</label>
-        <div id='btm-non-composite'></div>
-        <label for='centroid-Y-non-composite' class='underline'>Centroid Y</label>
-        <div id='centroid-Y-non-composite'></div>
-        <label for='area-a-non-composite' class='underline'>Area A</label>
-        <div id='area-a-non-composite'></div>
-        <label for='i-1-non-composite' class='underline'>I1</label>
-        <div id='i-1-non-composite'></div>
-        <label for='i-2-non-composite' class='underline'>I2</label>
-        <div id='i-2-non-composite'></div>
-        <label for='i-3-non-composite' class='underline'>I3</label>
-        <div id='i-3-non-composite'></div>
-        <label for='i-4-non-composite' class='underline'>I4</label>
-        <div id='i-4-non-composite'></div>
-        <label for='i-5-non-composite' class='underline'>I5</label>
-        <div id='i-5-non-composite'></div>
-        <label for='i-6-non-composite' class='underline'>I6</label>
-        <div id='i-6-non-composite'></div>
-        <label for='i-7-non-composite' class='underline'>I7</label>
-        <div id='i-7-non-composite'></div>
-        <label for='i-8-non-composite' class='underline'>I8</label>
-        <div id='i-8-non-composite'></div>
-        <label for='i-9-non-composite' class='underline'>I9</label>
-        <div id='i-9-non-composite'></div>
-        <label for='i-10-non-composite' class='underline'>I10</label>
-        <div id='i-10-non-composite'></div>
-        <label for='i-non-composite' class='underline'>I</label>
-        <div id='i-non-composite'></div>
-        <label for='zt-non-composite' class='underline'>Zt</label>
-        <div id='zt-non-composite'></div>
-        <label for='zb-non-composite' class='underline'>Zb</label>
-        <div id='zb-non-composite'></div>
-        <label for='phi-non-composite' class='underline'>phi</label>
-        <div id='phi-non-composite'></div>
-        <label for='phim-non-composite' class='underline'>phiM</label>
-        <div id='phim-non-composite'></div>
-        <label for='circular-hole-non-composite' class='underline'>Circular Hole dwh</label>
-        <div id='circular-hole-non-composite'></div>
-        <label for='non-circular-hole-non-composite' class='underline'>Non Circular Hole dwh</label>
-        <div id='non-circular-hole-non-composite'></div>
-        <label for='circular-hole-non-composite' class='underline'>Circular Hole dwh</label>
-        <div id='circular-hole-non-composite'></div>
-        <label for='fy-non-composite' class='underline'>fy</label>
-        <div id='fy-non-composite'></div>
-        <label for='e-non-composite' class='underline'>E</label>
-        <div id='e-non-composite'></div>
-        <label for='v-non-composite' class='underline'>V</label>
-        <div id='v-non-composite'></div>
-        <label for='k-non-composite' class='underline'>k</label>
-        <div id='k-non-composite'></div>
-        <label for='t-non-composite' class='underline'>t</label>
-        <div id='t-non-composite'></div>
-        <label for='b-non-composite' class='underline'>b</label>
-        <div id='b-non-composite'></div>
-        <label for='fcr-non-composite' class='underline'>fcr</label>
-        <div id='fcr-non-composite'></div>
-        <label for='f-asterisk-non-composite' class='underline'>f*</label>
-        <div id='f-asterisk-non-composite'></div>
-        <label for='lamda-non-composite' class='underline'>lamda</label>
-        <div id='lamda-non-composite'></div>
-        <label for='p-non-composite' class='underline'>p</label>
-        <div id='p-non-composite'></div>
-        <label for='be-non-composite' class='underline'>be</label>
-        <div id='be-non-composite'></div>
-        <label for='psi-non-composite' class='underline'>psi</label>
-        <div id='psi-non-composite'></div>
-        <label for='be-1-non-composite' class='underline'>be1</label>
-        <div id='be-1-non-composite'></div>
-        <label for='be-2-non-composite' class='underline'>be2</label>
-        <div id='be-2-non-composite'></div>
-        <label for='i-51-non-composite' class='underline'>I51</label>
-        <div id='i-51-non-composite'></div>
-        <label for='d-52-non-composite' class='underline'>d52</label>
-        <div id='d-52-non-composite'></div>
-        <label for='i-52-non-composite' class='underline'>I52</label>
-        <div id='i-52-non-composite'></div>
-        <label for='kv-non-composite' class='underline'>kv</label>
-        <div id='kv-non-composite'></div>
-        <label for='d-1-non-composite' class='underline'>d1</label>
-        <div id='d-1-non-composite'></div>
-        <label for='d-1-over-t-non-composite' class='underline'>d1/t</label>
-        <div id='d-1-over-t-non-composite'></div>
-        <label for='ekv-Over-fy-non-composite' class='underline'>sqrt(Ekv/fy)</label>
-        <div id='ekv-Over-fy-non-composite'></div>
-        <label for='q1-non-composite' class='underline'>Q1</label>
-        <div id='q1-non-composite'></div>
-        <label for='q2-non-composite' class='underline'>Q2</label>
-        <div id='q2-non-composite'></div>
-        <label for='q3-non-composite' class='underline'>Q3</label>
-        <div id='q3-non-composite'></div>
-        <label for='q4-non-composite' class='underline'>Q4</label>
-        <div id='q4-non-composite'></div>
-        <label for='q5-non-composite' class='underline'>Q5</label>
-        <div id='q5-non-composite'></div>
-        <label for='q-non-composite' class='underline'>Q</label>
-        <div id='q-non-composite'></div>
-        <label for='phi-non-composite-2' class='underline'>phi</label>
-        <div id='phi-non-composite-2'></div>
-        <label for='phi-hole-non-composite' class='underline'>phi-hole</label>
-        <div id='phi-hole-non-composite'></div>
-        <label for='phiv-non-composite' class='underline'>phiV</label>
-        <div id='phiv-non-composite'></div>
-        <label for='phiv-cir-hole-non-composite' class='underline'>phiV-cir hole</label>
-        <div id='phiv-cir-hole-non-composite'></div>
-        <label for='phiv-non-cir-hole-non-composite' class='underline'>phiV-noncir hole</label>
-        <div id='phiv-non-cir-hole-non-composite'></div>
-        <label for='t-over-d1-times-ekv-over-fy-non-composite' class='underline'>(t/d1)*sqrt(2Ekv/fy)</label>
-        <div id='t-over-d1-times-ekv-over-fy-non-composite'></div>
-        <label for='d1-over-t-times-fy-over-ekv-non-composite' class='underline'>(d1/t)*sqrt(fy/Ekv)</label>
-        <div id='d1-over-t-times-fy-over-ekv-non-composite'></div>
-        <label for='ekv-over-fy-multiplied-non-composite' class='underline'>1.415sqrt(Ekv/fy)</label>
-        <div id='ekv-over-fy-multiplied-non-composite'></div>
-        <label for='ekvfy1-non-composite' class='underline'>0.64tw^2*sqrt(Ekvfy)</label>
-        <div id='ekvfy1-non-composite'></div>
-        <label for='c-circular-non-composite' class='underline'>c-circular</label>
-        <div id='c-circular-non-composite'></div>
-        <label for='qs-circular-non-composite' class='underline'>qs-circular</label>
-        <div id='qs-circular-non-composite'></div>
-        <label for='vcr-non-composite' class='underline'>Vcr</label>
-        <div id='vcr-non-composite'></div>
-        <label for='vy-non-composite' class='underline'>Vy</label>
-        <div id='vy-non-composite'></div>
-        <label for='lamda-v-non-composite' class='underline'>lamda v</label>
-        <div id='lamda-v-non-composite'></div>
-        <label for='ekvfy2-non-composite' class='underline'>0.6tw^2*sqrt(Ekvfy)</label>
-        <div id='ekvfy2-non-composite'></div>
-        <label for='c-noncircular-non-composite' class='underline'>c-noncircular</label>
-        <div id='c-noncircular-non-composite'></div>
-        <label for='qs-noncircular-non-composite' class='underline'>qs-noncircular</label>
-        <div id='qs-noncircular-non-composite'></div>
-        <label for='ø-non-composite' class='underline'>ø - Capacity reduction factor</label>
-        <div id='ø-non-composite'></div>
-        <label for='a-non-composite' class='underline'>A - Full cross section area</label>
-        <div id='a-non-composite'></div>
-        <label for='cb-non-composite' class='underline'>Cb - Unbraced segment moment distribution coefficient</label>
-        <div id='cb-non-composite'></div>
-        <label for='fol-non-composite' class='underline'>fol - Elastic local buckling stress</label>
-        <div id='fol-non-composite'></div>
-        <label for='fod-non-composite' class='underline'>fod - Elastic distorsional buckling stress</label>
-        <div id='fod-non-composite'></div>
-        <label for='fy-non-composite2' class='underline'>fy - Yield stress</label>
-        <div id='fy-non-composite2'></div>
-        <label for='g-non-composite' class='underline'>G - Shear modulus</label>
-        <div id='g-non-composite'></div>
-        <label for='j-non-composite' class='underline'>J - Torsion constant</label>
-        <div id='j-non-composite'></div>
-        <label for='zc-non-composite' class='underline'>Zc - Effective section modulus in bending at yield Zxe</label>
-        <div id='zc-non-composite'></div>
-        <label for='iex-non-composite' class='underline'>Iex - Effective length, x axis</label>
-        <div id='iex-non-composite'></div>
-        <label for='iey-non-composite' class='underline'>Iey - Effective length, y axis</label>
-        <div id='iey-non-composite'></div>
-        <label for='iez-non-composite' class='underline'>Iez - Effective length, twisting</label>
-        <div id='iez-non-composite'></div>
-        <label for='iw-non-composite' class='underline'>Iw - Warping constant</label>
-        <div id='iw-non-composite'></div>
-        <label for='rx-non-composite' class='underline'>rx - Radius of gyration</label>
-        <div id='rx-non-composite'></div>
-        <label for='ry-non-composite' class='underline'>ry - Radius of gyration</label>
-        <div id='ry-non-composite'></div>
-        <label for='x0-non-composite' class='underline'>X0 - Dimension, shear centre to centroid</label>
-        <div id='x0-non-composite'></div>
-        <label for='zf-non-composite' class='underline'>Zf - Unreduced section modulus, Zf = Zx </label>
-        <div id='zf-non-composite'></div>
-        <label for='y0-non-composite' class='underline'>y0 - Dimension, shear centre to centroid</label>
-        <div id='y0-non-composite'></div>
-        <label for='rol-non-composite' class='underline'>rol - Polar radius of gyrations of the cross-section about the shear centre</label>
-        <div id='rol-non-composite'></div>
-        <label for='foy-non-composite' class='underline'>foy - Y axis elastic buckling stress</label>
-        <div id='foy-non-composite'></div>
-        <label for='foz-non-composite' class='underline'>foz - Torsional elastic buckling stress</label>
-        <div id='foz-non-composite'></div>
-        <label for='mo-non-composite' class='underline'>Mo - Elastic buckling moment</label>
-        <div id='mo-non-composite'></div>
-        <label for='my-non-composite' class='underline'>My - Moment causing initial yield at the extreme compression fibre of a full section</label>
-        <div id='my-non-composite'></div>
-        <label for='λb-non-composite' class='underline'>λb - Non-dimensional slenderness</label>
-        <div id='λb-non-composite'></div>
-        <label for='mc-non-composite' class='underline'>Mc - Critical moment</label>
-        <div id='mc-non-composite'></div>
-        <label for='mbe-non-composite' class='underline'>Mbe - Nominal member capacity for lateral-torsional buckling</label>
-        <div id='mbe-non-composite'></div>
-        <label for='mol-non-composite' class='underline'>Mol - Elastic local buckling moment</label>
-        <div id='mol-non-composite'></div>
-        <label for='λl-non-composite' class='underline'>λl - Non-dimensional slenderness</label>
-        <div id='λl-non-composite'></div>
-        <label for='mbl-non-composite' class='underline'>Mbl - Nominal member capacity for local buckling</label>
-        <div id='mbl-non-composite'></div>
-        <label for='mod-non-composite' class='underline'>Mod - Elastic buckling moment in the distortional mode</label>
-        <div id='mod-non-composite'></div>
-        <label for='λd-non-composite' class='underline'>λd - Non-dimensional slenderness</label>
-        <div id='λd-non-composite'></div>
-        <label for='mbd-non-composite' class='underline'>Mbd - Nominal member capacity for distortional buckling</label>
-        <div id='mbd-non-composite'></div>
-        <label for='ms-non-composite' class='underline'>Ms - Nominal section moment capacity </label>
-        <div id='ms-non-composite'></div>
-        <label for='ømb-non-composite' class='underline'>øMb</label>
-        <div id='ømb-non-composite'></div>
-        <br><br>
-        <header>Composite Data</header>
-        <label for='concrete-thickness' class='underline'>Concrete Thickness</label>
-        <div id='concrete-thickness'></div>
-        <label for='concrete-strength' class='underline'>Concrete Strength f'c</label>
-        <div id='concrete-strength'></div>
-        <label for='elastic-modulus' class='underline'>Elastic Modulus</label>
-        <div id='elastic-modulus'></div>
-        <label for='n-composite' class='underline'>n</label>
-        <div id='n-composite'></div>
-        <label for='bef' class='underline'>bef</label>
-        <div id='bef'></div>
-        <label for='centroid-Y-composite' class='underline'>Centroid Y</label>
-        <div id='centroid-Y-composite'></div>
-        <label for='area-a-composite' class='underline'>Area A</label>
-        <div id='area-a-composite'></div>
-        <label for='i-1-composite' class='underline'>I1</label>
-        <div id='i-1-composite'></div>
-        <label for='i-2-composite' class='underline'>I2</label>
-        <div id='i-2-composite'></div>
-        <label for='i-3-composite' class='underline'>I3</label>
-        <div id='i-3-composite'></div>
-        <label for='i-4-composite' class='underline'>I4</label>
-        <div id='i-4-composite'></div>
-        <label for='i-5-composite' class='underline'>I5</label>
-        <div id='i-5-composite'></div>
-        <label for='i-6-composite' class='underline'>I6</label>
-        <div id='i-6-composite'></div>
-        <label for='i-7-composite' class='underline'>I7</label>
-        <div id='i-7-composite'></div>
-        <label for='i-composite' class='underline'>I</label>
-        <div id='i-composite'></div>
-        <label for='zt-composite' class='underline'>Zt</label>
-        <div id='zt-composite'></div>
-        <label for='zb-composite' class='underline'>Zb</label>
-        <div id='zb-composite'></div>
-        <label for='phi-different-composite' class='underline'>phi</label>
-        <div id='phi-different-composite'></div>
-        <label for='phim-composite' class='underline'>phiM</label>
-        <div id='phim-composite'></div>
-        <label for='q-1-composite' class='underline'>Q1</label>
-        <div id='q-1-composite'></div>
-        <label for='q-2-composite' class='underline'>Q2</label>
-        <div id='q-2-composite'></div>
-        <label for='q-3-composite' class='underline'>Q3</label>
-        <div id='q-3-composite'></div>
-        <label for='q-4-composite' class='underline'>Q4</label>
-        <div id='q-4-composite'></div>
-        <label for='q-5-composite' class='underline'>Q5</label>
-        <div id='q-5-composite'></div>
-        <label for='q-composite' class='underline'>Q</label>
-        <div id='q-composite'></div>
-        <label for='construction-live-load-composite' class='underline'>Construction Live Load</label>
-        <div id='construction-live-load-composite'></div>
-        <label for='weight-of-concrete' class='underline'>Weight of Concrete</label>
-        <div id='weight-of-concrete'></div>
-        <label for='joist-spacing-composite' class='underline'>Joist Spacing</label>
-        <div id='joist-spacing-composite'></div>
-        <label for='span-composite' class='underline'>Span</label>
-        <div id='span-composite'></div>
-        <label for='weight-joist' class='underline'>Weight of Joist</label>
-        <div id='weight-joist'></div>
-        <label for='precamber-joist' class='underline'>Precamber in Joist</label>
-        <div id='precamber-joist'></div>
-        <label for='span-360' class='underline'>Span/360</label>
-        <div id='span-360'></div>
-        <label for='span-500' class='underline'>Span/500</label>
-        <div id='span-500'></div>
-        
-        <label for='dead-load-deflection' class='underline'>Dead Load Deflection</label>
-        <div id='dead-load-deflection'></div>
-        <label for='construction-ll-deflection' class='underline'>Construction LL Deflection</label>
-        <div id='construction-ll-deflection'></div>
-        <label for='total-deflection-1' class='underline'>Total Deflection 1</label>
-        <div id='total-deflection-1'></div>
-        <label for='span-360-deflection-1-status' class='underline'>Span/360 Status:</label>
-        <div id='span-360-deflection-1-status'></div>
-        <label for='span-500-deflection-1-status' class='underline'>Span/500 Status:</label>
-        <div id='span-500-deflection-1-status'></div>
-        
-        <label for='sdl-per' class='underline'>SDL</label>
-        <div id='sdl-per'></div>
-        <label for='live-load-per' class='underline'>Live Load</label>
-        <div id='live-load-per'></div>
-        <label for='sdl-short-term-ll-deflection' class='underline'>SDL + short term LL deflection</label>
-        <div id='sdl-short-term-ll-deflection'></div>
-        <label for='self-weight-deflection-1' class='underline'>Self weight deflection</label>
-        <div id='self-weight-deflection-1'></div>
-        <label for='drying-shrinkage-deflection' class='underline'>Drying shrinkage deflection</label>
-        <div id='drying-shrinkage-deflection'></div>
-        <label for='creep-deflection' class='underline'>Creep deflection</label>
-        <div id='creep-deflection'></div>
-        <label for='ksh' class='underline'>Ksh</label>
-        <div id='ksh'></div>
-        <label for='total-deflection-2' class='underline'>Total Deflection 2</label>
-        <div id='total-deflection-2'></div>
-        <label for='span-360-deflection-2-status' class='underline'>Span/360 Status:</label>
-        <div id='span-360-deflection-2-status'></div>
-        <label for='span-500-deflection-2-status' class='underline'>Span/500 Status:</label>
-        <div id='span-500-deflection-2-status'></div>
-        
-        <label for='self-weight-deflection-2' class='underline'>Self weight deflection 2</label>
-        <div id='self-weight-deflection-2'></div>
-        <label for='sustained-deflection' class='underline'>Sustained Deflection</label>
-        <div id='sustained-deflection'></div>
-        <label for='total-deflection-3' class='underline'>Total Deflection 3</label>
-        <div id='total-deflection-3'></div>
-        <label for='span-360-deflection-3-status' class='underline'>Span/360 Status:</label>
-        <div id='span-360-deflection-3-status'></div>
-        <label for='span-500-deflection-3-status' class='underline'>Span/500 Status:</label>
-        <div id='span-500-deflection-3-status'></div>
-        <label for='max-short-term' class='underline'>MAX SHORT_TERM</label>
-        <div id='max-short-term'></div>
-        <label for='max-short-term-status' class='underline'>MAX SHORT_TERM STATUS:</label>
-        <div id='max-short-term-status'></div>
-        <label for='max-long-term' class='underline'>MAX LONG_TERM</label>
-        <div id='max-long-term'></div>
-        <label for='max-long-term-status' class='underline'>MAX LONG_TERM STATUS:</label>
-        <div id='max-long-term-status'></div>
-        
-        <label for='constr-14-d' class='underline'>1.4D Constr</label>
-        <div id='constr-14-d'></div>
-        <label for='composite-14-d' class='underline'>1.4D Composite</label>
-        <div id='composite-14-d'></div>
-        <label for='constr-12-g-16-g' class='underline'>1.2G + 1.6G Constr</label>
-        <div id='constr-12-g-16-g'></div>
-        <label for='composite-12-g-16-g' class='underline'>1.2G + 1.6G Composite</label>
-        <div id='composite-12-g-16-g'></div>
-        <label for='constr-design-case' class='underline'>Design Case Constr</label>
-        <div id='constr-design-case'></div>
-        <label for='composite-design-case' class='underline'>Design Case Composite</label>
-        <div id='composite-design-case'></div>
-        
-        <label for='design-variable-0' class='underline'>Design Variable 0</label>
-        <div id='design-variable-0'></div>
-        <label for='design-variable-1' class='underline'>Design Variable 1</label>
-        <div id='design-variable-1'></div>
-        <label for='design-variable-2' class='underline'>Design Variable 2</label>
-        <div id='design-variable-2'></div>
-        <label for='design-variable-3' class='underline'>Design Variable 3</label>
-        <div id='design-variable-3'></div>
-        <label for='design-variable-4' class='underline'>Design Variable 4</label>
-        <div id='design-variable-4'></div>
-        <label for='design-variable-5' class='underline'>Design Variable 5</label>
-        <div id='design-variable-5'></div>
-        <label for='design-variable-6' class='underline'>Design Variable 6</label>
-        <div id='design-variable-6'></div>
-        <label for='design-variable-7' class='underline'>Design Variable 7</label>
-        <div id='design-variable-7'></div>
-        <label for='design-variable-8' class='underline'>Design Variable 8</label>
-        <div id='design-variable-8'></div>
-        
-        <label for='moment-capacity' class='underline'>Moment Capacity</label>
-        <div id='moment-capacity'></div>
-        <label for='shear-capacity-at-support' class='underline'>Shear Capacity at Support</label>
-        <div id='shear-capacity-at-support'></div>
-        <label for='shear-capacity-at-first-hole' class='underline'>Shear Capacity at First Hole</label>
-        <div id='shear-capacity-at-first-hole'></div>
-        <label for='deflection-final-test' class='underline'>Deflection</label>
-        <div id='deflection-final-test'></div>
-    </div>
+
+</div>
+<label for='joist-size-dd'>Joist Size</label>
+<select name='joist-size-dd' id='joist-size-dd' >
+  <option value='5.905511805'>6</option>
+  <option value='7.87401574'>8</option>
+  <option value='9.842519675'>10</option>
+  <option value='11.81102361'>12</option>
+  <option value='13.779527545'>14</option>
+  <option value='15.74803148'>16</option>
+  <option value='17.716535415'>18</option>
+</select>
+<br>
+<label for='joist-spacing-dd'>Joist Spacing</label>
+<select name='joist-spacing-dd' id='joist-spacing-dd'>
+  <option value='1.00000000152'>1</option>
+  <option value='2.00000000304'>2</option>
+  <option value='3.00000000456'>3</option>
+  <option value='4.00000000608'>4</option>
+  <option value='5.0000000076'>5</option>
+</select>
+<br>
+<label for='slab-topping-dd'>Slab Topping</label>
+<select name='slab-topping-dd' id='slab-topping-dd'>
+  <option value='3.49999999643'>3.5</option>
+  <option value='3.99999999592'>4</option>
+</select>
+<br>
+<label for='first-hole-location-dd'>Input Hole Location</label>
+<select name='first-hole-location-dd' id='first-hole-location-dd'>
+  <option value='3.00000000456'>3.5</option>
+  <option value='4.00000000608'>4</option>
+</select>
+<br>
+<label for='sdl-input'>SDL</label>
+<input type='number' id='sdl-input' name='sdl-input' min='0' max='50' step='1' onchange='CorrectInputValue(this.min, this.max, value, this.id, 1)'>
+<br>
+<label for='live-load-input'>Live Load</label>
+<input type='number' id='live-load-input' name='live-load-input' min='0' max='10'>
+<br>
+<label for='deflection-limit-dd'>Deflection Limit</label>
+<select name='deflection-limit-dd' id='deflection-limit-dd'>
+  <option value='360'>L/360</option>
+  <option value='500'>L/500</option>
+</select>
+<br>
+<label for='joist-span-input'>Joist Span</label>
+<input type='number' id='joist-span-input' name='joist-span-input' min='0' max='10'>
+<br>
+<button type='button' onclick='SubmitData()'>Submit</button>
+
+<div id='calculated-data'>
+  <header>Non-Composite Data</header>
+  <label for='joist-non-composite' class='underline'>Joist</label>
+  <div id='joist-non-composite'></div>
+  <label for='btm-non-composite' class='underline'>BTM</label>
+  <div id='btm-non-composite'></div>
+  <label for='centroid-Y-non-composite' class='underline'>Centroid Y</label>
+  <div id='centroid-Y-non-composite'></div>
+  <label for='area-a-non-composite' class='underline'>Area A</label>
+  <div id='area-a-non-composite'></div>
+  <label for='i-1-non-composite' class='underline'>I1</label>
+  <div id='i-1-non-composite'></div>
+  <label for='i-2-non-composite' class='underline'>I2</label>
+  <div id='i-2-non-composite'></div>
+  <label for='i-3-non-composite' class='underline'>I3</label>
+  <div id='i-3-non-composite'></div>
+  <label for='i-4-non-composite' class='underline'>I4</label>
+  <div id='i-4-non-composite'></div>
+  <label for='i-5-non-composite' class='underline'>I5</label>
+  <div id='i-5-non-composite'></div>
+  <label for='i-6-non-composite' class='underline'>I6</label>
+  <div id='i-6-non-composite'></div>
+  <label for='i-7-non-composite' class='underline'>I7</label>
+  <div id='i-7-non-composite'></div>
+  <label for='i-8-non-composite' class='underline'>I8</label>
+  <div id='i-8-non-composite'></div>
+  <label for='i-9-non-composite' class='underline'>I9</label>
+  <div id='i-9-non-composite'></div>
+  <label for='i-10-non-composite' class='underline'>I10</label>
+  <div id='i-10-non-composite'></div>
+  <label for='i-non-composite' class='underline'>I</label>
+  <div id='i-non-composite'></div>
+  <label for='zt-non-composite' class='underline'>Zt</label>
+  <div id='zt-non-composite'></div>
+  <label for='zb-non-composite' class='underline'>Zb</label>
+  <div id='zb-non-composite'></div>
+  <label for='phi-non-composite' class='underline'>phi</label>
+  <div id='phi-non-composite'></div>
+  <label for='phim-non-composite' class='underline'>phiM</label>
+  <div id='phim-non-composite'></div>
+  <label for='circular-hole-non-composite' class='underline'>Circular Hole dwh</label>
+  <div id='circular-hole-non-composite'></div>
+  <label for='non-circular-hole-non-composite' class='underline'>Non Circular Hole dwh</label>
+  <div id='non-circular-hole-non-composite'></div>
+  <label for='fy-non-composite' class='underline'>fy</label>
+  <div id='fy-non-composite'></div>
+  <label for='e-non-composite' class='underline'>E</label>
+  <div id='e-non-composite'></div>
+  <label for='v-non-composite' class='underline'>V</label>
+  <div id='v-non-composite'></div>
+  <label for='k-non-composite' class='underline'>k</label>
+  <div id='k-non-composite'></div>
+  <label for='t-non-composite' class='underline'>t</label>
+  <div id='t-non-composite'></div>
+  <label for='b-non-composite' class='underline'>b</label>
+  <div id='b-non-composite'></div>
+  <label for='fcr-non-composite' class='underline'>fcr</label>
+  <div id='fcr-non-composite'></div>
+  <label for='f-asterisk-non-composite' class='underline'>f*</label>
+  <div id='f-asterisk-non-composite'></div>
+  <label for='lamda-non-composite' class='underline'>lamda</label>
+  <div id='lamda-non-composite'></div>
+  <label for='p-non-composite' class='underline'>p</label>
+  <div id='p-non-composite'></div>
+  <label for='be-non-composite' class='underline'>be</label>
+  <div id='be-non-composite'></div>
+  <label for='psi-non-composite' class='underline'>psi</label>
+  <div id='psi-non-composite'></div>
+  <label for='be-1-non-composite' class='underline'>be1</label>
+  <div id='be-1-non-composite'></div>
+  <label for='be-2-non-composite' class='underline'>be2</label>
+  <div id='be-2-non-composite'></div>
+  <label for='i-51-non-composite' class='underline'>I51</label>
+  <div id='i-51-non-composite'></div>
+  <label for='d-52-non-composite' class='underline'>d52</label>
+  <div id='d-52-non-composite'></div>
+  <label for='i-52-non-composite' class='underline'>I52</label>
+  <div id='i-52-non-composite'></div>
+  <label for='kv-non-composite' class='underline'>kv</label>
+  <div id='kv-non-composite'></div>
+  <label for='d-1-non-composite' class='underline'>d1</label>
+  <div id='d-1-non-composite'></div>
+  <label for='d-1-over-t-non-composite' class='underline'>d1/t</label>
+  <div id='d-1-over-t-non-composite'></div>
+  <label for='ekv-Over-fy-non-composite' class='underline'>sqrt(Ekv/fy)</label>
+  <div id='ekv-Over-fy-non-composite'></div>
+  <label for='q1-non-composite' class='underline'>Q1</label>
+  <div id='q1-non-composite'></div>
+  <label for='q2-non-composite' class='underline'>Q2</label>
+  <div id='q2-non-composite'></div>
+  <label for='q3-non-composite' class='underline'>Q3</label>
+  <div id='q3-non-composite'></div>
+  <label for='q4-non-composite' class='underline'>Q4</label>
+  <div id='q4-non-composite'></div>
+  <label for='q5-non-composite' class='underline'>Q5</label>
+  <div id='q5-non-composite'></div>
+  <label for='q-non-composite' class='underline'>Q</label>
+  <div id='q-non-composite'></div>
+  <label for='phi-non-composite-2' class='underline'>phi</label>
+  <div id='phi-non-composite-2'></div>
+  <label for='phi-hole-non-composite' class='underline'>phi-hole</label>
+  <div id='phi-hole-non-composite'></div>
+  <label for='phiv-non-composite' class='underline'>phiV</label>
+  <div id='phiv-non-composite'></div>
+  <label for='phiv-cir-hole-non-composite' class='underline'>phiV-cir hole</label>
+  <div id='phiv-cir-hole-non-composite'></div>
+  <label for='phiv-non-cir-hole-non-composite' class='underline'>phiV-noncir hole</label>
+  <div id='phiv-non-cir-hole-non-composite'></div>
+  <label for='t-over-d1-times-ekv-over-fy-non-composite' class='underline'>(t/d1)*sqrt(2Ekv/fy)</label>
+  <div id='t-over-d1-times-ekv-over-fy-non-composite'></div>
+  <label for='d1-over-t-times-fy-over-ekv-non-composite' class='underline'>(d1/t)*sqrt(fy/Ekv)</label>
+  <div id='d1-over-t-times-fy-over-ekv-non-composite'></div>
+  <label for='ekv-over-fy-multiplied-non-composite' class='underline'>1.415sqrt(Ekv/fy)</label>
+  <div id='ekv-over-fy-multiplied-non-composite'></div>
+  <label for='ekvfy1-non-composite' class='underline'>0.64tw^2*sqrt(Ekvfy)</label>
+  <div id='ekvfy1-non-composite'></div>
+  <label for='c-circular-non-composite' class='underline'>c-circular</label>
+  <div id='c-circular-non-composite'></div>
+  <label for='qs-circular-non-composite' class='underline'>qs-circular</label>
+  <div id='qs-circular-non-composite'></div>
+  <label for='vcr-non-composite' class='underline'>Vcr</label>
+  <div id='vcr-non-composite'></div>
+  <label for='vy-non-composite' class='underline'>Vy</label>
+  <div id='vy-non-composite'></div>
+  <label for='lamda-v-non-composite' class='underline'>lamda v</label>
+  <div id='lamda-v-non-composite'></div>
+  <label for='ekvfy2-non-composite' class='underline'>0.6tw^2*sqrt(Ekvfy)</label>
+  <div id='ekvfy2-non-composite'></div>
+  <label for='c-noncircular-non-composite' class='underline'>c-noncircular</label>
+  <div id='c-noncircular-non-composite'></div>
+  <label for='qs-noncircular-non-composite' class='underline'>qs-noncircular</label>
+  <div id='qs-noncircular-non-composite'></div>
+  <label for='ø-non-composite' class='underline'>ø - Capacity reduction factor</label>
+  <div id='ø-non-composite'></div>
+  <label for='a-non-composite' class='underline'>A - Full cross section area</label>
+  <div id='a-non-composite'></div>
+  <label for='cb-non-composite' class='underline'>Cb - Unbraced segment moment distribution coefficient</label>
+  <div id='cb-non-composite'></div>
+  <label for='fol-non-composite' class='underline'>fol - Elastic local buckling stress</label>
+  <div id='fol-non-composite'></div>
+  <label for='fod-non-composite' class='underline'>fod - Elastic distorsional buckling stress</label>
+  <div id='fod-non-composite'></div>
+  <label for='fy-non-composite2' class='underline'>fy - Yield stress</label>
+  <div id='fy-non-composite2'></div>
+  <label for='g-non-composite' class='underline'>G - Shear modulus</label>
+  <div id='g-non-composite'></div>
+  <label for='j-non-composite' class='underline'>J - Torsion constant</label>
+  <div id='j-non-composite'></div>
+  <label for='zc-non-composite' class='underline'>Zc - Effective section modulus in bending at yield Zxe</label>
+  <div id='zc-non-composite'></div>
+  <label for='iex-non-composite' class='underline'>Iex - Effective length, x axis</label>
+  <div id='iex-non-composite'></div>
+  <label for='iey-non-composite' class='underline'>Iey - Effective length, y axis</label>
+  <div id='iey-non-composite'></div>
+  <label for='iez-non-composite' class='underline'>Iez - Effective length, twisting</label>
+  <div id='iez-non-composite'></div>
+  <label for='iw-non-composite' class='underline'>Iw - Warping constant</label>
+  <div id='iw-non-composite'></div>
+  <label for='rx-non-composite' class='underline'>rx - Radius of gyration</label>
+  <div id='rx-non-composite'></div>
+  <label for='ry-non-composite' class='underline'>ry - Radius of gyration</label>
+  <div id='ry-non-composite'></div>
+  <label for='x0-non-composite' class='underline'>X0 - Dimension, shear centre to centroid</label>
+  <div id='x0-non-composite'></div>
+  <label for='zf-non-composite' class='underline'>Zf - Unreduced section modulus, Zf = Zx </label>
+  <div id='zf-non-composite'></div>
+  <label for='y0-non-composite' class='underline'>y0 - Dimension, shear centre to centroid</label>
+  <div id='y0-non-composite'></div>
+  <label for='rol-non-composite' class='underline'>rol - Polar radius of gyrations of the cross-section about the shear centre</label>
+  <div id='rol-non-composite'></div>
+  <label for='foy-non-composite' class='underline'>foy - Y axis elastic buckling stress</label>
+  <div id='foy-non-composite'></div>
+  <label for='foz-non-composite' class='underline'>foz - Torsional elastic buckling stress</label>
+  <div id='foz-non-composite'></div>
+  <label for='mo-non-composite' class='underline'>Mo - Elastic buckling moment</label>
+  <div id='mo-non-composite'></div>
+  <label for='my-non-composite' class='underline'>My - Moment causing initial yield at the extreme compression fibre of a full section</label>
+  <div id='my-non-composite'></div>
+  <label for='λb-non-composite' class='underline'>λb - Non-dimensional slenderness</label>
+  <div id='λb-non-composite'></div>
+  <label for='mc-non-composite' class='underline'>Mc - Critical moment</label>
+  <div id='mc-non-composite'></div>
+  <label for='mbe-non-composite' class='underline'>Mbe - Nominal member capacity for lateral-torsional buckling</label>
+  <div id='mbe-non-composite'></div>
+  <label for='mol-non-composite' class='underline'>Mol - Elastic local buckling moment</label>
+  <div id='mol-non-composite'></div>
+  <label for='λl-non-composite' class='underline'>λl - Non-dimensional slenderness</label>
+  <div id='λl-non-composite'></div>
+  <label for='mbl-non-composite' class='underline'>Mbl - Nominal member capacity for local buckling</label>
+  <div id='mbl-non-composite'></div>
+  <label for='mod-non-composite' class='underline'>Mod - Elastic buckling moment in the distortional mode</label>
+  <div id='mod-non-composite'></div>
+  <label for='λd-non-composite' class='underline'>λd - Non-dimensional slenderness</label>
+  <div id='λd-non-composite'></div>
+  <label for='mbd-non-composite' class='underline'>Mbd - Nominal member capacity for distortional buckling</label>
+  <div id='mbd-non-composite'></div>
+  <label for='ms-non-composite' class='underline'>Ms - Nominal section moment capacity </label>
+  <div id='ms-non-composite'></div>
+  <label for='ømb-non-composite' class='underline'>øMb</label>
+  <div id='ømb-non-composite'></div>
+  <br><br>
+  <header>Composite Data</header>
+  <label for='concrete-thickness' class='underline'>Concrete Thickness</label>
+  <div id='concrete-thickness'></div>
+  <label for='concrete-strength' class='underline'>Concrete Strength f'c</label>
+  <div id='concrete-strength'></div>
+  <label for='elastic-modulus' class='underline'>Elastic Modulus</label>
+  <div id='elastic-modulus'></div>
+  <label for='n-composite' class='underline'>n</label>
+  <div id='n-composite'></div>
+  <label for='bef' class='underline'>bef</label>
+  <div id='bef'></div>
+  <label for='centroid-Y-composite' class='underline'>Centroid Y</label>
+  <div id='centroid-Y-composite'></div>
+  <label for='area-a-composite' class='underline'>Area A</label>
+  <div id='area-a-composite'></div>
+  <label for='i-1-composite' class='underline'>I1</label>
+  <div id='i-1-composite'></div>
+  <label for='i-2-composite' class='underline'>I2</label>
+  <div id='i-2-composite'></div>
+  <label for='i-3-composite' class='underline'>I3</label>
+  <div id='i-3-composite'></div>
+  <label for='i-4-composite' class='underline'>I4</label>
+  <div id='i-4-composite'></div>
+  <label for='i-5-composite' class='underline'>I5</label>
+  <div id='i-5-composite'></div>
+  <label for='i-6-composite' class='underline'>I6</label>
+  <div id='i-6-composite'></div>
+  <label for='i-7-composite' class='underline'>I7</label>
+  <div id='i-7-composite'></div>
+  <label for='i-composite' class='underline'>I</label>
+  <div id='i-composite'></div>
+  <label for='zt-composite' class='underline'>Zt</label>
+  <div id='zt-composite'></div>
+  <label for='zb-composite' class='underline'>Zb</label>
+  <div id='zb-composite'></div>
+  <label for='phi-different-composite' class='underline'>phi</label>
+  <div id='phi-different-composite'></div>
+  <label for='phim-composite' class='underline'>phiM</label>
+  <div id='phim-composite'></div>
+  <label for='q-1-composite' class='underline'>Q1</label>
+  <div id='q-1-composite'></div>
+  <label for='q-2-composite' class='underline'>Q2</label>
+  <div id='q-2-composite'></div>
+  <label for='q-3-composite' class='underline'>Q3</label>
+  <div id='q-3-composite'></div>
+  <label for='q-4-composite' class='underline'>Q4</label>
+  <div id='q-4-composite'></div>
+  <label for='q-5-composite' class='underline'>Q5</label>
+  <div id='q-5-composite'></div>
+  <label for='q-composite' class='underline'>Q</label>
+  <div id='q-composite'></div>
+  <label for='construction-live-load-composite' class='underline'>Construction Live Load</label>
+  <div id='construction-live-load-composite'></div>
+  <label for='weight-of-concrete' class='underline'>Weight of Concrete</label>
+  <div id='weight-of-concrete'></div>
+  <label for='joist-spacing-composite' class='underline'>Joist Spacing</label>
+  <div id='joist-spacing-composite'></div>
+  <label for='span-composite' class='underline'>Span</label>
+  <div id='span-composite'></div>
+  <label for='weight-joist' class='underline'>Weight of Joist</label>
+  <div id='weight-joist'></div>
+  <label for='precamber-joist' class='underline'>Precamber in Joist</label>
+  <div id='precamber-joist'></div>
+  <label for='span-360' class='underline'>Span/360</label>
+  <div id='span-360'></div>
+  <label for='span-500' class='underline'>Span/500</label>
+  <div id='span-500'></div>
+
+  <label for='dead-load-deflection' class='underline'>Dead Load Deflection</label>
+  <div id='dead-load-deflection'></div>
+  <label for='construction-ll-deflection' class='underline'>Construction LL Deflection</label>
+  <div id='construction-ll-deflection'></div>
+  <label for='total-deflection-1' class='underline'>Total Deflection 1</label>
+  <div id='total-deflection-1'></div>
+  <label for='span-360-deflection-1-status' class='underline'>Span/360 Status:</label>
+  <div id='span-360-deflection-1-status'></div>
+  <label for='span-500-deflection-1-status' class='underline'>Span/500 Status:</label>
+  <div id='span-500-deflection-1-status'></div>
+
+  <label for='sdl-per' class='underline'>SDL</label>
+  <div id='sdl-per'></div>
+  <label for='live-load-per' class='underline'>Live Load</label>
+  <div id='live-load-per'></div>
+  <label for='sdl-short-term-ll-deflection' class='underline'>SDL + short term LL deflection</label>
+  <div id='sdl-short-term-ll-deflection'></div>
+  <label for='sdl-long-term-ll-deflection' class='underline'>SDL + long term LL deflection</label>
+  <div id='sdl-long-term-ll-deflection'></div>
+  <label for='self-weight-deflection' class='underline'>Self weight deflection</label>
+  <div id='self-weight-deflection'></div>
+  <label for='drying-shrinkage-deflection' class='underline'>Drying shrinkage deflection</label>
+  <div id='drying-shrinkage-deflection'></div>
+  <label for='creep-deflection' class='underline'>Creep deflection</label>
+  <div id='creep-deflection'></div>
+  <label for='ksh' class='underline'>Ksh</label>
+  <div id='ksh'></div>
+  <label for='total-deflection-2' class='underline'>Total Deflection 2:</label>
+  <div id='total-deflection-2'></div>
+  <label for='total-deflection-2-long' class='underline'>Total Deflection 2 Long:</label>
+  <div id='total-deflection-2-long'></div>
+  <label for='span-360-deflection-2-status' class='underline'>Span/360 Status:</label>
+  <div id='span-360-deflection-2-status'></div>
+  <label for='span-500-deflection-2-status' class='underline'>Span/500 Status:</label>
+  <div id='span-500-deflection-2-status'></div>
+
+  <label for='sustained-deflection' class='underline'>Sustained Deflection:</label>
+  <div id='sustained-deflection'></div>
+  <label for='total-deflection-3' class='underline'>Total Deflection 3:</label>
+  <div id='total-deflection-3'></div>
+  <label for='total-deflection-3-long' class='underline'>Total Deflection 3 Long:</label>
+  <div id='total-deflection-3-long'></div>
+  <label for='span-360-deflection-3-status' class='underline'>Span/360 Status:</label>
+  <div id='span-360-deflection-3-status'></div>
+  <label for='span-500-deflection-3-status' class='underline'>Span/500 Status:</label>
+  <div id='span-500-deflection-3-status'></div>
+  <label for='max-short-term' class='underline'>MAX SHORT_TERM</label>
+  <div id='max-short-term'></div>
+  <label for='max-short-term-status' class='underline'>MAX SHORT_TERM STATUS:</label>
+  <div id='max-short-term-status'></div>
+  <label for='max-long-term' class='underline'>MAX LONG_TERM</label>
+  <div id='max-long-term'></div>
+  <label for='max-long-term-status' class='underline'>MAX LONG_TERM STATUS:</label>
+  <div id='max-long-term-status'></div>
+
+  <label for='constr-14-d' class='underline'>1.4D Constr</label>
+  <div id='constr-14-d'></div>
+  <label for='composite-14-d' class='underline'>1.4D Composite</label>
+  <div id='composite-14-d'></div>
+  <label for='constr-12-g-16-g' class='underline'>1.2G + 1.6G Constr</label>
+  <div id='constr-12-g-16-g'></div>
+  <label for='composite-12-g-16-g' class='underline'>1.2G + 1.6G Composite</label>
+  <div id='composite-12-g-16-g'></div>
+  <label for='constr-design-case' class='underline'>Design Case Constr</label>
+  <div id='constr-design-case'></div>
+  <label for='composite-design-case' class='underline'>Design Case Composite</label>
+  <div id='composite-design-case'></div>
+
+  <label for='design-variable-0' class='underline'>Design Variable 0</label>
+  <div id='design-variable-0'></div>
+  <label for='design-variable-1' class='underline'>Design Variable 1</label>
+  <div id='design-variable-1'></div>
+  <label for='design-variable-2' class='underline'>Design Variable 2</label>
+  <div id='design-variable-2'></div>
+  <label for='design-variable-3' class='underline'>Design Variable 3</label>
+  <div id='design-variable-3'></div>
+  <label for='design-variable-4' class='underline'>Design Variable 4</label>
+  <div id='design-variable-4'></div>
+  <label for='design-variable-5' class='underline'>Design Variable 5</label>
+  <div id='design-variable-5'></div>
+  <label for='design-variable-6' class='underline'>Design Variable 6</label>
+  <div id='design-variable-6'></div>
+  <label for='design-variable-7' class='underline'>Design Variable 7</label>
+  <div id='design-variable-7'></div>
+  <label for='design-variable-8' class='underline'>Design Variable 8</label>
+  <div id='design-variable-8'></div>
+
+  <label for='moment-capacity' class='underline'>Moment Capacity</label>
+  <div id='moment-capacity'></div>
+  <label for='shear-capacity-at-support' class='underline'>Shear Capacity at Support</label>
+  <div id='shear-capacity-at-support'></div>
+  <label for='shear-capacity-at-first-hole' class='underline'>Shear Capacity at First Hole</label>
+  <div id='shear-capacity-at-first-hole'></div>
+  <label for='deflection-final-test' class='underline'>Deflection</label>
+  <div id='deflection-final-test'></div>
+</div>
     
     
     <script>
-        var joistSizeDropDown = document.getElementById('joist-size-dd');
-        var joistSpacingDropDown = document.getElementById('joist-spacing-dd');
-        var slabToppingDropDown = document.getElementById('slab-topping-dd');
-        var firstHoleLocationDropDown = document.getElementById('first-hole-location-dd');
-        var sdlInput = document.getElementById('sdl-input');
-        var liveLoadInput = document.getElementById('live-load-input');
-        var deflectionLimitDropDown = document.getElementById('deflection-limit-dd');
-        var joistSpanInput = document.getElementById('joist-span-input');
-        
-        var joistNonCompositeElement = document.getElementById('joist-non-composite');
-        var btmNonCompositeElement = document.getElementById('btm-non-composite');
-        var centroidYNonCompositeElement = document.getElementById('centroid-Y-non-composite');
-        var areaANonCompositeElement = document.getElementById('area-a-non-composite');
-        var i1NonCompositeElement = document.getElementById('i-1-non-composite');
-        var i2NonCompositeElement = document.getElementById('i-2-non-composite');
-        var i3NonCompositeElement = document.getElementById('i-3-non-composite');
-        var i4NonCompositeElement = document.getElementById('i-4-non-composite');
-        var i5NonCompositeElement = document.getElementById('i-5-non-composite');
-        var i6NonCompositeElement = document.getElementById('i-6-non-composite');
-        var i7NonCompositeElement = document.getElementById('i-7-non-composite');
-        var i8NonCompositeElement = document.getElementById('i-8-non-composite');
-        var i9NonCompositeElement = document.getElementById('i-9-non-composite');
-        var i10NonCompositeElement = document.getElementById('i-10-non-composite');
-        var iNonCompositeElement = document.getElementById('i-non-composite');
-        var ztNonCompositeElement = document.getElementById('zt-non-composite');
-        var zbNonCompositeElement = document.getElementById('zb-non-composite');
-        var phiNonCompositeElement = document.getElementById('phi-non-composite');
-        var phimNonCompositeElement = document.getElementById('phim-non-composite');
-        var circularHoleNonCompositeElement = document.getElementById('circular-hole-non-composite');
-        var nonCircularHoleNonCompositeElement = document.getElementById('non-circular-hole-non-composite');
-        var fyNonCompositeElement = document.getElementById('fy-non-composite');
-        var eNonCompositeElement = document.getElementById('e-non-composite');
-        var vNonCompositeElement = document.getElementById('v-non-composite');
-        var kNonCompositeElement = document.getElementById('k-non-composite');
-        var tNonCompositeElement = document.getElementById('t-non-composite')
-        var bNonCompositeElement = document.getElementById('b-non-composite');
-        var fcrNonCompositeElement = document.getElementById('fcr-non-composite');
-        var fAsteriskNonCompositeElement = document.getElementById('f-asterisk-non-composite');
-        var lamdaNonCompositeElement = document.getElementById('lamda-non-composite');
-        var pNonCompositeElement = document.getElementById('p-non-composite');
-        var beNonCompositeElement = document.getElementById('be-non-composite');
-        var psiNonCompositeElement = document.getElementById('psi-non-composite');
-        var be1NonCompositeElement = document.getElementById('be-1-non-composite');
-        var be2NonCompositeElement = document.getElementById('be-2-non-composite');
-        var i51NonCompositeElement = document.getElementById('i-51-non-composite');
-        var d52NonCompositeElement = document.getElementById('d-52-non-composite');
-        var i52NonCompositeElement = document.getElementById('i-52-non-composite');
-        var kvNonCompositeElement = document.getElementById('kv-non-composite');
-        var d1NonCompositeElement = document.getElementById('d-1-non-composite');
-        var d1OverTNonCompositeElement = document.getElementById('d-1-over-t-non-composite');
-        var ekvOverFyNonCompositeElement = document.getElementById('ekv-Over-fy-non-composite');
-        var q1NonCompositeElement = document.getElementById('q1-non-composite');
-        var q2NonCompositeElement = document.getElementById('q2-non-composite');
-        var q3NonCompositeElement = document.getElementById('q3-non-composite');
-        var q4NonCompositeElement = document.getElementById('q4-non-composite');
-        var q5NonCompositeElement = document.getElementById('q5-non-composite');
-        var qNonCompositeElement = document.getElementById('q-non-composite');
-        var phi2NonCompositeElement = document.getElementById('phi-non-composite-2');
-        var phiHoleNonCompositeElement = document.getElementById('phi-hole-non-composite');
-        var phivNonCompositeElement = document.getElementById('phiv-non-composite');
-        var phivCirHoleNonCompositeElement = document.getElementById('phiv-cir-hole-non-composite');
-        var phivNonCirHoleNonCompositeElement = document.getElementById('phiv-non-cir-hole-non-composite');
-        var tOverD1TimesEkvOverFyNonCompositeElement = document.getElementById('t-over-d1-times-ekv-over-fy-non-composite');
-        var d1OverTTimesFyOverEkvNonCompositeElement = document.getElementById('d1-over-t-times-fy-over-ekv-non-composite');
-        var ekvOverFyMultipliedNonCompositeElement = document.getElementById('ekv-over-fy-multiplied-non-composite');
-        var ekvfy1NonCompositeElement = document.getElementById('ekvfy1-non-composite');
-        var cCircularNonCompositeElement = document.getElementById('c-circular-non-composite');
-        var qsCircularNonCompositeElement = document.getElementById('qs-circular-non-composite');
-        var vcrNonCompositeElement = document.getElementById('vcr-non-composite');
-        var vyNonCompositeElement = document.getElementById('vy-non-composite');
-        var lamdaVNonCompositeElement = document.getElementById('lamda-v-non-composite');
-        var ekvfy2NonCompositeElement = document.getElementById('ekvfy2-non-composite');
-        var cNonCircularNonCompositeElement = document.getElementById('c-noncircular-non-composite');
-        var qsNonCircularNonCompositeElement = document.getElementById('qs-noncircular-non-composite');
-        
-        var øNonCompositeElement = document.getElementById('ø-non-composite');
-        var aNonCompositeElement = document.getElementById('a-non-composite');
-        var cbNonCompositeElement = document.getElementById('cb-non-composite');
-        var folNonCompositeElement = document.getElementById('fol-non-composite');
-        var fodNonCompositeElement = document.getElementById('fod-non-composite');
-        var fy2NonCompositeElement = document.getElementById('fy-non-composite2');
-        var gNonCompositeElement = document.getElementById('g-non-composite');
-        var jNonCompositeElement = document.getElementById('j-non-composite');
-        var zcNonCompositeElement = document.getElementById('zc-non-composite');
-        var iexNonCompositeElement = document.getElementById('iex-non-composite');
-        var ieyNonCompositeElement = document.getElementById('iey-non-composite');
-        var iezNonCompositeElement = document.getElementById('iez-non-composite');
-        var iwNonCompositeElement = document.getElementById('iw-non-composite');
-        var rxNonCompositeElement = document.getElementById('rx-non-composite');
-        var ryNonCompositeElement = document.getElementById('ry-non-composite');
-        var x0NonCompositeElement = document.getElementById('x0-non-composite');
-        var zfNonCompositeElement = document.getElementById('zf-non-composite');
-        var y0NonCompositeElement = document.getElementById('y0-non-composite');
-        var rolNonCompositeElement = document.getElementById('rol-non-composite');
-        var foyNonCompositeElement = document.getElementById('foy-non-composite');
-        var fozNonCompositeElement = document.getElementById('foz-non-composite');
-        var moNonCompositeElement = document.getElementById('mo-non-composite');
-        var myNonCompositeElement = document.getElementById('my-non-composite');
-        var λbNonCompositeElement = document.getElementById('λb-non-composite');
-        var mcNonCompositeElement = document.getElementById('mc-non-composite');
-        var mbeNonCompositeElement = document.getElementById('mbe-non-composite');
-        var molNonCompositeElement = document.getElementById('mol-non-composite');
-        var λlNonCompositeElement = document.getElementById('λl-non-composite');
-        var mblNonCompositeElement = document.getElementById('mbl-non-composite');
-        var modNonCompositeElement = document.getElementById('mod-non-composite');
-        var λdNonCompositeElement = document.getElementById('λd-non-composite');
-        var mbdNonCompositeElement = document.getElementById('mbd-non-composite');
-        var msNonCompositeElement = document.getElementById('ms-non-composite');
-        var ømbNonCompositeElement = document.getElementById('ømb-non-composite');
-        
-        var concreteThickinessElement = document.getElementById('concrete-thickness');
-        var concreteStrengthElement = document.getElementById('concrete-strength');
-        var elasticModulusElement = document.getElementById('elastic-modulus');
-        var nCompositeElement = document.getElementById('n-composite');
-        var befCompositeElement = document.getElementById('bef');
-        
-        var centroidYCompositeElement = document.getElementById('centroid-Y-composite');
-        var areaACompositeElement = document.getElementById('area-a-composite');
-        var i1CompositeElement = document.getElementById('i-1-composite');
-        var i2CompositeElement = document.getElementById('i-2-composite');
-        var i3CompositeElement = document.getElementById('i-3-composite');
-        var i4CompositeElement = document.getElementById('i-4-composite');
-        var i5CompositeElement = document.getElementById('i-5-composite');
-        var i6CompositeElement = document.getElementById('i-6-composite');
-        var i7CompositeElement = document.getElementById('i-7-composite');
-        var iCompositeElement = document.getElementById('i-composite');
-        var ztCompositeElement = document.getElementById('zt-composite');
-        var zbCompositeElement = document.getElementById('zb-composite');
-        var phiDifferentCompositeElement = document.getElementById('phi-different-composite');
-        var phimCompositeElement = document.getElementById('phim-composite');
-        
-        var q1CompositeElement = document.getElementById('q-1-composite');
-        var q2CompositeElement = document.getElementById('q-2-composite');
-        var q3CompositeElement = document.getElementById('q-3-composite');
-        var q4CompositeElement = document.getElementById('q-4-composite');
-        var q5CompositeElement = document.getElementById('q-5-composite');
-        var qCompositeElement = document.getElementById('q-composite');
-        
-        var constructionLiveLoadElement = document.getElementById('construction-live-load-composite');
-        var weightOfConcreteElement = document.getElementById('weight-of-concrete');
-        var joistSpacingElement = document.getElementById('joist-spacing-composite');
-        var spanCompositeElement = document.getElementById('span-composite');
-        var weightJoistElement = document.getElementById('weight-joist');
-        var precamberJoistElement = document.getElementById('precamber-joist');
-        var span360Element = document.getElementById('span-360');
-        var span500Element = document.getElementById('span-500');
-        
-        var deadLoadDeflectionElement = document.getElementById('dead-load-deflection');
-        var constructionLLDeflectionElement = document.getElementById('construction-ll-deflection');
-        var totalDeflection1Element = document.getElementById('total-deflection-1');
-        var span360Deflection1StatusElement = document.getElementById('span-360-deflection-1-status');
-        var span500Deflection1StatusElement = document.getElementById('span-500-deflection-1-status');
-        var sdlPerElement = document.getElementById('sdl-per');
-        var liveLoadPerElement = document.getElementById('live-load-per');
-        var sdlShortTermLLDeflectionElement = document.getElementById('sdl-short-term-ll-deflection');
-        var selfWeightDeflection1Element = document.getElementById('self-weight-deflection-1');
-        var dryingShrinkageDeflectionElement = document.getElementById('drying-shrinkage-deflection');
-        var creepDeflectionElement = document.getElementById('creep-deflection');
-        var kshElement = document.getElementById('ksh');
-        var totalDeflection2Element = document.getElementById('total-deflection-2');
-        var span360Deflection2StatusElement = document.getElementById('span-360-deflection-2-status');
-        var span500Deflection2StatusElement = document.getElementById('span-500-deflection-2-status');
-        var selfWeightDeflection2Element = document.getElementById('self-weight-deflection-2');
-        var sustainedDeflectionElement = document.getElementById('sustained-deflection');
-        var totalDeflection3Element = document.getElementById('total-deflection-3');
-        var span360Deflection3StatusElement = document.getElementById('span-360-deflection-3-status');
-        var span500Deflection3StatusElement = document.getElementById('span-500-deflection-3-status');
-        
-        var maxShortTermElement = document.getElementById('max-short-term');
-        var maxShortTermStatusElement = document.getElementById('max-short-term-status');
-        var maxLongTermElement = document.getElementById('max-long-term');
-        var maxLongTermStatusElement = document.getElementById('max-long-term-status');
-        
-        var constr14DElement = document.getElementById('constr-14-d');
-        var composite14DElement = document.getElementById('composite-14-d');
-        var constr12G16GElement = document.getElementById('constr-12-g-16-g');
-        var composite12G16GElement = document.getElementById('composite-12-g-16-g');
-        var constrDesignCaseElement = document.getElementById('constr-design-case');
-        var compositeDesignCaseElement = document.getElementById('composite-design-case');
-        
-        var designVar0Element = document.getElementById('design-variable-0');
-        var designVar1Element = document.getElementById('design-variable-1');
-        var designVar2Element = document.getElementById('design-variable-2');
-        var designVar3Element = document.getElementById('design-variable-3');
-        var designVar4Element = document.getElementById('design-variable-4');
-        var designVar5Element = document.getElementById('design-variable-5');
-        var designVar6Element = document.getElementById('design-variable-6');
-        var designVar7Element = document.getElementById('design-variable-7');
-        var designVar8Element = document.getElementById('design-variable-8');
-        
-        var momentCapacityElement = document.getElementById('moment-capacity');
-        var shearCapacityAtSupportElement = document.getElementById('shear-capacity-at-support');
-        var shearCapacityAtFirstHoleElement = document.getElementById('shear-capacity-at-first-hole');
-        var deflectionFinalTestElement = document.getElementById('deflection-final-test');
-        
-        var testElement = document.getElementById('testing');
-        
-        const joistData = {
-            5.905511805 :   { weight : 6.2493114675, area : 1.8383036766, lx : 12.25275, rx : 2.56692913124, sx : 2.88642308348064, j : 9.2256, cw : 7.820184414, lxd : 12.25275, sxe : 2.88642308348064, mr : 10.7684052, vr : 14.43273419651563, vrh : 'NA'},
-            7.87401574 :    { weight : 7.0556742375, area : 2.0723541447, lx : 22.5835, rx : 3.29527558719, sx : 4.27776444295968, j : 10.739175, cw : 12.288861222, lxd : 22.5835, sxe : 4.27776444295968, mr : 16.0050954, vr : 20.72738462490251, vrh : 'NA'},
-            9.842519675 :   { weight : 7.8620370075, area : 2.3048546097, lx : 36.9985, rx : 3.99999999592, sx : 5.84607465956544, j : 12.468975, cw : 18.991876434, lxd : 36.75825, sxe : 5.83386991079808, mr : 21.8318352, vr : 20.95219356877347, vrh : 7.283809781419104},
-            11.81102361 :   { weight : 8.6683997775, area : 2.5373550747, lx : 55.738, rx : 4.6850393653, sx : 7.58525135891424, j : 13.285825, cw : 27.556840316, lxd : 55.01725, sxe : 7.10316378260352, mr : 26.6259882, vr : 18.68162323567678, vrh : 9.037319543612592},
-            13.779527545 :  { weight : 9.4747625475, area : 2.7698555397, lx : 79.52275, rx : 5.3543307032, sx : 9.49529454100608, j : 14.727325, cw : 37.983752868, lxd : 77.60075, sxe : 8.79962386126656, mr : 32.9690214, vr : 15.7141451765801, vrh : 4.94579676516112},
-            15.74803148 :   { weight : 10.21392842, area : 3.0023560047, lx : 108.593, rx : 6.01181101749, sx : 11.5639994570736, j : 16.216875, cw : 50.645003824, lxd : 104.98925, sxe : 10.6181314276032, mr : 39.828348, vr : 13.55597931541889, vrh : 6.137284167677208},
-            17.716535415 :  { weight : 11.02029119, area : 3.2348564697, lx : 143.42925, rx : 6.65748030817, sx : 13.7913661071168, j : 17.850575, cw : 65.540593184, lxd : 137.66325, sxe : 12.54648173284608, mr : 47.0564556, vr : 11.91487402516088, vrh : 7.036519943161048},
-        }
-        const slabData = {
-            3.49999999643 : {  
-                5.905511805 :   { lxc : 28.83, mrc : 16.3001202, vr : 14.43273419651563, vrh : 'NA' },
-                7.87401574 :    { lxc : 57.41975, mrc : 25.5196452, vr : 20.72738462490251, vrh : 'NA' },
-                9.842519675 :   { lxc : 92.01575, mrc : 34.1491206, vr : 20.95219356877347, vrh : 7.283809781419104 },
-                11.81102361 :   { lxc : 131.657, mrc : 42.3360588, vr : 18.68162323567678, vrh : 9.037319543612592 },
-                13.779527545 :  { lxc : 179.46675, mrc : 51.0392904, vr : 15.7141451765801, vrh : 4.94579676516112 },
-                15.74803148 :   { lxc : 235.9255, mrc : 60.2588154, vr : 13.55597931541889, vrh : 6.137284167677208 },
-                17.716535415 :  { lxc : 301.2735, mrc : 69.9208776, vr : 11.91487402516088, vrh : 7.036519943161048 },
-            },
-            3.99999999592 : {
-                5.905511805 :   { lxc : 29.3105, mrc : 15.6363144, vr : 14.43273419651563, vrh : 'NA' },
-                7.87401574 :    { lxc : 57.90025, mrc : 24.4870584, vr : 20.72738462490251, vrh : 'NA' },
-                9.842519675 :   { lxc : 99.22325, mrc : 35.402976, vr : 20.95219356877347, vrh : 7.283809781419104 },
-                11.81102361 :   { lxc : 144.39025, mrc : 44.6962572, vr : 18.68162323567678, vrh : 9.037319543612592 },
-                13.779527545 :  { lxc : 196.044, mrc : 53.7682698, vr : 15.7141451765801, vrh : 4.94579676516112 },
-                15.74803148 :   { lxc : 257.0675, mrc : 63.3565758, vr : 13.55597931541889, vrh : 6.137284167677208 },
-                17.716535415 :  { lxc : 327.701, mrc : 73.4611752, vr : 11.91487402516088, vrh : 7.036519943161048 },
-            },
-        }
-        
-        const nonCompositeTableA = {
-            150 : 9.288, 200 : 10.5, 250 : 11.62, 300 : 12.84, 350 : 14.07, 400 : 15.19, 450 : 16.41
-        }
-        const nonCompositeTableB = {
-            150 : { area : 1186, rx : 65.2, ry : 18.5, x0 : 31.7, sx : 47.3, sxe : 47.3, j : 3.84, cw : 2.1, y0 : 60.5 },
-            200 : { area : 1337, rx : 83.7, ry : 17.6, x0 : 27.1, sx : 70.1, sxe : 70.1, j : 4.47, cw : 3.3, y0 : 66.5 },
-            250 : { area : 1487, rx : 101.6, ry : 16.7, x0 : 23.7, sx : 95.8, sxe : 95.6, j : 5.19, cw : 5.1, y0 : 70.7 },
-            300 : { area : 1637, rx : 119.0, ry : 16.0, x0 : 21.1, sx : 124.3, sxe : 116.4, j : 5.53, cw : 7.4, y0 : 73.8 },
-            350 : { area : 1787, rx : 136.0, ry : 15.4, x0 : 19.1, sx : 155.6, sxe : 144.2, j : 6.13, cw : 10.2, y0 : 76.3 },
-            400 : { area : 1937, rx : 152.7, ry : 14.8, x0 : 17.4, sx : 189.5, sxe : 174.0, j : 6.75, cw : 13.6, y0 : 78.2 },
-            550 : { area : 2087, rx : 169.1, ry : 14.3, x0 : 16.0, sx : 226.0, sxe : 205.6, j : 7.43, cw : 17.6, y0 : 79.9 }
-        }
-        
-        const constantData = {
-            btm : 35, phi : 0.9, fy : 345, e : 200000, v : 0.3, t : 3, kv : 5.34, phiHole : 0.8, cb : 1.1589, fol : 1385, fod : 729, g : 80000, 
-            iex : 13300, iey : 609.6, iez : 609.6, concreteStrength : 31, phiDifferent : 0.85, constructionLiveLoad : 0.9576, creepDeflection : 1,
-            capacityEndBoltedSupport : 63
-        }
-        
-        var summitedData = {
-            joistSize : 0, joistSpacing : 0, slabTopping : 0, firstHoleLocation : 0, sdl : 0, liveLoad : 0, deflectionLimit : 0, joistSpan : 0
-        }
-        
-        var sharedFigures = {
-            joist : 0, circularHole : 0, nonCircularHole : 0, d1 : 0, d1OverT : 0, ekvOverFy : 0, phiv : 0, phivCirHole : 0, phivNonCirHole : 0, 
-            tOverD1TimesEkvOverFy : 0, d1OverTTimesFyOverEkv : 0, ekvOverFyMultiplied : 0, ekvfy1 : 0, cCircular : 0, qsCircular : 0, vcr : 0, vy : 0,
-            lamdaV : 0, ekvfy2 : 0, cNonCircular : 0, qsNonCircular : 0
-        }
-        
-        var calculatedNonCompositeFigures = {
-            centroidY : 0, areaA : 0, i1 : 0, i2 : 0, i3 : 0, i4 : 0, i5 : 0, i6 : 0, i7 : 0, i8 : 0, i9 : 0, i10 : 0, i : 0, zt : 0, zb : 0, phim : 0,
-            k : 0, b : 0, fcr : 0, fAsterisk : 0, lamda : 0, p : 0, be : 0, psi : 0, be1 : 0, be2 : 0, i51 : 0, d52 : 0, i52 : 0, q1 : 0, q2 : 0, q3 : 0, 
-            q4 : 0, q5 : 0, q : 0, a : 0, j : 0, zc : 0, iw : 0, x0 : 0, zf : 0, y0 : 0, rol : 0, foy : 0, foz : 0, mo : 0, my : 0, λb : 0, mc : 0, fc : 0, 
-            mbe : 0, mol : 0, λl : 0, mbl : 0, mod : 0 , λd : 0,  mbd : 0, ms : 0, ømb : 0
-        }
-        
-        var calculatedCompositeFigures = {
-            concreteThickness : 0, elasticModulus : 0, n : 0, bef : 0, centroidY : 0, areaA : 0, i1 : 0, i2 : 0, i3 : 0, i4 : 0, i5 : 0, i6 : 0, i7 : 0, i : 0, zt : 0, zb : 0, 
-            phim : 0, q1 : 0, q2 : 0, q3 : 0, q4 : 0, q5 : 0, q : 0, weightOfConcrete : 0, joistSpacing : 0, span : 0, weightOfJoist : 0, precamberInJoist : 0, span360 : 0,
-            span500 : 0, deadLoadDeflection : 0, constructionLLDeflection : 0, totalDeflection1 : 0, totalDeflection1Status360 : 'Fail', totalDeflection1Status500 : 'Fail',
-            sdlPer : 0, liveLoadPer : 0, sdlShortTermLLDeflection : 0, selfWeightDeflection1 : 0, dryingShrinkageDeflection : 0, ksh : 0, totalDeflection2 : 0,
-            totalDeflection2Status360 : 'Fail', totalDeflection2Status500 : 'Fail', selfWeightDeflection2 : 0, sustainedDeflection : 0,
-            totalDeflection3 : 0, totalDeflection3Status360 : 'Fail' , totalDeflection3Status500 : 'Fail', maxShortTerm : 0, maxShortTermStatus : 'Fail',
-            maxLongTerm : 0, maxLongTermStatus : 'Fail', constr14D : 0, composite14D : 0, constr12G16G : 0, composite12G16G : 0, constrDesignCase : 0,
-            compositeDesignCase : 0 
-        }
-        
-        var calculatedDesignFigures = {
-            designVar0 : 0, designVar1 : 0, designVar2 : 0, designVar3 : 0, designVar4 : 0, designVar5 : 0, designVar6 : 0, designVar7 : 0, designVar8 : 0
-        }
-        
-        var finalDesignStatus = {
-            momentCapacity : 'Fail', shearCapacityAtSupport : 'Fail', shearCapacityAtFirstHole : 'Fail', deflection : 'Fail' 
-        }
-        
-        function CorrectInputValue(minimus, maximus, val, ident, decimals){
-            var returnValue;
-            if (val < minimus)
-                returnValue = minimus;
-            else if (val > maximus)
-                returnValue = maximus;
-            else
-                returnValue = Round(val, decimals);
-            document.getElementById(ident).value = returnValue;
-        }
-        
-        function SubmitData(){
-            if (CheckForInputValues() === false){
-                TestFunction("NEED TO COMPLETE");
-                return
-            }
-            
-            SaveSummitedData();
-            
-            CalculateSharedFigure();
-            
-            CalculateNonCompositeFigures();
-            
-            CalculateCompositeFigures();
-            
-            CalculateDesignFigures();
-            
-            FinalDesignCheck();
-            
-            DisplayCalculatedData();
-            
-            
-        }
-        
-        function CheckForInputValues(){
-            if (sdlInput.value.length !== 0 && liveLoadInput.value.length !== 0 && joistSpanInput.value.length !== 0)
-                return true;
-            return false;
-        }
-        
-        
-        function SaveSummitedData(){
-            summitedData['joistSize'] = joistSizeDropDown.value;
-            summitedData['joistSpacing'] = joistSpacingDropDown.value;
-            summitedData['slabTopping'] = slabToppingDropDown.value;
-            summitedData['firstHoleLocation'] = firstHoleLocationDropDown.value;
-            summitedData['sdl'] = sdlInput.value;
-            summitedData['liveLoad'] = liveLoadInput.value;
-            summitedData['deflectionLimit'] = deflectionLimitDropDown.value;
-            summitedData['joistSpan'] = joistSpanInput.value;
-        }
-        
-        function CalculateSharedFigure(){
-            sharedFigures['joist'] = RoundDown(summitedData['joistSize'] / 0.0393700787);
-            sharedFigures['circularHole'] = sharedFigures['joist'] < 250 ? 0 : sharedFigures['joist'] < 400 ? 125 : 250;
-            sharedFigures['nonCircularHole'] = sharedFigures['joist'] < 350 ? 0 : 200;
-            sharedFigures['d1'] = sharedFigures['joist']-constantData['btm'];
-            sharedFigures['d1OverT'] = sharedFigures['d1']/constantData['t'];
-            sharedFigures['ekvOverFy'] = Math.sqrt(constantData['e']*constantData['kv']/constantData['fy']);
-            sharedFigures['tOverD1TimesEkvOverFy'] = Math.sqrt(2*constantData['e']*constantData['kv']/constantData['fy'])*(constantData['t']/sharedFigures['d1']);
-            sharedFigures['d1OverTTimesFyOverEkv'] = sharedFigures['d1OverT']*Math.sqrt(constantData['fy']/(constantData['e']*constantData['kv']));
-            sharedFigures['ekvOverFyMultiplied'] = 1.415*sharedFigures['ekvOverFy'];
-            sharedFigures['ekvfy1'] = 0.64*Math.pow(constantData['t'], 2)*Math.sqrt(constantData['e']*constantData['kv']*constantData['fy']);
-            sharedFigures['cCircular'] = sharedFigures['d1']/2-sharedFigures['circularHole']/2.83;
-            sharedFigures['qsCircular'] = sharedFigures['cCircular']/constantData['t'] >= 54 ? 1 : sharedFigures['cCircular']/(54*constantData['t']);
-            sharedFigures['vcr'] = 0.904*constantData['e']*constantData['kv']*Math.pow(constantData['t'], 3)/sharedFigures['d1'];
-            sharedFigures['vy'] = 0.6*sharedFigures['d1']*constantData['t']*constantData['fy'];
-            sharedFigures['lamdaV'] = Math.sqrt(sharedFigures['vy']/sharedFigures['vcr']);
-            sharedFigures['ekvfy2'] = 0.6*Math.pow(constantData['t'], 2)*Math.sqrt(constantData['e']*constantData['kv']*constantData['fy']);
-            sharedFigures['cNonCircular'] = sharedFigures['d1']/2-sharedFigures['nonCircularHole']/2;
-            sharedFigures['qsNonCircular'] = sharedFigures['cNonCircular']/constantData['t'] >=54 ? 1 : sharedFigures['cNonCircular']/(54*constantData['t']);
-            
-            var phivGrab;
-            if (0.815<sharedFigures['lamdaV'] && sharedFigures['lamdaV']<1.227) {
-                phivGrab = constantData['phi'] * AH13;
-            }
-            else if (sharedFigures['lamdaV']>1.227){
-                phivGrab = constantData['phi']*(sharedFigures['ekvfy2']*sharedFigures['tOverD1TimesEkvOverFy'])/1000;
-            }
-            else {
-                phivGrab = constantData['phi']*(sharedFigures['ekvfy2']*sharedFigures['d1OverTTimesFyOverEkv'])/1000;
-            }
-                                                   
-            sharedFigures['phiv'] = phivGrab;
-            sharedFigures['phivCirHole'] = (sharedFigures['circularHole'] == 0 ? '' : sharedFigures['phiv']*sharedFigures['qsCircular']/constantData['phi']*constantData['phiHole']);
-            sharedFigures['phivNonCirHole'] = (sharedFigures['nonCircularHole'] == 0 ? "" : sharedFigures['phiv']*sharedFigures['qsNonCircular']/constantData['phi']*constantData['phiHole']);
-        }
-        function CalculateNonCompositeFigures(){
-            
-            
-            calculatedNonCompositeFigures['centroidY'] = ((1.5)*(60*3)+2*(29/2+3)*(29*3)+(3/2+32)*(27.5*3)+(3/2+32)*(31.5*3)+((sharedFigures['joist']-35)/2+35)*((sharedFigures['joist']-35)*3)+(3/2+sharedFigures['joist'])*(40*3)+(15/2+3+sharedFigures['joist'])*(15*3)+(3/2+18+sharedFigures['joist'])*(25*3)+(14/2+21+sharedFigures['joist'])*(14*3)+(3/2+35+sharedFigures['joist'])*(23*3))/((60*3)+2*(29*3)+(27.5*3)+(31.5*3)+((sharedFigures['joist']-35)*3)+(40*3)+(15*3)+(25*3)+(14*3)+(23*3));
-            
-            calculatedNonCompositeFigures['areaA'] = (60*3)+2*(29*3)+(27.5*3)+(31.5*3)+((sharedFigures['joist']-35)*3)+(40*3)+(15*3)+(25*3)+(14*3)+(23*3);
-            
-            calculatedNonCompositeFigures['psi'] = -1 * (calculatedNonCompositeFigures['centroidY']-constantData['btm'])/(sharedFigures['joist']-calculatedNonCompositeFigures['centroidY']);
-            
-            calculatedNonCompositeFigures['k'] = 4+2*Math.pow(1-calculatedNonCompositeFigures['psi'], 3)+2*(1-calculatedNonCompositeFigures['psi']);
-            
-            calculatedNonCompositeFigures['b'] = sharedFigures['joist']-calculatedNonCompositeFigures['centroidY'];
-            
-            calculatedNonCompositeFigures['fcr'] = calculatedNonCompositeFigures['k']*Math.pow(Math.PI, 2)*constantData['e']/(12*(1-Math.pow(constantData['v'], 2)))*Math.pow(constantData['t']/calculatedNonCompositeFigures['b'], 2);
-            
-            calculatedNonCompositeFigures['fAsterisk'] = constantData['fy']*(sharedFigures['joist']-calculatedNonCompositeFigures['centroidY'])/(sharedFigures['joist']+38-calculatedNonCompositeFigures['centroidY']);
-            
-            calculatedNonCompositeFigures['lamda'] = Math.sqrt(calculatedNonCompositeFigures['fAsterisk']/calculatedNonCompositeFigures['fcr']);
-            
-            calculatedNonCompositeFigures['p'] = (1-0.22/calculatedNonCompositeFigures['lamda'])/calculatedNonCompositeFigures['lamda'] > 1 ? 1 : (1-0.22/calculatedNonCompositeFigures['lamda'])/calculatedNonCompositeFigures['lamda'];
-            
-            calculatedNonCompositeFigures['be'] = calculatedNonCompositeFigures['lamda'] > 0.673 ? calculatedNonCompositeFigures['p']*calculatedNonCompositeFigures['b'] : calculatedNonCompositeFigures['b'];
-            
-            calculatedNonCompositeFigures['be1'] = calculatedNonCompositeFigures['be']/(3-calculatedNonCompositeFigures['psi'])
-            
-            calculatedNonCompositeFigures['be2'] = (sharedFigures['joist']+38)/23 > 4 ? (calculatedNonCompositeFigures['be']/(1-calculatedNonCompositeFigures['psi']))-calculatedNonCompositeFigures['be1'] : calculatedNonCompositeFigures['psi'] > -0.236 ? calculatedNonCompositeFigures['be']-calculatedNonCompositeFigures['be1'] : calculatedNonCompositeFigures['be']/2;
-            
-            calculatedNonCompositeFigures['i51'] = 3*Math.pow(calculatedNonCompositeFigures['be1'], 3)/12+3*calculatedNonCompositeFigures['be1']*Math.pow(calculatedNonCompositeFigures['centroidY']-(sharedFigures['joist']-calculatedNonCompositeFigures['be1']/2), 2);
-            
-            calculatedNonCompositeFigures['d52'] = calculatedNonCompositeFigures['centroidY']-constantData['btm']+calculatedNonCompositeFigures['be2'];
-            
-            calculatedNonCompositeFigures['i52'] = 3*Math.pow(calculatedNonCompositeFigures['d52'], 3)/12+3*calculatedNonCompositeFigures['d52']*Math.pow(calculatedNonCompositeFigures['centroidY']-(constantData['btm']+calculatedNonCompositeFigures['d52']/2), 2);
-            
-            calculatedNonCompositeFigures['i1'] = (60*Math.pow(3, 3))/12+(60*3)*Math.pow(calculatedNonCompositeFigures['centroidY']-3/2, 2);
-            
-            calculatedNonCompositeFigures['i2'] = 2*(3*Math.pow(29, 3)/12+3*29*Math.pow(calculatedNonCompositeFigures['centroidY']-(29/2+3), 2));
-            
-            calculatedNonCompositeFigures['i3'] = 27.5*Math.pow(3, 3)/12+27.5*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(3/2+32), 2);
-            
-            calculatedNonCompositeFigures['i4'] = 31.5*Math.pow(3, 3)/12+31.5*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(3/2+32), 2);
-            
-            calculatedNonCompositeFigures['i5'] = calculatedNonCompositeFigures['i51']+calculatedNonCompositeFigures['i52'];
-            
-            calculatedNonCompositeFigures['i6'] = 40*Math.pow(3, 3)/12+40*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(sharedFigures['joist']+3/2), 2);
-            
-            calculatedNonCompositeFigures['i7'] = 3*Math.pow(15, 3)/12+3*15*Math.pow(calculatedNonCompositeFigures['centroidY']-(sharedFigures['joist']+3+15/2), 2);
-            
-            calculatedNonCompositeFigures['i8'] = 25*Math.pow(3, 3)/12+25*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(sharedFigures['joist']+18+3/2), 2);
-            
-            calculatedNonCompositeFigures['i9'] = 3*Math.pow(14, 3)/12+3*14*Math.pow(calculatedNonCompositeFigures['centroidY']-(sharedFigures['joist']+21+14/2), 2);
-            
-            calculatedNonCompositeFigures['i10'] = 23*Math.pow(3, 3)/12+23*3*Math.pow(calculatedNonCompositeFigures['centroidY']-(sharedFigures['joist']+35+3/2), 2);
-            
-            calculatedNonCompositeFigures['i'] =    calculatedNonCompositeFigures['i1'] + calculatedNonCompositeFigures['i2'] + calculatedNonCompositeFigures['i3'] + 
-                                                    calculatedNonCompositeFigures['i4'] + calculatedNonCompositeFigures['i5'] + calculatedNonCompositeFigures['i6'] + 
-                                                    calculatedNonCompositeFigures['i7'] + calculatedNonCompositeFigures['i8'] + calculatedNonCompositeFigures['i9'] + 
-                                                    calculatedNonCompositeFigures['i10']; // must go down after all i#
-            
-            calculatedNonCompositeFigures['zt'] = sharedFigures['joist'] < 300 ? calculatedNonCompositeFigures['i']/(sharedFigures['joist']+38-calculatedNonCompositeFigures['centroidY']) : (calculatedNonCompositeFigures['i']/(sharedFigures['joist']+38-calculatedNonCompositeFigures['centroidY']))*0.95;
-            
-            calculatedNonCompositeFigures['zb'] = sharedFigures['joist'] < 300 ? calculatedNonCompositeFigures['i']/calculatedNonCompositeFigures['centroidY'] : 1.05*(calculatedNonCompositeFigures['i']/calculatedNonCompositeFigures['centroidY']);
-            
-            calculatedNonCompositeFigures['phim'] = constantData['phi']*constantData['fy']*Math.min(calculatedNonCompositeFigures['zt'], calculatedNonCompositeFigures['zb'])/Math.pow(10, 6);
-            
-            calculatedNonCompositeFigures['q1'] = (60*3)*(calculatedNonCompositeFigures['centroidY']-3/2);
-            
-            calculatedNonCompositeFigures['q2'] = 2*(3*29*(calculatedNonCompositeFigures['centroidY']-(29/2+3)));
-            
-            calculatedNonCompositeFigures['q3'] = 27.5*3*(calculatedNonCompositeFigures['centroidY']-(3/2+32));
-            
-            calculatedNonCompositeFigures['q4'] = 31.5*3*(calculatedNonCompositeFigures['centroidY']-(3/2+32));
-            
-            calculatedNonCompositeFigures['q5'] = 3*(calculatedNonCompositeFigures['centroidY']-constantData['btm'])*(calculatedNonCompositeFigures['centroidY']-((calculatedNonCompositeFigures['centroidY']-constantData['btm'])/2+constantData['btm']));
-            
-            calculatedNonCompositeFigures['q'] =    calculatedNonCompositeFigures['q1'] + calculatedNonCompositeFigures['q2'] + calculatedNonCompositeFigures['q3'] +
-                                                    calculatedNonCompositeFigures['q4'] + calculatedNonCompositeFigures['q5'];
-            
-            calculatedNonCompositeFigures['a'] = nonCompositeTableB[sharedFigures['joist']]['area'];
-            
-            calculatedNonCompositeFigures['j'] = 1000 * nonCompositeTableB[sharedFigures['joist']]['j'];
-            
-            calculatedNonCompositeFigures['zc'] = 1000 * nonCompositeTableB[sharedFigures['joist']]['sxe'];
-            
-            calculatedNonCompositeFigures['iw'] = 1000000000 * nonCompositeTableB[sharedFigures['joist']]['cw'];
-            
-            calculatedNonCompositeFigures['rx'] = nonCompositeTableB[sharedFigures['joist']]['rx'];
-            
-            calculatedNonCompositeFigures['ry'] = nonCompositeTableB[sharedFigures['joist']]['ry'];
-            
-            calculatedNonCompositeFigures['x0'] = nonCompositeTableB[sharedFigures['joist']]['x0'];
-            
-            calculatedNonCompositeFigures['zf'] = 1000 * nonCompositeTableB[sharedFigures['joist']]['sx'];
-            
-            calculatedNonCompositeFigures['y0'] = nonCompositeTableB[sharedFigures['joist']]['y0'];
-            
-            calculatedNonCompositeFigures['rol'] = Math.sqrt(Math.pow(calculatedNonCompositeFigures['rx'], 2) + Math.pow(calculatedNonCompositeFigures['ry'], 2) + Math.pow(calculatedNonCompositeFigures['x0'], 2) + Math.pow(calculatedNonCompositeFigures['y0'], 2));
-            
-            calculatedNonCompositeFigures['foy'] = (Math.pow(Math.PI, 2) * 200000) / Math.pow(constantData['iey']/calculatedNonCompositeFigures['ry'], 2);
-            
-            calculatedNonCompositeFigures['foz'] = ((constantData['g']*calculatedNonCompositeFigures['j'])/(calculatedNonCompositeFigures['a']*Math.pow(calculatedNonCompositeFigures['rol'], 2)))*(1+(Math.pow(Math.PI, 2)*200000*calculatedNonCompositeFigures['iw'])/(constantData['g']*calculatedNonCompositeFigures['j']*Math.pow(constantData['iez'], 2)));
-        
-            calculatedNonCompositeFigures['mo'] = constantData['cb']*calculatedNonCompositeFigures['a']*calculatedNonCompositeFigures['rol']*Math.sqrt(calculatedNonCompositeFigures['foy']*calculatedNonCompositeFigures['foz']);
-            calculatedNonCompositeFigures['my'] = calculatedNonCompositeFigures['zf']*constantData['fy'];
-            calculatedNonCompositeFigures['λb'] = Math.sqrt(calculatedNonCompositeFigures['my']/calculatedNonCompositeFigures['mo']);
-            calculatedNonCompositeFigures['mc'] = calculatedNonCompositeFigures['λb'] <= 0.6 ? calculatedNonCompositeFigures['my'] : calculatedNonCompositeFigures['λb'] >= 1.336 ? calculatedNonCompositeFigures['my'] * (1/Math.pow(calculatedNonCompositeFigures['λb'], 2)) : 1.11*calculatedNonCompositeFigures['my']*(1-(10*Math.pow(calculatedNonCompositeFigures['λb'], 2)/36));
-            calculatedNonCompositeFigures['mbe'] = calculatedNonCompositeFigures['mo'] < 0.56 * calculatedNonCompositeFigures['my'] ? calculatedNonCompositeFigures['mo'] : calculatedNonCompositeFigures['mo'] > 2.78 * calculatedNonCompositeFigures['my'] ? calculatedNonCompositeFigures['my'] : 10/9 * calculatedNonCompositeFigures['my'] * (1-(10 * calculatedNonCompositeFigures['my'])/(36 * calculatedNonCompositeFigures['mo']));
-            calculatedNonCompositeFigures['mol'] = calculatedNonCompositeFigures['zf'] * constantData['fol'];
-            calculatedNonCompositeFigures['λl'] = Math.sqrt(calculatedNonCompositeFigures['mbe']/calculatedNonCompositeFigures['mol']);
-            calculatedNonCompositeFigures['mbl'] = calculatedNonCompositeFigures['λl'] <= 0.776 ? calculatedNonCompositeFigures['mbe'] : (1 - 0.15 * Math.pow(calculatedNonCompositeFigures['mol'] / calculatedNonCompositeFigures['mbe'], 0.4)) * Math.pow(calculatedNonCompositeFigures['mol'] / calculatedNonCompositeFigures['mbe'], 0.4) * calculatedNonCompositeFigures['mbe'];
-            calculatedNonCompositeFigures['mod'] = calculatedNonCompositeFigures['zf'] * constantData['fod'];
-            calculatedNonCompositeFigures['λd'] = Math.sqrt(calculatedNonCompositeFigures['my']/calculatedNonCompositeFigures['mod']);
-            calculatedNonCompositeFigures['mbd'] = calculatedNonCompositeFigures['λd'] <= 0.673 ? calculatedNonCompositeFigures['my'] : (1 - 0.22 * Math.pow(calculatedNonCompositeFigures['mod'] / calculatedNonCompositeFigures['my'], 0.5)) * Math.pow(calculatedNonCompositeFigures['mod']/calculatedNonCompositeFigures['my'], 0.5) * calculatedNonCompositeFigures['my'];
-            calculatedNonCompositeFigures['ms'] = calculatedNonCompositeFigures['zc']*constantData['fy'];
-            calculatedNonCompositeFigures['ømb'] = 0.9 * Math.min(calculatedNonCompositeFigures['mbe'], calculatedNonCompositeFigures['mbl'], calculatedNonCompositeFigures['mbd'], calculatedNonCompositeFigures['ms']) / 1000000;
-        }                                        
-        
-        function CalculateCompositeFigures(){
-            calculatedCompositeFigures['concreteThickness'] = summitedData['slabTopping'] / 0.0393700787;
-            calculatedCompositeFigures['elasticModulus'] = 4700 * Math.sqrt(constantData['concreteStrength']);
-            calculatedCompositeFigures['n'] = constantData['e'] / calculatedCompositeFigures['elasticModulus']; 
-            calculatedCompositeFigures['bef'] = Math.min(304.8, calculatedCompositeFigures['concreteThickness'] + sharedFigures['joist'], 10000 / 15);
-            calculatedCompositeFigures['centroidY'] = (calculatedCompositeFigures['n']*((3/2)*(60*3)+2*(29/2+3)*(29*3)+(3/2+32)*(27.5*3)+(3/2+32)*(31.5*3)+((sharedFigures['joist']-35)/2+35)*((sharedFigures['joist']-35)*3))+calculatedCompositeFigures['bef']*calculatedCompositeFigures['concreteThickness']*(sharedFigures['joist']+calculatedCompositeFigures['concreteThickness']/2))/(calculatedCompositeFigures['n']*((60*3)+2*(29*3)+(27.5*3)+(31.5*3)+((sharedFigures['joist']-35)*3))+calculatedCompositeFigures['bef']*calculatedCompositeFigures['concreteThickness']);
-            calculatedCompositeFigures['areaA'] = calculatedCompositeFigures['centroidY'] < sharedFigures['joist'] ? calculatedCompositeFigures['centroidY'] : sharedFigures['joist'] ;
-            calculatedCompositeFigures['i1'] = calculatedCompositeFigures['n'] * (1620 / 12 + 180 * Math.pow(calculatedCompositeFigures['areaA'] - 3 / 2, 2));
-            calculatedCompositeFigures['i2'] = 2 * calculatedCompositeFigures['n'] * (6097.25 + 87 * Math.pow(calculatedCompositeFigures['areaA'] - 17.5, 2));
-            calculatedCompositeFigures['i3'] = calculatedCompositeFigures['n'] * (61.875 + 82.5 * Math.pow(calculatedCompositeFigures['areaA'] - 33.5, 2));
-            calculatedCompositeFigures['i4'] = calculatedCompositeFigures['n'] * (70.875 + 94.5 * Math.pow(calculatedCompositeFigures['areaA'] - 33.5,2));
-            calculatedCompositeFigures['i5'] = calculatedCompositeFigures['n'] * (3 * Math.pow(calculatedCompositeFigures['areaA'] - constantData['btm'], 3) / 12 + 3 * (calculatedCompositeFigures['areaA'] - constantData['btm']) * Math.pow(calculatedCompositeFigures['areaA'] - ((calculatedCompositeFigures['areaA'] - constantData['btm']) / 2 + constantData['btm']), 2));
-            calculatedCompositeFigures['i6'] =  0.2 * (calculatedCompositeFigures['centroidY'] < sharedFigures['joist'] ? 
-                                                calculatedCompositeFigures['bef'] * Math.pow(calculatedCompositeFigures['concreteThickness'], 3) / 12 + calculatedCompositeFigures['bef'] * calculatedCompositeFigures['concreteThickness'] * Math.pow(calculatedCompositeFigures['areaA'] - (sharedFigures['joist'] + calculatedCompositeFigures['concreteThickness'] / 2), 2) : 
-                                                calculatedCompositeFigures['bef'] * Math.pow(calculatedCompositeFigures['concreteThickness'] - (calculatedCompositeFigures['centroidY'] - sharedFigures['joist']), 3) / 12 + calculatedCompositeFigures['bef'] * (calculatedCompositeFigures['concreteThickness'] - (calculatedCompositeFigures['centroidY'] - sharedFigures['joist'])) * Math.pow(0.5 * (calculatedCompositeFigures['concreteThickness'] - (calculatedCompositeFigures['centroidY'] - sharedFigures['joist'])), 2)) ;
-            calculatedCompositeFigures['i7'] =  0.2 * (calculatedCompositeFigures['centroidY'] > calculatedCompositeFigures['areaA'] ?
-                                                calculatedCompositeFigures['bef'] * Math.pow(calculatedCompositeFigures['centroidY'] - calculatedCompositeFigures['areaA'], 3) / 12 + calculatedCompositeFigures['bef'] * (calculatedCompositeFigures['centroidY'] - calculatedCompositeFigures['areaA']) * Math.pow((calculatedCompositeFigures['centroidY'] - calculatedCompositeFigures['areaA']) / 2, 2) :
-                                                0);
-            calculatedCompositeFigures['i'] = (calculatedCompositeFigures['i1'] + calculatedCompositeFigures['i2'] + calculatedCompositeFigures['i3'] + calculatedCompositeFigures['i4'] + calculatedCompositeFigures['i5'] + calculatedCompositeFigures['i6'] + calculatedCompositeFigures['i7']) / calculatedCompositeFigures['n'];
-            calculatedCompositeFigures['zt'] = calculatedCompositeFigures['i'] / (sharedFigures['joist'] + calculatedCompositeFigures['concreteThickness'] - calculatedCompositeFigures['centroidY']);
-            calculatedCompositeFigures['zb'] = calculatedCompositeFigures['i'] / calculatedCompositeFigures['centroidY'];
-            calculatedCompositeFigures['phim'] = constantData['phiDifferent'] * constantData['fy'] * Math.min(calculatedCompositeFigures['zt'], calculatedCompositeFigures['zb']) / 1000000;
-            calculatedCompositeFigures['q1'] = 180 * (calculatedCompositeFigures['areaA'] - 3 / 2);
-            calculatedCompositeFigures['q2'] = 2 * (87 * (calculatedCompositeFigures['areaA'] - 17.5));
-            calculatedCompositeFigures['q3'] = 82.5 * (calculatedCompositeFigures['areaA'] - 33.5);
-            calculatedCompositeFigures['q4'] = 94.5 * (calculatedCompositeFigures['areaA'] - 33.5);
-            calculatedCompositeFigures['q5'] = 3 * (calculatedCompositeFigures['areaA'] - constantData['btm']) * (calculatedCompositeFigures['areaA'] - ((calculatedCompositeFigures['areaA'] - constantData['btm']) / 2 + constantData['btm']));
-            calculatedCompositeFigures['q'] = calculatedCompositeFigures['q1'] + calculatedCompositeFigures['q2'] + calculatedCompositeFigures['q3'] + calculatedCompositeFigures['q4'] + calculatedCompositeFigures['q5'];
-            calculatedCompositeFigures['weightOfConcrete'] = 25 * calculatedCompositeFigures['concreteThickness'] / 1000;
-            calculatedCompositeFigures['joistSpacing'] = summitedData['joistSpacing'] / 0.0032808399;
-            calculatedCompositeFigures['span'] = summitedData['joistSpacing'] * 0.3048;
-            calculatedCompositeFigures['weightOfJoist'] = nonCompositeTableA[sharedFigures['joist']];
-            calculatedCompositeFigures['precamberInJoist'] = -1.5 * calculatedCompositeFigures['span'];
-            calculatedCompositeFigures['span360'] = calculatedCompositeFigures['span'] * 1000 / 360;
-            calculatedCompositeFigures['span500'] = calculatedCompositeFigures['span'] * 1000 / 500;
-            calculatedCompositeFigures['deadLoadDeflection'] = (5 / 384) * ((calculatedCompositeFigures['weightOfConcrete'] * calculatedCompositeFigures['joistSpacing'] / 1000) + calculatedCompositeFigures['weightOfJoist'] * 9.81 / 1000) * Math.pow(calculatedCompositeFigures['span'] * 1000, 4) / (constantData['e'] * calculatedNonCompositeFigures['i']);
-            calculatedCompositeFigures['constructionLLDeflection'] = (5 / 384) * ((constantData['constructionLiveLoad'] * calculatedCompositeFigures['joistSpacing'] / 1000)) * Math.pow(calculatedCompositeFigures['span'] * 1000, 4) / (constantData['e'] * calculatedNonCompositeFigures['i']);
-            calculatedCompositeFigures['totalDeflection1'] = calculatedCompositeFigures['deadLoadDeflection'] + calculatedCompositeFigures['precamberInJoist'] + calculatedCompositeFigures['constructionLLDeflection'];
-            calculatedCompositeFigures['totalDeflection1Status360'] = calculatedCompositeFigures['totalDeflection1'] > calculatedCompositeFigures['span360'] ? "FAIL" : "PASS" ;
-            calculatedCompositeFigures['totalDeflection1Status500'] = calculatedCompositeFigures['totalDeflection1'] > calculatedCompositeFigures['span500'] ? "FAIL" : "PASS" ;
-            calculatedCompositeFigures['sdlPer'] = summitedData['sdl'] * 0.047880258888889;
-            calculatedCompositeFigures['liveLoadPer'] = summitedData['liveLoad'] * 0.047880258888889;
-            calculatedCompositeFigures['sdlShortTermLLDeflection'] = (5 / 384) * (((calculatedCompositeFigures['sdlPer'] + 0.75 * calculatedCompositeFigures['liveLoadPer']) * calculatedCompositeFigures['joistSpacing'] / 1000)) * Math.pow(calculatedCompositeFigures['span'] * 1000, 4) / (constantData['e'] * calculatedCompositeFigures['i']);
-            calculatedCompositeFigures['selfWeightDeflection1'] = calculatedCompositeFigures['deadLoadDeflection']; //same thing apparently
-            calculatedCompositeFigures['ksh'] = 336.375 * Math.pow(10, -6) / (sharedFigures['joist'] + calculatedCompositeFigures['concreteThickness']);
-            calculatedCompositeFigures['dryingShrinkageDeflection'] = 0.125 * calculatedCompositeFigures['ksh'] * Math.pow(calculatedCompositeFigures['span'] * 1000, 2);
-            calculatedCompositeFigures['totalDeflection2'] = calculatedCompositeFigures['selfWeightDeflection1'] + calculatedCompositeFigures['dryingShrinkageDeflection'] + constantData['creepDeflection'] + calculatedCompositeFigures['precamberInJoist'] + calculatedCompositeFigures['sdlShortTermLLDeflection'];
-            calculatedCompositeFigures['totalDeflection2Status360'] = calculatedCompositeFigures['totalDeflection2'] > calculatedCompositeFigures['span360'] ? "FAIL" : "PASS" ;
-            calculatedCompositeFigures['totalDeflection2Status500'] = calculatedCompositeFigures['totalDeflection2'] > calculatedCompositeFigures['span500'] ? "FAIL" : "PASS" ;
-            calculatedCompositeFigures['selfWeightDeflection2'] = (5 / 384) * ((calculatedCompositeFigures['weightOfConcrete'] * calculatedCompositeFigures['joistSpacing'] / 1000) + calculatedCompositeFigures['weightOfJoist'] * 9.81 / 1000) * Math.pow(calculatedCompositeFigures['span'] * 1000, 4) / (constantData['e'] * calculatedCompositeFigures['i']);
-            calculatedCompositeFigures['sustainedDeflection'] = ((5 / 384) * ((calculatedCompositeFigures['sdlPer'] * calculatedCompositeFigures['joistSpacing'] / 1000)) * Math.pow(calculatedCompositeFigures['span'] * 1000, 4) / (constantData['e'] * calculatedCompositeFigures['i']) + calculatedCompositeFigures['selfWeightDeflection2']) *1.9;
-            calculatedCompositeFigures['totalDeflection3'] = calculatedCompositeFigures['selfWeightDeflection2'] + calculatedCompositeFigures['precamberInJoist'] + calculatedCompositeFigures['sdlShortTermLLDeflection'] + calculatedCompositeFigures['sustainedDeflection'];
-            calculatedCompositeFigures['totalDeflection3Status360'] = calculatedCompositeFigures['totalDeflection3'] > calculatedCompositeFigures['span360'] ? "FAIL" : "PASS" ;
-            calculatedCompositeFigures['totalDeflection3Status500'] = calculatedCompositeFigures['totalDeflection3'] > calculatedCompositeFigures['span500'] ? "FAIL" : "PASS" ;
-            calculatedCompositeFigures['maxShortTerm'] = Math.max(calculatedCompositeFigures['totalDeflection1'], calculatedCompositeFigures['totalDeflection2'], calculatedCompositeFigures['totalDeflection3']);
-            calculatedCompositeFigures['maxShortTermStatus'] = calculatedCompositeFigures['maxShortTerm'] > calculatedCompositeFigures['span360'] ? "FAIL" : "PASS" ;
-            calculatedCompositeFigures['maxLongTerm'] = calculatedCompositeFigures['maxShortTerm']; //same thing apparently
-            calculatedCompositeFigures['maxLongTermStatus'] = calculatedCompositeFigures['maxLongTerm'] > calculatedCompositeFigures['span500'] ? "FAIL" : "PASS" ;
-            calculatedCompositeFigures['constr14D'] = 1.4 * ((calculatedCompositeFigures['weightOfConcrete'] * calculatedCompositeFigures['joistSpacing'] / 1000) + calculatedCompositeFigures['weightOfJoist'] * 9.81 / 1000);
-            calculatedCompositeFigures['composite14D'] = 1.4 * (((calculatedCompositeFigures['weightOfConcrete'] + calculatedCompositeFigures['sdlPer']) * calculatedCompositeFigures['joistSpacing'] / 1000) + calculatedCompositeFigures['weightOfJoist'] * 9.81 / 1000);
-            calculatedCompositeFigures['constr12G16G'] = 1.2 * ((calculatedCompositeFigures['weightOfConcrete'] * calculatedCompositeFigures['joistSpacing'] / 1000) + calculatedCompositeFigures['weightOfJoist'] * 9.81 / 1000) + 1.6 * constantData['constructionLiveLoad'] * calculatedCompositeFigures['joistSpacing'] / 1000;
-            calculatedCompositeFigures['composite12G16G'] = 1.2 * (((calculatedCompositeFigures['weightOfConcrete'] + calculatedCompositeFigures['sdlPer']) * calculatedCompositeFigures['joistSpacing'] / 1000) + calculatedCompositeFigures['weightOfJoist'] * 9.81 / 1000) + 1.6 * calculatedCompositeFigures['liveLoadPer'] * calculatedCompositeFigures['joistSpacing'] / 1000;
-            calculatedCompositeFigures['constrDesignCase'] = Math.max(calculatedCompositeFigures['constr14D'], calculatedCompositeFigures['constr12G16G']);
-            calculatedCompositeFigures['compositeDesignCase'] = Math.max(calculatedCompositeFigures['composite14D'], calculatedCompositeFigures['composite12G16G']);
-            
-        }
-        
-        function CalculateDesignFigures(){
-            calculatedDesignFigures['designVar0'] = Math.min(joistData[summitedData['joistSize']]['mr'] / 0.737562, calculatedNonCompositeFigures['ømb']);
-            calculatedDesignFigures['designVar1'] = calculatedCompositeFigures['constrDesignCase'] * Math.pow(summitedData['joistSpan'] * 0.3048, 2) / 8;
-            calculatedDesignFigures['designVar2'] = calculatedCompositeFigures['compositeDesignCase'] * Math.pow(summitedData['joistSpan'] * 0.3048, 2) / 8;
-            calculatedDesignFigures['designVar3'] = Math.min(constantData['capacityEndBoltedSupport'], slabData[summitedData['slabTopping']][summitedData['joistSize']]['vr'] / 0.22480894387096);
-            calculatedDesignFigures['designVar4'] = summitedData['joistSpan'] * summitedData['joistSpan'] * 0.3048 / 2;
-            try {
-               calculatedDesignFigures['designVar5'] = math.min(constantData['capacityEndBoltedSupport'], slabData[summitedData['slabTopping']][summitedData['joistSize']]['vr'] / 0.22480894387096, slabData[summitedData['slabTopping']][summitedData['joistSize']]['vrh'] / 0.22480894387096);
-            }
-            catch(err) {
-                calculatedDesignFigures['designVar5'] = 'N/A';
-            }
-            try {
-                calculatedDesignFigures['designVar6'] = calculatedCompositeFigures['compositeDesignCase'] * (summitedData['joistSpan'] * 0.3048 * 0.5 - (summitedData['firstHoleLocation'] / 0.0032808399) / 1000);
-            }
-            catch {
-                calculatedDesignFigures['designVar6'] = 'N/A';
-            }
-            calculatedDesignFigures['designVar7'] = summitedData['joistSpan'] * 304.8 / summitedData['deflectionLimit'];
-            calculatedDesignFigures['designVar8'] = summitedData['deflectionLimit'] === 360 ? calculatedCompositeFigures['maxShortTerm'] : calculatedCompositeFigures['maxLongTerm'] ; 
-        }
-        
-        function FinalDesignCheck(){
-            finalDesignStatus['momentCapacity'] = calculatedDesignFigures['designVar1'] <= calculatedDesignFigures['designVar0'] && calculatedDesignFigures['designVar2'] <= (slabData[summitedData['slabTopping']][summitedData['joistSize']]['mrc'] / 0.737562) ? "PASS" : "FAIL" ; 
-            finalDesignStatus['shearCapacityAtSupport'] = calculatedDesignFigures['designVar4'] > calculatedDesignFigures['designVar3'] ? "FAIL" : "PASS";
-            try {
-                finalDesignStatus['shearCapacityAtFirstHole'] = summitedData['joistSize'] < 9 ? "N/A" : calculatedDesignFigures['designVar6'] > calculatedDesignFigures['designVar5'] ? "FAIL" : "PASS" ;
-            }
-            catch{
-                finalDesignStatus['shearCapacityAtFirstHole'] = 'FAIL OR N/A';
-            }
-            finalDesignStatus['deflection'] = calculatedDesignFigures['designVar8'] > calculatedDesignFigures['designVar7'] ? "FAIL" : "PASS" ;
-        }
-        
-        function DisplayCalculatedData(){
-            joistNonCompositeElement.innerHTML = sharedFigures['joist'];
-            btmNonCompositeElement.innerHTML = constantData['btm'];
-            centroidYNonCompositeElement.innerHTML = calculatedNonCompositeFigures['centroidY'] + ' mm';
-            areaANonCompositeElement.innerHTML = calculatedNonCompositeFigures['areaA'] + ' mm2';
-            i1NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i1'] + ' mm4';
-            i2NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i2'] + ' mm4';
-            i3NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i3'] + ' mm4';
-            i4NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i4'] + ' mm4';
-            i5NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i5'] + ' mm4';
-            i6NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i6'] + ' mm4';
-            i7NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i7'] + ' mm4';
-            i8NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i8'] + ' mm4';
-            i9NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i9'] + ' mm4';
-            i10NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i10'] + ' mm4';
-            iNonCompositeElement.innerHTML = calculatedNonCompositeFigures['i'] + ' mm4';
-            ztNonCompositeElement.innerHTML = calculatedNonCompositeFigures['zt'] + ' mm3';
-            zbNonCompositeElement.innerHTML = calculatedNonCompositeFigures['zb'] + ' mm3';
-            phiNonCompositeElement.innerHTML = constantData['phi'];
-            phimNonCompositeElement.innerHTML = calculatedNonCompositeFigures['phim'] + ' kNm';
+    var joistSizeDropDown = document.getElementById("joist-size-dd");
+var joistSpacingDropDown = document.getElementById("joist-spacing-dd");
+var slabToppingDropDown = document.getElementById("slab-topping-dd");
+var firstHoleLocationDropDown = document.getElementById(
+  "first-hole-location-dd"
+);
+var sdlInput = document.getElementById("sdl-input");
+var liveLoadInput = document.getElementById("live-load-input");
+var deflectionLimitDropDown = document.getElementById("deflection-limit-dd");
+var joistSpanInput = document.getElementById("joist-span-input");
+
+var joistNonCompositeElement = document.getElementById("joist-non-composite");
+var btmNonCompositeElement = document.getElementById("btm-non-composite");
+var centroidYNonCompositeElement = document.getElementById(
+  "centroid-Y-non-composite"
+);
+var areaANonCompositeElement = document.getElementById("area-a-non-composite");
+var i1NonCompositeElement = document.getElementById("i-1-non-composite");
+var i2NonCompositeElement = document.getElementById("i-2-non-composite");
+var i3NonCompositeElement = document.getElementById("i-3-non-composite");
+var i4NonCompositeElement = document.getElementById("i-4-non-composite");
+var i5NonCompositeElement = document.getElementById("i-5-non-composite");
+var i6NonCompositeElement = document.getElementById("i-6-non-composite");
+var i7NonCompositeElement = document.getElementById("i-7-non-composite");
+var i8NonCompositeElement = document.getElementById("i-8-non-composite");
+var i9NonCompositeElement = document.getElementById("i-9-non-composite");
+var i10NonCompositeElement = document.getElementById("i-10-non-composite");
+var iNonCompositeElement = document.getElementById("i-non-composite");
+var ztNonCompositeElement = document.getElementById("zt-non-composite");
+var zbNonCompositeElement = document.getElementById("zb-non-composite");
+var phiNonCompositeElement = document.getElementById("phi-non-composite");
+var phimNonCompositeElement = document.getElementById("phim-non-composite");
+var circularHoleNonCompositeElement = document.getElementById(
+  "circular-hole-non-composite"
+);
+var nonCircularHoleNonCompositeElement = document.getElementById(
+  "non-circular-hole-non-composite"
+);
+var fyNonCompositeElement = document.getElementById("fy-non-composite");
+var eNonCompositeElement = document.getElementById("e-non-composite");
+var vNonCompositeElement = document.getElementById("v-non-composite");
+var kNonCompositeElement = document.getElementById("k-non-composite");
+var tNonCompositeElement = document.getElementById("t-non-composite");
+var bNonCompositeElement = document.getElementById("b-non-composite");
+var fcrNonCompositeElement = document.getElementById("fcr-non-composite");
+var fAsteriskNonCompositeElement = document.getElementById(
+  "f-asterisk-non-composite"
+);
+var lamdaNonCompositeElement = document.getElementById("lamda-non-composite");
+var pNonCompositeElement = document.getElementById("p-non-composite");
+var beNonCompositeElement = document.getElementById("be-non-composite");
+var psiNonCompositeElement = document.getElementById("psi-non-composite");
+var be1NonCompositeElement = document.getElementById("be-1-non-composite");
+var be2NonCompositeElement = document.getElementById("be-2-non-composite");
+var i51NonCompositeElement = document.getElementById("i-51-non-composite");
+var d52NonCompositeElement = document.getElementById("d-52-non-composite");
+var i52NonCompositeElement = document.getElementById("i-52-non-composite");
+var kvNonCompositeElement = document.getElementById("kv-non-composite");
+var d1NonCompositeElement = document.getElementById("d-1-non-composite");
+var d1OverTNonCompositeElement = document.getElementById(
+  "d-1-over-t-non-composite"
+);
+var ekvOverFyNonCompositeElement = document.getElementById(
+  "ekv-Over-fy-non-composite"
+);
+var q1NonCompositeElement = document.getElementById("q1-non-composite");
+var q2NonCompositeElement = document.getElementById("q2-non-composite");
+var q3NonCompositeElement = document.getElementById("q3-non-composite");
+var q4NonCompositeElement = document.getElementById("q4-non-composite");
+var q5NonCompositeElement = document.getElementById("q5-non-composite");
+var qNonCompositeElement = document.getElementById("q-non-composite");
+var phi2NonCompositeElement = document.getElementById("phi-non-composite-2");
+var phiHoleNonCompositeElement = document.getElementById(
+  "phi-hole-non-composite"
+);
+var phivNonCompositeElement = document.getElementById("phiv-non-composite");
+var phivCirHoleNonCompositeElement = document.getElementById(
+  "phiv-cir-hole-non-composite"
+);
+var phivNonCirHoleNonCompositeElement = document.getElementById(
+  "phiv-non-cir-hole-non-composite"
+);
+var tOverD1TimesEkvOverFyNonCompositeElement = document.getElementById(
+  "t-over-d1-times-ekv-over-fy-non-composite"
+);
+var d1OverTTimesFyOverEkvNonCompositeElement = document.getElementById(
+  "d1-over-t-times-fy-over-ekv-non-composite"
+);
+var ekvOverFyMultipliedNonCompositeElement = document.getElementById(
+  "ekv-over-fy-multiplied-non-composite"
+);
+var ekvfy1NonCompositeElement = document.getElementById("ekvfy1-non-composite");
+var cCircularNonCompositeElement = document.getElementById(
+  "c-circular-non-composite"
+);
+var qsCircularNonCompositeElement = document.getElementById(
+  "qs-circular-non-composite"
+);
+var vcrNonCompositeElement = document.getElementById("vcr-non-composite");
+var vyNonCompositeElement = document.getElementById("vy-non-composite");
+var lamdaVNonCompositeElement = document.getElementById(
+  "lamda-v-non-composite"
+);
+var ekvfy2NonCompositeElement = document.getElementById("ekvfy2-non-composite");
+var cNonCircularNonCompositeElement = document.getElementById(
+  "c-noncircular-non-composite"
+);
+var qsNonCircularNonCompositeElement = document.getElementById(
+  "qs-noncircular-non-composite"
+);
+
+var øNonCompositeElement = document.getElementById("ø-non-composite");
+var aNonCompositeElement = document.getElementById("a-non-composite");
+var cbNonCompositeElement = document.getElementById("cb-non-composite");
+var folNonCompositeElement = document.getElementById("fol-non-composite");
+var fodNonCompositeElement = document.getElementById("fod-non-composite");
+var fy2NonCompositeElement = document.getElementById("fy-non-composite2");
+var gNonCompositeElement = document.getElementById("g-non-composite");
+var jNonCompositeElement = document.getElementById("j-non-composite");
+var zcNonCompositeElement = document.getElementById("zc-non-composite");
+var iexNonCompositeElement = document.getElementById("iex-non-composite");
+var ieyNonCompositeElement = document.getElementById("iey-non-composite");
+var iezNonCompositeElement = document.getElementById("iez-non-composite");
+var iwNonCompositeElement = document.getElementById("iw-non-composite");
+var rxNonCompositeElement = document.getElementById("rx-non-composite");
+var ryNonCompositeElement = document.getElementById("ry-non-composite");
+var x0NonCompositeElement = document.getElementById("x0-non-composite");
+var zfNonCompositeElement = document.getElementById("zf-non-composite");
+var y0NonCompositeElement = document.getElementById("y0-non-composite");
+var rolNonCompositeElement = document.getElementById("rol-non-composite");
+var foyNonCompositeElement = document.getElementById("foy-non-composite");
+var fozNonCompositeElement = document.getElementById("foz-non-composite");
+var moNonCompositeElement = document.getElementById("mo-non-composite");
+var myNonCompositeElement = document.getElementById("my-non-composite");
+var λbNonCompositeElement = document.getElementById("λb-non-composite");
+var mcNonCompositeElement = document.getElementById("mc-non-composite");
+var mbeNonCompositeElement = document.getElementById("mbe-non-composite");
+var molNonCompositeElement = document.getElementById("mol-non-composite");
+var λlNonCompositeElement = document.getElementById("λl-non-composite");
+var mblNonCompositeElement = document.getElementById("mbl-non-composite");
+var modNonCompositeElement = document.getElementById("mod-non-composite");
+var λdNonCompositeElement = document.getElementById("λd-non-composite");
+var mbdNonCompositeElement = document.getElementById("mbd-non-composite");
+var msNonCompositeElement = document.getElementById("ms-non-composite");
+var ømbNonCompositeElement = document.getElementById("ømb-non-composite");
+
+var concreteThickinessElement = document.getElementById("concrete-thickness");
+var concreteStrengthElement = document.getElementById("concrete-strength");
+var elasticModulusElement = document.getElementById("elastic-modulus");
+var nCompositeElement = document.getElementById("n-composite");
+var befCompositeElement = document.getElementById("bef");
+
+var centroidYCompositeElement = document.getElementById("centroid-Y-composite");
+var areaACompositeElement = document.getElementById("area-a-composite");
+var i1CompositeElement = document.getElementById("i-1-composite");
+var i2CompositeElement = document.getElementById("i-2-composite");
+var i3CompositeElement = document.getElementById("i-3-composite");
+var i4CompositeElement = document.getElementById("i-4-composite");
+var i5CompositeElement = document.getElementById("i-5-composite");
+var i6CompositeElement = document.getElementById("i-6-composite");
+var i7CompositeElement = document.getElementById("i-7-composite");
+var iCompositeElement = document.getElementById("i-composite");
+var ztCompositeElement = document.getElementById("zt-composite");
+var zbCompositeElement = document.getElementById("zb-composite");
+var phiDifferentCompositeElement = document.getElementById(
+  "phi-different-composite"
+);
+var phimCompositeElement = document.getElementById("phim-composite");
+
+var q1CompositeElement = document.getElementById("q-1-composite");
+var q2CompositeElement = document.getElementById("q-2-composite");
+var q3CompositeElement = document.getElementById("q-3-composite");
+var q4CompositeElement = document.getElementById("q-4-composite");
+var q5CompositeElement = document.getElementById("q-5-composite");
+var qCompositeElement = document.getElementById("q-composite");
+
+var constructionLiveLoadElement = document.getElementById(
+  "construction-live-load-composite"
+);
+var weightOfConcreteElement = document.getElementById("weight-of-concrete");
+var joistSpacingElement = document.getElementById("joist-spacing-composite");
+var spanCompositeElement = document.getElementById("span-composite");
+var weightJoistElement = document.getElementById("weight-joist");
+var precamberJoistElement = document.getElementById("precamber-joist");
+var span360Element = document.getElementById("span-360");
+var span500Element = document.getElementById("span-500");
+
+var deadLoadDeflectionElement = document.getElementById("dead-load-deflection");
+var constructionLLDeflectionElement = document.getElementById(
+  "construction-ll-deflection"
+);
+var totalDeflection1Element = document.getElementById("total-deflection-1");
+var span360Deflection1StatusElement = document.getElementById(
+  "span-360-deflection-1-status"
+);
+var span500Deflection1StatusElement = document.getElementById(
+  "span-500-deflection-1-status"
+);
+var sdlPerElement = document.getElementById("sdl-per");
+var liveLoadPerElement = document.getElementById("live-load-per");
+var sdlShortTermLLDeflectionElement = document.getElementById(
+  "sdl-short-term-ll-deflection"
+);
+var sdlLongTermLLDeflectionElement = document.getElementById(
+  "sdl-long-term-ll-deflection"
+);
+
+var dryingShrinkageDeflectionElement = document.getElementById(
+  "drying-shrinkage-deflection"
+);
+var creepDeflectionElement = document.getElementById("creep-deflection");
+var kshElement = document.getElementById("ksh");
+var totalDeflection2Element = document.getElementById("total-deflection-2");
+var totalDeflection2LongElement = document.getElementById("total-deflection-2-long");
+var span360Deflection2StatusElement = document.getElementById(
+  "span-360-deflection-2-status"
+);
+var span500Deflection2StatusElement = document.getElementById(
+  "span-500-deflection-2-status"
+);
+var selfWeightDeflectionElement = document.getElementById(
+  "self-weight-deflection"
+);
+var sustainedDeflectionElement = document.getElementById(
+  "sustained-deflection"
+);
+var totalDeflection3Element = document.getElementById("total-deflection-3");
+var totalDeflection3LongElement = document.getElementById("total-deflection-3-long");
+var span360Deflection3StatusElement = document.getElementById(
+  "span-360-deflection-3-status"
+);
+var span500Deflection3StatusElement = document.getElementById(
+  "span-500-deflection-3-status"
+);
+
+var maxShortTermElement = document.getElementById("max-short-term");
+var maxShortTermStatusElement = document.getElementById(
+  "max-short-term-status"
+);
+var maxLongTermElement = document.getElementById("max-long-term");
+var maxLongTermStatusElement = document.getElementById("max-long-term-status");
+
+var constr14DElement = document.getElementById("constr-14-d");
+var composite14DElement = document.getElementById("composite-14-d");
+var constr12G16GElement = document.getElementById("constr-12-g-16-g");
+var composite12G16GElement = document.getElementById("composite-12-g-16-g");
+var constrDesignCaseElement = document.getElementById("constr-design-case");
+var compositeDesignCaseElement = document.getElementById(
+  "composite-design-case"
+);
+
+var designVar0Element = document.getElementById("design-variable-0");
+var designVar1Element = document.getElementById("design-variable-1");
+var designVar2Element = document.getElementById("design-variable-2");
+var designVar3Element = document.getElementById("design-variable-3");
+var designVar4Element = document.getElementById("design-variable-4");
+var designVar5Element = document.getElementById("design-variable-5");
+var designVar6Element = document.getElementById("design-variable-6");
+var designVar7Element = document.getElementById("design-variable-7");
+var designVar8Element = document.getElementById("design-variable-8");
+
+var momentCapacityElement = document.getElementById("moment-capacity");
+var shearCapacityAtSupportElement = document.getElementById(
+  "shear-capacity-at-support"
+);
+var shearCapacityAtFirstHoleElement = document.getElementById(
+  "shear-capacity-at-first-hole"
+);
+var deflectionFinalTestElement = document.getElementById(
+  "deflection-final-test"
+);
+
+var testElement = document.getElementById("testing");
+
+const joistData = {
+  5.905511805: {
+    weight: 6.2493114675,
+    area: 1.8383036766,
+    lx: 12.25275,
+    rx: 2.56692913124,
+    sx: 2.88642308348064,
+    j: 9.2256,
+    cw: 7.820184414,
+    lxd: 12.25275,
+    sxe: 2.88642308348064,
+    mr: 10.7684052,
+    vr: 14.43273419651563,
+    vrh: "NA"
+  },
+  7.87401574: {
+    weight: 7.0556742375,
+    area: 2.0723541447,
+    lx: 22.5835,
+    rx: 3.29527558719,
+    sx: 4.27776444295968,
+    j: 10.739175,
+    cw: 12.288861222,
+    lxd: 22.5835,
+    sxe: 4.27776444295968,
+    mr: 16.0050954,
+    vr: 20.72738462490251,
+    vrh: "NA"
+  },
+  9.842519675: {
+    weight: 7.8620370075,
+    area: 2.3048546097,
+    lx: 36.9985,
+    rx: 3.99999999592,
+    sx: 5.84607465956544,
+    j: 12.468975,
+    cw: 18.991876434,
+    lxd: 36.75825,
+    sxe: 5.83386991079808,
+    mr: 21.8318352,
+    vr: 20.95219356877347,
+    vrh: 7.283809781419104
+  },
+  11.81102361: {
+    weight: 8.6683997775,
+    area: 2.5373550747,
+    lx: 55.738,
+    rx: 4.6850393653,
+    sx: 7.58525135891424,
+    j: 13.285825,
+    cw: 27.556840316,
+    lxd: 55.01725,
+    sxe: 7.10316378260352,
+    mr: 26.6259882,
+    vr: 18.68162323567678,
+    vrh: 9.037319543612592
+  },
+  13.779527545: {
+    weight: 9.4747625475,
+    area: 2.7698555397,
+    lx: 79.52275,
+    rx: 5.3543307032,
+    sx: 9.49529454100608,
+    j: 14.727325,
+    cw: 37.983752868,
+    lxd: 77.60075,
+    sxe: 8.79962386126656,
+    mr: 32.9690214,
+    vr: 15.7141451765801,
+    vrh: 4.94579676516112
+  },
+  15.74803148: {
+    weight: 10.21392842,
+    area: 3.0023560047,
+    lx: 108.593,
+    rx: 6.01181101749,
+    sx: 11.5639994570736,
+    j: 16.216875,
+    cw: 50.645003824,
+    lxd: 104.98925,
+    sxe: 10.6181314276032,
+    mr: 39.828348,
+    vr: 13.55597931541889,
+    vrh: 6.137284167677208
+  },
+  17.716535415: {
+    weight: 11.02029119,
+    area: 3.2348564697,
+    lx: 143.42925,
+    rx: 6.65748030817,
+    sx: 13.7913661071168,
+    j: 17.850575,
+    cw: 65.540593184,
+    lxd: 137.66325,
+    sxe: 12.54648173284608,
+    mr: 47.0564556,
+    vr: 11.91487402516088,
+    vrh: 7.036519943161048
+  }
+};
+const slabData = {
+  3.49999999643: {
+    5.905511805: {
+      lxc: 28.878435623543,
+      mrc: 16.3404168223739,
+      vr: 14.4492576538902,
+      vrh: "NA"
+    },
+    7.87401574: {
+      lxc: 57.459720296758,
+      mrc: 25.5277181730199,
+      vr: 20.7315435903641,
+      vrh: "NA"
+    },
+    9.842519675: {
+      lxc: 92.093090160072,
+      mrc: 34.1843669945541,
+      vr: 20.9722501164074,
+      vrh: 7.28768588000041
+    },
+    11.81102361: {
+      lxc: 131.677980096865,
+      mrc: 42.3493453565435,
+      vr: 18.6814888878829,
+      vrh: 9.05428353812234
+    },
+    13.779527545: {
+      lxc: 179.512938428719,
+      mrc: 51.0499014339978,
+      vr: 15.7161731913935,
+      vrh: 4.95846342115296
+    },
+    15.74803148: {
+      lxc: 235.974229647824,
+      mrc: 60.2588779161349,
+      vr: 13.5632727542163,
+      vrh: 6.13975309861644
+    },
+    17.716535415: {
+      lxc: 301.413702095144,
+      mrc: 69.9543051074860,
+      vr: 11.9291435067204,
+      vrh: 7.03639466102848
+    }
+  },
+  3.99999999592: {
+    5.905511805: {
+      lxc: 29.351376432548,
+      mrc: 15.6471640944167,
+      vr: 14.4492576538902,
+      vrh: "NA"
+    },
+    7.87401574: {
+      lxc: 57.971270618943,
+      mrc: 24.4926279287229,
+      vr: 20.7315435903641,
+      vrh: "NA"
+    },
+    9.842519675: {
+      lxc: 99.360643642511,
+      mrc: 35.4283927369306,
+      vr: 20.9722501164074,
+      vrh: 7.28768588000041
+    },
+    11.81102361: {
+      lxc: 144.482903447922,
+      mrc: 44.7319247067172,
+      vr: 18.6814888878829,
+      vrh: 9.05428353812234
+    },
+    13.779527545: {
+      lxc: 196.149466043986,
+      mrc: 53.7781829164534,
+      vr: 15.7161731913935,
+      vrh: 4.95846342115296
+    },
+    15.74803148: {
+      lxc: 257.097816890994,
+      mrc: 63.3650848264264,
+      vr: 13.5632727542163,
+      vrh: 6.13975309861644
+    },
+    17.716535415: {
+      lxc: 327.716531040116,
+      mrc: 73.4688583855358,
+      vr: 11.9291435067204,
+      vrh: 7.03639466102848
+    }
+  }
+};
+
+const nonCompositeTableA = {
+  150: 9.288,
+  200: 10.5,
+  250: 11.62,
+  300: 12.84,
+  350: 14.07,
+  400: 15.19,
+  450: 16.41
+};
+const nonCompositeTableB = {
+  150: {
+    area: 1186,
+    rx: 65.2,
+    ry: 18.5,
+    x0: 31.7,
+    sx: 47.3,
+    sxe: 47.3,
+    j: 3.84,
+    cw: 2.1,
+    y0: 60.5
+  },
+  200: {
+    area: 1337,
+    rx: 83.7,
+    ry: 17.6,
+    x0: 27.1,
+    sx: 70.1,
+    sxe: 70.1,
+    j: 4.47,
+    cw: 3.3,
+    y0: 66.5
+  },
+  250: {
+    area: 1487,
+    rx: 101.6,
+    ry: 16.7,
+    x0: 23.7,
+    sx: 95.8,
+    sxe: 95.6,
+    j: 5.19,
+    cw: 5.1,
+    y0: 70.7
+  },
+  300: {
+    area: 1637,
+    rx: 119.0,
+    ry: 16.0,
+    x0: 21.1,
+    sx: 124.3,
+    sxe: 116.4,
+    j: 5.53,
+    cw: 7.4,
+    y0: 73.8
+  },
+  350: {
+    area: 1787,
+    rx: 136.0,
+    ry: 15.4,
+    x0: 19.1,
+    sx: 155.6,
+    sxe: 144.2,
+    j: 6.13,
+    cw: 10.2,
+    y0: 76.3
+  },
+  400: {
+    area: 1937,
+    rx: 152.7,
+    ry: 14.8,
+    x0: 17.4,
+    sx: 189.5,
+    sxe: 174.0,
+    j: 6.75,
+    cw: 13.6,
+    y0: 78.2
+  },
+  450: {
+    area: 2087,
+    rx: 169.1,
+    ry: 14.3,
+    x0: 16.0,
+    sx: 226.0,
+    sxe: 205.6,
+    j: 7.43,
+    cw: 17.6,
+    y0: 79.9
+  }
+};
+
+const constantData = {
+  btm: 35,
+  phi: 0.9,
+  fy: 345,
+  e: 200000,
+  v: 0.3,
+  t: 3,
+  kv: 5.34,
+  phiHole: 0.8,
+  cb: 1.1589,
+  fol: 1385,
+  fod: 729,
+  g: 80000,
+  iex: 13300,
+  iey: 609.6,
+  iez: 609.6,
+  concreteStrength: 31,
+  phiDifferent: 0.85,
+  constructionLiveLoad: 0.9576,
+  creepDeflection: 1,
+  capacityEndBoltedSupport: 63
+};
+
+var summitedData = {
+  joistSize: 0,
+  joistSpacing: 0,
+  slabTopping: 0,
+  firstHoleLocation: 0,
+  sdl: 0,
+  liveLoad: 0,
+  deflectionLimit: 0,
+  joistSpan: 0
+};
+
+var sharedFigures = {
+  joist: 0,
+  circularHole: 0,
+  nonCircularHole: 0,
+  d1: 0,
+  d1OverT: 0,
+  ekvOverFy: 0,
+  phiv: 0,
+  phivCirHole: 0,
+  phivNonCirHole: 0,
+  tOverD1TimesEkvOverFy: 0,
+  d1OverTTimesFyOverEkv: 0,
+  ekvOverFyMultiplied: 0,
+  ekvfy1: 0,
+  cCircular: 0,
+  qsCircular: 0,
+  vcr: 0,
+  vy: 0,
+  lamdaV: 0,
+  ekvfy2: 0,
+  cNonCircular: 0,
+  qsNonCircular: 0
+};
+
+var calculatedNonCompositeFigures = {
+  centroidY: 0,
+  areaA: 0,
+  i1: 0,
+  i2: 0,
+  i3: 0,
+  i4: 0,
+  i5: 0,
+  i6: 0,
+  i7: 0,
+  i8: 0,
+  i9: 0,
+  i10: 0,
+  i: 0,
+  zt: 0,
+  zb: 0,
+  phim: 0,
+  k: 0,
+  b: 0,
+  fcr: 0,
+  fAsterisk: 0,
+  lamda: 0,
+  p: 0,
+  be: 0,
+  psi: 0,
+  be1: 0,
+  be2: 0,
+  i51: 0,
+  d52: 0,
+  i52: 0,
+  q1: 0,
+  q2: 0,
+  q3: 0,
+  q4: 0,
+  q5: 0,
+  q: 0,
+  a: 0,
+  j: 0,
+  zc: 0,
+  iw: 0,
+  x0: 0,
+  zf: 0,
+  y0: 0,
+  rol: 0,
+  foy: 0,
+  foz: 0,
+  mo: 0,
+  my: 0,
+  λb: 0,
+  mc: 0,
+  fc: 0,
+  mbe: 0,
+  mol: 0,
+  λl: 0,
+  mbl: 0,
+  mod: 0,
+  λd: 0,
+  mbd: 0,
+  ms: 0,
+  ømb: 0
+};
+
+var calculatedCompositeFigures = {
+  concreteThickness: 0,
+  elasticModulus: 0,
+  n: 0,
+  bef: 0,
+  centroidY: 0,
+  areaA: 0,
+  i1: 0,
+  i2: 0,
+  i3: 0,
+  i4: 0,
+  i5: 0,
+  i6: 0,
+  i7: 0,
+  i: 0,
+  zt: 0,
+  zb: 0,
+  phim: 0,
+  q1: 0,
+  q2: 0,
+  q3: 0,
+  q4: 0,
+  q5: 0,
+  q: 0,
+  weightOfConcrete: 0,
+  joistSpacing: 0,
+  span: 0,
+  weightOfJoist: 0,
+  precamberInJoist: 0,
+  span360: 0,
+  span500: 0,
+  deadLoadDeflection: 0,
+  selfWeightDeflection: 0,
+  constructionLLDeflection: 0,
+  totalDeflection1: 0,
+  totalDeflection1Status360: "Fail",
+  totalDeflection1Status500: "Fail",
+  sdlPer: 0,
+  liveLoadPer: 0,
+  sdlShortTermLLDeflection: 0,
+  sdlLongTermLLDeflection: 0,
+  dryingShrinkageDeflection: 0,
+  ksh: 0,
+  totalDeflection2: 0,
+  totalDeflection2Long: 0,
+  totalDeflection2Status360: "Fail",
+  totalDeflection2Status500: "Fail",
+  
+  sustainedDeflection: 0,
+  totalDeflection3: 0,
+  totalDeflection3Long: 0,
+  totalDeflection3Status360: "Fail",
+  totalDeflection3Status500: "Fail",
+  maxShortTerm: 0,
+  maxShortTermStatus: "Fail",
+  maxLongTerm: 0,
+  maxLongTermStatus: "Fail",
+  constr14D: 0,
+  composite14D: 0,
+  constr12G16G: 0,
+  composite12G16G: 0,
+  constrDesignCase: 0,
+  compositeDesignCase: 0
+};
+
+var calculatedDesignFigures = {
+  designVar0: 0,
+  designVar1: 0,
+  designVar2: 0,
+  designVar3: 0,
+  designVar4: 0,
+  designVar5: 0,
+  designVar6: 0,
+  designVar7: 0,
+  designVar8: 0
+};
+
+var finalDesignStatus = {
+  momentCapacity: "Fail",
+  shearCapacityAtSupport: "Fail",
+  shearCapacityAtFirstHole: "Fail",
+  deflection: "Fail"
+};
+
+function CorrectInputValue(minimus, maximus, val, ident, decimals) {
+  var returnValue;
+  if (val < minimus) returnValue = minimus;
+  else if (val > maximus) returnValue = maximus;
+  else returnValue = Round(val, decimals);
+  document.getElementById(ident).value = returnValue;
+}
+
+function SubmitData() {
+  if (CheckForInputValues() === false) {
+    TestFunction("NEED TO COMPLETE");
+    return;
+  }
+
+  SaveSummitedData();
+
+  CalculateSharedFigure();
+
+  CalculateNonCompositeFigures();
+
+  CalculateCompositeFigures();
+
+  CalculateDesignFigures();
+
+  FinalDesignCheck();
+
+  DisplayCalculatedData();
+}
+
+function CheckForInputValues() {
+  if (
+    sdlInput.value.length !== 0 &&
+    liveLoadInput.value.length !== 0 &&
+    joistSpanInput.value.length !== 0
+  )
+    return true;
+  return false;
+}
+
+function SaveSummitedData() {
+  summitedData["joistSize"] = joistSizeDropDown.value;
+  summitedData["joistSpacing"] = joistSpacingDropDown.value;
+  summitedData["slabTopping"] = slabToppingDropDown.value;
+  summitedData["firstHoleLocation"] = firstHoleLocationDropDown.value;
+  summitedData["sdl"] = sdlInput.value;
+  summitedData["liveLoad"] = liveLoadInput.value;
+  summitedData["deflectionLimit"] = deflectionLimitDropDown.value;
+  summitedData["joistSpan"] = joistSpanInput.value;
+}
+
+function CalculateSharedFigure() {
+  sharedFigures["joist"] = RoundDown(summitedData["joistSize"] / 0.0393700787);
+  
+  sharedFigures["circularHole"] =
+    sharedFigures["joist"] < 250 ? 0 : sharedFigures["joist"] < 400 ? 125 : 250;
+  sharedFigures["nonCircularHole"] = sharedFigures["joist"] < 350 ? 0 : 200;
+  sharedFigures["d1"] = sharedFigures["joist"] - constantData["btm"];
+  sharedFigures["d1OverT"] = sharedFigures["d1"] / constantData["t"];
+  sharedFigures["ekvOverFy"] = Math.sqrt(
+    (constantData["e"] * constantData["kv"]) / constantData["fy"]
+  );
+  sharedFigures["tOverD1TimesEkvOverFy"] =
+    Math.sqrt(
+      (2 * constantData["e"] * constantData["kv"]) / constantData["fy"]
+    ) *
+    (constantData["t"] / sharedFigures["d1"]);
+  sharedFigures["d1OverTTimesFyOverEkv"] =
+    sharedFigures["d1OverT"] *
+    Math.sqrt(constantData["fy"] / (constantData["e"] * constantData["kv"]));
+  sharedFigures["ekvOverFyMultiplied"] = 1.415 * sharedFigures["ekvOverFy"];
+  sharedFigures["ekvfy1"] =
+    0.64 *
+    Math.pow(constantData["t"], 2) *
+    Math.sqrt(constantData["e"] * constantData["kv"] * constantData["fy"]);
+  sharedFigures["cCircular"] =
+    sharedFigures["d1"] / 2 - sharedFigures["circularHole"] / 2.83;
+  sharedFigures["qsCircular"] =
+    sharedFigures["cCircular"] / constantData["t"] >= 54
+      ? 1
+      : sharedFigures["cCircular"] / (54 * constantData["t"]);
+  sharedFigures["vcr"] =
+    (0.904 *
+      constantData["e"] *
+      constantData["kv"] *
+      Math.pow(constantData["t"], 3)) /
+    sharedFigures["d1"];
+  sharedFigures["vy"] =
+    0.6 * sharedFigures["d1"] * constantData["t"] * constantData["fy"];
+  sharedFigures["lamdaV"] = Math.sqrt(
+    sharedFigures["vy"] / sharedFigures["vcr"]
+  );
+  sharedFigures["ekvfy2"] =
+    0.6 *
+    Math.pow(constantData["t"], 2) *
+    Math.sqrt(constantData["e"] * constantData["kv"] * constantData["fy"]);
+  sharedFigures["cNonCircular"] =
+    sharedFigures["d1"] / 2 - sharedFigures["nonCircularHole"] / 2;
+  sharedFigures["qsNonCircular"] =
+    sharedFigures["cNonCircular"] / constantData["t"] >= 54
+      ? 1
+      : sharedFigures["cNonCircular"] / (54 * constantData["t"]);
+
+  var phivGrab;
+  if (0.815 < sharedFigures["lamdaV"] && sharedFigures["lamdaV"] < 1.227) {
+    phivGrab = constantData["phi"] * sharedFigures["ekvfy2"];
+  } else if (sharedFigures["lamdaV"] > 1.227) {
+    phivGrab =
+      (constantData["phi"] *
+        (sharedFigures["ekvfy2"] * sharedFigures["tOverD1TimesEkvOverFy"])) /
+      1000;
+  } else {
+    phivGrab =
+      (constantData["phi"] *
+        (sharedFigures["ekvfy2"] * sharedFigures["d1OverTTimesFyOverEkv"])) /
+      1000;
+  }
+
+  sharedFigures["phiv"] = phivGrab;
+  sharedFigures["phivCirHole"] =
+    sharedFigures["circularHole"] == 0
+      ? ""
+      : ((sharedFigures["phiv"] * sharedFigures["qsCircular"]) /
+          constantData["phi"]) *
+        constantData["phiHole"];
+  sharedFigures["phivNonCirHole"] =
+    sharedFigures["nonCircularHole"] == 0
+      ? ""
+      : ((sharedFigures["phiv"] * sharedFigures["qsNonCircular"]) /
+          constantData["phi"]) *
+        constantData["phiHole"];
+}
+function CalculateNonCompositeFigures() {
+  calculatedNonCompositeFigures["centroidY"] =
+    (1.5 * (60 * 3) +
+      2 * (29 / 2 + 3) * (29 * 3) +
+      (3 / 2 + 32) * (27.5 * 3) +
+      (3 / 2 + 32) * (31.5 * 3) +
+      ((sharedFigures["joist"] - 35) / 2 + 35) *
+        ((sharedFigures["joist"] - 35) * 3) +
+      (3 / 2 + sharedFigures["joist"]) * (40 * 3) +
+      (15 / 2 + 3 + sharedFigures["joist"]) * (15 * 3) +
+      (3 / 2 + 18 + sharedFigures["joist"]) * (25 * 3) +
+      (14 / 2 + 21 + sharedFigures["joist"]) * (14 * 3) +
+      (3 / 2 + 35 + sharedFigures["joist"]) * (23 * 3)) /
+    (60 * 3 +
+      2 * (29 * 3) +
+      27.5 * 3 +
+      31.5 * 3 +
+      (sharedFigures["joist"] - 35) * 3 +
+      40 * 3 +
+      15 * 3 +
+      25 * 3 +
+      14 * 3 +
+      23 * 3);
+
+  calculatedNonCompositeFigures["areaA"] =
+    60 * 3 +
+    2 * (29 * 3) +
+    27.5 * 3 +
+    31.5 * 3 +
+    (sharedFigures["joist"] - 35) * 3 +
+    40 * 3 +
+    15 * 3 +
+    25 * 3 +
+    14 * 3 +
+    23 * 3;
+
+  calculatedNonCompositeFigures["psi"] =
+    (-1 * (calculatedNonCompositeFigures["centroidY"] - constantData["btm"])) /
+    (sharedFigures["joist"] - calculatedNonCompositeFigures["centroidY"]);
+
+  calculatedNonCompositeFigures["k"] =
+    4 +
+    2 * Math.pow(1 - calculatedNonCompositeFigures["psi"], 3) +
+    2 * (1 - calculatedNonCompositeFigures["psi"]);
+
+  calculatedNonCompositeFigures["b"] =
+    sharedFigures["joist"] - calculatedNonCompositeFigures["centroidY"];
+
+  calculatedNonCompositeFigures["fcr"] =
+    ((calculatedNonCompositeFigures["k"] *
+      Math.pow(Math.PI, 2) *
+      constantData["e"]) /
+      (12 * (1 - Math.pow(constantData["v"], 2)))) *
+    Math.pow(constantData["t"] / calculatedNonCompositeFigures["b"], 2);
+
+  calculatedNonCompositeFigures["fAsterisk"] =
+    (constantData["fy"] *
+      (sharedFigures["joist"] - calculatedNonCompositeFigures["centroidY"])) /
+    (sharedFigures["joist"] + 38 - calculatedNonCompositeFigures["centroidY"]);
+
+  calculatedNonCompositeFigures["lamda"] = Math.sqrt(
+    calculatedNonCompositeFigures["fAsterisk"] /
+      calculatedNonCompositeFigures["fcr"]
+  );
+
+  calculatedNonCompositeFigures["p"] =
+    (1 - 0.22 / calculatedNonCompositeFigures["lamda"]) /
+      calculatedNonCompositeFigures["lamda"] >
+    1
+      ? 1
+      : (1 - 0.22 / calculatedNonCompositeFigures["lamda"]) /
+        calculatedNonCompositeFigures["lamda"];
+
+  calculatedNonCompositeFigures["be"] =
+    calculatedNonCompositeFigures["lamda"] > 0.673
+      ? calculatedNonCompositeFigures["p"] * calculatedNonCompositeFigures["b"]
+      : calculatedNonCompositeFigures["b"];
+
+  calculatedNonCompositeFigures["be1"] =
+    calculatedNonCompositeFigures["be"] /
+    (3 - calculatedNonCompositeFigures["psi"]);
+
+  calculatedNonCompositeFigures["be2"] =
+    (sharedFigures["joist"] + 38) / 23 > 4
+      ? calculatedNonCompositeFigures["be"] /
+          (1 - calculatedNonCompositeFigures["psi"]) -
+        calculatedNonCompositeFigures["be1"]
+      : calculatedNonCompositeFigures["psi"] > -0.236
+      ? calculatedNonCompositeFigures["be"] -
+        calculatedNonCompositeFigures["be1"]
+      : calculatedNonCompositeFigures["be"] / 2;
+
+  calculatedNonCompositeFigures["i51"] =
+    (3 * Math.pow(calculatedNonCompositeFigures["be1"], 3)) / 12 +
+    3 *
+      calculatedNonCompositeFigures["be1"] *
+      Math.pow(
+        calculatedNonCompositeFigures["centroidY"] -
+          (sharedFigures["joist"] - calculatedNonCompositeFigures["be1"] / 2),
+        2
+      );
+
+  calculatedNonCompositeFigures["d52"] =
+    calculatedNonCompositeFigures["centroidY"] -
+    constantData["btm"] +
+    calculatedNonCompositeFigures["be2"];
+
+  calculatedNonCompositeFigures["i52"] =
+    (3 * Math.pow(calculatedNonCompositeFigures["d52"], 3)) / 12 +
+    3 *
+      calculatedNonCompositeFigures["d52"] *
+      Math.pow(
+        calculatedNonCompositeFigures["centroidY"] -
+          (constantData["btm"] + calculatedNonCompositeFigures["d52"] / 2),
+        2
+      );
+
+  calculatedNonCompositeFigures["i1"] =
+    (60 * Math.pow(3, 3)) / 12 +
+    60 * 3 * Math.pow(calculatedNonCompositeFigures["centroidY"] - 3 / 2, 2);
+
+  calculatedNonCompositeFigures["i2"] =
+    2 *
+    ((3 * Math.pow(29, 3)) / 12 +
+      3 *
+        29 *
+        Math.pow(calculatedNonCompositeFigures["centroidY"] - (29 / 2 + 3), 2));
+
+  calculatedNonCompositeFigures["i3"] =
+    (27.5 * Math.pow(3, 3)) / 12 +
+    27.5 *
+      3 *
+      Math.pow(calculatedNonCompositeFigures["centroidY"] - (3 / 2 + 32), 2);
+
+  calculatedNonCompositeFigures["i4"] =
+    (31.5 * Math.pow(3, 3)) / 12 +
+    31.5 *
+      3 *
+      Math.pow(calculatedNonCompositeFigures["centroidY"] - (3 / 2 + 32), 2);
+
+  calculatedNonCompositeFigures["i5"] =
+    calculatedNonCompositeFigures["i51"] + calculatedNonCompositeFigures["i52"];
+
+  calculatedNonCompositeFigures["i6"] =
+    (40 * Math.pow(3, 3)) / 12 +
+    40 *
+      3 *
+      Math.pow(
+        calculatedNonCompositeFigures["centroidY"] -
+          (sharedFigures["joist"] + 3 / 2),
+        2
+      );
+
+  calculatedNonCompositeFigures["i7"] =
+    (3 * Math.pow(15, 3)) / 12 +
+    3 *
+      15 *
+      Math.pow(
+        calculatedNonCompositeFigures["centroidY"] -
+          (sharedFigures["joist"] + 3 + 15 / 2),
+        2
+      );
+
+  calculatedNonCompositeFigures["i8"] =
+    (25 * Math.pow(3, 3)) / 12 +
+    25 *
+      3 *
+      Math.pow(
+        calculatedNonCompositeFigures["centroidY"] -
+          (sharedFigures["joist"] + 18 + 3 / 2),
+        2
+      );
+
+  calculatedNonCompositeFigures["i9"] =
+    (3 * Math.pow(14, 3)) / 12 +
+    3 *
+      14 *
+      Math.pow(
+        calculatedNonCompositeFigures["centroidY"] -
+          (sharedFigures["joist"] + 21 + 14 / 2),
+        2
+      );
+
+  calculatedNonCompositeFigures["i10"] =
+    (23 * Math.pow(3, 3)) / 12 +
+    23 *
+      3 *
+      Math.pow(
+        calculatedNonCompositeFigures["centroidY"] -
+          (sharedFigures["joist"] + 35 + 3 / 2),
+        2
+      );
+
+  calculatedNonCompositeFigures["i"] =
+    calculatedNonCompositeFigures["i1"] +
+    calculatedNonCompositeFigures["i2"] +
+    calculatedNonCompositeFigures["i3"] +
+    calculatedNonCompositeFigures["i4"] +
+    calculatedNonCompositeFigures["i5"] +
+    calculatedNonCompositeFigures["i6"] +
+    calculatedNonCompositeFigures["i7"] +
+    calculatedNonCompositeFigures["i8"] +
+    calculatedNonCompositeFigures["i9"] +
+    calculatedNonCompositeFigures["i10"]; // must go down after all i#
+
+  calculatedNonCompositeFigures["zt"] =
+    sharedFigures["joist"] < 300
+      ? calculatedNonCompositeFigures["i"] /
+        (sharedFigures["joist"] +
+          38 -
+          calculatedNonCompositeFigures["centroidY"])
+      : (calculatedNonCompositeFigures["i"] /
+          (sharedFigures["joist"] +
+            38 -
+            calculatedNonCompositeFigures["centroidY"])) *
+        0.95;
+
+  calculatedNonCompositeFigures["zb"] =
+    sharedFigures["joist"] < 300
+      ? calculatedNonCompositeFigures["i"] /
+        calculatedNonCompositeFigures["centroidY"]
+      : 1.05 *
+        (calculatedNonCompositeFigures["i"] /
+          calculatedNonCompositeFigures["centroidY"]);
+
+  calculatedNonCompositeFigures["phim"] =
+    (constantData["phi"] *
+      constantData["fy"] *
+      Math.min(
+        calculatedNonCompositeFigures["zt"],
+        calculatedNonCompositeFigures["zb"]
+      )) /
+    Math.pow(10, 6);
+
+  calculatedNonCompositeFigures["q1"] =
+    60 * 3 * (calculatedNonCompositeFigures["centroidY"] - 3 / 2);
+
+  calculatedNonCompositeFigures["q2"] =
+    2 * (3 * 29 * (calculatedNonCompositeFigures["centroidY"] - (29 / 2 + 3)));
+
+  calculatedNonCompositeFigures["q3"] =
+    27.5 * 3 * (calculatedNonCompositeFigures["centroidY"] - (3 / 2 + 32));
+
+  calculatedNonCompositeFigures["q4"] =
+    31.5 * 3 * (calculatedNonCompositeFigures["centroidY"] - (3 / 2 + 32));
+
+  calculatedNonCompositeFigures["q5"] =
+    3 *
+    (calculatedNonCompositeFigures["centroidY"] - constantData["btm"]) *
+    (calculatedNonCompositeFigures["centroidY"] -
+      ((calculatedNonCompositeFigures["centroidY"] - constantData["btm"]) / 2 +
+        constantData["btm"]));
+
+  calculatedNonCompositeFigures["q"] =
+    calculatedNonCompositeFigures["q1"] +
+    calculatedNonCompositeFigures["q2"] +
+    calculatedNonCompositeFigures["q3"] +
+    calculatedNonCompositeFigures["q4"] +
+    calculatedNonCompositeFigures["q5"];
+
+  calculatedNonCompositeFigures["a"] =
+    nonCompositeTableB[sharedFigures["joist"]]["area"];
+
+  calculatedNonCompositeFigures["j"] =
+    1000 * nonCompositeTableB[sharedFigures["joist"]]["j"];
+
+  calculatedNonCompositeFigures["zc"] =
+    1000 * nonCompositeTableB[sharedFigures["joist"]]["sxe"];
+
+  calculatedNonCompositeFigures["iw"] =
+    1000000000 * nonCompositeTableB[sharedFigures["joist"]]["cw"];
+
+  calculatedNonCompositeFigures["rx"] =
+    nonCompositeTableB[sharedFigures["joist"]]["rx"];
+
+  calculatedNonCompositeFigures["ry"] =
+    nonCompositeTableB[sharedFigures["joist"]]["ry"];
+
+  calculatedNonCompositeFigures["x0"] =
+    nonCompositeTableB[sharedFigures["joist"]]["x0"];
+
+  calculatedNonCompositeFigures["zf"] =
+    1000 * nonCompositeTableB[sharedFigures["joist"]]["sx"];
+
+  calculatedNonCompositeFigures["y0"] =
+    nonCompositeTableB[sharedFigures["joist"]]["y0"];
+
+  calculatedNonCompositeFigures["rol"] = Math.sqrt(
+    Math.pow(calculatedNonCompositeFigures["rx"], 2) +
+      Math.pow(calculatedNonCompositeFigures["ry"], 2) +
+      Math.pow(calculatedNonCompositeFigures["x0"], 2) +
+      Math.pow(calculatedNonCompositeFigures["y0"], 2)
+  );
+
+  calculatedNonCompositeFigures["foy"] =
+    (Math.pow(Math.PI, 2) * 200000) /
+    Math.pow(constantData["iey"] / calculatedNonCompositeFigures["ry"], 2);
+
+  calculatedNonCompositeFigures["foz"] =
+    ((constantData["g"] * calculatedNonCompositeFigures["j"]) /
+      (calculatedNonCompositeFigures["a"] *
+        Math.pow(calculatedNonCompositeFigures["rol"], 2))) *
+    (1 +
+      (Math.pow(Math.PI, 2) * 200000 * calculatedNonCompositeFigures["iw"]) /
+        (constantData["g"] *
+          calculatedNonCompositeFigures["j"] *
+          Math.pow(constantData["iez"], 2)));
+
+  calculatedNonCompositeFigures["mo"] =
+    constantData["cb"] *
+    calculatedNonCompositeFigures["a"] *
+    calculatedNonCompositeFigures["rol"] *
+    Math.sqrt(
+      calculatedNonCompositeFigures["foy"] *
+        calculatedNonCompositeFigures["foz"]
+    );
+  calculatedNonCompositeFigures["my"] =
+    calculatedNonCompositeFigures["zf"] * constantData["fy"];
+  calculatedNonCompositeFigures["λb"] = Math.sqrt(
+    calculatedNonCompositeFigures["my"] / calculatedNonCompositeFigures["mo"]
+  );
+  calculatedNonCompositeFigures["mc"] =
+    calculatedNonCompositeFigures["λb"] <= 0.6
+      ? calculatedNonCompositeFigures["my"]
+      : calculatedNonCompositeFigures["λb"] >= 1.336
+      ? calculatedNonCompositeFigures["my"] *
+        (1 / Math.pow(calculatedNonCompositeFigures["λb"], 2))
+      : 1.11 *
+        calculatedNonCompositeFigures["my"] *
+        (1 - (10 * Math.pow(calculatedNonCompositeFigures["λb"], 2)) / 36);
+  calculatedNonCompositeFigures["mbe"] =
+    calculatedNonCompositeFigures["mo"] <
+    0.56 * calculatedNonCompositeFigures["my"]
+      ? calculatedNonCompositeFigures["mo"]
+      : calculatedNonCompositeFigures["mo"] >
+        2.78 * calculatedNonCompositeFigures["my"]
+      ? calculatedNonCompositeFigures["my"]
+      : (10 / 9) *
+        calculatedNonCompositeFigures["my"] *
+        (1 -
+          (10 * calculatedNonCompositeFigures["my"]) /
+            (36 * calculatedNonCompositeFigures["mo"]));
+  calculatedNonCompositeFigures["mol"] =
+    calculatedNonCompositeFigures["zf"] * constantData["fol"];
+  calculatedNonCompositeFigures["λl"] = Math.sqrt(
+    calculatedNonCompositeFigures["mbe"] / calculatedNonCompositeFigures["mol"]
+  );
+  calculatedNonCompositeFigures["mbl"] =
+    calculatedNonCompositeFigures["λl"] <= 0.776
+      ? calculatedNonCompositeFigures["mbe"]
+      : (1 -
+          0.15 *
+            Math.pow(
+              calculatedNonCompositeFigures["mol"] /
+                calculatedNonCompositeFigures["mbe"],
+              0.4
+            )) *
+        Math.pow(
+          calculatedNonCompositeFigures["mol"] /
+            calculatedNonCompositeFigures["mbe"],
+          0.4
+        ) *
+        calculatedNonCompositeFigures["mbe"];
+  calculatedNonCompositeFigures["mod"] =
+    calculatedNonCompositeFigures["zf"] * constantData["fod"];
+  calculatedNonCompositeFigures["λd"] = Math.sqrt(
+    calculatedNonCompositeFigures["my"] / calculatedNonCompositeFigures["mod"]
+  );
+  calculatedNonCompositeFigures["mbd"] =
+    calculatedNonCompositeFigures["λd"] <= 0.673
+      ? calculatedNonCompositeFigures["my"]
+      : (1 -
+          0.22 *
+            Math.pow(
+              calculatedNonCompositeFigures["mod"] /
+                calculatedNonCompositeFigures["my"],
+              0.5
+            )) *
+        Math.pow(
+          calculatedNonCompositeFigures["mod"] /
+            calculatedNonCompositeFigures["my"],
+          0.5
+        ) *
+        calculatedNonCompositeFigures["my"];
+  calculatedNonCompositeFigures["ms"] =
+    calculatedNonCompositeFigures["zc"] * constantData["fy"];
+  calculatedNonCompositeFigures["ømb"] =
+    (0.9 *
+      Math.min(
+        calculatedNonCompositeFigures["mbe"],
+        calculatedNonCompositeFigures["mbl"],
+        calculatedNonCompositeFigures["mbd"],
+        calculatedNonCompositeFigures["ms"]
+      )) /
+    1000000;
+}
+
+function CalculateCompositeFigures() {
+  calculatedCompositeFigures["concreteThickness"] =
+    summitedData["slabTopping"] / 0.0393700787;
+  calculatedCompositeFigures["elasticModulus"] =
+    4700 * Math.sqrt(constantData["concreteStrength"]);
+  calculatedCompositeFigures["n"] =
+    constantData["e"] / calculatedCompositeFigures["elasticModulus"];
+  calculatedCompositeFigures["bef"] = Math.min(
+    304.8,
+    calculatedCompositeFigures["concreteThickness"] + sharedFigures["joist"],
+    10000 / 15
+  );
+  calculatedCompositeFigures["centroidY"] =
+    (calculatedCompositeFigures["n"] *
+      ((3 / 2) * (60 * 3) +
+        2 * (29 / 2 + 3) * (29 * 3) +
+        (3 / 2 + 32) * (27.5 * 3) +
+        (3 / 2 + 32) * (31.5 * 3) +
+        ((sharedFigures["joist"] - 35) / 2 + 35) *
+          ((sharedFigures["joist"] - 35) * 3)) +
+      calculatedCompositeFigures["bef"] *
+        calculatedCompositeFigures["concreteThickness"] *
+        (sharedFigures["joist"] +
+          calculatedCompositeFigures["concreteThickness"] / 2)) /
+    (calculatedCompositeFigures["n"] *
+      (60 * 3 +
+        2 * (29 * 3) +
+        27.5 * 3 +
+        31.5 * 3 +
+        (sharedFigures["joist"] - 35) * 3) +
+      calculatedCompositeFigures["bef"] *
+        calculatedCompositeFigures["concreteThickness"]);
+  calculatedCompositeFigures["areaA"] =
+    calculatedCompositeFigures["centroidY"] < sharedFigures["joist"]
+      ? calculatedCompositeFigures["centroidY"]
+      : sharedFigures["joist"];
+  calculatedCompositeFigures["i1"] =
+    calculatedCompositeFigures["n"] *
+    (1620 / 12 +
+      180 * Math.pow(calculatedCompositeFigures["areaA"] - 3 / 2, 2));
+  calculatedCompositeFigures["i2"] =
+    2 *
+    calculatedCompositeFigures["n"] *
+    (6097.25 + 87 * Math.pow(calculatedCompositeFigures["areaA"] - 17.5, 2));
+  calculatedCompositeFigures["i3"] =
+    calculatedCompositeFigures["n"] *
+    (61.875 + 82.5 * Math.pow(calculatedCompositeFigures["areaA"] - 33.5, 2));
+  calculatedCompositeFigures["i4"] =
+    calculatedCompositeFigures["n"] *
+    (70.875 + 94.5 * Math.pow(calculatedCompositeFigures["areaA"] - 33.5, 2));
+  calculatedCompositeFigures["i5"] =
+    calculatedCompositeFigures["n"] *
+    ((3 *
+      Math.pow(calculatedCompositeFigures["areaA"] - constantData["btm"], 3)) /
+      12 +
+      3 *
+        (calculatedCompositeFigures["areaA"] - constantData["btm"]) *
+        Math.pow(
+          calculatedCompositeFigures["areaA"] -
+            ((calculatedCompositeFigures["areaA"] - constantData["btm"]) / 2 +
+              constantData["btm"]),
+          2
+        ));
+  calculatedCompositeFigures["i6"] =
+    0.2 *
+    (calculatedCompositeFigures["centroidY"] < sharedFigures["joist"]
+      ? (calculatedCompositeFigures["bef"] *
+          Math.pow(calculatedCompositeFigures["concreteThickness"], 3)) /
+          12 +
+        calculatedCompositeFigures["bef"] *
+          calculatedCompositeFigures["concreteThickness"] *
+          Math.pow(
+            calculatedCompositeFigures["areaA"] -
+              (sharedFigures["joist"] +
+                calculatedCompositeFigures["concreteThickness"] / 2),
+            2
+          )
+      : (calculatedCompositeFigures["bef"] *
+          Math.pow(
+            calculatedCompositeFigures["concreteThickness"] -
+              (calculatedCompositeFigures["centroidY"] -
+                sharedFigures["joist"]),
+            3
+          )) /
+          12 +
+        calculatedCompositeFigures["bef"] *
+          (calculatedCompositeFigures["concreteThickness"] -
+            (calculatedCompositeFigures["centroidY"] -
+              sharedFigures["joist"])) *
+          Math.pow(
+            0.5 *
+              (calculatedCompositeFigures["concreteThickness"] -
+                (calculatedCompositeFigures["centroidY"] -
+                  sharedFigures["joist"])),
+            2
+          ));
+  calculatedCompositeFigures["i7"] =
+    0.2 *
+    (calculatedCompositeFigures["centroidY"] >
+    calculatedCompositeFigures["areaA"]
+      ? (calculatedCompositeFigures["bef"] *
+          Math.pow(
+            calculatedCompositeFigures["centroidY"] -
+              calculatedCompositeFigures["areaA"],
+            3
+          )) /
+          12 +
+        calculatedCompositeFigures["bef"] *
+          (calculatedCompositeFigures["centroidY"] -
+            calculatedCompositeFigures["areaA"]) *
+          Math.pow(
+            (calculatedCompositeFigures["centroidY"] -
+              calculatedCompositeFigures["areaA"]) /
+              2,
+            2
+          )
+      : 0);
+  calculatedCompositeFigures["i"] =
+    (calculatedCompositeFigures["i1"] +
+      calculatedCompositeFigures["i2"] +
+      calculatedCompositeFigures["i3"] +
+      calculatedCompositeFigures["i4"] +
+      calculatedCompositeFigures["i5"] +
+      calculatedCompositeFigures["i6"] +
+      calculatedCompositeFigures["i7"]) /
+    calculatedCompositeFigures["n"];
+  calculatedCompositeFigures["zt"] =
+    calculatedCompositeFigures["i"] /
+    (sharedFigures["joist"] +
+      calculatedCompositeFigures["concreteThickness"] -
+      calculatedCompositeFigures["centroidY"]);
+  calculatedCompositeFigures["zb"] =
+    calculatedCompositeFigures["i"] / calculatedCompositeFigures["centroidY"];
+  calculatedCompositeFigures["phim"] =
+    (constantData["phiDifferent"] *
+      constantData["fy"] *
+      Math.min(
+        calculatedCompositeFigures["zt"],
+        calculatedCompositeFigures["zb"]
+      )) /
+    1000000;
+  calculatedCompositeFigures["q1"] =
+    180 * (calculatedCompositeFigures["areaA"] - 3 / 2);
+  calculatedCompositeFigures["q2"] =
+    2 * (87 * (calculatedCompositeFigures["areaA"] - 17.5));
+  calculatedCompositeFigures["q3"] =
+    82.5 * (calculatedCompositeFigures["areaA"] - 33.5);
+  calculatedCompositeFigures["q4"] =
+    94.5 * (calculatedCompositeFigures["areaA"] - 33.5);
+  calculatedCompositeFigures["q5"] =
+    3 *
+    (calculatedCompositeFigures["areaA"] - constantData["btm"]) *
+    (calculatedCompositeFigures["areaA"] -
+      ((calculatedCompositeFigures["areaA"] - constantData["btm"]) / 2 +
+        constantData["btm"]));
+  calculatedCompositeFigures["q"] =
+    calculatedCompositeFigures["q1"] +
+    calculatedCompositeFigures["q2"] +
+    calculatedCompositeFigures["q3"] +
+    calculatedCompositeFigures["q4"] +
+    calculatedCompositeFigures["q5"];
+  calculatedCompositeFigures["weightOfConcrete"] =
+    (25 * calculatedCompositeFigures["concreteThickness"]) / 1000;
+  calculatedCompositeFigures["joistSpacing"] =
+    summitedData["joistSpacing"] / 0.0032808399;
+  
+  calculatedCompositeFigures["span"] = summitedData["joistSpan"] * 0.3048;
+  
+  calculatedCompositeFigures["weightOfJoist"] =
+    nonCompositeTableA[sharedFigures["joist"]];
+  calculatedCompositeFigures["precamberInJoist"] =
+    -1.5 * calculatedCompositeFigures["span"];
+  calculatedCompositeFigures["span360"] =
+    (calculatedCompositeFigures["span"] * 1000) / 360;
+  calculatedCompositeFigures["span500"] =
+    (calculatedCompositeFigures["span"] * 1000) / 500;
+  calculatedCompositeFigures["deadLoadDeflection"] =
+    ((5 / 384) *
+      ((calculatedCompositeFigures["weightOfConcrete"] *
+        calculatedCompositeFigures["joistSpacing"]) /
+        1000 +
+        (calculatedCompositeFigures["weightOfJoist"] * 9.81) / 1000) *
+      Math.pow(calculatedCompositeFigures["span"] * 1000, 4)) /
+    (constantData["e"] * calculatedNonCompositeFigures["i"]);
+  
+  calculatedCompositeFigures["constructionLLDeflection"] =
+    ((5 / 384) *
+      ((constantData["constructionLiveLoad"] *
+        calculatedCompositeFigures["joistSpacing"]) /
+        1000) *
+      Math.pow(calculatedCompositeFigures["span"] * 1000, 4)) /
+    (constantData["e"] * calculatedNonCompositeFigures["i"]);
+  
+  calculatedCompositeFigures["totalDeflection1"] =
+    calculatedCompositeFigures["deadLoadDeflection"] +
+    calculatedCompositeFigures["precamberInJoist"] +
+    calculatedCompositeFigures["constructionLLDeflection"];
+  
+  calculatedCompositeFigures["totalDeflection1Status360"] =
+    calculatedCompositeFigures["totalDeflection1"] >
+    calculatedCompositeFigures["span360"]
+      ? "FAIL"
+      : "PASS";
+  
+  calculatedCompositeFigures["totalDeflection1Status500"] =
+    calculatedCompositeFigures["totalDeflection1"] >
+    calculatedCompositeFigures["span500"]
+      ? "FAIL"
+      : "PASS";
+  
+  calculatedCompositeFigures["sdlPer"] =
+    summitedData["sdl"] * 0.047880258888889;
+  
+  calculatedCompositeFigures["liveLoadPer"] =
+    summitedData["liveLoad"] * 0.047880258888889;
+  
+  calculatedCompositeFigures["sdlShortTermLLDeflection"] =
+    ((5 / 384) *
+      (((calculatedCompositeFigures["sdlPer"] +
+        0.75 * calculatedCompositeFigures["liveLoadPer"]) *
+        calculatedCompositeFigures["joistSpacing"]) /
+        1000) *
+      Math.pow(calculatedCompositeFigures["span"] * 1000, 4)) /
+    (constantData["e"] * calculatedCompositeFigures["i"]);
+   
+  calculatedCompositeFigures["sdlLongTermLLDeflection"] = 
+    ((5 / 384) *
+        (((calculatedCompositeFigures["sdlPer"] +
+          0.5 * calculatedCompositeFigures["liveLoadPer"]) *
+          calculatedCompositeFigures["joistSpacing"]) /
+          1000) *
+        Math.pow(calculatedCompositeFigures["span"] * 1000, 4)) /
+      (constantData["e"] * calculatedCompositeFigures["i"]);
     
-            circularHoleNonCompositeElement.innerHTML = sharedFigures['circularHole'] + ' dwh';
-            nonCircularHoleNonCompositeElement.innerHTML = sharedFigures['nonCircularHole'] + ' dwh';
-            fyNonCompositeElement.innerHTML = constantData['fy'] + ' MPa';
-            eNonCompositeElement.innerHTML = constantData['e'] + ' MPa';
-            vNonCompositeElement.innerHTML = constantData['v'];
-            kNonCompositeElement.innerHTML = calculatedNonCompositeFigures['k'];
-            tNonCompositeElement.innerHTML = constantData['t'] + ' mm';
-            bNonCompositeElement.innerHTML = calculatedNonCompositeFigures['b'] + ' mm';
-            fcrNonCompositeElement.innerHTML = calculatedNonCompositeFigures['fcr'] + ' MPa';
-            fAsteriskNonCompositeElement.innerHTML = calculatedNonCompositeFigures['fAsterisk'] + ' MPa';
-            lamdaNonCompositeElement.innerHTML = calculatedNonCompositeFigures['lamda'];
-            pNonCompositeElement.innerHTML = calculatedNonCompositeFigures['p'];
-            beNonCompositeElement.innerHTML = calculatedNonCompositeFigures['be'] + ' mm';
-            psiNonCompositeElement.innerHTML = calculatedNonCompositeFigures['psi'];
-            be1NonCompositeElement.innerHTML = calculatedNonCompositeFigures['be1'] + ' mm';
-            be2NonCompositeElement.innerHTML = calculatedNonCompositeFigures['be2'] + ' mm';
-            i51NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i51'] + ' mm4';
-            d52NonCompositeElement.innerHTML = calculatedNonCompositeFigures['d52'] + ' mm';
-            i52NonCompositeElement.innerHTML = calculatedNonCompositeFigures['i52'] + ' mm4';
-            
-            kvNonCompositeElement.innerHTML = constantData['kv'];
-            d1NonCompositeElement.innerHTML = sharedFigures['d1'] + ' mm';
-            d1OverTNonCompositeElement.innerHTML = sharedFigures['d1OverT'];
-            ekvOverFyNonCompositeElement.innerHTML = sharedFigures['ekvOverFy'];
-            q1NonCompositeElement.innerHTML = calculatedNonCompositeFigures['q1'] + ' mm3';
-            q2NonCompositeElement.innerHTML = calculatedNonCompositeFigures['q2'] + ' mm3';
-            q3NonCompositeElement.innerHTML = calculatedNonCompositeFigures['q3'] + ' mm3';
-            q4NonCompositeElement.innerHTML = calculatedNonCompositeFigures['q4'] + ' mm3';
-            q5NonCompositeElement.innerHTML = calculatedNonCompositeFigures['q5'] + ' mm3';
-            qNonCompositeElement.innerHTML = calculatedNonCompositeFigures['q'] + ' mm3';
-            
-            phi2NonCompositeElement.innerHTML = constantData['phi'];
-            phiHoleNonCompositeElement.innerHTML = constantData['phiHole'];
-            phivNonCompositeElement.innerHTML = sharedFigures['phiv'] + ' kN';
-            phivCirHoleNonCompositeElement.innerHTML = sharedFigures['phivCirHole'] + ' kN';
-            phivNonCirHoleNonCompositeElement.innerHTML = sharedFigures['phivNonCirHole'] + ' kN';
-            
-            tOverD1TimesEkvOverFyNonCompositeElement.innerHTML = sharedFigures['tOverD1TimesEkvOverFy'];
-            d1OverTTimesFyOverEkvNonCompositeElement.innerHTML = sharedFigures['d1OverTTimesFyOverEkv'];
-            ekvOverFyMultipliedNonCompositeElement.innerHTML = sharedFigures['ekvOverFyMultiplied'];
-            ekvfy1NonCompositeElement.innerHTML = sharedFigures['ekvfy1'];
-            cCircularNonCompositeElement.innerHTML = sharedFigures['cCircular'];
-            qsCircularNonCompositeElement.innerHTML = sharedFigures['qsCircular'];
-            vcrNonCompositeElement.innerHTML = sharedFigures['vcr'] + ' N';
-            vyNonCompositeElement.innerHTML = sharedFigures['vy'] + ' N';
-            lamdaVNonCompositeElement.innerHTML = sharedFigures['lamdaV'];
-            ekvfy2NonCompositeElement.innerHTML = sharedFigures['ekvfy2'];
-            cNonCircularNonCompositeElement.innerHTML = sharedFigures['cNonCircular'];
-            qsNonCircularNonCompositeElement.innerHTML = sharedFigures['qsNonCircular'];
-            
-            øNonCompositeElement.innerHTML = constantData['phi'];
-            aNonCompositeElement.innerHTML = calculatedNonCompositeFigures['a'] + ' mm2';
-            cbNonCompositeElement.innerHTML = constantData['cb'];
-            folNonCompositeElement.innerHTML = constantData['fol'] + ' MPa';
-            fodNonCompositeElement.innerHTML = constantData['fod'] + ' MPa';
-            fy2NonCompositeElement.innerHTML = constantData['fy'] + ' MPa';
-            gNonCompositeElement.innerHTML = constantData['g'] + ' MPa';
-            jNonCompositeElement.innerHTML = calculatedNonCompositeFigures['j'] + ' mm4';
-            zcNonCompositeElement.innerHTML = calculatedNonCompositeFigures['zc'] + ' mm3';
-            iexNonCompositeElement.innerHTML = constantData['iex'] + ' mm';
-            ieyNonCompositeElement.innerHTML = constantData['iey'] + ' mm';
-            iezNonCompositeElement.innerHTML = constantData['iez'] + ' mm';
-            iwNonCompositeElement.innerHTML = calculatedNonCompositeFigures['iw'] + ' mm6';
-            rxNonCompositeElement.innerHTML = calculatedNonCompositeFigures['rx'] + ' mm';
-            ryNonCompositeElement.innerHTML = calculatedNonCompositeFigures['ry'] + ' mm';
-            x0NonCompositeElement.innerHTML = calculatedNonCompositeFigures['x0'] + ' mm';
-            zfNonCompositeElement.innerHTML = calculatedNonCompositeFigures['zf'] + ' mm3';
-            y0NonCompositeElement.innerHTML = calculatedNonCompositeFigures['y0'] + ' mm';
-            rolNonCompositeElement.innerHTML = calculatedNonCompositeFigures['rol'] + ' mm';
-            foyNonCompositeElement.innerHTML = calculatedNonCompositeFigures['foy'] + ' MPa';
-            fozNonCompositeElement.innerHTML = calculatedNonCompositeFigures['foz'] + ' MPa';
-            moNonCompositeElement.innerHTML = calculatedNonCompositeFigures['mo'] + ' Nmm';
-            myNonCompositeElement.innerHTML = calculatedNonCompositeFigures['my'] + ' Nmm';
-            λbNonCompositeElement.innerHTML = calculatedNonCompositeFigures['λb'];
-            mcNonCompositeElement.innerHTML = calculatedNonCompositeFigures['mc'] + ' Nmm';
-            
-            mbeNonCompositeElement.innerHTML = calculatedNonCompositeFigures['mbe'] + ' Nmm';
-            molNonCompositeElement.innerHTML = calculatedNonCompositeFigures['mol'] + ' Nmm';
-            λlNonCompositeElement.innerHTML = calculatedNonCompositeFigures['λl'];
-            mblNonCompositeElement.innerHTML = calculatedNonCompositeFigures['mbl'] + ' Nmm';
-            modNonCompositeElement.innerHTML = calculatedNonCompositeFigures['mod'] + ' Nmm';
-            λdNonCompositeElement.innerHTML = calculatedNonCompositeFigures['λd'];
-            mbdNonCompositeElement.innerHTML = calculatedNonCompositeFigures['mbd'] + ' Nmm';
-            msNonCompositeElement.innerHTML = calculatedNonCompositeFigures['ms'] + ' Nmm';
-            ømbNonCompositeElement.innerHTML = calculatedNonCompositeFigures['ømb'] + ' kNm';
-            
-            concreteThickinessElement.innerHTML = calculatedCompositeFigures['concreteThickness'] + ' mm';
-            concreteStrengthElement.innerHTML = constantData['concreteStrength'] + ' mpa';
-            elasticModulusElement.innerHTML = calculatedCompositeFigures['elasticModulus'] + ' mpa';
-            nCompositeElement.innerHTML = calculatedCompositeFigures['n'];
-            befCompositeElement.innerHTML = calculatedCompositeFigures['bef'] + ' mm';
-            
-            centroidYCompositeElement.innerHTML = calculatedCompositeFigures['centroidY'] + ' mm';
-            areaACompositeElement.innerHTML = calculatedCompositeFigures['areaA'] + ' mm';
-            i1CompositeElement.innerHTML = calculatedCompositeFigures['i1'] + ' mm4';
-            i2CompositeElement.innerHTML = calculatedCompositeFigures['i2'] + ' mm4';
-            i3CompositeElement.innerHTML = calculatedCompositeFigures['i3'] + ' mm4';
-            i4CompositeElement.innerHTML = calculatedCompositeFigures['i4'] + ' mm4';
-            i5CompositeElement.innerHTML = calculatedCompositeFigures['i5'] + ' mm4';
-            i6CompositeElement.innerHTML = calculatedCompositeFigures['i6'] + ' mm4';
-            i7CompositeElement.innerHTML = calculatedCompositeFigures['i7'] + ' mm4';
-            iCompositeElement.innerHTML = calculatedCompositeFigures['i'] + ' mm4';
-            ztCompositeElement.innerHTML = calculatedCompositeFigures['zt'] + ' mm3';
-            zbCompositeElement.innerHTML = calculatedCompositeFigures['zb'] + ' mm3';
-            phiDifferentCompositeElement.innerHTML = constantData['phiDifferent'] + ' mm3';
-            phimCompositeElement.innerHTML = calculatedCompositeFigures['phim'];
-            
-            q1CompositeElement.innerHTML = calculatedCompositeFigures['q1'] + ' mm3';
-            q2CompositeElement.innerHTML = calculatedCompositeFigures['q2'] + ' mm3';
-            q3CompositeElement.innerHTML = calculatedCompositeFigures['q3'] + ' mm3';
-            q4CompositeElement.innerHTML = calculatedCompositeFigures['q4'] + ' mm3';
-            q5CompositeElement.innerHTML = calculatedCompositeFigures['q5'] + ' mm3';
-            qCompositeElement.innerHTML = calculatedCompositeFigures['q'] + ' mm3';
-            
-            constructionLiveLoadElement.innerHTML = constantData['constructionLiveLoad'] + ' kPa';
-            weightOfConcreteElement.innerHTML = calculatedCompositeFigures['weightOfConcrete'] + ' kPa';
-            joistSpacingElement.innerHTML = calculatedCompositeFigures['joistSpacing'] + ' mm';
-            spanCompositeElement.innerHTML = calculatedCompositeFigures['span'] + ' m';
-            weightJoistElement.innerHTML = calculatedCompositeFigures['weightOfJoist'] + ' kg/m';
-            precamberJoistElement.innerHTML = calculatedCompositeFigures['precamberInJoist'] + ' mm';
-            
-            span360Element.innerHTML = calculatedCompositeFigures['span360'] + ' mm';
-            span500Element.innerHTML = calculatedCompositeFigures['span500'] + ' mm';
-            
-            deadLoadDeflectionElement.innerHTML = calculatedCompositeFigures['deadLoadDeflection'] + ' mm';
-            constructionLLDeflectionElement.innerHTML = calculatedCompositeFigures['constructionLLDeflection'] + ' mm';
-            totalDeflection1Element.innerHTML = calculatedCompositeFigures['totalDeflection1'] + ' mm';
-            span360Deflection1StatusElement.innerHTML = calculatedCompositeFigures['totalDeflection1Status360'];
-            span500Deflection1StatusElement.innerHTML = calculatedCompositeFigures['totalDeflection1Status500'];
-            
-            sdlPerElement.innerHTML = calculatedCompositeFigures['sdlPer'] + ' kPa';
-            liveLoadPerElement.innerHTML = calculatedCompositeFigures['liveLoadPer'] + ' kPa';
-            sdlShortTermLLDeflectionElement.innerHTML = calculatedCompositeFigures['sdlShortTermLLDeflection'] + ' mm';
-            
-            selfWeightDeflection1Element.innerHTML = calculatedCompositeFigures['selfWeightDeflection1'] + ' mm';
-            dryingShrinkageDeflectionElement.innerHTML = calculatedCompositeFigures['dryingShrinkageDeflection'] + ' mm';
-            creepDeflectionElement.innerHTML = constantData['creepDeflection'] + ' mm';
-            kshElement.innerHTML = calculatedCompositeFigures['ksh']
-            totalDeflection2Element.innerHTML = calculatedCompositeFigures['totalDeflection2'] + ' mm';
-            span360Deflection2StatusElement.innerHTML = calculatedCompositeFigures['totalDeflection2Status360'];
-            span500Deflection2StatusElement.innerHTML = calculatedCompositeFigures['totalDeflection2Status500'];
-            
-            selfWeightDeflection2Element.innerHTML = calculatedCompositeFigures['selfWeightDeflection2'] + ' mm';
-            sustainedDeflectionElement.innerHTML = calculatedCompositeFigures['sustainedDeflection'] + ' mm';
-            totalDeflection3Element.innerHTML = calculatedCompositeFigures['totalDeflection3'] + ' mm';
-            span360Deflection3StatusElement.innerHTML = calculatedCompositeFigures['totalDeflection3Status360'];
-            span500Deflection3StatusElement.innerHTML = calculatedCompositeFigures['totalDeflection3Status500'];
-            
-            maxShortTermElement.innerHTML = calculatedCompositeFigures['maxShortTerm'] + ' mm';
-            maxShortTermStatusElement.innerHTML = calculatedCompositeFigures['maxShortTermStatus'];
-            maxLongTermElement.innerHTML = calculatedCompositeFigures['maxLongTerm'] + ' mm';
-            maxLongTermStatusElement.innerHTML = calculatedCompositeFigures['maxLongTermStatus'];
-            
-            constr14DElement.innerHTML = calculatedCompositeFigures['constr14D'];
-            composite14DElement.innerHTML = calculatedCompositeFigures['composite14D'];
-            constr12G16GElement.innerHTML = calculatedCompositeFigures['constr12G16G'];
-            composite12G16GElement.innerHTML = calculatedCompositeFigures['composite12G16G'];
-            constrDesignCaseElement.innerHTML = calculatedCompositeFigures['constrDesignCase'];
-            compositeDesignCaseElement.innerHTML = calculatedCompositeFigures['compositeDesignCase'];
-            
-            designVar0Element.innerHTML = calculatedDesignFigures['designVar0'];
-            designVar1Element.innerHTML = calculatedDesignFigures['designVar1'];
-            designVar2Element.innerHTML = calculatedDesignFigures['designVar2'];
-            designVar3Element.innerHTML = calculatedDesignFigures['designVar3'];
-            designVar4Element.innerHTML = calculatedDesignFigures['designVar4'];
-            designVar5Element.innerHTML = calculatedDesignFigures['designVar5'];
-            designVar6Element.innerHTML = calculatedDesignFigures['designVar6'];
-            designVar7Element.innerHTML = calculatedDesignFigures['designVar7'];
-            designVar8Element.innerHTML = calculatedDesignFigures['designVar8'];
-            
-            momentCapacityElement.innerHTML = finalDesignStatus['momentCapacity'];
-            shearCapacityAtSupportElement.innerHTML = finalDesignStatus['shearCapacityAtSupport'];
-            shearCapacityAtFirstHoleElement.innerHTML = finalDesignStatus['shearCapacityAtFirstHole'];
-            deflectionFinalTestElement.innerHTML = finalDesignStatus['deflection'];
-        }
-        
-        // The decimals is how many decimal places you would like to round to. 0 being integers, 1 being 1 decimal place, etc.
-        function Round(val, decimals) {
-            var multiplier = Math.pow(10, decimals || 0);
-            return Math.round(val * multiplier) / multiplier;
-        }
-        
-        function RoundDown(number, decimals) {
-            decimals = decimals || 0;
-            return ( Math.floor( number * Math.pow(10, decimals) ) / Math.pow(10, decimals) );
-        }
-        
-        
-        
-        function TestFunction()
-        {
-            var tes = slabData[3.49999999643]['mrc'];
-            testElement.innerHTML = tes;
-        }
+  calculatedCompositeFigures["ksh"] =
+    (336.375 * Math.pow(10, -6)) /
+    (sharedFigures["joist"] + calculatedCompositeFigures["concreteThickness"]);
+  
+  calculatedCompositeFigures["dryingShrinkageDeflection"] =
+    0.125 *
+    calculatedCompositeFigures["ksh"] *
+    Math.pow(calculatedCompositeFigures["span"] * 1000, 2);
+  
+  calculatedCompositeFigures["totalDeflection2"] =
+    calculatedCompositeFigures["deadLoadDeflection"] +
+    calculatedCompositeFigures["dryingShrinkageDeflection"] +
+    constantData["creepDeflection"] +
+    calculatedCompositeFigures["precamberInJoist"] +
+    calculatedCompositeFigures["sdlShortTermLLDeflection"];
+  
+  calculatedCompositeFigures["totalDeflection2Status360"] =
+    calculatedCompositeFigures["totalDeflection2"] >
+    calculatedCompositeFigures["span360"]
+      ? "FAIL"
+      : "PASS";
+  
+  calculatedCompositeFigures["totalDeflection2Long"] =
+    calculatedCompositeFigures["deadLoadDeflection"] +
+    calculatedCompositeFigures["dryingShrinkageDeflection"] +
+    constantData["creepDeflection"] +
+    calculatedCompositeFigures["precamberInJoist"] +
+    calculatedCompositeFigures["sdlLongTermLLDeflection"];
+    
+  calculatedCompositeFigures["totalDeflection2Status500"] =
+    calculatedCompositeFigures["totalDeflection2Long"] >
+    calculatedCompositeFigures["span500"]
+      ? "FAIL"
+      : "PASS";
+  
+  calculatedCompositeFigures["selfWeightDeflection"] =
+    ((5 / 384) *
+      ((calculatedCompositeFigures["weightOfConcrete"] *
+        calculatedCompositeFigures["joistSpacing"]) /
+        1000 +
+        (calculatedCompositeFigures["weightOfJoist"] * 9.81) / 1000) *
+      Math.pow(calculatedCompositeFigures["span"] * 1000, 4)) /
+    (constantData["e"] * calculatedCompositeFigures["i"]);
+  
+  calculatedCompositeFigures["sustainedDeflection"] =
+    (((5 / 384) *
+      ((calculatedCompositeFigures["sdlPer"] *
+        calculatedCompositeFigures["joistSpacing"]) /
+        1000) *
+      Math.pow(calculatedCompositeFigures["span"] * 1000, 4)) /
+      (constantData["e"] * calculatedCompositeFigures["i"]) +
+      calculatedCompositeFigures["selfWeightDeflection"]) *
+    1.9;
+  
+  calculatedCompositeFigures["totalDeflection3"] =
+    calculatedCompositeFigures["selfWeightDeflection"] +
+    calculatedCompositeFigures["precamberInJoist"] +
+    calculatedCompositeFigures["sdlShortTermLLDeflection"] +
+    calculatedCompositeFigures["sustainedDeflection"];
+  
+  calculatedCompositeFigures["totalDeflection3Status360"] =
+    calculatedCompositeFigures["totalDeflection3"] >
+    calculatedCompositeFigures["span360"]
+      ? "FAIL"
+      : "PASS";
+  
+  calculatedCompositeFigures["totalDeflection3Long"] = 
+    calculatedCompositeFigures["selfWeightDeflection"] +
+    calculatedCompositeFigures["precamberInJoist"] +
+    calculatedCompositeFigures["sdlLongTermLLDeflection"] +
+    calculatedCompositeFigures["sustainedDeflection"];
+  
+  calculatedCompositeFigures["totalDeflection3Status500"] =
+    calculatedCompositeFigures["totalDeflection3Long"] >
+    calculatedCompositeFigures["span500"]
+      ? "FAIL"
+      : "PASS";
+  
+  calculatedCompositeFigures["maxShortTerm"] = Math.max(
+    calculatedCompositeFigures["totalDeflection1"],
+    calculatedCompositeFigures["totalDeflection2"],
+    calculatedCompositeFigures["totalDeflection3"]
+  );
+  
+  calculatedCompositeFigures["maxShortTermStatus"] =
+    calculatedCompositeFigures["maxShortTerm"] >
+    calculatedCompositeFigures["span360"]
+      ? "FAIL"
+      : "PASS";
+  
+  calculatedCompositeFigures["maxLongTerm"] = Math.max(
+    calculatedCompositeFigures["totalDeflection1"],
+    calculatedCompositeFigures["totalDeflection2Long"],
+    calculatedCompositeFigures["totalDeflection3Long"]
+  );
+  
+  calculatedCompositeFigures["maxLongTermStatus"] =
+    calculatedCompositeFigures["maxLongTerm"] >
+    calculatedCompositeFigures["span500"]
+      ? "FAIL"
+      : "PASS";
+  
+  calculatedCompositeFigures["constr14D"] =
+    1.4 *
+    ((calculatedCompositeFigures["weightOfConcrete"] *
+      calculatedCompositeFigures["joistSpacing"]) /
+      1000 +
+      (calculatedCompositeFigures["weightOfJoist"] * 9.81) / 1000);
+  
+  calculatedCompositeFigures["composite14D"] =
+    1.4 *
+    (((calculatedCompositeFigures["weightOfConcrete"] +
+      calculatedCompositeFigures["sdlPer"]) *
+      calculatedCompositeFigures["joistSpacing"]) /
+      1000 +
+      (calculatedCompositeFigures["weightOfJoist"] * 9.81) / 1000);
+  
+  calculatedCompositeFigures["constr12G16G"] =
+    1.2 *
+      ((calculatedCompositeFigures["weightOfConcrete"] *
+        calculatedCompositeFigures["joistSpacing"]) /
+        1000 +
+        (calculatedCompositeFigures["weightOfJoist"] * 9.81) / 1000) +
+    (1.6 *
+      constantData["constructionLiveLoad"] *
+      calculatedCompositeFigures["joistSpacing"]) /
+      1000;
+  
+  calculatedCompositeFigures["composite12G16G"] =
+    1.2 *
+      (((calculatedCompositeFigures["weightOfConcrete"] +
+        calculatedCompositeFigures["sdlPer"]) *
+        calculatedCompositeFigures["joistSpacing"]) /
+        1000 +
+        (calculatedCompositeFigures["weightOfJoist"] * 9.81) / 1000) +
+    (1.6 *
+      calculatedCompositeFigures["liveLoadPer"] *
+      calculatedCompositeFigures["joistSpacing"]) /
+      1000;
+  calculatedCompositeFigures["constrDesignCase"] = Math.max(
+    calculatedCompositeFigures["constr14D"],
+    calculatedCompositeFigures["constr12G16G"]
+  );
+  calculatedCompositeFigures["compositeDesignCase"] = Math.max(
+    calculatedCompositeFigures["composite14D"],
+    calculatedCompositeFigures["composite12G16G"]
+  );
+}
+
+function CalculateDesignFigures() {
+  calculatedDesignFigures["designVar0"] = Math.min(
+    joistData[summitedData["joistSize"]]["mr"] / 0.737562,
+    calculatedNonCompositeFigures["ømb"]
+  );
+  calculatedDesignFigures["designVar1"] =
+    (calculatedCompositeFigures["constrDesignCase"] *
+      Math.pow(summitedData["joistSpan"] * 0.3048, 2)) /
+    8;
+  calculatedDesignFigures["designVar2"] =
+    (calculatedCompositeFigures["compositeDesignCase"] *
+      Math.pow(summitedData["joistSpan"] * 0.3048, 2)) /
+    8;
+  testElement.innerHTML = slabData[summitedData["slabTopping"]][summitedData["joistSize"]]["vr"] /
+      0.22480894387096;
+  calculatedDesignFigures["designVar3"] = Math.min(
+    constantData["capacityEndBoltedSupport"],
+    slabData[summitedData["slabTopping"]][summitedData["joistSize"]]["vr"] /
+      0.22480894387096
+  );
+  
+  calculatedDesignFigures["designVar4"] =
+    summitedData["joistSpan"] * calculatedCompositeFigures["compositeDesignCase"] * 0.3048 / 2;
+ 
+  calculatedDesignFigures["designVar5"] = Math.min(
+    constantData["capacityEndBoltedSupport"],
+    slabData[summitedData["slabTopping"]][summitedData["joistSize"]]["vr"] /
+      0.22480894387096,
+    slabData[summitedData["slabTopping"]][summitedData["joistSize"]]["vrh"] /
+      0.22480894387096
+  );
+  
+  if (!calculatedDesignFigures["designVar5"])
+    calculatedDesignFigures["designVar5"] = "N/A";
+  
+  try {
+    calculatedDesignFigures["designVar6"] =
+      calculatedCompositeFigures["compositeDesignCase"] *
+      (summitedData["joistSpan"] * 0.3048 * 0.5 -
+        summitedData["firstHoleLocation"] / 0.0032808399 / 1000);
+  } catch {
+    calculatedDesignFigures["designVar6"] = "N/A";
+  }
+  calculatedDesignFigures["designVar7"] =
+    (summitedData["joistSpan"] * 304.8) / summitedData["deflectionLimit"];
+  calculatedDesignFigures["designVar8"] =
+    summitedData["deflectionLimit"] == 360
+      ? calculatedCompositeFigures["maxShortTerm"]
+      : calculatedCompositeFigures["maxLongTerm"];
+}
+
+function FinalDesignCheck() {
+  finalDesignStatus["momentCapacity"] =
+    calculatedDesignFigures["designVar1"] <=
+      calculatedDesignFigures["designVar0"] &&
+    calculatedDesignFigures["designVar2"] <=
+      slabData[summitedData["slabTopping"]][summitedData["joistSize"]]["mrc"] /
+        0.737562
+      ? "PASS"
+      : "FAIL";
+  finalDesignStatus["shearCapacityAtSupport"] =
+    calculatedDesignFigures["designVar4"] >
+    calculatedDesignFigures["designVar3"]
+      ? "FAIL"
+      : "PASS";
+  try {
+    finalDesignStatus["shearCapacityAtFirstHole"] =
+      summitedData["joistSize"] < 9
+        ? "N/A"
+        : calculatedDesignFigures["designVar6"] >
+          calculatedDesignFigures["designVar5"]
+        ? "FAIL"
+        : "PASS";
+  } catch {
+    finalDesignStatus["shearCapacityAtFirstHole"] = "FAIL OR N/A";
+  }
+  finalDesignStatus["deflection"] =
+    calculatedDesignFigures["designVar8"] >
+    calculatedDesignFigures["designVar7"]
+      ? "FAIL"
+      : "PASS";
+}
+
+function DisplayCalculatedData() {
+  joistNonCompositeElement.innerHTML = sharedFigures["joist"];
+  btmNonCompositeElement.innerHTML = constantData["btm"];
+  centroidYNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["centroidY"] + " mm";
+  areaANonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["areaA"] + " mm2";
+  i1NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["i1"] + " mm4";
+  i2NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["i2"] + " mm4";
+  i3NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["i3"] + " mm4";
+  i4NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["i4"] + " mm4";
+  i5NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["i5"] + " mm4";
+  i6NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["i6"] + " mm4";
+  i7NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["i7"] + " mm4";
+  i8NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["i8"] + " mm4";
+  i9NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["i9"] + " mm4";
+  i10NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["i10"] + " mm4";
+  iNonCompositeElement.innerHTML = calculatedNonCompositeFigures["i"] + " mm4";
+  ztNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["zt"] + " mm3";
+  zbNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["zb"] + " mm3";
+  phiNonCompositeElement.innerHTML = constantData["phi"];
+  phimNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["phim"] + " kNm";
+
+  circularHoleNonCompositeElement.innerHTML =
+    sharedFigures["circularHole"] + " dwh";
+  nonCircularHoleNonCompositeElement.innerHTML =
+    sharedFigures["nonCircularHole"] + " dwh";
+  fyNonCompositeElement.innerHTML = constantData["fy"] + " MPa";
+  eNonCompositeElement.innerHTML = constantData["e"] + " MPa";
+  vNonCompositeElement.innerHTML = constantData["v"];
+  kNonCompositeElement.innerHTML = calculatedNonCompositeFigures["k"];
+  tNonCompositeElement.innerHTML = constantData["t"] + " mm";
+  bNonCompositeElement.innerHTML = calculatedNonCompositeFigures["b"] + " mm";
+  fcrNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["fcr"] + " MPa";
+  fAsteriskNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["fAsterisk"] + " MPa";
+  lamdaNonCompositeElement.innerHTML = calculatedNonCompositeFigures["lamda"];
+  pNonCompositeElement.innerHTML = calculatedNonCompositeFigures["p"];
+  beNonCompositeElement.innerHTML = calculatedNonCompositeFigures["be"] + " mm";
+  psiNonCompositeElement.innerHTML = calculatedNonCompositeFigures["psi"];
+  be1NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["be1"] + " mm";
+  be2NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["be2"] + " mm";
+  i51NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["i51"] + " mm4";
+  d52NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["d52"] + " mm";
+  i52NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["i52"] + " mm4";
+
+  kvNonCompositeElement.innerHTML = constantData["kv"];
+  d1NonCompositeElement.innerHTML = sharedFigures["d1"] + " mm";
+  d1OverTNonCompositeElement.innerHTML = sharedFigures["d1OverT"];
+  ekvOverFyNonCompositeElement.innerHTML = sharedFigures["ekvOverFy"];
+  q1NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["q1"] + " mm3";
+  q2NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["q2"] + " mm3";
+  q3NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["q3"] + " mm3";
+  q4NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["q4"] + " mm3";
+  q5NonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["q5"] + " mm3";
+  qNonCompositeElement.innerHTML = calculatedNonCompositeFigures["q"] + " mm3";
+
+  phi2NonCompositeElement.innerHTML = constantData["phi"];
+  phiHoleNonCompositeElement.innerHTML = constantData["phiHole"];
+  phivNonCompositeElement.innerHTML = sharedFigures["phiv"] + " kN";
+  phivCirHoleNonCompositeElement.innerHTML =
+    sharedFigures["phivCirHole"] + " kN";
+  phivNonCirHoleNonCompositeElement.innerHTML =
+    sharedFigures["phivNonCirHole"] + " kN";
+
+  tOverD1TimesEkvOverFyNonCompositeElement.innerHTML =
+    sharedFigures["tOverD1TimesEkvOverFy"];
+  d1OverTTimesFyOverEkvNonCompositeElement.innerHTML =
+    sharedFigures["d1OverTTimesFyOverEkv"];
+  ekvOverFyMultipliedNonCompositeElement.innerHTML =
+    sharedFigures["ekvOverFyMultiplied"];
+  ekvfy1NonCompositeElement.innerHTML = sharedFigures["ekvfy1"];
+  cCircularNonCompositeElement.innerHTML = sharedFigures["cCircular"];
+  qsCircularNonCompositeElement.innerHTML = sharedFigures["qsCircular"];
+  vcrNonCompositeElement.innerHTML = sharedFigures["vcr"] + " N";
+  vyNonCompositeElement.innerHTML = sharedFigures["vy"] + " N";
+  lamdaVNonCompositeElement.innerHTML = sharedFigures["lamdaV"];
+  ekvfy2NonCompositeElement.innerHTML = sharedFigures["ekvfy2"];
+  cNonCircularNonCompositeElement.innerHTML = sharedFigures["cNonCircular"];
+  qsNonCircularNonCompositeElement.innerHTML = sharedFigures["qsNonCircular"];
+
+  øNonCompositeElement.innerHTML = constantData["phi"];
+  aNonCompositeElement.innerHTML = calculatedNonCompositeFigures["a"] + " mm2";
+  cbNonCompositeElement.innerHTML = constantData["cb"];
+  folNonCompositeElement.innerHTML = constantData["fol"] + " MPa";
+  fodNonCompositeElement.innerHTML = constantData["fod"] + " MPa";
+  fy2NonCompositeElement.innerHTML = constantData["fy"] + " MPa";
+  gNonCompositeElement.innerHTML = constantData["g"] + " MPa";
+  jNonCompositeElement.innerHTML = calculatedNonCompositeFigures["j"] + " mm4";
+  zcNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["zc"] + " mm3";
+  iexNonCompositeElement.innerHTML = constantData["iex"] + " mm";
+  ieyNonCompositeElement.innerHTML = constantData["iey"] + " mm";
+  iezNonCompositeElement.innerHTML = constantData["iez"] + " mm";
+  iwNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["iw"] + " mm6";
+  rxNonCompositeElement.innerHTML = calculatedNonCompositeFigures["rx"] + " mm";
+  ryNonCompositeElement.innerHTML = calculatedNonCompositeFigures["ry"] + " mm";
+  x0NonCompositeElement.innerHTML = calculatedNonCompositeFigures["x0"] + " mm";
+  zfNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["zf"] + " mm3";
+  y0NonCompositeElement.innerHTML = calculatedNonCompositeFigures["y0"] + " mm";
+  rolNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["rol"] + " mm";
+  foyNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["foy"] + " MPa";
+  fozNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["foz"] + " MPa";
+  moNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["mo"] + " Nmm";
+  myNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["my"] + " Nmm";
+  λbNonCompositeElement.innerHTML = calculatedNonCompositeFigures["λb"];
+  mcNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["mc"] + " Nmm";
+
+  mbeNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["mbe"] + " Nmm";
+  molNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["mol"] + " Nmm";
+  λlNonCompositeElement.innerHTML = calculatedNonCompositeFigures["λl"];
+  mblNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["mbl"] + " Nmm";
+  modNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["mod"] + " Nmm";
+  λdNonCompositeElement.innerHTML = calculatedNonCompositeFigures["λd"];
+  mbdNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["mbd"] + " Nmm";
+  msNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["ms"] + " Nmm";
+  ømbNonCompositeElement.innerHTML =
+    calculatedNonCompositeFigures["ømb"] + " kNm";
+
+  concreteThickinessElement.innerHTML =
+    calculatedCompositeFigures["concreteThickness"] + " mm";
+  concreteStrengthElement.innerHTML = constantData["concreteStrength"] + " mpa";
+  elasticModulusElement.innerHTML =
+    calculatedCompositeFigures["elasticModulus"] + " mpa";
+  nCompositeElement.innerHTML = calculatedCompositeFigures["n"];
+  befCompositeElement.innerHTML = calculatedCompositeFigures["bef"] + " mm";
+
+  centroidYCompositeElement.innerHTML =
+    calculatedCompositeFigures["centroidY"] + " mm";
+  areaACompositeElement.innerHTML = calculatedCompositeFigures["areaA"] + " mm";
+  i1CompositeElement.innerHTML = calculatedCompositeFigures["i1"] + " mm4";
+  i2CompositeElement.innerHTML = calculatedCompositeFigures["i2"] + " mm4";
+  i3CompositeElement.innerHTML = calculatedCompositeFigures["i3"] + " mm4";
+  i4CompositeElement.innerHTML = calculatedCompositeFigures["i4"] + " mm4";
+  i5CompositeElement.innerHTML = calculatedCompositeFigures["i5"] + " mm4";
+  i6CompositeElement.innerHTML = calculatedCompositeFigures["i6"] + " mm4";
+  i7CompositeElement.innerHTML = calculatedCompositeFigures["i7"] + " mm4";
+  iCompositeElement.innerHTML = calculatedCompositeFigures["i"] + " mm4";
+  ztCompositeElement.innerHTML = calculatedCompositeFigures["zt"] + " mm3";
+  zbCompositeElement.innerHTML = calculatedCompositeFigures["zb"] + " mm3";
+  phiDifferentCompositeElement.innerHTML =
+    constantData["phiDifferent"] + " mm3";
+  phimCompositeElement.innerHTML = calculatedCompositeFigures["phim"];
+
+  q1CompositeElement.innerHTML = calculatedCompositeFigures["q1"] + " mm3";
+  q2CompositeElement.innerHTML = calculatedCompositeFigures["q2"] + " mm3";
+  q3CompositeElement.innerHTML = calculatedCompositeFigures["q3"] + " mm3";
+  q4CompositeElement.innerHTML = calculatedCompositeFigures["q4"] + " mm3";
+  q5CompositeElement.innerHTML = calculatedCompositeFigures["q5"] + " mm3";
+  qCompositeElement.innerHTML = calculatedCompositeFigures["q"] + " mm3";
+
+  constructionLiveLoadElement.innerHTML =
+    constantData["constructionLiveLoad"] + " kPa";
+  weightOfConcreteElement.innerHTML =
+    calculatedCompositeFigures["weightOfConcrete"] + " kPa";
+  joistSpacingElement.innerHTML =
+    calculatedCompositeFigures["joistSpacing"] + " mm";
+  spanCompositeElement.innerHTML = calculatedCompositeFigures["span"] + " m";
+  weightJoistElement.innerHTML =
+    calculatedCompositeFigures["weightOfJoist"] + " kg/m";
+  precamberJoistElement.innerHTML =
+    calculatedCompositeFigures["precamberInJoist"] + " mm";
+
+  span360Element.innerHTML = calculatedCompositeFigures["span360"] + " mm";
+  span500Element.innerHTML = calculatedCompositeFigures["span500"] + " mm";
+
+  deadLoadDeflectionElement.innerHTML =
+    calculatedCompositeFigures["deadLoadDeflection"] + " mm";
+  constructionLLDeflectionElement.innerHTML =
+    calculatedCompositeFigures["constructionLLDeflection"] + " mm";
+  totalDeflection1Element.innerHTML =
+    calculatedCompositeFigures["totalDeflection1"] + " mm";
+  span360Deflection1StatusElement.innerHTML =
+    calculatedCompositeFigures["totalDeflection1Status360"];
+  span500Deflection1StatusElement.innerHTML =
+    calculatedCompositeFigures["totalDeflection1Status500"];
+
+  sdlPerElement.innerHTML = calculatedCompositeFigures["sdlPer"] + " kPa";
+  liveLoadPerElement.innerHTML =
+    calculatedCompositeFigures["liveLoadPer"] + " kPa";
+  sdlShortTermLLDeflectionElement.innerHTML =
+    calculatedCompositeFigures["sdlShortTermLLDeflection"] + " mm";
+  sdlLongTermLLDeflectionElement.innerHTML = 
+    calculatedCompositeFigures["sdlLongTermLLDeflection"] + " mm";
+  
+  dryingShrinkageDeflectionElement.innerHTML =
+    calculatedCompositeFigures["dryingShrinkageDeflection"] + " mm";
+  creepDeflectionElement.innerHTML = constantData["creepDeflection"] + " mm";
+  kshElement.innerHTML = calculatedCompositeFigures["ksh"];
+  totalDeflection2Element.innerHTML =
+    calculatedCompositeFigures["totalDeflection2"] + " mm";
+  totalDeflection2LongElement.innerHTML = 
+    calculatedCompositeFigures["totalDeflection2Long"] + " mm";
+  span360Deflection2StatusElement.innerHTML =
+    calculatedCompositeFigures["totalDeflection2Status360"];
+  span500Deflection2StatusElement.innerHTML =
+    calculatedCompositeFigures["totalDeflection2Status500"];
+
+  selfWeightDeflectionElement.innerHTML =
+    calculatedCompositeFigures["selfWeightDeflection"] + " mm";
+  sustainedDeflectionElement.innerHTML =
+    calculatedCompositeFigures["sustainedDeflection"] + " mm";
+  totalDeflection3Element.innerHTML =
+    calculatedCompositeFigures["totalDeflection3"] + " mm";
+  totalDeflection3LongElement.innerHTML =
+    calculatedCompositeFigures["totalDeflection3Long"] + " mm";
+  span360Deflection3StatusElement.innerHTML =
+    calculatedCompositeFigures["totalDeflection3Status360"];
+  span500Deflection3StatusElement.innerHTML =
+    calculatedCompositeFigures["totalDeflection3Status500"];
+
+  maxShortTermElement.innerHTML =
+    calculatedCompositeFigures["maxShortTerm"] + " mm";
+  maxShortTermStatusElement.innerHTML =
+    calculatedCompositeFigures["maxShortTermStatus"];
+  maxLongTermElement.innerHTML =
+    calculatedCompositeFigures["maxLongTerm"] + " mm";
+  maxLongTermStatusElement.innerHTML =
+    calculatedCompositeFigures["maxLongTermStatus"];
+
+  constr14DElement.innerHTML = calculatedCompositeFigures["constr14D"];
+  composite14DElement.innerHTML = calculatedCompositeFigures["composite14D"];
+  constr12G16GElement.innerHTML = calculatedCompositeFigures["constr12G16G"];
+  composite12G16GElement.innerHTML =
+    calculatedCompositeFigures["composite12G16G"];
+  constrDesignCaseElement.innerHTML =
+    calculatedCompositeFigures["constrDesignCase"];
+  compositeDesignCaseElement.innerHTML =
+    calculatedCompositeFigures["compositeDesignCase"];
+
+  designVar0Element.innerHTML = calculatedDesignFigures["designVar0"];
+  designVar1Element.innerHTML = calculatedDesignFigures["designVar1"];
+  designVar2Element.innerHTML = calculatedDesignFigures["designVar2"];
+  designVar3Element.innerHTML = calculatedDesignFigures["designVar3"];
+  designVar4Element.innerHTML = calculatedDesignFigures["designVar4"];
+  designVar5Element.innerHTML = calculatedDesignFigures["designVar5"];
+  designVar6Element.innerHTML = calculatedDesignFigures["designVar6"];
+  designVar7Element.innerHTML = calculatedDesignFigures["designVar7"];
+  designVar8Element.innerHTML = calculatedDesignFigures["designVar8"];
+
+  
+  
+  momentCapacityElement.innerHTML = finalDesignStatus["momentCapacity"];
+  shearCapacityAtSupportElement.innerHTML =
+    finalDesignStatus["shearCapacityAtSupport"];
+  shearCapacityAtFirstHoleElement.innerHTML =
+    finalDesignStatus["shearCapacityAtFirstHole"];
+  deflectionFinalTestElement.innerHTML = finalDesignStatus["deflection"];
+}
+
+// The decimals is how many decimal places you would like to round to. 0 being integers, 1 being 1 decimal place, etc.
+function Round(val, decimals) {
+  var multiplier = Math.pow(10, decimals || 0);
+  return Math.round(val * multiplier) / multiplier;
+}
+
+function RoundDown(number, decimals) {
+  decimals = decimals || 0;
+  return Math.floor(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
+}
+
+function TestFunction() {
+  var tes = slabData[3.49999999643]["mrc"];
+  testElement.innerHTML = tes;
+}
+
     </script>
 </html>
